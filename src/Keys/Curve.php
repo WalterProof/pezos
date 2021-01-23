@@ -17,4 +17,6 @@ interface Curve
     public function signaturePrefix(): array;
 
     public function getPublicKey(string $privateKey): BufferInterface;
+
+    public function sign(string $msg, BufferInterface $privateKey): Signature;
 }

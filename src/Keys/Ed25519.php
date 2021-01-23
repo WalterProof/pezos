@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Pezos\Keys;
 
 use BitWasp\Buffertools\Buffer;
+use BitWasp\Buffertools\BufferInterface;
 use function Pezos\b58cdecode;
 
 class Ed25519 implements Curve
@@ -33,10 +34,15 @@ class Ed25519 implements Curve
     {
     }
 
-    public function getPublicKey(string $privateKey): Buffer
+    public function getPublicKey(string $privateKey): BufferInterface
     {
         return b58cdecode($privateKey, $this->privateKeyPrefix())->slice(
             SODIUM_CRYPTO_BOX_PUBLICKEYBYTES
         );
+    }
+
+    public function sign(string $msg, BufferInterface $privateKey): Signature
+    {
+        return new Signature(new Buffer($msg), $this->signaturePrefix());
     }
 }

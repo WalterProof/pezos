@@ -8,19 +8,17 @@ class Ed25519
 {
     public static function accounts(): \Generator
     {
-        yield 'alice' => [
-            new Account(
-                'edskRgwZgrAsBSN4tN3b6iy6opofPVxsRkn2obRkP156p6bkprxL98hZyxExv6LyBm82BkAYo97uWyZgy96rDjuVM5FehPQMz2',
-                'edpkvYdirUXWtuwdcxPnXkbX4gXeL7LNtji4Qionp71d3Nw6Hmqezz',
-                'tz1UxbPFjP22Hmc4tz2cxEXUx3cz17W4L7ow'
-            ),
-        ];
+        yield 'alice' => [Account::alice()];
+        yield 'bob' => [Account::bob()];
+    }
 
-        yield 'bob' => [
-            new Account(
-                'edskRwvobw55Fi53ikwAfo3LHwm74Dx4DwhKmM1Bz957TcVgGFhC9Ujnqq6tin4giethoLQCnfULNzGFQWxYqkKaFQbqX7euWu',
-                'edpkv2ttLericWCYLjWsm1uXnWgUBjhTF8MFGLhyMawbjFW7v5Yvc3',
-                'tz1iv68Lbh4v3PWeY7SypNMHgJ78DnS846fB'
+    public static function signatures(): \Generator
+    {
+        yield 'alice signature for "Hello" of type string' => [
+            new Signature(
+                Account::alice(),
+                '05010000000548656c6c6f',
+                'edsigtxHb4HCsgf3zLLcTx4Rj23Y3CSJf8jaRXwoVHZJgSsMhzFoxKtinx2TT5FgYKprLVQ9nq8o93MCpmxaTuRB7igT9b6nZyf'
             ),
         ];
     }

@@ -16,7 +16,7 @@ function b58cencode(BufferInterface $payload, array $prefix): string
     );
 }
 
-function b58cdecode(string $payload, array $prefix): Buffer
+function b58cdecode(string $payload, array $prefix): BufferInterface
 {
     return Base58::decodeCheck($payload)->slice(
         (new Buffer(pack('C*', ...$prefix)))->getSize()
