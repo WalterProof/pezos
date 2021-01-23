@@ -1,0 +1,19 @@
+version: "3"
+services:
+  php:
+    build:
+      args:
+        UID: ${UID-1000}
+        GID: ${GID-1000}
+      context: ./docker
+    command: sh
+    environment:
+      SKIP_DOCKER: "true" 
+    tty: true
+    stdin_open: true
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    volumes:
+      - .:/home/dev/pkg

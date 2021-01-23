@@ -1,0 +1,15 @@
+# conf
+license.txt
+
+# dependencies
+vendor
+
+# environment variables
+.env
+
+# logs
+.nvimlog
+
+# misc
+.phpunit.result.cache
+.php_cs.cache

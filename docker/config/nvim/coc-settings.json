@@ -1,0 +1,19 @@
+{
+    "intelephense.licenceKey": "/home/dev/intelephense/license.txt",
+    "languageserver": {
+        "intelephense": {
+            "command": "intelephense",
+            "args": ["--stdio"],
+            "filetypes": ["php"],
+            "trace.server": "verbose",
+            "initializationOptions": {
+                "storagePath": "/tmp/intelephense"
+            }
+        }
+    },
+    "suggest.snippetIndicator": " ►",
+    "diagnostic.errorSign": "•",
+    "diagnostic.warningSign": "•",
+    "diagnostic.infoSign": "•",
+    "diagnostic.checkCurrentLine": true
+}
