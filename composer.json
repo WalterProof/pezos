@@ -1,4 +1,8 @@
 {
+    "name": "catsoap/pezos",
+    "description": "Tezos library",
+    "type": "library",
+    "keywords": ["tezos"],
     "autoload": {
         "psr-4": {
             "Pezos\\": "src/"
@@ -19,5 +23,6 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^9"
-    }
+    },
+    "version": "dev"
 }
