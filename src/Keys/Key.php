@@ -24,7 +24,7 @@ class Key
         $this->curve   = $curve;
     }
 
-    public function signBytes(string $msg): Signature
+    public function signHex(string $msg): Signature
     {
         $signature = sodium_crypto_sign_detached(
             (new Buffer(

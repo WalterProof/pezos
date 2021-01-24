@@ -7,16 +7,16 @@ namespace Tests\DataProvider;
 class Signature
 {
     public Account $account;
-    public string $bytes;
+    public string $hex;
     public string $signature;
 
     public function __construct(
         Account $account,
-        string $bytes,
+        string $hex,
         string $signature
     ) {
         $this->account   = $account;
-        $this->bytes     = $bytes;
+        $this->hex       = $hex;
         $this->signature = $signature;
     }
 }

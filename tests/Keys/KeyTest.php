@@ -20,7 +20,7 @@ class KeyTest extends TestCase
 
         $this->assertSame(
             $signature->signature,
-            $key->signBytes($signature->bytes)->toBase58()
+            $key->signHex($signature->hex)->toBase58()
         );
     }
 }
