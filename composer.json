@@ -1,8 +1,10 @@
 {
-    "name": "catsoap/pezos",
+    "name": "sortpif/pezos",
     "description": "Tezos library",
     "type": "library",
-    "keywords": ["tezos"],
+    "keywords": [
+        "tezos"
+    ],
     "autoload": {
         "psr-4": {
             "Pezos\\": "src/"
@@ -24,5 +26,15 @@
     "require-dev": {
         "phpunit/phpunit": "^9"
     },
-    "version": "dev"
+    "version": "1.0.0-alpha",
+    "archive": {
+        "exclude": [
+            "*",
+            ".*",
+            "*/",
+            "!/src/*",
+            "!/composer.*",
+            "!/README.md"
+        ]
+    }
 }
