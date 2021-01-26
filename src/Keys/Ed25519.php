@@ -7,6 +7,7 @@ namespace Pezos\Keys;
 use BitWasp\Buffertools\Buffer;
 use BitWasp\Buffertools\BufferInterface;
 use function Pezos\b58cdecode;
+use function Pezos\blake2b;
 
 class Ed25519 implements Curve
 {
@@ -44,5 +45,22 @@ class Ed25519 implements Curve
     public function sign(string $msg, BufferInterface $privateKey): Signature
     {
         return new Signature(new Buffer($msg), $this->signaturePrefix());
+    }
+
+    public function verifySignedHex(
+        string $signature,
+        string $msg,
+        string $publicKey
+    ): bool {
+        $signature = b58cdecode($signature, $this->signaturePrefix());
+        $publicKey = b58cdecode($publicKey, $this->publicKeyPrefix());
+        $msg       = Buffer::hex($msg);
+        $hash      = blake2b($msg->getBinary());
+
+        return sodium_crypto_sign_verify_detached(
+            $signature->getBinary(),
+            $hash,
+            $publicKey->getBinary()
+        );
     }
 }

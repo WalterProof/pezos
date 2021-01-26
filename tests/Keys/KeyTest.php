@@ -18,7 +18,9 @@ class KeyTest extends TestCase
     {
         $key = Key::fromBase58($signature->account->privateKey, new Ed25519());
 
-        $this->assertSame(
+        $test = $signature->valid ? 'assertSame' : 'assertNotSame';
+
+        $this->$test(
             $signature->signature,
             $key->signHex($signature->hex)->toBase58()
         );
