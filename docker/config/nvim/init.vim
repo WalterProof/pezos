@@ -70,6 +70,7 @@ Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'} " php refactoring option
 Plug '2072/php-indenting-for-vim', {'for': 'php'}
 Plug 'tobyS/vmustache' | Plug 'tobyS/pdv', {'for': 'php'} " php doc autocompletion
 Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+Plug 'dyng/ctrlsf.vim'
 
 " tezos
 Plug 'rnestler/michelson.vim'
@@ -316,6 +317,26 @@ nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>e :FZF -m<CR>
 "Recovery commands from history through FZF
 nmap <leader>y :History:<CR>
+
+nmap // :BLines!<CR>
+nmap ?? :Rg!<CR>
+nmap <leader>p :Files!<CR>
+nmap cc :Commands!<CR>
+
+" CtrlSF
+
+" Set "<leader>S" to substitute the word under the cursor. Works great with
+" CtrlSF!
+nmap <leader>S :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+" Set up some handy CtrlSF bindings
+nmap <leader>a :CtrlSF -R ""<Left>
+nmap <leader>A <Plug>CtrlSFCwordPath -W<CR>
+nmap <leader>c :CtrlSFFocus<CR>
+nmap <leader>C :CtrlSFToggle<CR>
+
+" Use Ripgrep with CtrlSF for performance
+let g:ctrlsf_ackprg = '/usr/bin/rg'
 
 " snippets
 let g:UltiSnipsExpandTrigger="<tab>"
