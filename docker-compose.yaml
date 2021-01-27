@@ -17,3 +17,15 @@ services:
         max-file: "3"
     volumes:
       - .:/home/dev/pkg
+
+  flextesa:
+    image: "tqtezos/flextesa:20201214"
+    command: edobox start 
+    ports:
+      - "8732:20000"
+    environment:
+      - block_time=1
+      - flextesa_node_cors_origin=*
+    volumes:
+      - ./tezos-client.config.json:/root/.tezos-client/config
+
