@@ -33,4 +33,6 @@ jobs:
       - name: Test
         env:
           SKIP_DOCKER: true
-        run: make test
+        run: |
+            sed -i 's/http:\/\/flextesa:20000/https:\/\/edonet.duckdns.org/g' phpunit.xml.dist
+            make test

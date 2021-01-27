@@ -21,7 +21,8 @@
     "require": {
         "php": "^7.4",
         "bitwasp/buffertools": "^0.5.7",
-        "bitwasp/bitcoin": "^1.0"
+        "bitwasp/bitcoin": "^1.0",
+        "guzzlehttp/guzzle": "^7.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^9"
