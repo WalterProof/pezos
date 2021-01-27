@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\DataProvider;
+namespace Test\Unit\DataProvider;
 
 class Ed25519
 {

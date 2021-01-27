@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\DataProvider;
+namespace Test\Unit\DataProvider;
 
 class Signature
 {
@@ -17,9 +17,9 @@ class Signature
         string $signature,
         bool $valid = true
     ) {
-        $this->account   = $account;
-        $this->hex       = $hex;
+        $this->account = $account;
+        $this->hex = $hex;
         $this->signature = $signature;
-        $this->valid     = $valid;
+        $this->valid = $valid;
     }
 }

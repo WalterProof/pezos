@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Tests\Keys;
+namespace Test\Unit\Keys;
 
 use Pezos\Keys\Ed25519;
 use Pezos\Keys\PubKey;
 use PHPUnit\Framework\TestCase;
-use Tests\DataProvider\Account;
+use Test\Unit\DataProvider\Account;
 
 class PubKeyTest extends TestCase
 {
     /**
-     * @dataProvider \Tests\DataProvider\Ed25519::accounts()
+     * @dataProvider \Test\Unit\DataProvider\Ed25519::accounts()
      */
     public function testEd25519(Account $account)
     {
