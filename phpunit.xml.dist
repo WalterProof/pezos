@@ -10,7 +10,7 @@
     convertWarningsToExceptions="true"
     processIsolation="false"
     stopOnFailure="false"
-    bootstrap="test/bootstrap.php"
+    bootstrap="tests/bootstrap.php"
 >
   <coverage processUncoveredFiles="true">
     <include>
@@ -24,10 +24,10 @@
   </php>
   <testsuites>
     <testsuite name="unit">
-      <directory>./test/Unit</directory>
+      <directory>./tests/Unit</directory>
     </testsuite>
     <testsuite name="integration">
-      <directory>./test/Integration</directory>
+      <directory>./tests/Integration</directory>
     </testsuite>
   </testsuites>
 </phpunit>

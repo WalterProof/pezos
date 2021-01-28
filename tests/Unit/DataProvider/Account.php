@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Test\Unit\DataProvider;
+namespace Tests\Unit\DataProvider;
 
 class Account
 {
@@ -15,8 +15,8 @@ class Account
         string $publicKey,
         string $publicKeyHash
     ) {
-        $this->privateKey = $privateKey;
-        $this->publicKey = $publicKey;
+        $this->privateKey    = $privateKey;
+        $this->publicKey     = $publicKey;
         $this->publicKeyHash = $publicKeyHash;
     }
 

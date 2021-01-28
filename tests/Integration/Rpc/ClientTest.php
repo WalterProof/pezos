@@ -1,6 +1,8 @@
 <?php
 
-namespace Test\Integration\Rpc;
+declare(strict_types=1);
+
+namespace Tests\Integration\Rpc;
 
 use Pezos\Rpc\Client;
 use PHPUnit\Framework\TestCase;

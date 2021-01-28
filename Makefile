@@ -17,7 +17,6 @@ dep-install: ## install deps
 dev: ## open a shell session as dev:dev in the php container
 	docker-compose exec -u dev php bash
 
-.PHONY: test
 test: ## launch tests
 	$(DOCKER_CMD) ./vendor/bin/phpunit
 

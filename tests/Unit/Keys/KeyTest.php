@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Test\Unit\Keys;
+namespace Tests\Unit\Keys;
 
 use Pezos\Keys\Ed25519;
 use Pezos\Keys\Key;
 use PHPUnit\Framework\TestCase;
-use Test\Unit\DataProvider\Signature;
+use Tests\Unit\DataProvider\Signature;
 
 class KeyTest extends TestCase
 {
     /**
-     * @dataProvider \Test\Unit\DataProvider\Ed25519::signatures()
+     * @dataProvider \Tests\Unit\DataProvider\Ed25519::signatures()
      */
     public function testEd25519(Signature $signature)
     {
