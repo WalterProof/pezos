@@ -7,8 +7,6 @@ services:
         GID: ${GID-1000}
       context: ./docker
     command: sh
-    environment:
-      SKIP_DOCKER: "true" 
     tty: true
     stdin_open: true
     logging:
@@ -16,7 +14,8 @@ services:
         max-size: "10m"
         max-file: "3"
     volumes:
-      - .:/home/dev/pkg
+      - ./pkg:/var/pkg
+      - ./docker/home:/home/dev
 
   flextesa:
     image: "tqtezos/flextesa:20201214"

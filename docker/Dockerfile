@@ -50,29 +50,4 @@ RUN addgroup -S -g $GID dev \
     && mv composer.phar /usr/local/bin/composer \
     && chmod +x /usr/local/bin/composer 
 
-USER dev
-
-RUN mkdir -p ~/.config/nvim/autoload  ~/.config/tmux
-
-COPY config/bashrc /home/dev/.bashrc
-COPY config/bash_profile /home/dev/.bash_profile
-COPY config/bash_aliases /home/dev/.bash_aliases
-COPY config/gitconfig /home/dev/.gitconfig
-COPY config/nvim/init.vim /home/dev/.config/nvim/init.vim
-COPY config/nvim/coc-settings.json /home/dev/.config/nvim/coc-settings.json
-COPY config/tmux/tmux.conf /home/dev/.config/tmux/tmux.conf
-COPY config/intelephense/license.txt /home/dev/intelephense/licence.txt
-
-RUN mkdir ~/.npm-global \
-    && npm config set prefix '~/.npm-global' \
-    && npm install -g npm@latest neovim yarn intelephense prettier @prettier/plugin-php \
-    && pip3 install --upgrade pip \
-    && pip install neovim powerline-status \
-    && sh -c 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' \
-    && composer global require "squizlabs/php_codesniffer=*" \
-    && composer global require "friendsofphp/php-cs-fixer=*" \
-    && composer global require "psy/psysh=@stable" \
-    && composer global require "symfony/var-dumper" \
-    && sudo bash -c 'echo "auto_prepend_file = /home/dev/.composer/vendor/autoload.php" >> /usr/local/etc/php/php.ini'
-
-WORKDIR /home/dev/pkg
+WORKDIR /var/pkg

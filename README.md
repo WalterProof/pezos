@@ -9,8 +9,7 @@ Lib structure heavily inspired by https://github.com/goat-systems/go-tezos
 # Dev
 
 make infra-up  
+make dev-setup  
 make dev
 
-A configured vim is available, install plugins with `PlugInstall` command.  
-And put your intelephense license in `docker/config/intelephense/license.txt`.
-
+Intelephense can be used, just create it `docker/home/intelephense/license.txt`.

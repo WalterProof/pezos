@@ -8,6 +8,9 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./pkg
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
@@ -31,8 +34,6 @@ jobs:
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Test
-        env:
-          SKIP_DOCKER: true
         run: |
             sed -i 's/http:\/\/flextesa:20000/https:\/\/edonet.duckdns.org/g' phpunit.xml.dist
-            make test
+            ./vendor/bin/phpunit

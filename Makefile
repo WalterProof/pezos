@@ -1,24 +1,17 @@
 UID = $(shell id -u)
 GID = $(shell id -g)
 
-ifneq ($(SKIP_DOCKER),true)
-	DOCKER_CMD := docker-compose exec -u dev php 
-endif
-
 help: ## show Help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 ########################################
-#               APP                    #
+#               DEV                    #
 ########################################
-dep-install: ## install deps
-	$(DOCKER_CMD) composer install
-
 dev: ## open a shell session as dev:dev in the php container
 	docker-compose exec -u dev php bash
 
-test: ## launch tests
-	$(DOCKER_CMD) ./vendor/bin/phpunit
+dev-setup: ## launch setup script
+	docker-compose exec -u dev php bash -c '~/setup.sh'
 
 ########################################
 #              INFRA                   #
@@ -43,4 +36,3 @@ infra-stop: ## stop all the containers
 
 infra-up: ## create and start all the containers
 	UID=$(UID) GID=$(GID) docker-compose up -d 
-
