@@ -8,9 +8,6 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./pkg
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
@@ -35,5 +32,5 @@ jobs:
 
       - name: Test
         run: |
-            sed -i 's/http:\/\/flextesa:20000/https:\/\/edonet.duckdns.org/g' phpunit.xml.dist
+            mv .env.ci .env.test.local
             ./vendor/bin/phpunit
