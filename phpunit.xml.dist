@@ -20,7 +20,7 @@
   <php>
     <ini name="error_reporting" value="-1" />
     <server name="SHELL_VERBOSITY" value="-1" />
-    <server name="NODE_URL" value="http://flextesa:20000" />
+    <server name="NODE_URL" value="http://localhost:20000" />
   </php>
   <testsuites>
     <testsuite name="unit">

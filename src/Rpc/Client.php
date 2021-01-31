@@ -19,8 +19,6 @@ class Client
 
     public function boostrapped()
     {
-        $this->getClient()
-
         return $this->getClient()
             ->request('GET', '/monitor/bootstrapped')
             ->getContent();
