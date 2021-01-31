@@ -24,6 +24,7 @@ RUN apk add --no-cache --purge \
     neovim neovim-doc --repository http://dl-3.alpinelinux.org/alpine/edge/community/ libluv-dev \
     nginx \
     nodejs nodejs-npm \
+    openrc openssh \
     powerline-extra-symbols --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     procps \
     python3 python3-dev py3-pip \
@@ -32,9 +33,14 @@ RUN apk add --no-cache --purge \
     tmux \
     unzip \
     zip \
-    && rm -rf /var/cache/apk/* /tmp/*
+	&& rm -rf /var/cache/apk/* /tmp/* \
+    && rc-update add sshd \
+    && ssh-keygen -A \
+    && rc-status \
+    && touch /run/openrc/softlevel
 
 COPY config/php/php.ini /usr/local/etc/php/php.ini
+COPY start.sh /usr/local/bin/start
 
 RUN addgroup -S -g $GID dev \
     && adduser -S -u $UID -G dev -s /bin/bash dev \
@@ -51,3 +57,6 @@ RUN addgroup -S -g $GID dev \
     && chmod +x /usr/local/bin/composer 
 
 WORKDIR /var/pkg
+
+RUN ["sudo", "chmod", "+x", "/usr/local/bin/start"]
+CMD ["sudo", "/usr/local/bin/start"]
