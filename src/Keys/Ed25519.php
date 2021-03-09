@@ -38,7 +38,7 @@ class Ed25519 implements Curve
     public function getPublicKey(string $privateKey): BufferInterface
     {
         return b58cdecode($privateKey, $this->privateKeyPrefix())->slice(
-            SODIUM_CRYPTO_BOX_PUBLICKEYBYTES
+            SODIUM_CRYPTO_BOX_PUBLICKEYBYTES,
         );
     }
 
@@ -60,7 +60,7 @@ class Ed25519 implements Curve
         return sodium_crypto_sign_verify_detached(
             $signature->getBinary(),
             $hash,
-            $publicKey->getBinary()
+            $publicKey->getBinary(),
         );
     }
 }

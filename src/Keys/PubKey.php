@@ -21,7 +21,7 @@ class PubKey
         $this->pubKey  = $this->curve->getPublicKey($privateKey);
         $this->address = b58cencode(
             new Buffer(blake2b($this->pubKey->getBinary(), 20)),
-            $this->curve->addressPrefix()
+            $this->curve->addressPrefix(),
         );
     }
 

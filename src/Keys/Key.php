@@ -28,9 +28,9 @@ class Key
     {
         $signature = sodium_crypto_sign_detached(
             (new Buffer(
-                sodium_crypto_generichash(Buffer::hex($msg)->getBinary())
+                sodium_crypto_generichash(Buffer::hex($msg)->getBinary()),
             ))->getBinary(),
-            $this->privKey->getBinary()
+            $this->privKey->getBinary(),
         );
 
         return $this->curve->sign($signature, $this->privKey);
@@ -41,7 +41,7 @@ class Key
         return new self(
             b58cdecode($privKey, $curve->privateKeyPrefix()),
             new PubKey($privKey, $curve),
-            $curve
+            $curve,
         );
     }
 }

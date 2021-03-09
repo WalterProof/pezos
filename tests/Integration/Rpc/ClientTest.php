@@ -20,7 +20,7 @@ class ClientTest extends TestCase
     {
         $this->assertStringContainsString(
             'block',
-            $this->client->boostrapped()
+            $this->client->boostrapped(),
         );
     }
 }

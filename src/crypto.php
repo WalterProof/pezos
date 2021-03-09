@@ -12,14 +12,14 @@ use BitWasp\Buffertools\Buffertools;
 function b58cencode(BufferInterface $payload, array $prefix): string
 {
     return Base58::encodeCheck(
-        Buffertools::concat(new Buffer(pack('C*', ...$prefix)), $payload)
+        Buffertools::concat(new Buffer(pack('C*', ...$prefix)), $payload),
     );
 }
 
 function b58cdecode(string $payload, array $prefix): BufferInterface
 {
     return Base58::decodeCheck($payload)->slice(
-        (new Buffer(pack('C*', ...$prefix)))->getSize()
+        (new Buffer(pack('C*', ...$prefix)))->getSize(),
     );
 }
 
