@@ -23,7 +23,7 @@ function b58cdecode(string $payload, array $prefix): BufferInterface
     );
 }
 
-function blake2b(string $input, $length = 32): string
+function blake2b(string $input, int $length = 32): string
 {
     return sodium_crypto_generichash($input, '', $length);
 }

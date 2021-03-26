@@ -18,7 +18,7 @@ class Signature
         $this->prefix = $prefix;
     }
 
-    public function toBase58()
+    public function toBase58(): string
     {
         return b58cencode($this->bytes, $this->prefix);
     }

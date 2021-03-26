@@ -31,10 +31,6 @@ class Ed25519 implements Curve
         return [9, 245, 205, 134, 18];
     }
 
-    public function getPrivateKey()
-    {
-    }
-
     public function getPublicKey(string $privateKey): BufferInterface
     {
         return b58cdecode($privateKey, $this->privateKeyPrefix())->slice(

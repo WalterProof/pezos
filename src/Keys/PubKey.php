@@ -25,7 +25,7 @@ class PubKey
         );
     }
 
-    public function getBytes(): Buffer
+    public function getBytes(): BufferInterface
     {
         return $this->pubKey;
     }

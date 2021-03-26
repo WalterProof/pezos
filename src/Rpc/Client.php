@@ -17,7 +17,7 @@ class Client
         $this->host = $host;
     }
 
-    public function boostrapped()
+    public function boostrapped(): string
     {
         return $this->getClient()
             ->request('GET', '/monitor/bootstrapped')
