@@ -31,7 +31,7 @@
     "phpunit/phpunit": "^9",
     "vimeo/psalm": "^4.6"
   },
-  "version": "1.0.0-alpha",
+  "version": "v0.1.0",
   "archive": {
     "exclude": [
       "*",
