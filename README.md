@@ -12,7 +12,7 @@ At this time, this lib can only do basic operations with Ed25519 keys.
 
 ## Usage
 
-`composer require sjnnya/pezos`
+`composer require bzzhh/pezos`
 
 ```php
 $key = new Pezos\Keys\PubKey(
