@@ -24,8 +24,7 @@
     "ext-sodium": "*",
     "bitwasp/buffertools": "^0.5.7",
     "bitwasp/bitcoin": "^1.0",
-    "jane-php/open-api-runtime": "^6.3",
-    "php-http/curl-client": "^2.2"
+    "jane-php/open-api-runtime": "^6.3"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.18",
@@ -37,7 +36,8 @@
     "php-http/client-common": "^2.3",
     "php-http/message": "^1.11",
     "php-http/discovery": "^1.13",
-    "nyholm/psr7": "^1.4"
+    "nyholm/psr7": "^1.4",
+    "php-http/curl-client": "^2.2"
   },
   "version": "v0.1.0",
   "archive": {
