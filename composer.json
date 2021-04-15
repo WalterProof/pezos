@@ -7,7 +7,8 @@
   ],
   "autoload": {
     "psr-4": {
-      "Pezos\\": "src/"
+      "Pezos\\": "src/",
+      "Pezos\\Generated\\Shell\\": "generated/shell"
     },
     "files": [
       "src/_bootstrap.php"
@@ -20,16 +21,23 @@
   },
   "require": {
     "php": "^7.4",
+    "ext-sodium": "*",
     "bitwasp/buffertools": "^0.5.7",
     "bitwasp/bitcoin": "^1.0",
-    "symfony/http-client": "^5.2",
-    "symfony/dotenv": "^5.2",
-    "ext-sodium": "*"
+    "jane-php/open-api-runtime": "^6.3",
+    "php-http/curl-client": "^2.2"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.18",
     "phpunit/phpunit": "^9",
-    "vimeo/psalm": "^4.6"
+    "vimeo/psalm": "^4.6",
+    "jane-php/open-api-3": "^6.3",
+    "symfony/var-dumper": "^5.2",
+    "symfony/dotenv": "^5.2",
+    "php-http/client-common": "^2.3",
+    "php-http/message": "^1.11",
+    "php-http/discovery": "^1.13",
+    "nyholm/psr7": "^1.4"
   },
   "version": "v0.1.0",
   "archive": {

@@ -20,3 +20,7 @@ down: ## stop containers
 .PHONY: test
 test: ## run tests
 	${RUN_PHP} ./vendor/bin/phpunit
+
+.PHONY: shell
+shell:
+	${DOCKER_COMPOSE} exec -u dev php bash
