@@ -1,4 +1,4 @@
-# Pezos
+# Pezos 🌮
 
 ![tests](https://github.com/catsoap/pezos/workflows/tests/badge.svg)
 
