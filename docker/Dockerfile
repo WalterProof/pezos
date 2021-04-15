@@ -6,7 +6,6 @@ FROM php:7.4-cli-alpine
 # https://github.com/mhart/alpine-node/issues/48
 #
 # alpine-sdk and autoconf to be able to install xdebug
-# automake ctags libluv-dev libuv luajit python nodejs for neovim
 
 ARG UID
 ARG GID
@@ -22,7 +21,7 @@ RUN apk add --no-cache --purge \
     shadow sudo \
     unzip \
     zip \
-	&& rm -rf /var/cache/apk/* /tmp/* \
+    && rm -rf /var/cache/apk/* /tmp/* \
     && addgroup -S -g $GID dev \
     && adduser -S -u $UID -G dev -s /bin/bash dev \
     && echo "dev ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/dev \
