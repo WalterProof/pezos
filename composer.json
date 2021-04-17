@@ -46,7 +46,8 @@
       ".*",
       "*/",
       "!/src/*",
-      "!/composer.*",
+      "!/generated/*",
+      "!/composer.json",
       "!/README.md"
     ]
   }

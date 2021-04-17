@@ -34,10 +34,8 @@ class ClientTest extends TestCase
 
     public function testBoostrapped(): void
     {
-        $version = $this->client->getVersion();
-        self::assertSame(
-            'TEZOS_EDO2NET_2021-02-11T14:00:00Z',
-            $version->getNetworkVersion()->getChainName(),
-        );
+        $bootstrapped = $this->client->getChainsByChainIdIsBootstrapped('main');
+        self::assertTrue($bootstrapped->getBootstrapped());
+        self::assertSame('synced', $bootstrapped->getSyncState());
     }
 }
