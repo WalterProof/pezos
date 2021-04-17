@@ -22,5 +22,10 @@ test: ## run tests
 	${RUN_PHP} ./vendor/bin/phpunit
 
 .PHONY: shell
-shell:
+shell: ## enter php container
 	${DOCKER_COMPOSE} exec -u dev php bash
+
+.PHONY: jane
+jane: ## generate a client (make jane CONFIG=config/jane-rpc-openapi.php)
+	${RUN_PHP} vendor/bin/jane-openapi generate --config-file=${CONFIG}
+	${RUN_PHP} composer dumpautoload

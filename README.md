@@ -24,3 +24,9 @@ $key->getPublicKey();
 $key->getAddress();
 // "tz1PAeuxsMA76x5cnKPkWKof2iGneN3Mb1eQ"
 ```
+
+### RPC
+
+RPC clients generated with [jane](https://jane.readthedocs.io/en/latest/documentation/OpenAPI.html) are available.
+
+The open api files are taken from [the official Tezos repo](https://gitlab.com/tezos/tezos/-/tree/master/docs/api).

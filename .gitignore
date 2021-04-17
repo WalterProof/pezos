@@ -3,3 +3,4 @@ vendor
 .phpunit.result.cache
 .php_cs.cache
 composer.lock
+config/*.json

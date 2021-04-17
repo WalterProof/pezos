@@ -8,7 +8,9 @@
   "autoload": {
     "psr-4": {
       "Pezos\\": "src/",
-      "Pezos\\Generated\\Shell\\": "generated/shell"
+      "Pezos\\Generated\\Shell\\": "generated/shell",
+      "Pezos\\Generated\\Proto\\": "generated/proto",
+      "Pezos\\Generated\\Mempool\\": "generated/mempool"
     },
     "files": [
       "src/_bootstrap.php"
