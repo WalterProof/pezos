@@ -1,6 +1,6 @@
 <?php
 
-namespace Pezos\Generated\Mempool\Runtime\Normalizer;
+namespace Bzzhh\Pezos\Generated\Mempool\Runtime\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;

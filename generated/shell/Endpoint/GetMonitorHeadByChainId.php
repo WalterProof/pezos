@@ -1,8 +1,8 @@
 <?php
 
-namespace Pezos\Generated\Shell\Endpoint;
+namespace Bzzhh\Pezos\Generated\Shell\Endpoint;
 
-class GetMonitorHeadByChainId extends \Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Shell\Runtime\Client\Endpoint
+class GetMonitorHeadByChainId extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Endpoint
 {
     protected $chain_id;
     /**
@@ -18,7 +18,7 @@ class GetMonitorHeadByChainId extends \Pezos\Generated\Shell\Runtime\Client\Base
         $this->chain_id = $chainId;
         $this->queryParameters = $queryParameters;
     }
-    use \Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -48,12 +48,12 @@ class GetMonitorHeadByChainId extends \Pezos\Generated\Shell\Runtime\Client\Base
      * {@inheritdoc}
      *
      *
-     * @return null|\Pezos\Generated\Shell\Model\MonitorHeadsChainIdGetResponse200
+     * @return null|\Bzzhh\Pezos\Generated\Shell\Model\MonitorHeadsChainIdGetResponse200
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Pezos\\Generated\\Shell\\Model\\MonitorHeadsChainIdGetResponse200', 'json');
+            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\MonitorHeadsChainIdGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

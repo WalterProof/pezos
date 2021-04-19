@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\DataProvider;
+namespace Bzzhh\Pezos\Tests\Unit\DataProvider;
 
 class Account
 {

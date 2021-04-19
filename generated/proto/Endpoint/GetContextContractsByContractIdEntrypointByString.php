@@ -1,8 +1,8 @@
 <?php
 
-namespace Pezos\Generated\Proto\Endpoint;
+namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
 
-class GetContextContractsByContractIdEntrypointByString extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetContextContractsByContractIdEntrypointByString extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
     protected $contract_id;
     protected $string;
@@ -17,7 +17,7 @@ class GetContextContractsByContractIdEntrypointByString extends \Pezos\Generated
         $this->contract_id = $contractId;
         $this->string = $string;
     }
-    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

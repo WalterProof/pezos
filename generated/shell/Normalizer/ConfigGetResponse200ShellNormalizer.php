@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Shell\Normalizer;
+namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class ConfigGetResponse200ShellNormalizer implements DenormalizerInterface, Norm
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Shell';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Shell';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Shell';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Shell';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,18 +32,18 @@ class ConfigGetResponse200ShellNormalizer implements DenormalizerInterface, Norm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Shell\Model\ConfigGetResponse200Shell();
+        $object = new \Bzzhh\Pezos\Generated\Shell\Model\ConfigGetResponse200Shell();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('peer_validator', $data)) {
-            $object->setPeerValidator($this->denormalizer->denormalize($data['peer_validator'], 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200ShellPeerValidator', 'json', $context));
+            $object->setPeerValidator($this->denormalizer->denormalize($data['peer_validator'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200ShellPeerValidator', 'json', $context));
         }
         if (\array_key_exists('block_validator', $data)) {
-            $object->setBlockValidator($this->denormalizer->denormalize($data['block_validator'], 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200ShellBlockValidator', 'json', $context));
+            $object->setBlockValidator($this->denormalizer->denormalize($data['block_validator'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200ShellBlockValidator', 'json', $context));
         }
         if (\array_key_exists('prevalidator', $data)) {
-            $object->setPrevalidator($this->denormalizer->denormalize($data['prevalidator'], 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200ShellPrevalidator', 'json', $context));
+            $object->setPrevalidator($this->denormalizer->denormalize($data['prevalidator'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200ShellPrevalidator', 'json', $context));
         }
         if (\array_key_exists('chain_validator', $data)) {
             $object->setChainValidator($data['chain_validator']);

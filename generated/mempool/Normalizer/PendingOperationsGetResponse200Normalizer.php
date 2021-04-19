@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Mempool\Normalizer;
+namespace Bzzhh\Pezos\Generated\Mempool\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Mempool\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Mempool\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class PendingOperationsGetResponse200Normalizer implements DenormalizerInterface
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Mempool\\Model\\PendingOperationsGetResponse200';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\PendingOperationsGetResponse200';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Mempool\\Model\\PendingOperationsGetResponse200';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\PendingOperationsGetResponse200';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,14 +32,14 @@ class PendingOperationsGetResponse200Normalizer implements DenormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Mempool\Model\PendingOperationsGetResponse200();
+        $object = new \Bzzhh\Pezos\Generated\Mempool\Model\PendingOperationsGetResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('applied', $data)) {
             $values = array();
             foreach ($data['applied'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Pezos\\Generated\\Mempool\\Model\\PendingOperationsGetResponse200AppliedItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\PendingOperationsGetResponse200AppliedItem', 'json', $context);
             }
             $object->setApplied($values);
         }

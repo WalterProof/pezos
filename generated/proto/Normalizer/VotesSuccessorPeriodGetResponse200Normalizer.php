@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Proto\Normalizer;
+namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class VotesSuccessorPeriodGetResponse200Normalizer implements DenormalizerInterf
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Proto\\Model\\VotesSuccessorPeriodGetResponse200';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\VotesSuccessorPeriodGetResponse200';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Proto\\Model\\VotesSuccessorPeriodGetResponse200';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\VotesSuccessorPeriodGetResponse200';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,12 +32,12 @@ class VotesSuccessorPeriodGetResponse200Normalizer implements DenormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Proto\Model\VotesSuccessorPeriodGetResponse200();
+        $object = new \Bzzhh\Pezos\Generated\Proto\Model\VotesSuccessorPeriodGetResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('voting_period', $data)) {
-            $object->setVotingPeriod($this->denormalizer->denormalize($data['voting_period'], 'Pezos\\Generated\\Proto\\Model\\VotesSuccessorPeriodGetResponse200VotingPeriod', 'json', $context));
+            $object->setVotingPeriod($this->denormalizer->denormalize($data['voting_period'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\VotesSuccessorPeriodGetResponse200VotingPeriod', 'json', $context));
         }
         if (\array_key_exists('position', $data)) {
             $object->setPosition($data['position']);

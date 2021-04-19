@@ -1,6 +1,6 @@
 <?php
 
-namespace Pezos\Generated\Proto\Model;
+namespace Bzzhh\Pezos\Generated\Proto\Model;
 
 class HelpersScriptsNormalizeTypePostResponse200
 {

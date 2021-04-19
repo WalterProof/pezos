@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Shell\Normalizer;
+namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class P2pConnectionIdNormalizer implements DenormalizerInterface, NormalizerInte
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Shell\\Model\\P2pConnectionId';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\P2pConnectionId';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Shell\\Model\\P2pConnectionId';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\P2pConnectionId';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,7 +32,7 @@ class P2pConnectionIdNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Shell\Model\P2pConnectionId();
+        $object = new \Bzzhh\Pezos\Generated\Shell\Model\P2pConnectionId();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

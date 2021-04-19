@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Pezos\Keys;
+namespace Bzzhh\Pezos\Keys;
 
 use BitWasp\Buffertools\BufferInterface;
-use function Pezos\b58cencode;
+use function Bzzhh\Pezos\b58cencode;
 
 class Signature
 {

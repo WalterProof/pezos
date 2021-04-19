@@ -7,10 +7,10 @@
   ],
   "autoload": {
     "psr-4": {
-      "Pezos\\": "src/",
-      "Pezos\\Generated\\Shell\\": "generated/shell",
-      "Pezos\\Generated\\Proto\\": "generated/proto",
-      "Pezos\\Generated\\Mempool\\": "generated/mempool"
+      "Bzzhh\\Pezos\\": "src/",
+      "Bzzhh\\Pezos\\Generated\\Shell\\": "generated/shell",
+      "Bzzhh\\Pezos\\Generated\\Proto\\": "generated/proto",
+      "Bzzhh\\Pezos\\Generated\\Mempool\\": "generated/mempool"
     },
     "files": [
       "src/_bootstrap.php"
@@ -18,7 +18,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Tests\\": "tests/"
+      "Bzzhh\\Pezos\\Tests\\": "tests/"
     }
   },
   "require": {
@@ -26,7 +26,8 @@
     "ext-sodium": "*",
     "bitwasp/buffertools": "^0.5.7",
     "bitwasp/bitcoin": "^1.0",
-    "jane-php/open-api-runtime": "^6.3"
+    "jane-php/open-api-runtime": "^6.3",
+    "symfony/framework-bundle": "^5.2"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.18",
@@ -41,7 +42,7 @@
     "nyholm/psr7": "^1.4",
     "php-http/curl-client": "^2.2"
   },
-  "version": "v0.1.1",
+  "version": "v0.1.2",
   "archive": {
     "exclude": [
       "*",

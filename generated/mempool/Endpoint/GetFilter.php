@@ -1,10 +1,10 @@
 <?php
 
-namespace Pezos\Generated\Mempool\Endpoint;
+namespace Bzzhh\Pezos\Generated\Mempool\Endpoint;
 
-class GetFilter extends \Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Mempool\Runtime\Client\Endpoint
+class GetFilter extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Endpoint
 {
-    use \Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

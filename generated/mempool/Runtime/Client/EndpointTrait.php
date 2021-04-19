@@ -1,6 +1,6 @@
 <?php
 
-namespace Pezos\Generated\Mempool\Runtime\Client;
+namespace Bzzhh\Pezos\Generated\Mempool\Runtime\Client;
 
 use Jane\OpenApiRuntime\Client\Exception\InvalidFetchModeException;
 use Psr\Http\Message\ResponseInterface;

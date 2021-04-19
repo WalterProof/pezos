@@ -1,8 +1,8 @@
 <?php
 
-namespace Pezos\Generated\Proto\Endpoint;
+namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
 
-class GetContextDelegatesByPkhFrozenBalanceByCycle extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetContextDelegatesByPkhFrozenBalanceByCycle extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
     protected $pkh;
     /**
@@ -14,7 +14,7 @@ class GetContextDelegatesByPkhFrozenBalanceByCycle extends \Pezos\Generated\Prot
     {
         $this->pkh = $pkh;
     }
-    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -35,12 +35,12 @@ class GetContextDelegatesByPkhFrozenBalanceByCycle extends \Pezos\Generated\Prot
      * {@inheritdoc}
      *
      *
-     * @return null|\Pezos\Generated\Proto\Model\ContextDelegatesPkhFrozenBalanceByCycleGetResponse200Item[]
+     * @return null|\Bzzhh\Pezos\Generated\Proto\Model\ContextDelegatesPkhFrozenBalanceByCycleGetResponse200Item[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Pezos\\Generated\\Proto\\Model\\ContextDelegatesPkhFrozenBalanceByCycleGetResponse200Item[]', 'json');
+            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextDelegatesPkhFrozenBalanceByCycleGetResponse200Item[]', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

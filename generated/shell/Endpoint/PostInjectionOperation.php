@@ -1,8 +1,8 @@
 <?php
 
-namespace Pezos\Generated\Shell\Endpoint;
+namespace Bzzhh\Pezos\Generated\Shell\Endpoint;
 
-class PostInjectionOperation extends \Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Shell\Runtime\Client\Endpoint
+class PostInjectionOperation extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Endpoint
 {
     /**
      * Inject an operation in node and broadcast it. Returns the ID of the operation. The `signedOperationContents` should be constructed using a contextual RPCs from the latest block and signed by the client. By default, the RPC will wait for the operation to be (pre-)validated before answering. See RPCs under /blocks/prevalidation for more details on the prevalidation context. If ?async is true, the function returns immediately. Otherwise, the operation will be validated before the result is returned. An optional ?chain parameter can be used to specify whether to inject on the test chain or the main chain.
@@ -18,7 +18,7 @@ class PostInjectionOperation extends \Pezos\Generated\Shell\Runtime\Client\BaseE
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
-    use \Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

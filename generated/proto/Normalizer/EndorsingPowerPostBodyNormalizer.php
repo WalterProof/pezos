@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Proto\Normalizer;
+namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class EndorsingPowerPostBodyNormalizer implements DenormalizerInterface, Normali
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Proto\\Model\\EndorsingPowerPostBody';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\EndorsingPowerPostBody';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Proto\\Model\\EndorsingPowerPostBody';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\EndorsingPowerPostBody';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,12 +32,12 @@ class EndorsingPowerPostBodyNormalizer implements DenormalizerInterface, Normali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Proto\Model\EndorsingPowerPostBody();
+        $object = new \Bzzhh\Pezos\Generated\Proto\Model\EndorsingPowerPostBody();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('endorsement_operation', $data)) {
-            $object->setEndorsementOperation($this->denormalizer->denormalize($data['endorsement_operation'], 'Pezos\\Generated\\Proto\\Model\\EndorsingPowerPostBodyEndorsementOperation', 'json', $context));
+            $object->setEndorsementOperation($this->denormalizer->denormalize($data['endorsement_operation'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\EndorsingPowerPostBodyEndorsementOperation', 'json', $context));
         }
         if (\array_key_exists('chain_id', $data)) {
             $object->setChainId($data['chain_id']);

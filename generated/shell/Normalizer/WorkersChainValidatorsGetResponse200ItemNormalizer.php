@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Shell\Normalizer;
+namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class WorkersChainValidatorsGetResponse200ItemNormalizer implements Denormalizer
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsGetResponse200Item';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsGetResponse200Item';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsGetResponse200Item';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsGetResponse200Item';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,7 +32,7 @@ class WorkersChainValidatorsGetResponse200ItemNormalizer implements Denormalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Shell\Model\WorkersChainValidatorsGetResponse200Item();
+        $object = new \Bzzhh\Pezos\Generated\Shell\Model\WorkersChainValidatorsGetResponse200Item();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -43,7 +43,7 @@ class WorkersChainValidatorsGetResponse200ItemNormalizer implements Denormalizer
             $object->setStatus($data['status']);
         }
         if (\array_key_exists('information', $data)) {
-            $object->setInformation($this->denormalizer->denormalize($data['information'], 'Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsGetResponse200ItemInformation', 'json', $context));
+            $object->setInformation($this->denormalizer->denormalize($data['information'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsGetResponse200ItemInformation', 'json', $context));
         }
         if (\array_key_exists('pipelines', $data)) {
             $object->setPipelines($data['pipelines']);

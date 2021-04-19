@@ -1,8 +1,8 @@
 <?php
 
-namespace Pezos\Generated\Proto\Endpoint;
+namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
 
-class GetContextDelegates extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetContextDelegates extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
     /**
      * Lists all registered delegates.
@@ -16,7 +16,7 @@ class GetContextDelegates extends \Pezos\Generated\Proto\Runtime\Client\BaseEndp
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

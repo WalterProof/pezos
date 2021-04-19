@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Proto\Normalizer;
+namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class ContextContractsContractIdGetResponse200Normalizer implements Denormalizer
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdGetResponse200';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdGetResponse200';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdGetResponse200';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdGetResponse200';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,7 +32,7 @@ class ContextContractsContractIdGetResponse200Normalizer implements Denormalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Proto\Model\ContextContractsContractIdGetResponse200();
+        $object = new \Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdGetResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -43,7 +43,7 @@ class ContextContractsContractIdGetResponse200Normalizer implements Denormalizer
             $object->setDelegate($data['delegate']);
         }
         if (\array_key_exists('script', $data)) {
-            $object->setScript($this->denormalizer->denormalize($data['script'], 'Pezos\\Generated\\Proto\\Model\\_008PtEdo2ZkScriptedContracts', 'json', $context));
+            $object->setScript($this->denormalizer->denormalize($data['script'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_008PtEdo2ZkScriptedContracts', 'json', $context));
         }
         if (\array_key_exists('counter', $data)) {
             $object->setCounter($data['counter']);

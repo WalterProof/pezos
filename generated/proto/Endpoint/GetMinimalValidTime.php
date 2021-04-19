@@ -1,8 +1,8 @@
 <?php
 
-namespace Pezos\Generated\Proto\Endpoint;
+namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
 
-class GetMinimalValidTime extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetMinimalValidTime extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
     /**
      * Minimal valid time for a block given a priority and an endorsing power.
@@ -16,7 +16,7 @@ class GetMinimalValidTime extends \Pezos\Generated\Proto\Runtime\Client\BaseEndp
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

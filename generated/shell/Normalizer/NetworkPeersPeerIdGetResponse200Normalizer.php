@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Shell\Normalizer;
+namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class NetworkPeersPeerIdGetResponse200Normalizer implements DenormalizerInterfac
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,7 +32,7 @@ class NetworkPeersPeerIdGetResponse200Normalizer implements DenormalizerInterfac
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Shell\Model\NetworkPeersPeerIdGetResponse200();
+        $object = new \Bzzhh\Pezos\Generated\Shell\Model\NetworkPeersPeerIdGetResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -43,19 +43,19 @@ class NetworkPeersPeerIdGetResponse200Normalizer implements DenormalizerInterfac
             $object->setTrusted($data['trusted']);
         }
         if (\array_key_exists('conn_metadata', $data)) {
-            $object->setConnMetadata($this->denormalizer->denormalize($data['conn_metadata'], 'Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200ConnMetadata', 'json', $context));
+            $object->setConnMetadata($this->denormalizer->denormalize($data['conn_metadata'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200ConnMetadata', 'json', $context));
         }
         if (\array_key_exists('peer_metadata', $data)) {
-            $object->setPeerMetadata($this->denormalizer->denormalize($data['peer_metadata'], 'Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadata', 'json', $context));
+            $object->setPeerMetadata($this->denormalizer->denormalize($data['peer_metadata'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadata', 'json', $context));
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
         }
         if (\array_key_exists('reachable_at', $data)) {
-            $object->setReachableAt($this->denormalizer->denormalize($data['reachable_at'], 'Pezos\\Generated\\Shell\\Model\\P2pConnectionId', 'json', $context));
+            $object->setReachableAt($this->denormalizer->denormalize($data['reachable_at'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\P2pConnectionId', 'json', $context));
         }
         if (\array_key_exists('stat', $data)) {
-            $object->setStat($this->denormalizer->denormalize($data['stat'], 'Pezos\\Generated\\Shell\\Model\\P2pStat', 'json', $context));
+            $object->setStat($this->denormalizer->denormalize($data['stat'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\P2pStat', 'json', $context));
         }
         if (\array_key_exists('last_failed_connection', $data)) {
             $values = array();

@@ -1,8 +1,8 @@
 <?php
 
-namespace Pezos\Generated\Shell\Endpoint;
+namespace Bzzhh\Pezos\Generated\Shell\Endpoint;
 
-class GetWorkersChainValidatorByChainId extends \Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Shell\Runtime\Client\Endpoint
+class GetWorkersChainValidatorByChainId extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Endpoint
 {
     protected $chain_id;
     /**
@@ -14,7 +14,7 @@ class GetWorkersChainValidatorByChainId extends \Pezos\Generated\Shell\Runtime\C
     {
         $this->chain_id = $chainId;
     }
-    use \Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -35,12 +35,12 @@ class GetWorkersChainValidatorByChainId extends \Pezos\Generated\Shell\Runtime\C
      * {@inheritdoc}
      *
      *
-     * @return null|\Pezos\Generated\Shell\Model\WorkersChainValidatorsChainIdGetResponse200
+     * @return null|\Bzzhh\Pezos\Generated\Shell\Model\WorkersChainValidatorsChainIdGetResponse200
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdGetResponse200', 'json');
+            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

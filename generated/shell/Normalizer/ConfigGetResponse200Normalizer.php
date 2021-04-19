@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Shell\Normalizer;
+namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class ConfigGetResponse200Normalizer implements DenormalizerInterface, Normalize
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,7 +32,7 @@ class ConfigGetResponse200Normalizer implements DenormalizerInterface, Normalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Shell\Model\ConfigGetResponse200();
+        $object = new \Bzzhh\Pezos\Generated\Shell\Model\ConfigGetResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -40,19 +40,19 @@ class ConfigGetResponse200Normalizer implements DenormalizerInterface, Normalize
             $object->setDataDir($data['data-dir']);
         }
         if (\array_key_exists('rpc', $data)) {
-            $object->setRpc($this->denormalizer->denormalize($data['rpc'], 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Rpc', 'json', $context));
+            $object->setRpc($this->denormalizer->denormalize($data['rpc'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Rpc', 'json', $context));
         }
         if (\array_key_exists('p2p', $data)) {
-            $object->setP2p($this->denormalizer->denormalize($data['p2p'], 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200P2p', 'json', $context));
+            $object->setP2p($this->denormalizer->denormalize($data['p2p'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200P2p', 'json', $context));
         }
         if (\array_key_exists('log', $data)) {
-            $object->setLog($this->denormalizer->denormalize($data['log'], 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Log', 'json', $context));
+            $object->setLog($this->denormalizer->denormalize($data['log'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Log', 'json', $context));
         }
         if (\array_key_exists('internal-events', $data)) {
-            $object->setInternalEvents($this->denormalizer->denormalize($data['internal-events'], 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200InternalEvents', 'json', $context));
+            $object->setInternalEvents($this->denormalizer->denormalize($data['internal-events'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200InternalEvents', 'json', $context));
         }
         if (\array_key_exists('shell', $data)) {
-            $object->setShell($this->denormalizer->denormalize($data['shell'], 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Shell', 'json', $context));
+            $object->setShell($this->denormalizer->denormalize($data['shell'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Shell', 'json', $context));
         }
         if (\array_key_exists('network', $data)) {
             $object->setNetwork($data['network']);

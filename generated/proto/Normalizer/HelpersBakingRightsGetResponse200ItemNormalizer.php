@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Proto\Normalizer;
+namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class HelpersBakingRightsGetResponse200ItemNormalizer implements DenormalizerInt
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Proto\\Model\\HelpersBakingRightsGetResponse200Item';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersBakingRightsGetResponse200Item';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Proto\\Model\\HelpersBakingRightsGetResponse200Item';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersBakingRightsGetResponse200Item';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,7 +32,7 @@ class HelpersBakingRightsGetResponse200ItemNormalizer implements DenormalizerInt
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Proto\Model\HelpersBakingRightsGetResponse200Item();
+        $object = new \Bzzhh\Pezos\Generated\Proto\Model\HelpersBakingRightsGetResponse200Item();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

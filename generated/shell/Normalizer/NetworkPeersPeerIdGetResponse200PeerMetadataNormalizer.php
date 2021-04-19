@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Shell\Normalizer;
+namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataNormalizer implements Denormal
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadata';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadata';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadata';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadata';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,15 +32,15 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataNormalizer implements Denormal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Shell\Model\NetworkPeersPeerIdGetResponse200PeerMetadata();
+        $object = new \Bzzhh\Pezos\Generated\Shell\Model\NetworkPeersPeerIdGetResponse200PeerMetadata();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('responses', $data)) {
-            $object->setResponses($this->denormalizer->denormalize($data['responses'], 'Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadataResponses', 'json', $context));
+            $object->setResponses($this->denormalizer->denormalize($data['responses'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadataResponses', 'json', $context));
         }
         if (\array_key_exists('requests', $data)) {
-            $object->setRequests($this->denormalizer->denormalize($data['requests'], 'Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadataRequests', 'json', $context));
+            $object->setRequests($this->denormalizer->denormalize($data['requests'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadataRequests', 'json', $context));
         }
         if (\array_key_exists('valid_blocks', $data)) {
             $object->setValidBlocks($data['valid_blocks']);
@@ -49,7 +49,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataNormalizer implements Denormal
             $object->setOldHeads($data['old_heads']);
         }
         if (\array_key_exists('prevalidator_results', $data)) {
-            $object->setPrevalidatorResults($this->denormalizer->denormalize($data['prevalidator_results'], 'Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadataPrevalidatorResults', 'json', $context));
+            $object->setPrevalidatorResults($this->denormalizer->denormalize($data['prevalidator_results'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadataPrevalidatorResults', 'json', $context));
         }
         if (\array_key_exists('unactivated_chains', $data)) {
             $object->setUnactivatedChains($data['unactivated_chains']);
@@ -61,10 +61,10 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataNormalizer implements Denormal
             $object->setFutureBlocksAdvertised($data['future_blocks_advertised']);
         }
         if (\array_key_exists('unadvertised', $data)) {
-            $object->setUnadvertised($this->denormalizer->denormalize($data['unadvertised'], 'Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadataUnadvertised', 'json', $context));
+            $object->setUnadvertised($this->denormalizer->denormalize($data['unadvertised'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadataUnadvertised', 'json', $context));
         }
         if (\array_key_exists('advertisements', $data)) {
-            $object->setAdvertisements($this->denormalizer->denormalize($data['advertisements'], 'Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadataAdvertisements', 'json', $context));
+            $object->setAdvertisements($this->denormalizer->denormalize($data['advertisements'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadataAdvertisements', 'json', $context));
         }
         return $object;
     }

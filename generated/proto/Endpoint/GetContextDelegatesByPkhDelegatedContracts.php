@@ -1,8 +1,8 @@
 <?php
 
-namespace Pezos\Generated\Proto\Endpoint;
+namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
 
-class GetContextDelegatesByPkhDelegatedContracts extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetContextDelegatesByPkhDelegatedContracts extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
     protected $pkh;
     /**
@@ -14,7 +14,7 @@ class GetContextDelegatesByPkhDelegatedContracts extends \Pezos\Generated\Proto\
     {
         $this->pkh = $pkh;
     }
-    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

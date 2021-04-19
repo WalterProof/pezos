@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Shell\Normalizer;
+namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class WorkersPrevalidatorsChainIdGetResponse200Normalizer implements Denormalize
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Shell\\Model\\WorkersPrevalidatorsChainIdGetResponse200';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersPrevalidatorsChainIdGetResponse200';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Shell\\Model\\WorkersPrevalidatorsChainIdGetResponse200';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersPrevalidatorsChainIdGetResponse200';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,7 +32,7 @@ class WorkersPrevalidatorsChainIdGetResponse200Normalizer implements Denormalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Shell\Model\WorkersPrevalidatorsChainIdGetResponse200();
+        $object = new \Bzzhh\Pezos\Generated\Shell\Model\WorkersPrevalidatorsChainIdGetResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -42,19 +42,19 @@ class WorkersPrevalidatorsChainIdGetResponse200Normalizer implements Denormalize
         if (\array_key_exists('pending_requests', $data)) {
             $values = array();
             foreach ($data['pending_requests'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Pezos\\Generated\\Shell\\Model\\WorkersPrevalidatorsChainIdGetResponse200PendingRequestsItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersPrevalidatorsChainIdGetResponse200PendingRequestsItem', 'json', $context);
             }
             $object->setPendingRequests($values);
         }
         if (\array_key_exists('backlog', $data)) {
             $values_1 = array();
             foreach ($data['backlog'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Pezos\\Generated\\Shell\\Model\\WorkersPrevalidatorsChainIdGetResponse200BacklogItem', 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersPrevalidatorsChainIdGetResponse200BacklogItem', 'json', $context);
             }
             $object->setBacklog($values_1);
         }
         if (\array_key_exists('current_request', $data)) {
-            $object->setCurrentRequest($this->denormalizer->denormalize($data['current_request'], 'Pezos\\Generated\\Shell\\Model\\WorkersPrevalidatorsChainIdGetResponse200CurrentRequest', 'json', $context));
+            $object->setCurrentRequest($this->denormalizer->denormalize($data['current_request'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersPrevalidatorsChainIdGetResponse200CurrentRequest', 'json', $context));
         }
         return $object;
     }

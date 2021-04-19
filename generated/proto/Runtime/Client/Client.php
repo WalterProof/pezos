@@ -1,6 +1,6 @@
 <?php
 
-namespace Pezos\Generated\Proto\Runtime\Client;
+namespace Bzzhh\Pezos\Generated\Proto\Runtime\Client;
 
 use Jane\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use Psr\Http\Client\ClientInterface;

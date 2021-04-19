@@ -1,22 +1,22 @@
 <?php
 
-namespace Pezos\Generated\Shell\Endpoint;
+namespace Bzzhh\Pezos\Generated\Shell\Endpoint;
 
-class PatchChainByChainId extends \Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Shell\Runtime\Client\Endpoint
+class PatchChainByChainId extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Endpoint
 {
     protected $chain_id;
     /**
      * Forcefully set the bootstrapped flag of the node
      *
      * @param string $chainId A chain identifier. This is either a chain hash in Base58Check notation or a one the predefined aliases: 'main', 'test'.
-     * @param null|\Pezos\Generated\Shell\Model\ChainsChainIdPatchBody $requestBody 
+     * @param null|\Bzzhh\Pezos\Generated\Shell\Model\ChainsChainIdPatchBody $requestBody 
      */
-    public function __construct(string $chainId, ?\Pezos\Generated\Shell\Model\ChainsChainIdPatchBody $requestBody = null)
+    public function __construct(string $chainId, ?\Bzzhh\Pezos\Generated\Shell\Model\ChainsChainIdPatchBody $requestBody = null)
     {
         $this->chain_id = $chainId;
         $this->body = $requestBody;
     }
-    use \Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PATCH';
@@ -27,7 +27,7 @@ class PatchChainByChainId extends \Pezos\Generated\Shell\Runtime\Client\BaseEndp
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Pezos\Generated\Shell\Model\ChainsChainIdPatchBody) {
+        if ($this->body instanceof \Bzzhh\Pezos\Generated\Shell\Model\ChainsChainIdPatchBody) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);

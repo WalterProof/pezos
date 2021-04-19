@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Mempool\Normalizer;
+namespace Bzzhh\Pezos\Generated\Mempool\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Mempool\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Mempool\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class NextOperationNormalizer implements DenormalizerInterface, NormalizerInterf
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Mempool\\Model\\NextOperation';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\NextOperation';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Mempool\\Model\\NextOperation';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\NextOperation';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,7 +32,7 @@ class NextOperationNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Mempool\Model\NextOperation();
+        $object = new \Bzzhh\Pezos\Generated\Mempool\Model\NextOperation();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

@@ -19,7 +19,7 @@ down: ## stop containers
 
 .PHONY: test
 test: ## run tests
-	${RUN_PHP} ./vendor/bin/phpunit
+	${RUN_PHP} ./vendor/bin/phpunit --testdox
 
 .PHONY: shell
 shell: ## enter php container

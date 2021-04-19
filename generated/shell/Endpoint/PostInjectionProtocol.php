@@ -1,23 +1,23 @@
 <?php
 
-namespace Pezos\Generated\Shell\Endpoint;
+namespace Bzzhh\Pezos\Generated\Shell\Endpoint;
 
-class PostInjectionProtocol extends \Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Shell\Runtime\Client\Endpoint
+class PostInjectionProtocol extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Endpoint
 {
     /**
      * Inject a protocol in node. Returns the ID of the protocol. If ?async is true, the function returns immediately. Otherwise, the protocol will be validated before the result is returned.
      *
-     * @param null|\Pezos\Generated\Shell\Model\Protocol $requestBody 
+     * @param null|\Bzzhh\Pezos\Generated\Shell\Model\Protocol $requestBody 
      * @param array $queryParameters {
      *     @var string $async 
      * }
      */
-    public function __construct(?\Pezos\Generated\Shell\Model\Protocol $requestBody = null, array $queryParameters = array())
+    public function __construct(?\Bzzhh\Pezos\Generated\Shell\Model\Protocol $requestBody = null, array $queryParameters = array())
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
-    use \Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -28,7 +28,7 @@ class PostInjectionProtocol extends \Pezos\Generated\Shell\Runtime\Client\BaseEn
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Pezos\Generated\Shell\Model\Protocol) {
+        if ($this->body instanceof \Bzzhh\Pezos\Generated\Shell\Model\Protocol) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);

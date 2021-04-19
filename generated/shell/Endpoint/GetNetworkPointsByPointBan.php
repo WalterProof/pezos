@@ -1,8 +1,8 @@
 <?php
 
-namespace Pezos\Generated\Shell\Endpoint;
+namespace Bzzhh\Pezos\Generated\Shell\Endpoint;
 
-class GetNetworkPointsByPointBan extends \Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Shell\Runtime\Client\Endpoint
+class GetNetworkPointsByPointBan extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Endpoint
 {
     protected $point;
     /**
@@ -14,7 +14,7 @@ class GetNetworkPointsByPointBan extends \Pezos\Generated\Shell\Runtime\Client\B
     {
         $this->point = $point;
     }
-    use \Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -35,12 +35,12 @@ class GetNetworkPointsByPointBan extends \Pezos\Generated\Shell\Runtime\Client\B
      * {@inheritdoc}
      *
      *
-     * @return null|\Pezos\Generated\Shell\Model\NetworkPointsPointBanGetResponse200
+     * @return null|\Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointBanGetResponse200
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Pezos\\Generated\\Shell\\Model\\NetworkPointsPointBanGetResponse200', 'json');
+            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPointsPointBanGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

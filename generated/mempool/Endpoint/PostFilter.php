@@ -1,8 +1,8 @@
 <?php
 
-namespace Pezos\Generated\Mempool\Endpoint;
+namespace Bzzhh\Pezos\Generated\Mempool\Endpoint;
 
-class PostFilter extends \Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Mempool\Runtime\Client\Endpoint
+class PostFilter extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Endpoint
 {
     /**
      * Set the configuration of the mempool filter.
@@ -13,7 +13,7 @@ class PostFilter extends \Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint im
     {
         $this->body = $requestBody;
     }
-    use \Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';

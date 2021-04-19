@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Pezos;
+namespace Bzzhh\Pezos;
 
 use BitWasp\Bitcoin\Base58;
 use BitWasp\Buffertools\Buffer;

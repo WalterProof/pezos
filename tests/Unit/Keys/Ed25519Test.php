@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Pezos\Keys;
+namespace Bzzhh\Pezos\Tests\Unit\Pezos\Keys;
 
-use Pezos\Keys\Ed25519;
+use Bzzhh\Pezos\Keys\Ed25519;
+use Bzzhh\Pezos\Tests\Unit\DataProvider\Signature;
 use PHPUnit\Framework\TestCase;
-use Tests\Unit\DataProvider\Signature;
 
 class Ed25519Test extends TestCase
 {
@@ -18,7 +18,7 @@ class Ed25519Test extends TestCase
     }
 
     /**
-     * @dataProvider \Tests\Unit\DataProvider\Ed25519::signatures()
+     * @dataProvider \Bzzhh\Pezos\Tests\Unit\DataProvider\Ed25519::signatures()
      */
     public function testVerifySignedHex(Signature $signature)
     {
@@ -27,8 +27,8 @@ class Ed25519Test extends TestCase
             $this->curve->verifySignedHex(
                 $signature->signature,
                 $signature->hex,
-                $signature->account->publicKey
-            )
+                $signature->account->publicKey,
+            ),
         );
     }
 }

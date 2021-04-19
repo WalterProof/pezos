@@ -1,6 +1,6 @@
 <?php
 
-namespace Pezos\Generated\Shell\Model;
+namespace Bzzhh\Pezos\Generated\Shell\Model;
 
 class ConfigGetResponse200ShellPeerValidator
 {

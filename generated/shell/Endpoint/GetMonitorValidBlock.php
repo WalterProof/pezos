@@ -1,8 +1,8 @@
 <?php
 
-namespace Pezos\Generated\Shell\Endpoint;
+namespace Bzzhh\Pezos\Generated\Shell\Endpoint;
 
-class GetMonitorValidBlock extends \Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Shell\Runtime\Client\Endpoint
+class GetMonitorValidBlock extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Endpoint
 {
     /**
      * Monitor all blocks that are successfully validated by the node, disregarding whether they were selected as the new head or not.
@@ -17,7 +17,7 @@ class GetMonitorValidBlock extends \Pezos\Generated\Shell\Runtime\Client\BaseEnd
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -49,12 +49,12 @@ class GetMonitorValidBlock extends \Pezos\Generated\Shell\Runtime\Client\BaseEnd
      * {@inheritdoc}
      *
      *
-     * @return null|\Pezos\Generated\Shell\Model\MonitorValidBlocksGetResponse200
+     * @return null|\Bzzhh\Pezos\Generated\Shell\Model\MonitorValidBlocksGetResponse200
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Pezos\\Generated\\Shell\\Model\\MonitorValidBlocksGetResponse200', 'json');
+            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\MonitorValidBlocksGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

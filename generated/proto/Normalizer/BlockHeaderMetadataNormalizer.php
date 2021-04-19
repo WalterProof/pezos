@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Proto\Normalizer;
+namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class BlockHeaderMetadataNormalizer implements DenormalizerInterface, Normalizer
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Proto\\Model\\BlockHeaderMetadata';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\BlockHeaderMetadata';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Proto\\Model\\BlockHeaderMetadata';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\BlockHeaderMetadata';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,7 +32,7 @@ class BlockHeaderMetadataNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Proto\Model\BlockHeaderMetadata();
+        $object = new \Bzzhh\Pezos\Generated\Proto\Model\BlockHeaderMetadata();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -63,7 +63,7 @@ class BlockHeaderMetadataNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('max_operation_list_length', $data)) {
             $values = array();
             foreach ($data['max_operation_list_length'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Pezos\\Generated\\Proto\\Model\\BlockHeaderMetadataMaxOperationListLengthItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\BlockHeaderMetadataMaxOperationListLengthItem', 'json', $context);
             }
             $object->setMaxOperationListLength($values);
             unset($data['max_operation_list_length']);

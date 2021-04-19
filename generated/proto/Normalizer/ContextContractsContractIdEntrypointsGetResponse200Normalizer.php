@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Proto\Normalizer;
+namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class ContextContractsContractIdEntrypointsGetResponse200Normalizer implements D
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdEntrypointsGetResponse200';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdEntrypointsGetResponse200';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdEntrypointsGetResponse200';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdEntrypointsGetResponse200';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,19 +32,19 @@ class ContextContractsContractIdEntrypointsGetResponse200Normalizer implements D
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Proto\Model\ContextContractsContractIdEntrypointsGetResponse200();
+        $object = new \Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdEntrypointsGetResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('unreachable', $data)) {
             $values = array();
             foreach ($data['unreachable'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdEntrypointsGetResponse200UnreachableItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdEntrypointsGetResponse200UnreachableItem', 'json', $context);
             }
             $object->setUnreachable($values);
         }
         if (\array_key_exists('entrypoints', $data)) {
-            $object->setEntrypoints($this->denormalizer->denormalize($data['entrypoints'], 'Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdEntrypointsGetResponse200Entrypoints', 'json', $context));
+            $object->setEntrypoints($this->denormalizer->denormalize($data['entrypoints'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdEntrypointsGetResponse200Entrypoints', 'json', $context));
         }
         return $object;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pezos\Generated\Mempool\Model;
+namespace Bzzhh\Pezos\Generated\Mempool\Model;
 
 class NextOperation
 {

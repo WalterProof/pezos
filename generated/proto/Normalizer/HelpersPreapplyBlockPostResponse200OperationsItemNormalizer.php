@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Proto\Normalizer;
+namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class HelpersPreapplyBlockPostResponse200OperationsItemNormalizer implements Den
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItem';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItem';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItem';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItem';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,35 +32,35 @@ class HelpersPreapplyBlockPostResponse200OperationsItemNormalizer implements Den
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItem();
+        $object = new \Bzzhh\Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItem();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('applied', $data)) {
             $values = array();
             foreach ($data['applied'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem', 'json', $context);
             }
             $object->setApplied($values);
         }
         if (\array_key_exists('refused', $data)) {
             $values_1 = array();
             foreach ($data['refused'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItemRefusedItem', 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItemRefusedItem', 'json', $context);
             }
             $object->setRefused($values_1);
         }
         if (\array_key_exists('branch_refused', $data)) {
             $values_2 = array();
             foreach ($data['branch_refused'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem', 'json', $context);
+                $values_2[] = $this->denormalizer->denormalize($value_2, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem', 'json', $context);
             }
             $object->setBranchRefused($values_2);
         }
         if (\array_key_exists('branch_delayed', $data)) {
             $values_3 = array();
             foreach ($data['branch_delayed'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, 'Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItemBranchDelayedItem', 'json', $context);
+                $values_3[] = $this->denormalizer->denormalize($value_3, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItemBranchDelayedItem', 'json', $context);
             }
             $object->setBranchDelayed($values_3);
         }

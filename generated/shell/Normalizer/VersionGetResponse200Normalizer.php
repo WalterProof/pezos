@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Shell\Normalizer;
+namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class VersionGetResponse200Normalizer implements DenormalizerInterface, Normaliz
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Shell\\Model\\VersionGetResponse200';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\VersionGetResponse200';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Shell\\Model\\VersionGetResponse200';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\VersionGetResponse200';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,15 +32,15 @@ class VersionGetResponse200Normalizer implements DenormalizerInterface, Normaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Shell\Model\VersionGetResponse200();
+        $object = new \Bzzhh\Pezos\Generated\Shell\Model\VersionGetResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('version', $data)) {
-            $object->setVersion($this->denormalizer->denormalize($data['version'], 'Pezos\\Generated\\Shell\\Model\\VersionGetResponse200Version', 'json', $context));
+            $object->setVersion($this->denormalizer->denormalize($data['version'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\VersionGetResponse200Version', 'json', $context));
         }
         if (\array_key_exists('network_version', $data)) {
-            $object->setNetworkVersion($this->denormalizer->denormalize($data['network_version'], 'Pezos\\Generated\\Shell\\Model\\NetworkVersion', 'json', $context));
+            $object->setNetworkVersion($this->denormalizer->denormalize($data['network_version'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkVersion', 'json', $context));
         }
         if (\array_key_exists('commit_info', $data) && $data['commit_info'] !== null) {
             $object->setCommitInfo($data['commit_info']);

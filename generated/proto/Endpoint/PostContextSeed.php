@@ -1,19 +1,19 @@
 <?php
 
-namespace Pezos\Generated\Proto\Endpoint;
+namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
 
-class PostContextSeed extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
+class PostContextSeed extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
     /**
      * Seed of the cycle to which the block belongs.
      *
-     * @param null|\Pezos\Generated\Proto\Model\ContextSeedPostBody $requestBody 
+     * @param null|\Bzzhh\Pezos\Generated\Proto\Model\ContextSeedPostBody $requestBody 
      */
-    public function __construct(?\Pezos\Generated\Proto\Model\ContextSeedPostBody $requestBody = null)
+    public function __construct(?\Bzzhh\Pezos\Generated\Proto\Model\ContextSeedPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
-    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -24,7 +24,7 @@ class PostContextSeed extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Pezos\Generated\Proto\Model\ContextSeedPostBody) {
+        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\ContextSeedPostBody) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);

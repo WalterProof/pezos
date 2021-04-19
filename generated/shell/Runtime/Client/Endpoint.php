@@ -1,6 +1,6 @@
 <?php
 
-namespace Pezos\Generated\Shell\Runtime\Client;
+namespace Bzzhh\Pezos\Generated\Shell\Runtime\Client;
 
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Serializer\SerializerInterface;

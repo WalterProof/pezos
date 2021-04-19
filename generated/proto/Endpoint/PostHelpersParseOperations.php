@@ -1,19 +1,19 @@
 <?php
 
-namespace Pezos\Generated\Proto\Endpoint;
+namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
 
-class PostHelpersParseOperations extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
+class PostHelpersParseOperations extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
     /**
      * Parse operations
      *
-     * @param null|\Pezos\Generated\Proto\Model\HelpersParseOperationsPostBody $requestBody 
+     * @param null|\Bzzhh\Pezos\Generated\Proto\Model\HelpersParseOperationsPostBody $requestBody 
      */
-    public function __construct(?\Pezos\Generated\Proto\Model\HelpersParseOperationsPostBody $requestBody = null)
+    public function __construct(?\Bzzhh\Pezos\Generated\Proto\Model\HelpersParseOperationsPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
-    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -24,7 +24,7 @@ class PostHelpersParseOperations extends \Pezos\Generated\Proto\Runtime\Client\B
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Pezos\Generated\Proto\Model\HelpersParseOperationsPostBody) {
+        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\HelpersParseOperationsPostBody) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
@@ -37,12 +37,12 @@ class PostHelpersParseOperations extends \Pezos\Generated\Proto\Runtime\Client\B
      * {@inheritdoc}
      *
      *
-     * @return null|\Pezos\Generated\Proto\Model\HelpersParseOperationsPostResponse200Item[]
+     * @return null|\Bzzhh\Pezos\Generated\Proto\Model\HelpersParseOperationsPostResponse200Item[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Pezos\\Generated\\Proto\\Model\\HelpersParseOperationsPostResponse200Item[]', 'json');
+            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersParseOperationsPostResponse200Item[]', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

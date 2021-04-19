@@ -1,6 +1,6 @@
 <?php
 
-namespace Pezos\Generated\Proto\Runtime\Client;
+namespace Bzzhh\Pezos\Generated\Proto\Runtime\Client;
 
 use Http\Message\MultipartStream\MultipartStreamBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;

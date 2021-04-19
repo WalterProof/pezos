@@ -1,19 +1,19 @@
 <?php
 
-namespace Pezos\Generated\Proto\Endpoint;
+namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
 
-class PostEndorsingPower extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
+class PostEndorsingPower extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
     /**
      * Get the endorsing power of an endorsement, that is, the number of slots that the endorser has
      *
-     * @param null|\Pezos\Generated\Proto\Model\EndorsingPowerPostBody $requestBody 
+     * @param null|\Bzzhh\Pezos\Generated\Proto\Model\EndorsingPowerPostBody $requestBody 
      */
-    public function __construct(?\Pezos\Generated\Proto\Model\EndorsingPowerPostBody $requestBody = null)
+    public function __construct(?\Bzzhh\Pezos\Generated\Proto\Model\EndorsingPowerPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
-    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -24,7 +24,7 @@ class PostEndorsingPower extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpo
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Pezos\Generated\Proto\Model\EndorsingPowerPostBody) {
+        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\EndorsingPowerPostBody) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);

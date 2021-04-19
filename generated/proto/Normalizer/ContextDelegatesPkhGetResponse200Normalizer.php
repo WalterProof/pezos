@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Proto\Normalizer;
+namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class ContextDelegatesPkhGetResponse200Normalizer implements DenormalizerInterfa
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Proto\\Model\\ContextDelegatesPkhGetResponse200';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextDelegatesPkhGetResponse200';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Proto\\Model\\ContextDelegatesPkhGetResponse200';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextDelegatesPkhGetResponse200';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,7 +32,7 @@ class ContextDelegatesPkhGetResponse200Normalizer implements DenormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Proto\Model\ContextDelegatesPkhGetResponse200();
+        $object = new \Bzzhh\Pezos\Generated\Proto\Model\ContextDelegatesPkhGetResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -45,7 +45,7 @@ class ContextDelegatesPkhGetResponse200Normalizer implements DenormalizerInterfa
         if (\array_key_exists('frozen_balance_by_cycle', $data)) {
             $values = array();
             foreach ($data['frozen_balance_by_cycle'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Pezos\\Generated\\Proto\\Model\\ContextDelegatesPkhGetResponse200FrozenBalanceByCycleItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextDelegatesPkhGetResponse200FrozenBalanceByCycleItem', 'json', $context);
             }
             $object->setFrozenBalanceByCycle($values);
         }

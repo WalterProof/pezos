@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Pezos\Keys;
+namespace Bzzhh\Pezos\Keys;
 
 use BitWasp\Buffertools\BufferInterface;
 

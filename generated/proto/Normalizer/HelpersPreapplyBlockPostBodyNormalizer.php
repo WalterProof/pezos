@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Proto\Normalizer;
+namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class HelpersPreapplyBlockPostBodyNormalizer implements DenormalizerInterface, N
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostBody';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostBody';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostBody';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostBody';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,19 +32,19 @@ class HelpersPreapplyBlockPostBodyNormalizer implements DenormalizerInterface, N
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBody();
+        $object = new \Bzzhh\Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBody();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('protocol_data', $data)) {
-            $object->setProtocolData($this->denormalizer->denormalize($data['protocol_data'], 'Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostBodyProtocolData', 'json', $context));
+            $object->setProtocolData($this->denormalizer->denormalize($data['protocol_data'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostBodyProtocolData', 'json', $context));
         }
         if (\array_key_exists('operations', $data)) {
             $values = array();
             foreach ($data['operations'] as $value) {
                 $values_1 = array();
                 foreach ($value as $value_1) {
-                    $values_1[] = $this->denormalizer->denormalize($value_1, 'Pezos\\Generated\\Proto\\Model\\NextOperation', 'json', $context);
+                    $values_1[] = $this->denormalizer->denormalize($value_1, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\NextOperation', 'json', $context);
                 }
                 $values[] = $values_1;
             }

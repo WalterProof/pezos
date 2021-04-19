@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Pezos\Keys;
+namespace Bzzhh\Pezos\Keys;
 
 use BitWasp\Buffertools\Buffer;
 use BitWasp\Buffertools\BufferInterface;
-use function Pezos\b58cencode;
-use function Pezos\blake2b;
+use function Bzzhh\Pezos\b58cencode;
+use function Bzzhh\Pezos\blake2b;
 
 class PubKey
 {

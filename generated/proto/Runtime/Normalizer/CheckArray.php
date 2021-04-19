@@ -1,6 +1,6 @@
 <?php
 
-namespace Pezos\Generated\Proto\Runtime\Normalizer;
+namespace Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer;
 
 trait CheckArray
 {

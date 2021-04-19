@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tests\Integration\Rpc;
+namespace Bzzhh\Pezos\Tests\Integration\Rpc;
 
-use Pezos\Generated\Mempool\Client as MempoolClient;
-use Pezos\Generated\Mempool\Model\PendingOperationsGetResponse200;
-use Pezos\Generated\Proto\Client as ProtoClient;
-use Pezos\Generated\Proto\Model\ContextConstantsGetResponse200;
-use Pezos\Generated\Shell\Client as ShellClient;
-use Pezos\Generated\Shell\Model\ChainsChainIdIsBootstrappedGetResponse200;
-use Pezos\Rpc\ClientFactory;
+use Bzzhh\Pezos\Generated\Mempool\Client as MempoolClient;
+use Bzzhh\Pezos\Generated\Mempool\Model\PendingOperationsGetResponse200;
+use Bzzhh\Pezos\Generated\Proto\Client as ProtoClient;
+use Bzzhh\Pezos\Generated\Proto\Model\ContextConstantsGetResponse200;
+use Bzzhh\Pezos\Generated\Shell\Client as ShellClient;
+use Bzzhh\Pezos\Generated\Shell\Model\ChainsChainIdIsBootstrappedGetResponse200;
+use Bzzhh\Pezos\Rpc\ClientFactory;
 use PHPUnit\Framework\TestCase;
 
 class ClientFactoryTest extends TestCase

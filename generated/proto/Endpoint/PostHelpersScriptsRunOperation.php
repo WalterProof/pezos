@@ -1,19 +1,19 @@
 <?php
 
-namespace Pezos\Generated\Proto\Endpoint;
+namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
 
-class PostHelpersScriptsRunOperation extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
+class PostHelpersScriptsRunOperation extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
     /**
      * Run an operation without signature checks
      *
-     * @param null|\Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody $requestBody 
+     * @param null|\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody $requestBody 
      */
-    public function __construct(?\Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody $requestBody = null)
+    public function __construct(?\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
-    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -24,7 +24,7 @@ class PostHelpersScriptsRunOperation extends \Pezos\Generated\Proto\Runtime\Clie
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody) {
+        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);

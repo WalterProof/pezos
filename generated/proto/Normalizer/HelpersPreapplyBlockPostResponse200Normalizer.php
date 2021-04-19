@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Proto\Normalizer;
+namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class HelpersPreapplyBlockPostResponse200Normalizer implements DenormalizerInter
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,17 +32,17 @@ class HelpersPreapplyBlockPostResponse200Normalizer implements DenormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200();
+        $object = new \Bzzhh\Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('shell_header', $data)) {
-            $object->setShellHeader($this->denormalizer->denormalize($data['shell_header'], 'Pezos\\Generated\\Proto\\Model\\BlockHeaderShell', 'json', $context));
+            $object->setShellHeader($this->denormalizer->denormalize($data['shell_header'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\BlockHeaderShell', 'json', $context));
         }
         if (\array_key_exists('operations', $data)) {
             $values = array();
             foreach ($data['operations'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItem', 'json', $context);
             }
             $object->setOperations($values);
         }

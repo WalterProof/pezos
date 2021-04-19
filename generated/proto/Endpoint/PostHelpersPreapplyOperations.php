@@ -1,19 +1,19 @@
 <?php
 
-namespace Pezos\Generated\Proto\Endpoint;
+namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
 
-class PostHelpersPreapplyOperations extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
+class PostHelpersPreapplyOperations extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
     /**
      * Simulate the validation of an operation.
      *
-     * @param null|\Pezos\Generated\Proto\Model\NextOperation[] $requestBody 
+     * @param null|\Bzzhh\Pezos\Generated\Proto\Model\NextOperation[] $requestBody 
      */
     public function __construct(?array $requestBody = null)
     {
         $this->body = $requestBody;
     }
-    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -24,7 +24,7 @@ class PostHelpersPreapplyOperations extends \Pezos\Generated\Proto\Runtime\Clien
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if (is_array($this->body) and isset($this->body[0]) and $this->body[0] instanceof \Pezos\Generated\Proto\Model\NextOperation) {
+        if (is_array($this->body) and isset($this->body[0]) and $this->body[0] instanceof \Bzzhh\Pezos\Generated\Proto\Model\NextOperation) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);

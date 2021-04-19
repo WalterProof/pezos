@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Shell\Normalizer;
+namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class WorkersChainValidatorsChainIdDdbGetResponse200Normalizer implements Denorm
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdDdbGetResponse200';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdDdbGetResponse200';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdDdbGetResponse200';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdDdbGetResponse200';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,7 +32,7 @@ class WorkersChainValidatorsChainIdDdbGetResponse200Normalizer implements Denorm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Shell\Model\WorkersChainValidatorsChainIdDdbGetResponse200();
+        $object = new \Bzzhh\Pezos\Generated\Shell\Model\WorkersChainValidatorsChainIdDdbGetResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -43,13 +43,13 @@ class WorkersChainValidatorsChainIdDdbGetResponse200Normalizer implements Denorm
             $object->setActiveChains($data['active_chains']);
         }
         if (\array_key_exists('operation_db', $data)) {
-            $object->setOperationDb($this->denormalizer->denormalize($data['operation_db'], 'Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdDdbGetResponse200OperationDb', 'json', $context));
+            $object->setOperationDb($this->denormalizer->denormalize($data['operation_db'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdDdbGetResponse200OperationDb', 'json', $context));
         }
         if (\array_key_exists('operations_db', $data)) {
-            $object->setOperationsDb($this->denormalizer->denormalize($data['operations_db'], 'Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdDdbGetResponse200OperationsDb', 'json', $context));
+            $object->setOperationsDb($this->denormalizer->denormalize($data['operations_db'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdDdbGetResponse200OperationsDb', 'json', $context));
         }
         if (\array_key_exists('block_header_db', $data)) {
-            $object->setBlockHeaderDb($this->denormalizer->denormalize($data['block_header_db'], 'Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdDdbGetResponse200BlockHeaderDb', 'json', $context));
+            $object->setBlockHeaderDb($this->denormalizer->denormalize($data['block_header_db'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdDdbGetResponse200BlockHeaderDb', 'json', $context));
         }
         if (\array_key_exists('active_connections', $data)) {
             $object->setActiveConnections($data['active_connections']);

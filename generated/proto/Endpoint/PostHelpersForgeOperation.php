@@ -1,19 +1,19 @@
 <?php
 
-namespace Pezos\Generated\Proto\Endpoint;
+namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
 
-class PostHelpersForgeOperation extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
+class PostHelpersForgeOperation extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
     /**
      * Forge an operation
      *
-     * @param null|\Pezos\Generated\Proto\Model\_008PtEdo2ZkOperationAlphaUnsignedOperation $requestBody 
+     * @param null|\Bzzhh\Pezos\Generated\Proto\Model\_008PtEdo2ZkOperationAlphaUnsignedOperation $requestBody 
      */
-    public function __construct(?\Pezos\Generated\Proto\Model\_008PtEdo2ZkOperationAlphaUnsignedOperation $requestBody = null)
+    public function __construct(?\Bzzhh\Pezos\Generated\Proto\Model\_008PtEdo2ZkOperationAlphaUnsignedOperation $requestBody = null)
     {
         $this->body = $requestBody;
     }
-    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'POST';
@@ -24,7 +24,7 @@ class PostHelpersForgeOperation extends \Pezos\Generated\Proto\Runtime\Client\Ba
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Pezos\Generated\Proto\Model\_008PtEdo2ZkOperationAlphaUnsignedOperation) {
+        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\_008PtEdo2ZkOperationAlphaUnsignedOperation) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);

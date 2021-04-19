@@ -1,26 +1,26 @@
 <?php
 
-namespace Pezos\Generated\Shell\Endpoint;
+namespace Bzzhh\Pezos\Generated\Shell\Endpoint;
 
-class PutNetworkPointByPoint extends \Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Shell\Runtime\Client\Endpoint
+class PutNetworkPointByPoint extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Endpoint
 {
     protected $point;
     /**
      * Connect to a peer
      *
      * @param string $point A network point (ipv4:port or [ipv6]:port).
-     * @param null|\Pezos\Generated\Shell\Model\NetworkPointsPointPutBody $requestBody 
+     * @param null|\Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointPutBody $requestBody 
      * @param array $queryParameters {
      *     @var string $timeout A span of time in seconds
      * }
      */
-    public function __construct(string $point, ?\Pezos\Generated\Shell\Model\NetworkPointsPointPutBody $requestBody = null, array $queryParameters = array())
+    public function __construct(string $point, ?\Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointPutBody $requestBody = null, array $queryParameters = array())
     {
         $this->point = $point;
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
-    use \Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'PUT';
@@ -31,7 +31,7 @@ class PutNetworkPointByPoint extends \Pezos\Generated\Shell\Runtime\Client\BaseE
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Pezos\Generated\Shell\Model\NetworkPointsPointPutBody) {
+        if ($this->body instanceof \Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointPutBody) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);
@@ -53,12 +53,12 @@ class PutNetworkPointByPoint extends \Pezos\Generated\Shell\Runtime\Client\BaseE
      * {@inheritdoc}
      *
      *
-     * @return null|\Pezos\Generated\Shell\Model\NetworkPointsPointPutResponse200
+     * @return null|\Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointPutResponse200
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Pezos\\Generated\\Shell\\Model\\NetworkPointsPointPutResponse200', 'json');
+            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPointsPointPutResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

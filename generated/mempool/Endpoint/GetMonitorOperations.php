@@ -1,8 +1,8 @@
 <?php
 
-namespace Pezos\Generated\Mempool\Endpoint;
+namespace Bzzhh\Pezos\Generated\Mempool\Endpoint;
 
-class GetMonitorOperations extends \Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Mempool\Runtime\Client\Endpoint
+class GetMonitorOperations extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Endpoint
 {
     /**
      * Monitor the mempool operations.
@@ -18,7 +18,7 @@ class GetMonitorOperations extends \Pezos\Generated\Mempool\Runtime\Client\BaseE
     {
         $this->queryParameters = $queryParameters;
     }
-    use \Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';
@@ -51,12 +51,12 @@ class GetMonitorOperations extends \Pezos\Generated\Mempool\Runtime\Client\BaseE
      * {@inheritdoc}
      *
      *
-     * @return null|\Pezos\Generated\Mempool\Model\NextOperation[]
+     * @return null|\Bzzhh\Pezos\Generated\Mempool\Model\NextOperation[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Pezos\\Generated\\Mempool\\Model\\NextOperation[]', 'json');
+            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\NextOperation[]', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

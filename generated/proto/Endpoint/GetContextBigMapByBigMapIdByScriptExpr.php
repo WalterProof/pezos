@@ -1,8 +1,8 @@
 <?php
 
-namespace Pezos\Generated\Proto\Endpoint;
+namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
 
-class GetContextBigMapByBigMapIdByScriptExpr extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetContextBigMapByBigMapIdByScriptExpr extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
     protected $big_map_id;
     protected $script_expr;
@@ -17,7 +17,7 @@ class GetContextBigMapByBigMapIdByScriptExpr extends \Pezos\Generated\Proto\Runt
         $this->big_map_id = $bigMapId;
         $this->script_expr = $scriptExpr;
     }
-    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
         return 'GET';

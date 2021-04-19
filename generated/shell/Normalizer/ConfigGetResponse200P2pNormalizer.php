@@ -1,9 +1,9 @@
 <?php
 
-namespace Pezos\Generated\Shell\Normalizer;
+namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -18,11 +18,11 @@ class ConfigGetResponse200P2pNormalizer implements DenormalizerInterface, Normal
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200P2p';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200P2p';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200P2p';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200P2p';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,7 +32,7 @@ class ConfigGetResponse200P2pNormalizer implements DenormalizerInterface, Normal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Pezos\Generated\Shell\Model\ConfigGetResponse200P2p();
+        $object = new \Bzzhh\Pezos\Generated\Shell\Model\ConfigGetResponse200P2p();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -59,7 +59,7 @@ class ConfigGetResponse200P2pNormalizer implements DenormalizerInterface, Normal
             $object->setPrivateMode($data['private-mode']);
         }
         if (\array_key_exists('limits', $data)) {
-            $object->setLimits($this->denormalizer->denormalize($data['limits'], 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200P2pLimits', 'json', $context));
+            $object->setLimits($this->denormalizer->denormalize($data['limits'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200P2pLimits', 'json', $context));
         }
         if (\array_key_exists('disable_mempool', $data)) {
             $object->setDisableMempool($data['disable_mempool']);
@@ -68,7 +68,7 @@ class ConfigGetResponse200P2pNormalizer implements DenormalizerInterface, Normal
             $object->setEnableTestchain($data['enable_testchain']);
         }
         if (\array_key_exists('greylisting_config', $data)) {
-            $object->setGreylistingConfig($this->denormalizer->denormalize($data['greylisting_config'], 'Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200P2pGreylistingConfig', 'json', $context));
+            $object->setGreylistingConfig($this->denormalizer->denormalize($data['greylisting_config'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200P2pGreylistingConfig', 'json', $context));
         }
         return $object;
     }
