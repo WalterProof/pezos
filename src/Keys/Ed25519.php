@@ -8,27 +8,28 @@ use BitWasp\Buffertools\Buffer;
 use BitWasp\Buffertools\BufferInterface;
 use function Bzzhh\Pezos\b58cdecode;
 use function Bzzhh\Pezos\blake2b;
+use Bzzhh\Pezos\Prefix;
 
 class Ed25519 implements Curve
 {
     public function addressPrefix(): array
     {
-        return [6, 161, 159];
+        return Prefix::BYTES[Prefix::TZ1];
     }
 
     public function publicKeyPrefix(): array
     {
-        return [13, 15, 37, 217];
+        return Prefix::BYTES[Prefix::EDPK];
     }
 
     public function privateKeyPrefix(): array
     {
-        return [43, 246, 78, 7];
+        return Prefix::BYTES[Prefix::EDSK];
     }
 
     public function signaturePrefix(): array
     {
-        return [9, 245, 205, 134, 18];
+        return Prefix::BYTES[Prefix::EDSIG];
     }
 
     public function getPublicKey(string $privateKey): BufferInterface

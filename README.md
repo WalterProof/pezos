@@ -4,8 +4,6 @@
 
 PHP lib for Tezos
 
-Lib structure heavily inspired by https://github.com/goat-systems/go-tezos
-
 ## Features
 
 At this time, this lib can only do basic operations with Ed25519 keys.
@@ -56,3 +54,11 @@ Configure your host:
 bzzhh_pezos:
   rpc_host: https://edonet.duckdns.org
 ```
+
+## Resources
+
+Thanks to these libraries from which code is just translated to PHP.
+
+- https://github.com/goat-systems/go-tezos
+- https://github.com/ecadlabs/taquito
+- https://github.com/Cryptonomic/ConseilJS

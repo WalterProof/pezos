@@ -1,0 +1,43 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Bzzhh\Pezos\Tests\Unit\Validator;
+
+use Bzzhh\Pezos\Validator;
+use PHPUnit\Framework\TestCase;
+
+class ValidatorTest extends TestCase
+{
+    private Validator $validator;
+
+    public function setUp(): void
+    {
+        $this->validator = new Validator();
+    }
+
+    /**
+     * @dataProvider provideAddresses
+     */
+    public function testValidateAddress(
+        string $address,
+        bool $isValid,
+        ?string $error = null
+    ): void {
+        self::assertSame($isValid, $this->validator->validateAddress($address));
+        self::assertSame($error, $this->validator->getError());
+    }
+
+    public function provideAddresses(): \Generator
+    {
+        yield ['xx', false, Validator::NO_PREFIX_MATCHED];
+
+        yield [
+            'tz1RzPWnTVr6wWMWPkQWK62zrHFSPESjXJFX',
+            false,
+            Validator::INVALID_CHECKSUM,
+        ];
+
+        yield ['tz1cXuba7T3qkxLVMuuYMsPpWtHeuQ6eqTck', true];
+    }
+}

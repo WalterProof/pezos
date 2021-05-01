@@ -42,7 +42,6 @@
     "nyholm/psr7": "^1.4",
     "php-http/curl-client": "^2.2"
   },
-  "version": "v0.1.2",
   "archive": {
     "exclude": [
       "*",
