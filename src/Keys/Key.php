@@ -12,15 +12,10 @@ class Key
 {
     private Curve $curve;
     private BufferInterface $privKey;
-    private PubKey $pubKey;
 
-    public function __construct(
-        BufferInterface $privKey,
-        PubKey $pubKey,
-        Curve $curve
-    ) {
+    public function __construct(BufferInterface $privKey, Curve $curve)
+    {
         $this->privKey = $privKey;
-        $this->pubKey  = $pubKey;
         $this->curve   = $curve;
     }
 
@@ -40,7 +35,6 @@ class Key
     {
         return new self(
             b58cdecode($privKey, $curve->privateKeyPrefix()),
-            new PubKey($privKey, $curve),
             $curve,
         );
     }
