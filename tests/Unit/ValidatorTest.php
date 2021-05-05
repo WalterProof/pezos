@@ -40,4 +40,29 @@ class ValidatorTest extends TestCase
 
         yield ['tz1cXuba7T3qkxLVMuuYMsPpWtHeuQ6eqTck', true];
     }
+
+    /**
+     * @dataProvider providePubKeys
+     */
+    public function testValidatePubKey(
+        string $pubKey,
+        bool $isValid,
+        ?string $error = null
+    ): void {
+        self::assertSame($isValid, $this->validator->validatePubKey($pubKey));
+        self::assertSame($error, $this->validator->getError());
+    }
+
+    public function providePubKeys(): \Generator
+    {
+        yield ['xx', false, Validator::NO_PREFIX_MATCHED];
+
+        yield [
+            'edpkvRHnehMGZP8SeaDsxArwvPA8nUizvwiHkCyRgaHYTd4qPHaq8h',
+            false,
+            Validator::INVALID_CHECKSUM,
+        ];
+
+        yield ['edpktmV1Dfn6uYKhXZ5bA19KQ26yqGkY3iNgRHtfu6hk5NKJoyggNS', true];
+    }
 }
