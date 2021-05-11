@@ -5,7 +5,7 @@ namespace Bzzhh\Pezos\Generated\Proto\Model;
 class HelpersScriptsRunOperationPostBody
 {
     /**
-     * 
+     * An operation's shell header.
      *
      * @var HelpersScriptsRunOperationPostBodyOperation
      */
@@ -17,7 +17,7 @@ class HelpersScriptsRunOperationPostBody
      */
     protected $chainId;
     /**
-     * 
+     * An operation's shell header.
      *
      * @return HelpersScriptsRunOperationPostBodyOperation
      */
@@ -26,7 +26,7 @@ class HelpersScriptsRunOperationPostBody
         return $this->operation;
     }
     /**
-     * 
+     * An operation's shell header.
      *
      * @param HelpersScriptsRunOperationPostBodyOperation $operation
      *

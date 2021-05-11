@@ -66,6 +66,9 @@ class HelpersScriptsRunCodePostBodyNormalizer implements DenormalizerInterface, 
         if (\array_key_exists('entrypoint', $data)) {
             $object->setEntrypoint($data['entrypoint']);
         }
+        if (\array_key_exists('unparsing_mode', $data)) {
+            $object->setUnparsingMode($data['unparsing_mode']);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -88,6 +91,9 @@ class HelpersScriptsRunCodePostBodyNormalizer implements DenormalizerInterface, 
         }
         if (null !== $object->getEntrypoint()) {
             $data['entrypoint'] = $object->getEntrypoint();
+        }
+        if (null !== $object->getUnparsingMode()) {
+            $data['unparsing_mode'] = $object->getUnparsingMode();
         }
         return $data;
     }

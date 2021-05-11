@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class _008PtEdo2ZkScriptedTraceItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class _009PsFLorenOperationAlphaUnsignedOperationNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_008PtEdo2ZkScriptedTraceItem';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_009PsFLorenOperationAlphaUnsignedOperation';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_008PtEdo2ZkScriptedTraceItem';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_009PsFLorenOperationAlphaUnsignedOperation';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,35 +32,31 @@ class _008PtEdo2ZkScriptedTraceItemNormalizer implements DenormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Bzzhh\Pezos\Generated\Proto\Model\_008PtEdo2ZkScriptedTraceItem();
+        $object = new \Bzzhh\Pezos\Generated\Proto\Model\_009PsFLorenOperationAlphaUnsignedOperation();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('location', $data)) {
-            $object->setLocation($data['location']);
+        if (\array_key_exists('branch', $data)) {
+            $object->setBranch($data['branch']);
         }
-        if (\array_key_exists('gas', $data)) {
-            $object->setGas($data['gas']);
-        }
-        if (\array_key_exists('stack', $data)) {
+        if (\array_key_exists('contents', $data)) {
             $values = array();
-            foreach ($data['stack'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_008PtEdo2ZkScriptedTraceItemStackItem', 'json', $context);
+            foreach ($data['contents'] as $value) {
+                $values[] = $value;
             }
-            $object->setStack($values);
+            $object->setContents($values);
         }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['location'] = $object->getLocation();
-        $data['gas'] = $object->getGas();
+        $data['branch'] = $object->getBranch();
         $values = array();
-        foreach ($object->getStack() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+        foreach ($object->getContents() as $value) {
+            $values[] = $value;
         }
-        $data['stack'] = $values;
+        $data['contents'] = $values;
         return $data;
     }
 }

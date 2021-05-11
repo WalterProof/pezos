@@ -5,7 +5,7 @@ namespace Bzzhh\Pezos\Generated\Proto\Model;
 class EndorsingPowerPostBody
 {
     /**
-     * 
+     * An operation's shell header.
      *
      * @var EndorsingPowerPostBodyEndorsementOperation
      */
@@ -17,7 +17,7 @@ class EndorsingPowerPostBody
      */
     protected $chainId;
     /**
-     * 
+     * An operation's shell header.
      *
      * @return EndorsingPowerPostBodyEndorsementOperation
      */
@@ -26,7 +26,7 @@ class EndorsingPowerPostBody
         return $this->endorsementOperation;
     }
     /**
-     * 
+     * An operation's shell header.
      *
      * @param EndorsingPowerPostBodyEndorsementOperation $endorsementOperation
      *

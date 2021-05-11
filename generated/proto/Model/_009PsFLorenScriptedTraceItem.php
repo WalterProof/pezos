@@ -2,7 +2,7 @@
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class _008PtEdo2ZkScriptedTraceItem
+class _009PsFLorenScriptedTraceItem
 {
     /**
      * The location of a node in a Micheline expression tree in prefix order, with zero being the root and adding one for every basic node, sequence and primitive application.
@@ -19,7 +19,7 @@ class _008PtEdo2ZkScriptedTraceItem
     /**
      * 
      *
-     * @var _008PtEdo2ZkScriptedTraceItemStackItem[]
+     * @var _009PsFLorenScriptedTraceItemStackItem[]
      */
     protected $stack;
     /**
@@ -67,7 +67,7 @@ class _008PtEdo2ZkScriptedTraceItem
     /**
      * 
      *
-     * @return _008PtEdo2ZkScriptedTraceItemStackItem[]
+     * @return _009PsFLorenScriptedTraceItemStackItem[]
      */
     public function getStack() : array
     {
@@ -76,7 +76,7 @@ class _008PtEdo2ZkScriptedTraceItem
     /**
      * 
      *
-     * @param _008PtEdo2ZkScriptedTraceItemStackItem[] $stack
+     * @param _009PsFLorenScriptedTraceItemStackItem[] $stack
      *
      * @return self
      */

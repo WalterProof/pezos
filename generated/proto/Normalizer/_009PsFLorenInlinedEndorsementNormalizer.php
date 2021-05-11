@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class _008PtEdo2ZkOperationAlphaUnsignedOperationNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class _009PsFLorenInlinedEndorsementNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_008PtEdo2ZkOperationAlphaUnsignedOperation';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_009PsFLorenInlinedEndorsement';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_008PtEdo2ZkOperationAlphaUnsignedOperation';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_009PsFLorenInlinedEndorsement';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,19 +32,18 @@ class _008PtEdo2ZkOperationAlphaUnsignedOperationNormalizer implements Denormali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Bzzhh\Pezos\Generated\Proto\Model\_008PtEdo2ZkOperationAlphaUnsignedOperation();
+        $object = new \Bzzhh\Pezos\Generated\Proto\Model\_009PsFLorenInlinedEndorsement();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('branch', $data)) {
             $object->setBranch($data['branch']);
         }
-        if (\array_key_exists('contents', $data)) {
-            $values = array();
-            foreach ($data['contents'] as $value) {
-                $values[] = $value;
-            }
-            $object->setContents($values);
+        if (\array_key_exists('operations', $data)) {
+            $object->setOperations($this->denormalizer->denormalize($data['operations'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_009PsFLorenInlinedEndorsementContents', 'json', $context));
+        }
+        if (\array_key_exists('signature', $data)) {
+            $object->setSignature($data['signature']);
         }
         return $object;
     }
@@ -52,11 +51,10 @@ class _008PtEdo2ZkOperationAlphaUnsignedOperationNormalizer implements Denormali
     {
         $data = array();
         $data['branch'] = $object->getBranch();
-        $values = array();
-        foreach ($object->getContents() as $value) {
-            $values[] = $value;
+        $data['operations'] = $this->normalizer->normalize($object->getOperations(), 'json', $context);
+        if (null !== $object->getSignature()) {
+            $data['signature'] = $object->getSignature();
         }
-        $data['contents'] = $values;
         return $data;
     }
 }

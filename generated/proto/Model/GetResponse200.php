@@ -23,7 +23,7 @@ class GetResponse200
      */
     protected $hash;
     /**
-     * 
+     * Block header's shell-related content. It contains information such as the block level, its predecessor and timestamp.
      *
      * @var RawBlockHeader
      */
@@ -104,7 +104,7 @@ class GetResponse200
         return $this;
     }
     /**
-     * 
+     * Block header's shell-related content. It contains information such as the block level, its predecessor and timestamp.
      *
      * @return RawBlockHeader
      */
@@ -113,7 +113,7 @@ class GetResponse200
         return $this->header;
     }
     /**
-     * 
+     * Block header's shell-related content. It contains information such as the block level, its predecessor and timestamp.
      *
      * @param RawBlockHeader $header
      *

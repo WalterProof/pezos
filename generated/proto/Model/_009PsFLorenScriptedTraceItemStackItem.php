@@ -2,7 +2,7 @@
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class _008PtEdo2ZkScriptedTraceItemStackItem
+class _009PsFLorenScriptedTraceItemStackItem
 {
     /**
      * 

@@ -49,7 +49,7 @@ class HelpersScriptsTraceCodePostResponse200Normalizer implements DenormalizerIn
         if (\array_key_exists('trace', $data)) {
             $values_1 = array();
             foreach ($data['trace'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_008PtEdo2ZkScriptedTraceItem', 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_009PsFLorenScriptedTraceItem', 'json', $context);
             }
             $object->setTrace($values_1);
         }

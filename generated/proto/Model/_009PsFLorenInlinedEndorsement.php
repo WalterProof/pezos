@@ -2,7 +2,7 @@
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class _008PtEdo2ZkInlinedEndorsement
+class _009PsFLorenInlinedEndorsement
 {
     /**
      * 
@@ -13,7 +13,7 @@ class _008PtEdo2ZkInlinedEndorsement
     /**
      * 
      *
-     * @var _008PtEdo2ZkInlinedEndorsementContents
+     * @var _009PsFLorenInlinedEndorsementContents
      */
     protected $operations;
     /**
@@ -46,20 +46,20 @@ class _008PtEdo2ZkInlinedEndorsement
     /**
      * 
      *
-     * @return _008PtEdo2ZkInlinedEndorsementContents
+     * @return _009PsFLorenInlinedEndorsementContents
      */
-    public function getOperations() : _008PtEdo2ZkInlinedEndorsementContents
+    public function getOperations() : _009PsFLorenInlinedEndorsementContents
     {
         return $this->operations;
     }
     /**
      * 
      *
-     * @param _008PtEdo2ZkInlinedEndorsementContents $operations
+     * @param _009PsFLorenInlinedEndorsementContents $operations
      *
      * @return self
      */
-    public function setOperations(_008PtEdo2ZkInlinedEndorsementContents $operations) : self
+    public function setOperations(_009PsFLorenInlinedEndorsementContents $operations) : self
     {
         $this->operations = $operations;
         return $this;

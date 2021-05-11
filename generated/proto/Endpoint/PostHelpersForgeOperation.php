@@ -7,9 +7,9 @@ class PostHelpersForgeOperation extends \Bzzhh\Pezos\Generated\Proto\Runtime\Cli
     /**
      * Forge an operation
      *
-     * @param null|\Bzzhh\Pezos\Generated\Proto\Model\_008PtEdo2ZkOperationAlphaUnsignedOperation $requestBody 
+     * @param null|\Bzzhh\Pezos\Generated\Proto\Model\_009PsFLorenOperationAlphaUnsignedOperation $requestBody 
      */
-    public function __construct(?\Bzzhh\Pezos\Generated\Proto\Model\_008PtEdo2ZkOperationAlphaUnsignedOperation $requestBody = null)
+    public function __construct(?\Bzzhh\Pezos\Generated\Proto\Model\_009PsFLorenOperationAlphaUnsignedOperation $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -24,7 +24,7 @@ class PostHelpersForgeOperation extends \Bzzhh\Pezos\Generated\Proto\Runtime\Cli
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
-        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\_008PtEdo2ZkOperationAlphaUnsignedOperation) {
+        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\_009PsFLorenOperationAlphaUnsignedOperation) {
             return array(array('Content-Type' => array('application/json')), $serializer->serialize($this->body, 'json'));
         }
         return array(array(), null);

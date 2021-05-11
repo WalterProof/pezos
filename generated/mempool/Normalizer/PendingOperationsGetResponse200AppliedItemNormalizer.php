@@ -42,16 +42,6 @@ class PendingOperationsGetResponse200AppliedItemNormalizer implements Denormaliz
         if (\array_key_exists('branch', $data)) {
             $object->setBranch($data['branch']);
         }
-        if (\array_key_exists('contents', $data)) {
-            $values = array();
-            foreach ($data['contents'] as $value) {
-                $values[] = $value;
-            }
-            $object->setContents($values);
-        }
-        if (\array_key_exists('signature', $data)) {
-            $object->setSignature($data['signature']);
-        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -59,12 +49,6 @@ class PendingOperationsGetResponse200AppliedItemNormalizer implements Denormaliz
         $data = array();
         $data['hash'] = $object->getHash();
         $data['branch'] = $object->getBranch();
-        $values = array();
-        foreach ($object->getContents() as $value) {
-            $values[] = $value;
-        }
-        $data['contents'] = $values;
-        $data['signature'] = $object->getSignature();
         return $data;
     }
 }

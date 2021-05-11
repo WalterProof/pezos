@@ -171,7 +171,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      * @param string $contractId A contract identifier encoded in b58check.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Bzzhh\Pezos\Generated\Proto\Model\_008PtEdo2ZkScriptedContracts|\Psr\Http\Message\ResponseInterface
+     * @return null|\Bzzhh\Pezos\Generated\Proto\Model\_009PsFLorenScriptedContracts|\Psr\Http\Message\ResponseInterface
      */
     public function getContextContractsByContractIdScript(string $contractId, string $fetch = self::FETCH_OBJECT)
     {
@@ -556,12 +556,12 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
     /**
      * Forge an operation
      *
-     * @param null|\Bzzhh\Pezos\Generated\Proto\Model\_008PtEdo2ZkOperationAlphaUnsignedOperation $requestBody 
+     * @param null|\Bzzhh\Pezos\Generated\Proto\Model\_009PsFLorenOperationAlphaUnsignedOperation $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function postHelpersForgeOperation(?\Bzzhh\Pezos\Generated\Proto\Model\_008PtEdo2ZkOperationAlphaUnsignedOperation $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersForgeOperation(?\Bzzhh\Pezos\Generated\Proto\Model\_009PsFLorenOperationAlphaUnsignedOperation $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersForgeOperation($requestBody), $fetch);
     }
@@ -609,7 +609,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      * @param null|\Bzzhh\Pezos\Generated\Proto\Model\BlockHeader $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Bzzhh\Pezos\Generated\Proto\Model\_008PtEdo2ZkBlockHeaderAlphaSignedContents|\Psr\Http\Message\ResponseInterface
+     * @return null|\Bzzhh\Pezos\Generated\Proto\Model\_009PsFLorenBlockHeaderAlphaSignedContents|\Psr\Http\Message\ResponseInterface
      */
     public function postHelpersParseBlock(?\Bzzhh\Pezos\Generated\Proto\Model\BlockHeader $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -664,6 +664,18 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      * @return null|\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsEntrypointPostResponse200|\Psr\Http\Message\ResponseInterface
      */
     public function postHelpersScriptsEntrypoint(?\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsEntrypointPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsEntrypoint($requestBody), $fetch);
+    }
+    /**
+     * Return the list of entrypoints of the given script
+     *
+     * @param null|\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsEntrypointsPostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsEntrypointsPostResponse200|\Psr\Http\Message\ResponseInterface
+     */
+    public function postHelpersScriptsEntrypoint(?\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsEntrypointsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsEntrypoint($requestBody), $fetch);
     }

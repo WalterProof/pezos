@@ -11,11 +11,16 @@ DOCKER_COMPOSE:=docker-compose
 
 .PHONY: up
 up: down ## restart containers
+	if [ ! -f .env -a -f .env.dist ]; then sed "s,#UID#,$(UID),g;s,#GID#,$(GID),g" .env.dist > .env; fi
 	${DOCKER_COMPOSE} up -d
 
 .PHONY: down
 down: ## stop containers
 	${DOCKER_COMPOSE} down --remove-orphans
+
+.PHONY: install
+install: ## install deps
+	${RUN_PHP} composer install
 
 .PHONY: test
 test: ## run tests
@@ -23,7 +28,7 @@ test: ## run tests
 
 .PHONY: shell
 shell: ## enter php container
-	${DOCKER_COMPOSE} exec -u dev php bash
+	${RUN_PHP} bash
 
 .PHONY: jane
 jane: ## generate a client (make jane CONFIG=config/jane-rpc-openapi.php)

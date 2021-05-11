@@ -43,7 +43,7 @@ class ContextContractsContractIdGetResponse200Normalizer implements Denormalizer
             $object->setDelegate($data['delegate']);
         }
         if (\array_key_exists('script', $data)) {
-            $object->setScript($this->denormalizer->denormalize($data['script'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_008PtEdo2ZkScriptedContracts', 'json', $context));
+            $object->setScript($this->denormalizer->denormalize($data['script'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_009PsFLorenScriptedContracts', 'json', $context));
         }
         if (\array_key_exists('counter', $data)) {
             $object->setCounter($data['counter']);

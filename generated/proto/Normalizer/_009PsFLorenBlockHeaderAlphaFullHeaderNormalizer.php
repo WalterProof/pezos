@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class _008PtEdo2ZkBlockHeaderAlphaSignedContentsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class _009PsFLorenBlockHeaderAlphaFullHeaderNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_008PtEdo2ZkBlockHeaderAlphaSignedContents';
+        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_009PsFLorenBlockHeaderAlphaFullHeader';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_008PtEdo2ZkBlockHeaderAlphaSignedContents';
+        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_009PsFLorenBlockHeaderAlphaFullHeader';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,9 +32,37 @@ class _008PtEdo2ZkBlockHeaderAlphaSignedContentsNormalizer implements Denormaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Bzzhh\Pezos\Generated\Proto\Model\_008PtEdo2ZkBlockHeaderAlphaSignedContents();
+        $object = new \Bzzhh\Pezos\Generated\Proto\Model\_009PsFLorenBlockHeaderAlphaFullHeader();
         if (null === $data || false === \is_array($data)) {
             return $object;
+        }
+        if (\array_key_exists('level', $data)) {
+            $object->setLevel($data['level']);
+        }
+        if (\array_key_exists('proto', $data)) {
+            $object->setProto($data['proto']);
+        }
+        if (\array_key_exists('predecessor', $data)) {
+            $object->setPredecessor($data['predecessor']);
+        }
+        if (\array_key_exists('timestamp', $data)) {
+            $object->setTimestamp($data['timestamp']);
+        }
+        if (\array_key_exists('validation_pass', $data)) {
+            $object->setValidationPass($data['validation_pass']);
+        }
+        if (\array_key_exists('operations_hash', $data)) {
+            $object->setOperationsHash($data['operations_hash']);
+        }
+        if (\array_key_exists('fitness', $data)) {
+            $values = array();
+            foreach ($data['fitness'] as $value) {
+                $values[] = $value;
+            }
+            $object->setFitness($values);
+        }
+        if (\array_key_exists('context', $data)) {
+            $object->setContext($data['context']);
         }
         if (\array_key_exists('priority', $data)) {
             $object->setPriority($data['priority']);
@@ -53,6 +81,18 @@ class _008PtEdo2ZkBlockHeaderAlphaSignedContentsNormalizer implements Denormaliz
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        $data['level'] = $object->getLevel();
+        $data['proto'] = $object->getProto();
+        $data['predecessor'] = $object->getPredecessor();
+        $data['timestamp'] = $object->getTimestamp();
+        $data['validation_pass'] = $object->getValidationPass();
+        $data['operations_hash'] = $object->getOperationsHash();
+        $values = array();
+        foreach ($object->getFitness() as $value) {
+            $values[] = $value;
+        }
+        $data['fitness'] = $values;
+        $data['context'] = $object->getContext();
         $data['priority'] = $object->getPriority();
         $data['proof_of_work_nonce'] = $object->getProofOfWorkNonce();
         if (null !== $object->getSeedNonceHash()) {

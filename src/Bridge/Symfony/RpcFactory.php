@@ -7,7 +7,7 @@ namespace Bzzhh\Pezos\Bridge\Symfony;
 use Bzzhh\Pezos\Generated\Mempool\Client as MempoolClient;
 use Bzzhh\Pezos\Generated\Proto\Client as ProtoClient;
 use Bzzhh\Pezos\Generated\Shell\Client as ShellClient;
-use Bzzhh\Pezos\Rpc\ClientFactory;
+use Bzzhh\Pezos\Http\ClientFactory;
 
 class RpcFactory
 {

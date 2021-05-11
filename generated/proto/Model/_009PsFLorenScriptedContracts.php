@@ -1,8 +1,8 @@
 <?php
 
-namespace Bzzhh\Pezos\Generated\Mempool\Model;
+namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class _008PtEdo2ZkScriptedContracts
+class _009PsFLorenScriptedContracts
 {
     /**
      * 

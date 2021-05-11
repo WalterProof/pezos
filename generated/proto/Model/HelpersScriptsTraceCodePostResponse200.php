@@ -19,7 +19,7 @@ class HelpersScriptsTraceCodePostResponse200
     /**
      * 
      *
-     * @var _008PtEdo2ZkScriptedTraceItem[]
+     * @var _009PsFLorenScriptedTraceItem[]
      */
     protected $trace;
     /**
@@ -79,7 +79,7 @@ class HelpersScriptsTraceCodePostResponse200
     /**
      * 
      *
-     * @return _008PtEdo2ZkScriptedTraceItem[]
+     * @return _009PsFLorenScriptedTraceItem[]
      */
     public function getTrace() : array
     {
@@ -88,7 +88,7 @@ class HelpersScriptsTraceCodePostResponse200
     /**
      * 
      *
-     * @param _008PtEdo2ZkScriptedTraceItem[] $trace
+     * @param _009PsFLorenScriptedTraceItem[] $trace
      *
      * @return self
      */

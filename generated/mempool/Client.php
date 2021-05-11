@@ -7,61 +7,11 @@ class Client extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
-     */
-    public function getFilter(string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Mempool\Endpoint\GetFilter(), $fetch);
-    }
-    /**
-     * Set the configuration of the mempool filter.
-     *
-     * @param null|mixed $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\Psr\Http\Message\ResponseInterface
-     */
-    public function postFilter($requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Mempool\Endpoint\PostFilter($requestBody), $fetch);
-    }
-    /**
-     * Monitor the mempool operations.
-     *
-     * @param array $queryParameters {
-     *     @var string $applied Include applied operations (set by default)
-     *     @var string $refused Include refused operations
-     *     @var string $branch_refused Include branch refused operations
-     *     @var string $branch_delayed Include branch delayed operations (set by default)
-     * }
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\Bzzhh\Pezos\Generated\Mempool\Model\NextOperation[]|\Psr\Http\Message\ResponseInterface
-     */
-    public function getMonitorOperations(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Mempool\Endpoint\GetMonitorOperations($queryParameters), $fetch);
-    }
-    /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
      * @return null|\Bzzhh\Pezos\Generated\Mempool\Model\PendingOperationsGetResponse200|\Psr\Http\Message\ResponseInterface
      */
     public function getPendingOperation(string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Mempool\Endpoint\GetPendingOperation(), $fetch);
-    }
-    /**
-     * Request the operations of your peers.
-     *
-     * @param null|\Bzzhh\Pezos\Generated\Mempool\Model\RequestOperationsPostBody $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return null|\Bzzhh\Pezos\Generated\Mempool\Model\RequestOperationsPostResponse200|\Psr\Http\Message\ResponseInterface
-     */
-    public function postRequestOperation(?\Bzzhh\Pezos\Generated\Mempool\Model\RequestOperationsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Mempool\Endpoint\PostRequestOperation($requestBody), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {

@@ -67,6 +67,12 @@ class HelpersScriptsTraceCodePostBody
     /**
      * 
      *
+     * @var mixed
+     */
+    protected $unparsingMode;
+    /**
+     * 
+     *
      * @return mixed
      */
     public function getScript()
@@ -272,6 +278,27 @@ class HelpersScriptsTraceCodePostBody
     public function setEntrypoint($entrypoint) : self
     {
         $this->entrypoint = $entrypoint;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return mixed
+     */
+    public function getUnparsingMode()
+    {
+        return $this->unparsingMode;
+    }
+    /**
+     * 
+     *
+     * @param mixed $unparsingMode
+     *
+     * @return self
+     */
+    public function setUnparsingMode($unparsingMode) : self
+    {
+        $this->unparsingMode = $unparsingMode;
         return $this;
     }
 }

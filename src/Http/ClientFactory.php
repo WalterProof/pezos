@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bzzhh\Pezos\Rpc;
+namespace Bzzhh\Pezos\Http;
 
 use Bzzhh\Pezos\Generated\Mempool\Client as MempoolClient;
 use Bzzhh\Pezos\Generated\Proto\Client as ProtoClient;

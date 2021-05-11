@@ -19,7 +19,7 @@ class ContextContractsContractIdGetResponse200
     /**
      * 
      *
-     * @var _008PtEdo2ZkScriptedContracts
+     * @var _009PsFLorenScriptedContracts
      */
     protected $script;
     /**
@@ -73,20 +73,20 @@ class ContextContractsContractIdGetResponse200
     /**
      * 
      *
-     * @return _008PtEdo2ZkScriptedContracts
+     * @return _009PsFLorenScriptedContracts
      */
-    public function getScript() : _008PtEdo2ZkScriptedContracts
+    public function getScript() : _009PsFLorenScriptedContracts
     {
         return $this->script;
     }
     /**
      * 
      *
-     * @param _008PtEdo2ZkScriptedContracts $script
+     * @param _009PsFLorenScriptedContracts $script
      *
      * @return self
      */
-    public function setScript(_008PtEdo2ZkScriptedContracts $script) : self
+    public function setScript(_009PsFLorenScriptedContracts $script) : self
     {
         $this->script = $script;
         return $this;

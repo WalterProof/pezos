@@ -35,12 +35,12 @@ class GetContextContractsByContractIdScript extends \Bzzhh\Pezos\Generated\Proto
      * {@inheritdoc}
      *
      *
-     * @return null|\Bzzhh\Pezos\Generated\Proto\Model\_008PtEdo2ZkScriptedContracts
+     * @return null|\Bzzhh\Pezos\Generated\Proto\Model\_009PsFLorenScriptedContracts
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_008PtEdo2ZkScriptedContracts', 'json');
+            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_009PsFLorenScriptedContracts', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

@@ -10,7 +10,7 @@ use Bzzhh\Pezos\Generated\Proto\Client as ProtoClient;
 use Bzzhh\Pezos\Generated\Proto\Model\ContextConstantsGetResponse200;
 use Bzzhh\Pezos\Generated\Shell\Client as ShellClient;
 use Bzzhh\Pezos\Generated\Shell\Model\ChainsChainIdIsBootstrappedGetResponse200;
-use Bzzhh\Pezos\Rpc\ClientFactory;
+use Bzzhh\Pezos\Http\ClientFactory;
 use PHPUnit\Framework\TestCase;
 
 class ClientFactoryTest extends TestCase

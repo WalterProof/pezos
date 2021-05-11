@@ -37,12 +37,12 @@ class PostHelpersParseBlock extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\
      * {@inheritdoc}
      *
      *
-     * @return null|\Bzzhh\Pezos\Generated\Proto\Model\_008PtEdo2ZkBlockHeaderAlphaSignedContents
+     * @return null|\Bzzhh\Pezos\Generated\Proto\Model\_009PsFLorenBlockHeaderAlphaSignedContents
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_008PtEdo2ZkBlockHeaderAlphaSignedContents', 'json');
+            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_009PsFLorenBlockHeaderAlphaSignedContents', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);
