@@ -13,7 +13,7 @@
       "Bzzhh\\Pezos\\Generated\\Mempool\\": "generated/mempool"
     },
     "files": [
-      "src/functions.php"
+      "src/_bootstrap.php"
     ]
   },
   "autoload-dev": {
