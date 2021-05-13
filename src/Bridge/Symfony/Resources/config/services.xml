@@ -26,5 +26,23 @@
         method="createMempool"
       />
         </service>
+
+        <service id="Bzzhh\Tzkt\Api\AccountsApi" />
+        <service id="Bzzhh\Tzkt\Api\BigMapsApi" />
+        <service id="Bzzhh\Tzkt\Api\BlocksApi" />
+        <service id="Bzzhh\Tzkt\Api\CommitmentsApi" />
+        <service id="Bzzhh\Tzkt\Api\ContractsApi" />
+        <service id="Bzzhh\Tzkt\Api\CyclesApi" />
+        <service id="Bzzhh\Tzkt\Api\DelegatesApi" />
+        <service id="Bzzhh\Tzkt\Api\HeadApi" />
+        <service id="Bzzhh\Tzkt\Api\OperationsApi" />
+        <service id="Bzzhh\Tzkt\Api\ProtocolsApi" />
+        <service id="Bzzhh\Tzkt\Api\QuotesApi" />
+        <service id="Bzzhh\Tzkt\Api\RewardsApi" />
+        <service id="Bzzhh\Tzkt\Api\RightsApi" />
+        <service id="Bzzhh\Tzkt\Api\SoftwareApi" />
+        <service id="Bzzhh\Tzkt\Api\StatisticsApi" />
+        <service id="Bzzhh\Tzkt\Api\SuggestApi" />
+        <service id="Bzzhh\Tzkt\Api\VotingApi" />
     </services>
 </container>
