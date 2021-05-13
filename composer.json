@@ -28,7 +28,7 @@
     "bitwasp/bitcoin": "^1.0",
     "jane-php/open-api-runtime": "^6.3",
     "symfony/framework-bundle": "^5.2",
-    "bzzhh/tzkt-php-client": "^0.1.0"
+    "bzzhh/tzkt-php-client": "dev-main"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.18",
