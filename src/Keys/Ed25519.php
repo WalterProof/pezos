@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Keys;
 
-use BitWasp\Buffertools\Buffer;
-use BitWasp\Buffertools\BufferInterface;
 use function Bzzhh\Pezos\b58cdecode;
+use function Bzzhh\Pezos\b58cencode;
 use function Bzzhh\Pezos\blake2b;
 use Bzzhh\Pezos\Prefix;
 
@@ -32,16 +31,33 @@ class Ed25519 implements Curve
         return Prefix::BYTES[Prefix::EDSIG];
     }
 
-    public function getPublicKey(string $privateKey): BufferInterface
+    public function getPublicKey(string $privateKey): string
     {
-        return Buffer::hex(
-            b58cdecode($privateKey, $this->privateKeyPrefix()),
-        )->slice(SODIUM_CRYPTO_BOX_PUBLICKEYBYTES);
+        return b58cencode(
+            bin2hex(
+                pack(
+                    'C*',
+                    ...\array_slice(
+                        unpack(
+                            'C*',
+                            hex2bin(
+                                b58cdecode(
+                                    $privateKey,
+                                    $this->privateKeyPrefix(),
+                                ),
+                            ),
+                        ),
+                        SODIUM_CRYPTO_BOX_PUBLICKEYBYTES,
+                    ),
+                ),
+            ),
+            $this->publicKeyPrefix(),
+        );
     }
 
-    public function sign(string $msg, BufferInterface $privateKey): Signature
+    public function signHex(string $msg): Signature
     {
-        return new Signature(new Buffer($msg), $this->signaturePrefix());
+        return new Signature($msg, $this->signaturePrefix());
     }
 
     public function verifySignedHex(
@@ -51,13 +67,12 @@ class Ed25519 implements Curve
     ): bool {
         $signature = b58cdecode($signature, $this->signaturePrefix());
         $publicKey = b58cdecode($publicKey, $this->publicKeyPrefix());
-        $msg       = Buffer::hex($msg);
-        $hash      = blake2b($msg->getBinary());
+        $hash      = blake2b(hex2bin($msg));
 
         return sodium_crypto_sign_verify_detached(
-            Buffer::hex($signature)->getBinary(),
+            hex2bin($signature),
             $hash,
-            Buffer::hex($publicKey)->getBinary(),
+            hex2bin($publicKey),
         );
     }
 }

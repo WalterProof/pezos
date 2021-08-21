@@ -14,7 +14,7 @@ class KeyTest extends TestCase
     /**
      * @dataProvider \Bzzhh\Pezos\Tests\Unit\DataProvider\Ed25519::signatures()
      */
-    public function testEd25519(Signature $signature): void
+    public function testSignature(Signature $signature): void
     {
         $key = Key::fromBase58($signature->account->privateKey, new Ed25519());
 

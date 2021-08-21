@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Keys;
 
-use BitWasp\Buffertools\BufferInterface;
-
 interface Curve
 {
     public function addressPrefix(): array;
@@ -16,7 +14,13 @@ interface Curve
 
     public function signaturePrefix(): array;
 
-    public function getPublicKey(string $privateKey): BufferInterface;
+    public function getPublicKey(string $privateKey): string;
 
-    public function sign(string $msg, BufferInterface $privateKey): Signature;
+    public function signHex(string $msg): Signature;
+
+    public function verifySignedHex(
+        string $signature,
+        string $msg,
+        string $publicKey
+    ): bool;
 }

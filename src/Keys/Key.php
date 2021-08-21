@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Keys;
 
-use BitWasp\Buffertools\Buffer;
-use BitWasp\Buffertools\BufferInterface;
 use function Bzzhh\Pezos\b58cdecode;
 
 class Key
 {
     private Curve $curve;
-    private BufferInterface $privKey;
+    private string $privKey;
 
-    public function __construct(BufferInterface $privKey, Curve $curve)
+    public function __construct(string $privKey, Curve $curve)
     {
         $this->privKey = $privKey;
         $this->curve   = $curve;
@@ -22,19 +20,17 @@ class Key
     public function signHex(string $msg): Signature
     {
         $signature = sodium_crypto_sign_detached(
-            (new Buffer(
-                sodium_crypto_generichash(Buffer::hex($msg)->getBinary()),
-            ))->getBinary(),
-            $this->privKey->getBinary(),
+            sodium_crypto_generichash(hex2bin($msg)),
+            hex2bin($this->privKey),
         );
 
-        return $this->curve->sign($signature, $this->privKey);
+        return $this->curve->signHex(bin2hex($signature));
     }
 
     public static function fromBase58(string $privKey, Curve $curve): self
     {
         return new self(
-            Buffer::hex(b58cdecode($privKey, $curve->privateKeyPrefix())),
+            b58cdecode($privKey, $curve->privateKeyPrefix()),
             $curve,
         );
     }

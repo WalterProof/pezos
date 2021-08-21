@@ -12,14 +12,29 @@ At this time, this lib can only do basic operations with Ed25519 keys.
 
 `composer require bzzhh/pezos`
 
+## Features
+
+### Instanciate key from secret key
+
 ```php
-$key = new Pezos\Keys\PubKey(
+$key = Pezos\Keys\Key::fromBase58(
   'edskRkGanpJ2fEBdV5xjhFS6DaB5CUsGwZPuTD73VoioQYTTJJKcxJPXXa5FrjA2e8y2LKqwdXNqB9WB4yAQG3gaQTnp15LwDu',
   new Pezos\Keys\Ed25519(),
 );
 $key->getPublicKey();
 // "edpkvCdu6RSSe379P2ACo8rGoqNRzQRRwNmHfj1dBr4DnSTKwCNxi5"
 $key->getAddress();
+// "tz1PAeuxsMA76x5cnKPkWKof2iGneN3Mb1eQ"
+```
+
+### Instanciate key from public key
+
+```php
+$pubKey = Pezos\Keys\PubKey::fromBase58(
+  'edpkvCdu6RSSe379P2ACo8rGoqNRzQRRwNmHfj1dBr4DnSTKwCNxi5',
+  new Pezos\Keys\Ed25519(),
+);
+$pubKey->getAddress();
 // "tz1PAeuxsMA76x5cnKPkWKof2iGneN3Mb1eQ"
 ```
 
