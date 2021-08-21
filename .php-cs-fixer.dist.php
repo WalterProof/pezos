@@ -2,20 +2,21 @@
 
 declare(strict_types=1);
 
-$finder = PhpCsFixer\Finder::create()
-    ->in(['src', 'tests'])
-;
+$finder = PhpCsFixer\Finder::create()->in(['src', 'tests']);
 
-return PhpCsFixer\Config::create()
+$config = new PhpCsFixer\Config();
+$config
     ->setRiskyAllowed(true)
     ->setRules([
-        '@Symfony'                         => true,
-        'array_indentation'                => true,
-        'binary_operator_spaces'           => ['align_double_arrow' => true, 'align_equals' => true],
-        'declare_strict_types'             => true,
-        'native_function_invocation'       => ['include' => ['@compiler_optimized']],
-        'no_alias_functions'               => true,
-        'no_extra_blank_lines'             => [
+        '@Symfony'               => true,
+        'array_indentation'      => true,
+        'binary_operator_spaces' => [
+            'operators' => ['=>' => 'align', '=' => 'align'],
+        ],
+        'declare_strict_types'       => true,
+        'native_function_invocation' => ['include' => ['@compiler_optimized']],
+        'no_alias_functions'         => true,
+        'no_extra_blank_lines'       => [
             'tokens' => [
                 'break',
                 'continue',
@@ -28,7 +29,6 @@ return PhpCsFixer\Config::create()
                 'use',
             ],
         ],
-        'no_short_echo_tag'                   => true,
         'no_useless_else'                     => true,
         'no_useless_return'                   => true,
         'ordered_class_elements'              => true,
@@ -36,5 +36,6 @@ return PhpCsFixer\Config::create()
         'phpdoc_order'                        => true,
     ])
     ->setUsingCache(true)
-    ->setFinder($finder)
-;
+    ->setFinder($finder);
+
+return $config;

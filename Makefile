@@ -22,9 +22,13 @@ down: ## stop containers
 install: ## install deps
 	${RUN_PHP} composer install
 
+.PHONY: update
+update: ## update deps
+	${RUN_PHP} composer update
+
 .PHONY: test
 test: ## run tests
-	${RUN_PHP} ./vendor/bin/phpunit --testdox
+	${RUN_PHP} vendor/bin/phpunit --testdox
 
 .PHONY: shell
 shell: ## enter php container
@@ -34,3 +38,11 @@ shell: ## enter php container
 jane: ## generate a client (make jane CONFIG=config/jane-rpc-openapi.php)
 	${RUN_PHP} vendor/bin/jane-openapi generate --config-file=${CONFIG}
 	${RUN_PHP} composer dumpautoload
+
+.PHONY: cs-check
+cs-check: ## run fixer (check)
+	${RUN_PHP} vendor/bin/php-cs-fixer fix --dry-run
+
+.PHONY: cs-fix
+cs-fix: ## run fixer
+	${RUN_PHP} vendor/bin/php-cs-fixer fix

@@ -6,19 +6,19 @@ namespace Bzzhh\Pezos;
 
 class Prefix
 {
-    const TZ1   = 'tz1';
-    const EDPK  = 'edpk';
-    const EDSK  = 'edsk';
-    const EDSIG = 'edsig';
+    public const TZ1   = 'tz1';
+    public const EDPK  = 'edpk';
+    public const EDSK  = 'edsk';
+    public const EDSIG = 'edsig';
 
-    const BYTES = [
+    public const BYTES = [
         self::TZ1   => [6, 161, 159],
         self::EDPK  => [13, 15, 37, 217],
         self::EDSK  => [43, 246, 78, 7],
         self::EDSIG => [9, 245, 205, 134, 18],
     ];
 
-    const LENGTH = [
+    public const LENGTH = [
         self::TZ1   => 20,
         self::EDPK  => 32,
         self::EDSIG => 64,

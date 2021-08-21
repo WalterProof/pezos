@@ -6,9 +6,9 @@ namespace Bzzhh\Pezos;
 
 class Validator
 {
-    const NO_PREFIX_MATCHED = 'No Prefix Matched';
-    const INVALID_CHECKSUM = 'Invalid Checksum';
-    const INVALID_LENGTH = 'Invalid Length';
+    public const NO_PREFIX_MATCHED = 'No Prefix Matched';
+    public const INVALID_CHECKSUM  = 'Invalid Checksum';
+    public const INVALID_LENGTH    = 'Invalid Length';
 
     private ?string $error = null;
 
