@@ -1,7 +1,6 @@
 /.gitattributes export-ignore
 /.github export-ignore
 /.gitignore export-ignore
-/.env export-ignore
 /.env.dist export-ignore
 /php-cs-fixer.dist.php export-ignore
 /.prettierrc export-ignore

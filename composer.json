@@ -28,7 +28,8 @@
     "bitwasp/bitcoin": "dev-master",
     "jane-php/open-api-runtime": "^6.3",
     "symfony/framework-bundle": "^5.2",
-    "bzzhh/tzkt-php-client": "dev-main"
+    "bzzhh/tzkt-php-client": "dev-main",
+    "tuupola/base58": "^2.1"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.0",
@@ -36,7 +37,6 @@
     "vimeo/psalm": "^4.6",
     "jane-php/open-api-3": "^6.3",
     "symfony/var-dumper": "^5.2",
-    "symfony/dotenv": "^5.2",
     "php-http/client-common": "^2.3",
     "php-http/message": "^1.11",
     "php-http/discovery": "^1.13",

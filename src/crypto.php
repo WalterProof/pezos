@@ -4,23 +4,36 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos;
 
-use BitWasp\Bitcoin\Base58;
 use BitWasp\Buffertools\Buffer;
 use BitWasp\Buffertools\BufferInterface;
-use BitWasp\Buffertools\Buffertools;
+use Tuupola\Base58;
 
 function b58cencode(BufferInterface $payload, array $prefix): string
 {
-    return Base58::encodeCheck(
-        Buffertools::concat(new Buffer(pack('C*', ...$prefix)), $payload),
-    );
+    $base58check = new Base58([
+        'characters' => Base58::BITCOIN,
+        'check'      => true,
+        'version'    => $prefix[0],
+    ]);
+
+    $buf = pack('C*', ...\array_slice($prefix, 1)).$payload->getBinary();
+
+    return $base58check->encode($buf);
 }
 
 function b58cdecode(string $payload, array $prefix): BufferInterface
 {
-    return Base58::decodeCheck($payload)->slice(
-        (new Buffer(pack('C*', ...$prefix)))->getSize(),
-    );
+    $base58check = new Base58([
+        'characters' => Base58::BITCOIN,
+        'check'      => true,
+        'version'    => $prefix[0],
+    ]);
+
+    $decoded = $base58check->decode($payload);
+    $buf     = unpack('C*', $decoded);
+    $buf     = \array_slice($buf, \count(\array_slice($prefix, 1)));
+
+    return new Buffer(pack('C*', ...$buf));
 }
 
 function blake2b(string $input, int $length = 32): string
