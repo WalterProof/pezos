@@ -6,6 +6,8 @@ services:
         UID: ${UID-1000}
         GID: ${GID-1000}
       context: ./docker
+    environment:
+      - NODE_URL=http://sandbox:20000
     command: sh
     tty: true
     stdin_open: true

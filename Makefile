@@ -79,7 +79,7 @@ test: ##@QA run tests
 	$(RUN_PHP) vendor/bin/phpunit --testdox
 
 test-i: ##@QA run integration tests
-	$(RUN_PHP) vendor/bin/phpunit --testdox --group integration
+	$(RUN_PHP) vendor/bin/phpunit --testdox --testsuite integration
 
 test-u: ##@QA run unit tests
-	$(RUN_PHP) vendor/bin/phpunit --testdox --exclude-group integration
+	$(RUN_PHP) vendor/bin/phpunit --testdox --testsuite unit

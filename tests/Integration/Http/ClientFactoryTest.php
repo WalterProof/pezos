@@ -13,9 +13,6 @@ use Bzzhh\Pezos\Generated\Shell\Model\ChainsChainIdIsBootstrappedGetResponse200;
 use Bzzhh\Pezos\Http\ClientFactory;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @group integration
- */
 class ClientFactoryTest extends TestCase
 {
     private ShellClient $shellClient;
