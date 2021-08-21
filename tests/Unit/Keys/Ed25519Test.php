@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Tests\Unit\Pezos\Keys;
 
 use Bzzhh\Pezos\Keys\Ed25519;
-use Bzzhh\Pezos\Tests\Unit\DataProvider\Signature;
+use Bzzhh\Pezos\Tests\Unit\DataProvider\Models\Signature;
 use PHPUnit\Framework\TestCase;
 
 class Ed25519Test extends TestCase

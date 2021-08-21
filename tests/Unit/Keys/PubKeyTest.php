@@ -6,8 +6,8 @@ namespace Bzzhh\Pezos\Tests\Unit\Keys;
 
 use Bzzhh\Pezos\Keys\Ed25519;
 use Bzzhh\Pezos\Keys\PubKey;
-use Bzzhh\Pezos\Tests\Unit\DataProvider\Account;
-use Bzzhh\Pezos\Tests\Unit\DataProvider\Signature;
+use Bzzhh\Pezos\Tests\Unit\DataProvider\Models\Account;
+use Bzzhh\Pezos\Tests\Unit\DataProvider\Models\Signature;
 use PHPUnit\Framework\TestCase;
 
 class PubKeyTest extends TestCase

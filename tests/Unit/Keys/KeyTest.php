@@ -6,7 +6,7 @@ namespace Bzzhh\Tests\Unit\Keys;
 
 use Bzzhh\Pezos\Keys\Ed25519;
 use Bzzhh\Pezos\Keys\Key;
-use Bzzhh\Pezos\Tests\Unit\DataProvider\Signature;
+use Bzzhh\Pezos\Tests\Unit\DataProvider\Models\Signature;
 use PHPUnit\Framework\TestCase;
 
 class KeyTest extends TestCase

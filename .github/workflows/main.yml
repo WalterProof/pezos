@@ -17,6 +17,8 @@ jobs:
         with:
           php-version: '7.4'
           extensions: gmp
+        env:
+          NODE_URL: https://mainnet-tezos.giganode.io
 
       - name: Get composer cache directory
         id: composer-cache
@@ -31,9 +33,10 @@ jobs:
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Linter
-        run: vendor/bin/php-cs-fixer fix --dry-run
+        run: make cs-check
 
-      - name: Test
-        run: |
-          mv .env.ci .env.test.local
-          vendor/bin/phpunit
+      - name: Unit Tests
+        run: make test-u
+
+      - name: Integration Tests
+        run: make test-i
