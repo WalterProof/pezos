@@ -20,6 +20,6 @@ class Signature
 
     public function toBase58(): string
     {
-        return b58cencode($this->bytes, $this->prefix);
+        return b58cencode($this->bytes->getHex(), $this->prefix);
     }
 }

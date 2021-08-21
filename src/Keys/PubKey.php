@@ -21,7 +21,7 @@ class PubKey
         $this->curve   = $curve;
         $this->pubKey  = $pubKey;
         $this->address = b58cencode(
-            new Buffer(blake2b($this->pubKey->getBinary(), 20)),
+            bin2hex(blake2b($this->pubKey->getBinary(), 20)),
             $this->curve->addressPrefix(),
         );
     }
@@ -33,7 +33,10 @@ class PubKey
 
     public function getPublicKey(): string
     {
-        return b58cencode($this->pubKey, $this->curve->publicKeyPrefix());
+        return b58cencode(
+            $this->pubKey->getHex(),
+            $this->curve->publicKeyPrefix(),
+        );
     }
 
     public function getAddress(): string
@@ -43,7 +46,10 @@ class PubKey
 
     public static function fromBase58(string $pubKey, Curve $curve): PubKey
     {
-        return new self(b58cdecode($pubKey, $curve->publicKeyPrefix()), $curve);
+        return new self(
+            Buffer::hex(b58cdecode($pubKey, $curve->publicKeyPrefix())),
+            $curve,
+        );
     }
 
     public function verifySignedHex(string $signature, string $msg): bool
@@ -53,7 +59,7 @@ class PubKey
         $hash      = blake2b($msg->getBinary());
 
         return sodium_crypto_sign_verify_detached(
-            $signature->getBinary(),
+            Buffer::hex($signature)->getBinary(),
             $hash,
             $this->pubKey->getBinary(),
         );

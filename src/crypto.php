@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos;
 
-use BitWasp\Buffertools\Buffer;
-use BitWasp\Buffertools\BufferInterface;
 use Tuupola\Base58;
 
-function b58cencode(BufferInterface $payload, array $prefix): string
+function b58cencode(string $hex, array $prefix): string
 {
     $base58check = new Base58([
         'characters' => Base58::BITCOIN,
@@ -16,12 +14,12 @@ function b58cencode(BufferInterface $payload, array $prefix): string
         'version'    => $prefix[0],
     ]);
 
-    $buf = pack('C*', ...\array_slice($prefix, 1)).$payload->getBinary();
+    $bytes = pack('C*', ...\array_slice($prefix, 1)).hex2bin($hex);
 
-    return $base58check->encode($buf);
+    return $base58check->encode($bytes);
 }
 
-function b58cdecode(string $payload, array $prefix): BufferInterface
+function b58cdecode(string $payload, array $prefix): string
 {
     $base58check = new Base58([
         'characters' => Base58::BITCOIN,
@@ -30,10 +28,15 @@ function b58cdecode(string $payload, array $prefix): BufferInterface
     ]);
 
     $decoded = $base58check->decode($payload);
-    $buf     = unpack('C*', $decoded);
-    $buf     = \array_slice($buf, \count(\array_slice($prefix, 1)));
+    $bytes   = pack(
+        'C*',
+        ...\array_slice(
+            unpack('C*', $decoded),
+            \count(\array_slice($prefix, 1)),
+        ),
+    );
 
-    return new Buffer(pack('C*', ...$buf));
+    return bin2hex($bytes);
 }
 
 function blake2b(string $input, int $length = 32): string

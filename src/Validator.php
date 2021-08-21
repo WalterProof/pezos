@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos;
 
+use BitWasp\Buffertools\Buffer;
+
 class Validator
 {
     public const NO_PREFIX_MATCHED = 'No Prefix Matched';
@@ -47,7 +49,7 @@ class Validator
             return false;
         }
 
-        if (Prefix::LENGTH[$prefixKey] !== $decoded->getSize()) {
+        if (Prefix::LENGTH[$prefixKey] !== Buffer::hex($decoded)->getSize()) {
             $this->error = static::INVALID_LENGTH;
 
             return false;

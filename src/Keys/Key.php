@@ -34,7 +34,7 @@ class Key
     public static function fromBase58(string $privKey, Curve $curve): self
     {
         return new self(
-            b58cdecode($privKey, $curve->privateKeyPrefix()),
+            Buffer::hex(b58cdecode($privKey, $curve->privateKeyPrefix())),
             $curve,
         );
     }
