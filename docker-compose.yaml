@@ -15,3 +15,9 @@ services:
         max-file: '3'
     volumes:
       - .:/var/pkg
+
+  sandbox:
+    image: 'tqtezos/flextesa:20210602'
+    command: flobox start
+    ports:
+      - '8732:20000'
