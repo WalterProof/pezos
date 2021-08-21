@@ -1,0 +1,15 @@
+/.gitattributes export-ignore
+/.github export-ignore
+/.gitignore export-ignore
+/.env export-ignore
+/.env.dist export-ignore
+/php-cs-fixer.dist.php export-ignore
+/.prettierrc export-ignore
+/docker-compose.yaml export-ignore
+/Makefile export-ignore
+/phpunit.xml.dist export-ignore
+/tests export-ignore
+/docker export-ignore
+/config export-ignore
+/psalm.xml export-ignore
+/README.md export-ignore
