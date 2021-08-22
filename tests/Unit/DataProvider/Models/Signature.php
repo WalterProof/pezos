@@ -7,18 +7,18 @@ namespace Bzzhh\Pezos\Tests\Unit\DataProvider\Models;
 class Signature
 {
     public Account $account;
-    public string $hex;
+    public string $message;
     public string $signature;
     public bool $valid;
 
     public function __construct(
         Account $account,
-        string $hex,
+        string $message,
         string $signature,
         bool $valid = true
     ) {
         $this->account   = $account;
-        $this->hex       = $hex;
+        $this->message   = $message;
         $this->signature = $signature;
         $this->valid     = $valid;
     }

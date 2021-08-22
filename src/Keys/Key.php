@@ -17,14 +17,9 @@ class Key
         $this->curve   = $curve;
     }
 
-    public function signHex(string $msg): Signature
+    public function sign(string $hash): Signature
     {
-        $signature = sodium_crypto_sign_detached(
-            sodium_crypto_generichash(hex2bin($msg)),
-            hex2bin($this->privKey),
-        );
-
-        return $this->curve->signHex(bin2hex($signature));
+        return $this->curve->sign($hash, $this->privKey);
     }
 
     public static function fromBase58(string $privKey, Curve $curve): self

@@ -77,3 +77,4 @@ Thanks to these libraries from which code is just translated to PHP.
 - https://github.com/goat-systems/go-tezos
 - https://github.com/ecadlabs/taquito
 - https://github.com/Cryptonomic/ConseilJS
+- https://github.com/AndrewKishino/sotez

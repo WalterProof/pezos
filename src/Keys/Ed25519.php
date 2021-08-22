@@ -55,24 +55,28 @@ class Ed25519 implements Curve
         );
     }
 
-    public function signHex(string $msg): Signature
+    public function sign(string $message, string $privKey): Signature
     {
-        return new Signature($msg, $this->signaturePrefix());
+        $hex = sodium_crypto_sign_detached(
+            sodium_crypto_generichash(hex2bin($message)),
+            hex2bin($privKey),
+        );
+
+        return new Signature(bin2hex($hex), $this->signaturePrefix());
     }
 
-    public function verifySignedHex(
+    public function verifySignature(
         string $signature,
-        string $msg,
-        string $publicKey
+        string $message,
+        string $pubKey
     ): bool {
         $signature = b58cdecode($signature, $this->signaturePrefix());
-        $publicKey = b58cdecode($publicKey, $this->publicKeyPrefix());
-        $hash      = blake2b(hex2bin($msg));
+        $message   = blake2b(hex2bin($message));
 
         return sodium_crypto_sign_verify_detached(
             hex2bin($signature),
-            $hash,
-            hex2bin($publicKey),
+            $message,
+            hex2bin($pubKey),
         );
     }
 }

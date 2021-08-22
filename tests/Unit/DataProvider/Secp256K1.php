@@ -7,18 +7,18 @@ namespace Bzzhh\Pezos\Tests\Unit\DataProvider;
 use Bzzhh\Pezos\Tests\Unit\DataProvider\Models\Account;
 use Bzzhh\Pezos\Tests\Unit\DataProvider\Models\Signature;
 
-class Ed25519
+class Secp256K1
 {
     private const ALICE = [
-        'edskRgwZgrAsBSN4tN3b6iy6opofPVxsRkn2obRkP156p6bkprxL98hZyxExv6LyBm82BkAYo97uWyZgy96rDjuVM5FehPQMz2',
-        'edpkvYdirUXWtuwdcxPnXkbX4gXeL7LNtji4Qionp71d3Nw6Hmqezz',
-        'tz1UxbPFjP22Hmc4tz2cxEXUx3cz17W4L7ow',
+        'spsk2cw2XMwVZujNsjqXaeUkaGaHDYU48rvuMjAVqxDySfc7TYT3oX',
+        'sppk7cQY2iPnn4sSBQW9vGrsdpcegz9jGXo8BkNRSKRPntdxhzobmKK',
+        'tz2MtBBnewk4ToQocPK8FzY7CGRdJdUBt16n',
     ];
 
     private const BOB = [
-        'edskRwvobw55Fi53ikwAfo3LHwm74Dx4DwhKmM1Bz957TcVgGFhC9Ujnqq6tin4giethoLQCnfULNzGFQWxYqkKaFQbqX7euWu',
-        'edpkv2ttLericWCYLjWsm1uXnWgUBjhTF8MFGLhyMawbjFW7v5Yvc3',
-        'tz1iv68Lbh4v3PWeY7SypNMHgJ78DnS846fB',
+        'spsk3E5Eed7MkphK8YKuY3Uqt6kzvh57i6EsMm99o6LDe4q7Dm5kfY',
+        'sppk7bcLR1Uyt7DBdi4RQiEj5y3DYmHWErZFuVgqqffTD1oDxkePVSw',
+        'tz29SyXU5Ysch9kvPDY2EQFmPE1F3ZcHLb4F',
     ];
 
     public static function accounts(): \Generator
@@ -35,7 +35,7 @@ class Ed25519
                 // tezos-client hash data '"Hello"' of type string
                 '05010000000548656c6c6f',
                 // tezos-client sign bytes '0x05010000000548656c6c6f' for alice
-                'edsigtxHb4HCsgf3zLLcTx4Rj23Y3CSJf8jaRXwoVHZJgSsMhzFoxKtinx2TT5FgYKprLVQ9nq8o93MCpmxaTuRB7igT9b6nZyf',
+                'spsig1f6UAm9sYiqBqvYpNzvD4WpPgesWjDfz35BKGuJsBZydtRVXXi9trhnq4vYCaKsb4ELsqZuSoJqdnKpWmjFiJ1gMgPEbhN',
             ),
         ];
     }

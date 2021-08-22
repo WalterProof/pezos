@@ -10,18 +10,13 @@ use function Bzzhh\Pezos\blake2b;
 
 class PubKey
 {
-    private Curve $curve;
     private string $pubKey;
-    private string $address;
+    private Curve $curve;
 
-    public function __construct(string $pubKey, Curve $curve)
+    private function __construct(string $pubKey, Curve $curve)
     {
-        $this->curve   = $curve;
-        $this->pubKey  = $pubKey;
-        $this->address = b58cencode(
-            bin2hex(blake2b(hex2bin($this->pubKey), 20)),
-            $this->curve->addressPrefix(),
-        );
+        $this->pubKey = $pubKey;
+        $this->curve  = $curve;
     }
 
     public function getPublicKey(): string
@@ -31,23 +26,24 @@ class PubKey
 
     public function getAddress(): string
     {
-        return $this->address;
+        return b58cencode(
+            bin2hex(blake2b(hex2bin($this->pubKey), 20)),
+            $this->curve->addressPrefix(),
+        );
     }
 
-    public static function fromBase58(string $pubKey, Curve $curve): PubKey
+    public static function fromHex(string $hex, Curve $curve): self
+    {
+        return new self($hex, $curve);
+    }
+
+    public static function fromBase58(string $pubKey, Curve $curve): self
     {
         return new self(b58cdecode($pubKey, $curve->publicKeyPrefix()), $curve);
     }
 
-    public function verifySignedHex(string $signature, string $msg): bool
+    public function verifySignature(string $signature, string $hash): bool
     {
-        $signature = b58cdecode($signature, $this->curve->signaturePrefix());
-        $hash      = blake2b(hex2bin($msg));
-
-        return sodium_crypto_sign_verify_detached(
-            hex2bin($signature),
-            $hash,
-            hex2bin($this->pubKey),
-        );
+        return $this->curve->verifySignature($signature, $hash, $this->pubKey);
     }
 }

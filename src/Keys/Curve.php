@@ -16,11 +16,11 @@ interface Curve
 
     public function getPublicKey(string $privateKey): string;
 
-    public function signHex(string $msg): Signature;
+    public function sign(string $hash, string $privateKey): Signature;
 
-    public function verifySignedHex(
+    public function verifySignature(
         string $signature,
-        string $msg,
+        string $hash,
         string $publicKey
     ): bool;
 }
