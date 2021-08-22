@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Keys;
 
 use function Bzzhh\Pezos\b58cdecode;
+use Bzzhh\Pezos\Prefix;
 
 class Key
 {
@@ -22,8 +23,14 @@ class Key
         return $this->curve->sign($hash, $this->privKey);
     }
 
-    public static function fromBase58(string $privKey, Curve $curve): self
+    public static function fromBase58(string $privKey): self
     {
+        if (0 === strpos($privKey, Prefix::EDSK)) {
+            $curve = new Ed25519();
+        } elseif (0 === strpos($privKey, Prefix::SPSK)) {
+            $curve = new Secp256K1();
+        }
+
         return new self(
             b58cdecode($privKey, $curve->privateKeyPrefix()),
             $curve,

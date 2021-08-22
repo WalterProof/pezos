@@ -19,7 +19,6 @@ At this time, this lib can only do basic operations with Ed25519 keys.
 ```php
 $key = Pezos\Keys\Key::fromBase58(
   'edskRkGanpJ2fEBdV5xjhFS6DaB5CUsGwZPuTD73VoioQYTTJJKcxJPXXa5FrjA2e8y2LKqwdXNqB9WB4yAQG3gaQTnp15LwDu',
-  new Pezos\Keys\Ed25519(),
 );
 $key->getPublicKey();
 // "edpkvCdu6RSSe379P2ACo8rGoqNRzQRRwNmHfj1dBr4DnSTKwCNxi5"
@@ -32,10 +31,26 @@ $key->getAddress();
 ```php
 $pubKey = Pezos\Keys\PubKey::fromBase58(
   'edpkvCdu6RSSe379P2ACo8rGoqNRzQRRwNmHfj1dBr4DnSTKwCNxi5',
-  new Pezos\Keys\Ed25519(),
 );
 $pubKey->getAddress();
 // "tz1PAeuxsMA76x5cnKPkWKof2iGneN3Mb1eQ"
+```
+
+### Sign messages
+
+```php
+$privKey->sign('05010000000548656c6c6f');
+// edsigtxHb4HCsgf3zLLcTx4Rj23Y3CSJf8jaRXwoVHZJgSsMhzFoxKtinx2TT5FgYKprLVQ9nq8o93MCpmxaTuRB7igT9b6nZyf
+```
+
+### Verify signed messages
+
+```php
+$pubKey->verifySignature(
+  'edsigtxHb4HCsgf3zLLcTx4Rj23Y3CSJf8jaRXwoVHZJgSsMhzFoxKtinx2TT5FgYKprLVQ9nq8o93MCpmxaTuRB7igT9b6nZyf',
+  '05010000000548656c6c6f',
+);
+// true
 ```
 
 ### RPC

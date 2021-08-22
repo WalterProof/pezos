@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Tests\Unit\Keys;
 
-use Bzzhh\Pezos\Keys\Ed25519;
 use Bzzhh\Pezos\Keys\PubKey;
-use Bzzhh\Pezos\Keys\Secp256K1;
 use Bzzhh\Pezos\Tests\Unit\DataProvider\Models\Account;
 use Bzzhh\Pezos\Tests\Unit\DataProvider\Models\Signature;
 use PHPUnit\Framework\TestCase;
@@ -18,7 +16,7 @@ class PubKeyTest extends TestCase
      */
     public function testEd25519PubKey(Account $account): void
     {
-        $pubKey = PubKey::fromBase58($account->publicKey, new Ed25519());
+        $pubKey = PubKey::fromBase58($account->publicKey);
 
         $this->assertSame($account->publicKey, $pubKey->getPublicKey());
         $this->assertSame($account->publicKeyHash, $pubKey->getAddress());
@@ -29,7 +27,7 @@ class PubKeyTest extends TestCase
      */
     public function testSecp256K1PubKey(Account $account): void
     {
-        $pubKey = PubKey::fromBase58($account->publicKey, new Secp256K1());
+        $pubKey = PubKey::fromBase58($account->publicKey);
 
         $this->assertSame($account->publicKey, $pubKey->getPublicKey());
         $this->assertSame($account->publicKeyHash, $pubKey->getAddress());
@@ -40,10 +38,7 @@ class PubKeyTest extends TestCase
      */
     public function testEd25519VerifySignature(Signature $signature): void
     {
-        $key = PubKey::fromBase58(
-            $signature->account->publicKey,
-            new Ed25519(),
-        );
+        $key = PubKey::fromBase58($signature->account->publicKey);
 
         $test = $signature->valid ? 'assertSame' : 'assertNotSame';
 
@@ -58,10 +53,7 @@ class PubKeyTest extends TestCase
      */
     public function testSecp256K1VerifySignature(Signature $signature): void
     {
-        $key = PubKey::fromBase58(
-            $signature->account->publicKey,
-            new Secp256K1(),
-        );
+        $key = PubKey::fromBase58($signature->account->publicKey);
 
         $test = $signature->valid ? 'assertSame' : 'assertNotSame';
 

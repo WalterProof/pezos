@@ -7,6 +7,7 @@ namespace Bzzhh\Pezos\Keys;
 use function Bzzhh\Pezos\b58cdecode;
 use function Bzzhh\Pezos\b58cencode;
 use function Bzzhh\Pezos\blake2b;
+use Bzzhh\Pezos\Prefix;
 
 class PubKey
 {
@@ -37,8 +38,14 @@ class PubKey
         return new self($hex, $curve);
     }
 
-    public static function fromBase58(string $pubKey, Curve $curve): self
+    public static function fromBase58(string $pubKey): self
     {
+        if (0 === strpos($pubKey, Prefix::EDPK)) {
+            $curve = new Ed25519();
+        } elseif (0 === strpos($pubKey, Prefix::SPPK)) {
+            $curve = new Secp256K1();
+        }
+
         return new self(b58cdecode($pubKey, $curve->publicKeyPrefix()), $curve);
     }
 
