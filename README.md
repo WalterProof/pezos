@@ -4,15 +4,11 @@
 
 PHP lib for Tezos
 
-## Features
-
-At this time, this lib can only do basic operations with Ed25519 keys.
-
-## Usage
-
 `composer require bzzhh/pezos`
 
 ## Features
+
+Handles Secp256k1 and Ed25519 keys.
 
 ### Instanciate key from secret key
 
