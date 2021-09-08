@@ -39,6 +39,9 @@ DOCKER_COMPOSE = docker compose
 ########################################
 #               INFRA                  #
 ########################################
+rebuild: ##@Infra rebuild containers
+	$(DOCKER_COMPOSE) up -d --build --force-recreate --no-deps
+
 up: down ##@Infra restart containers
 	if [ ! -f .env -a -f .env.dist ]; then sed "s,#UID#,$(UID),g;s,#GID#,$(GID),g" .env.dist > .env; fi
 	$(DOCKER_COMPOSE) up -d
