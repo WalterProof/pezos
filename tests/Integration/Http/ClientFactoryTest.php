@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bzzhh\Pezos\Tests\Integration\Rpc;
+namespace Bzzhh\Pezos\Tests\Integration\Http;
 
 use Bzzhh\Pezos\Generated\Mempool\Client as MempoolClient;
 use Bzzhh\Pezos\Generated\Mempool\Model\PendingOperationsGetResponse200;
