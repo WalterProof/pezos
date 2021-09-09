@@ -6,6 +6,7 @@ namespace Bzzhh\Pezos\Http\TezTools;
 
 use Bzzhh\Pezos\Http\PluginFactory;
 use Bzzhh\Pezos\Http\TezTools\Response\ContractsGetResponse200;
+use Bzzhh\Pezos\Http\TezTools\Response\XtzPriceGetResponse200;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Psr\Http\Client\ClientInterface;
@@ -69,17 +70,27 @@ class Client
         );
     }
 
-    public function fetchContracts()
+    public function fetchContracts(): ContractsGetResponse200
     {
         $request  = $this->requestFactory->createRequest('GET', '/contracts');
         $response = $this->httpClient->sendRequest($request);
 
-        $contractsResponse = $this->serializer->deserialize(
+        return $this->serializer->deserialize(
             $response->getBody()->getContents(),
             ContractsGetResponse200::class,
             'json',
         );
+    }
 
-        return $contractsResponse->getContracts();
+    public function fetchXtzPrice(): XtzPriceGetResponse200
+    {
+        $request  = $this->requestFactory->createRequest('GET', '/xtz-price');
+        $response = $this->httpClient->sendRequest($request);
+
+        return $this->serializer->deserialize(
+            $response->getBody()->getContents(),
+            XtzPriceGetResponse200::class,
+            'json',
+        );
     }
 }
