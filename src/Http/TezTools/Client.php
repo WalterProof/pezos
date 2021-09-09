@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Http\TezTools;
 
 use Bzzhh\Pezos\Http\PluginFactory;
-use Bzzhh\Pezos\Http\TezTools\Model\ContractsGetResponse200;
+use Bzzhh\Pezos\Http\TezTools\Response\ContractsGetResponse200;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Psr\Http\Client\ClientInterface;

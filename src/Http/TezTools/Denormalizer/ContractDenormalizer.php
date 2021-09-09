@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bzzhh\Pezos\Http\TezTools;
+namespace Bzzhh\Pezos\Http\TezTools\Denormalizer;
 
 use Bzzhh\Pezos\Http\TezTools\Model\Contract;
 use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
@@ -29,7 +29,6 @@ class ContractDenormalizer implements ContextAwareDenormalizerInterface, Cacheab
             Contract::class,
         );
 
-        /* @var $contract Contract */
         if (isset($data['tokenAddress'])) {
             if (isset($data['tokenId'])) {
                 $contract->identifier = sprintf(

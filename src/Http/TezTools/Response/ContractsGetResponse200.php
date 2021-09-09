@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Bzzhh\Pezos\Http\TezTools\Model;
+namespace Bzzhh\Pezos\Http\TezTools\Response;
 
-use Bzzhh\Pezos\Http\TezTools\ContractDenormalizer;
+use Bzzhh\Pezos\Http\TezTools\Denormalizer\ContractDenormalizer;
+use Bzzhh\Pezos\Http\TezTools\Model\Contract;
 
 class ContractsGetResponse200
 {
