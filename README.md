@@ -78,14 +78,19 @@ Configure your host:
 ```yaml
 # config/packages/bzzhh_pezos.yaml
 bzzhh_pezos:
-  rpc_host: https://edonet.duckdns.org
+  rpc_host: https://mainnet.smartpy.io/
 ```
+
+## Dev workflow
+
+1. Launch node and php containers with `make infra-up`
+2. If possible do TDD, `make test`
 
 ## Resources
 
 Thanks to these libraries from which code is just translated to PHP.
 
-- https://github.com/goat-systems/go-tezos
-- https://github.com/ecadlabs/taquito
-- https://github.com/Cryptonomic/ConseilJS
-- https://github.com/AndrewKishino/sotez
+- <https://github.com/goat-systems/go-tezos>
+- <https://github.com/ecadlabs/taquito>
+- <https://github.com/Cryptonomic/ConseilJS>
+- <https://github.com/AndrewKishino/sotez>
