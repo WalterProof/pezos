@@ -78,7 +78,7 @@ Configure your host:
 ```yaml
 # config/packages/bzzhh_pezos.yaml
 bzzhh_pezos:
-  rpc_host: https://mainnet.smartpy.io/
+  rpc_host: https://mainnet-tezos.giganode.io/
 ```
 
 ## Dev workflow
