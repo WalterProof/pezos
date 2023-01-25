@@ -39,4 +39,4 @@ jobs:
       - name: Integration Tests
         run: make test-i
         env:
-          NODE_URL: https://mainnet-tezos.giganode.io/
+          NODE_URL: https://mainnet.api.tez.ie
