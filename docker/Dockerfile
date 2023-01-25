@@ -4,8 +4,6 @@ FROM php:7.4-cli-alpine
 # see:
 # https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md
 # https://github.com/mhart/alpine-node/issues/48
-#
-# alpine-sdk and autoconf to be able to install xdebug
 
 ARG UID
 ARG GID
@@ -29,9 +27,9 @@ RUN apk add --no-cache --purge \
     && docker-php-ext-install zip \
     && docker-php-ext-configure zip \
     && docker-php-ext-install intl \
-    && pecl install libsodium xdebug \
+    && pecl install libsodium \
     && docker-php-ext-install gmp \
-    && docker-php-ext-enable xdebug sodium \
+    && docker-php-ext-enable sodium \
     && curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
     && chmod +x /usr/local/bin/composer
