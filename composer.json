@@ -24,7 +24,7 @@
   "require": {
     "php": "^7.1|^8.0",
     "ext-sodium": "*",
-    "bzzhh/tzkt-php-client": "dev-main",
+    "bzzhh/tzkt-php-client": "^0.2",
     "tuupola/base58": "^2.1",
     "simplito/elliptic-php": "^1.0",
     "symfony/config": "^5.3|^6.0",
