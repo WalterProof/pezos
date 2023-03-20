@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Keys;
 
-use function Bzzhh\Pezos\b58cdecode;
-
 use Bzzhh\Pezos\Prefix;
 use Elliptic\EC;
+
+use function Bzzhh\Pezos\b58cdecode;
 
 class Secp256K1 implements Curve
 {

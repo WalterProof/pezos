@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Keys;
 
-use function Bzzhh\Pezos\b58cdecode;
-
 use Bzzhh\Pezos\Prefix;
+
+use function Bzzhh\Pezos\b58cdecode;
 
 class Key
 {
