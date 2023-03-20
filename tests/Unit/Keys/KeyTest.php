@@ -5,14 +5,42 @@ declare(strict_types=1);
 namespace Bzzhh\Tests\Unit\Keys;
 
 use Bzzhh\Pezos\Keys\Key;
+use Bzzhh\Pezos\Tests\Unit\DataProvider\Ed25519;
+use Bzzhh\Pezos\Tests\Unit\DataProvider\Models\Account;
 use Bzzhh\Pezos\Tests\Unit\DataProvider\Models\Signature;
+use Bzzhh\Pezos\Tests\Unit\DataProvider\Secp256K1;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class KeyTest extends TestCase
 {
-    /**
-     * @dataProvider \Bzzhh\Pezos\Tests\Unit\DataProvider\Ed25519::signatures()
-     */
+    public static function signaturesProviderEd25519(): \Generator
+    {
+        yield 'alice signature' => [
+            new Signature(
+                new Account(...Ed25519::ALICE),
+                // tezos-client hash data '"Hello"' of type string
+                '05010000000548656c6c6f',
+                // tezos-client sign bytes '0x05010000000548656c6c6f' for alice
+                'edsigtxHb4HCsgf3zLLcTx4Rj23Y3CSJf8jaRXwoVHZJgSsMhzFoxKtinx2TT5FgYKprLVQ9nq8o93MCpmxaTuRB7igT9b6nZyf',
+            ),
+        ];
+    }
+
+    public static function signaturesProviderSecp256K1(): \Generator
+    {
+        yield 'alice signature' => [
+            new Signature(
+                new Account(...Secp256K1::ALICE),
+                // tezos-client hash data '"Hello"' of type string
+                '05010000000548656c6c6f',
+                // tezos-client sign bytes '0x05010000000548656c6c6f' for alice
+                'spsig1f6UAm9sYiqBqvYpNzvD4WpPgesWjDfz35BKGuJsBZydtRVXXi9trhnq4vYCaKsb4ELsqZuSoJqdnKpWmjFiJ1gMgPEbhN',
+            ),
+        ];
+    }
+
+    #[DataProvider('signaturesProviderEd25519')]
     public function testEd25519Sign(Signature $signature): void
     {
         $key = Key::fromBase58($signature->account->privateKey);
@@ -25,9 +53,7 @@ class KeyTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider \Bzzhh\Pezos\Tests\Unit\DataProvider\Secp256K1::signatures()
-     */
+    #[DataProvider('signaturesProviderSecp256K1')]
     public function testSecp256K1Sign(Signature $signature): void
     {
         $key = Key::fromBase58($signature->account->privateKey);

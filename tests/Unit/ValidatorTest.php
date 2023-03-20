@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Tests\Unit\Validator;
 
 use Bzzhh\Pezos\Validator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase
@@ -16,9 +17,7 @@ class ValidatorTest extends TestCase
         $this->validator = new Validator();
     }
 
-    /**
-     * @dataProvider provideAddresses
-     */
+    #[DataProvider('provideAddresses')]
     public function testValidateAddress(
         string $address,
         bool $isValid,
@@ -28,7 +27,7 @@ class ValidatorTest extends TestCase
         self::assertSame($error, $this->validator->getError());
     }
 
-    public function provideAddresses(): \Generator
+    public static function provideAddresses(): \Generator
     {
         yield ['xx', false, Validator::NO_PREFIX_MATCHED];
 
@@ -41,9 +40,7 @@ class ValidatorTest extends TestCase
         yield ['tz1cXuba7T3qkxLVMuuYMsPpWtHeuQ6eqTck', true];
     }
 
-    /**
-     * @dataProvider providePubKeys
-     */
+    #[DataProvider('providePubKeys')]
     public function testValidatePubKey(
         string $pubKey,
         bool $isValid,
@@ -53,7 +50,7 @@ class ValidatorTest extends TestCase
         self::assertSame($error, $this->validator->getError());
     }
 
-    public function providePubKeys(): \Generator
+    public static function providePubKeys(): \Generator
     {
         yield ['xx', false, Validator::NO_PREFIX_MATCHED];
 

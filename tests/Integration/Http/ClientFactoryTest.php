@@ -21,13 +21,13 @@ class ClientFactoryTest extends TestCase
 
     public function setUp(): void
     {
-        $this->shellClient = ClientFactory::createShell($_SERVER['NODE_URL']);
+        $this->shellClient = ClientFactory::createShell($_ENV['NODE_URL']);
         $this->protoClient = ClientFactory::createProto(
-            $_SERVER['NODE_URL'],
+            $_ENV['NODE_URL'],
             '/chains/main/blocks/head',
         );
         $this->mempoolClient = ClientFactory::createMempool(
-            $_SERVER['NODE_URL'],
+            $_ENV['NODE_URL'],
             '/chains/main/mempool',
         );
     }
