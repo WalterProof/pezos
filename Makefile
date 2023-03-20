@@ -26,32 +26,16 @@ help:
 
 SHELL=/bin/bash
 
-UID = $(shell id -u)
-GID = $(shell id -g)
-
-RUN_PHP =
-ifneq ($(GITHUB_ACTIONS),true)
-	RUN_PHP = docker compose exec -u dev php
-endif
-
 DOCKER_COMPOSE = docker compose
 
 ########################################
 #               INFRA                  #
 ########################################
-rebuild: ##@Infra rebuild containers
-	$(DOCKER_COMPOSE) up -d --build --force-recreate --no-deps
-
 up: down ##@Infra restart containers
-	if [ ! -f .env -a -f .env.dist ]; then sed "s,#UID#,$(UID),g;s,#GID#,$(GID),g" .env.dist > .env; fi
 	$(DOCKER_COMPOSE) up -d
 
 down: ##@Infra stop containers
 	$(DOCKER_COMPOSE) down --remove-orphans
-
-
-php-shell: ##@Infra enter php container
-	$(RUN_PHP) bash
 
 sandbox-shell: ##@Infra enter sandbox container
 	$(DOCKER_COMPOSE) exec sandbox ash
@@ -60,29 +44,29 @@ sandbox-shell: ##@Infra enter sandbox container
 #               TOOLS                  #
 ########################################
 install: ##@Tools install deps
-	$(RUN_PHP) composer install
+	composer install
 
 update: ##@Tools update deps
-	$(RUN_PHP) composer update
+	composer update
 
 jane: ##@Tools generate a client (make jane CONFIG=config/jane-rpc-openapi.php)
-	$(RUN_PHP) vendor/bin/jane-openapi generate --config-file=$(CONFIG)
-	$(RUN_PHP) composer dumpautoload
+	vendor/bin/jane-openapi generate --config-file=$(CONFIG)
+	composer dumpautoload
 
 ########################################
 #                 QA                   #
 ########################################
 cs-check: ##@QA run fixer (check)
-	$(RUN_PHP) vendor/bin/php-cs-fixer fix --dry-run
+	vendor/bin/php-cs-fixer fix --dry-run
 
 cs-fix: ##@QA run fixer
-	$(RUN_PHP) vendor/bin/php-cs-fixer fix
+	vendor/bin/php-cs-fixer fix
 
 test: ##@QA run tests
-	$(RUN_PHP) vendor/bin/phpunit --testdox
+	vendor/bin/phpunit --testdox
 
 test-i: ##@QA run integration tests
-	$(RUN_PHP) vendor/bin/phpunit --testdox --testsuite integration
+	vendor/bin/phpunit --testdox --testsuite integration
 
 test-u: ##@QA run unit tests
-	$(RUN_PHP) vendor/bin/phpunit --testdox --testsuite unit
+	vendor/bin/phpunit --testdox --testsuite unit

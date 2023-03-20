@@ -1,25 +1,7 @@
 version: '3'
 services:
-  php:
-    build:
-      args:
-        UID: ${UID-1000}
-        GID: ${GID-1000}
-      context: ./docker
-    environment:
-      - NODE_URL=http://sandbox:20000
-    command: sh
-    tty: true
-    stdin_open: true
-    logging:
-      options:
-        max-size: '10m'
-        max-file: '3'
-    volumes:
-      - .:/var/pkg
-
   sandbox:
-    image: 'tqtezos/flextesa:20210602'
-    command: flobox start
+    image: 'oxheadalpha/flextesa:20230313'
+    command: mumbaibox start
     ports:
-      - '8732:20000'
+      - '20000:20000'

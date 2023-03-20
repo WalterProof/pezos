@@ -83,7 +83,7 @@ bzzhh_pezos:
 
 ## Dev workflow
 
-1. Launch node and php containers with `make infra-up`
+1. Launch services with `make up`
 2. If possible do TDD, `make test`
 
 ## Resources

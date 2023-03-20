@@ -53,5 +53,10 @@
       "!/composer.json",
       "!/README.md"
     ]
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
   }
 }
