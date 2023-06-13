@@ -21,7 +21,7 @@ class ValidatorTest extends TestCase
     public function testValidateAddress(
         string $address,
         bool $isValid,
-        ?string $error = null
+        string $error = null
     ): void {
         self::assertSame($isValid, $this->validator->validateAddress($address));
         self::assertSame($error, $this->validator->getError());
@@ -44,7 +44,7 @@ class ValidatorTest extends TestCase
     public function testValidatePubKey(
         string $pubKey,
         bool $isValid,
-        ?string $error = null
+        string $error = null
     ): void {
         self::assertSame($isValid, $this->validator->validatePubKey($pubKey));
         self::assertSame($error, $this->validator->getError());
