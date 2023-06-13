@@ -2,6 +2,7 @@
   "name": "bzzhh/pezos",
   "description": "Tezos library",
   "type": "library",
+  "license": "MIT",
   "keywords": [
     "tezos"
   ],
