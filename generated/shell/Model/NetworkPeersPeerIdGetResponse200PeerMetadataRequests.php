@@ -10,92 +10,73 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class NetworkPeersPeerIdGetResponse200PeerMetadataRequests
+class NetworkPeersPeerIdGetResponse200PeerMetadataRequests extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $sent;
-    /**
-     * @var mixed
-     */
+
     protected $received;
-    /**
-     * @var mixed
-     */
+
     protected $failed;
-    /**
-     * @var mixed
-     */
+
     protected $scheduled;
 
-    /**
-     * @return mixed
-     */
     public function getSent()
     {
         return $this->sent;
     }
 
-    /**
-     * @param mixed $sent
-     */
     public function setSent($sent): self
     {
+        $this->initialized['sent'] = true;
         $this->sent = $sent;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getReceived()
     {
         return $this->received;
     }
 
-    /**
-     * @param mixed $received
-     */
     public function setReceived($received): self
     {
+        $this->initialized['received'] = true;
         $this->received = $received;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getFailed()
     {
         return $this->failed;
     }
 
-    /**
-     * @param mixed $failed
-     */
     public function setFailed($failed): self
     {
+        $this->initialized['failed'] = true;
         $this->failed = $failed;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getScheduled()
     {
         return $this->scheduled;
     }
 
-    /**
-     * @param mixed $scheduled
-     */
     public function setScheduled($scheduled): self
     {
+        $this->initialized['scheduled'] = true;
         $this->scheduled = $scheduled;
 
         return $this;

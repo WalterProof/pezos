@@ -10,48 +10,43 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class UserActivatedProtocolOverridesItem
+class UserActivatedProtocolOverridesItem extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $replacedProtocol;
-    /**
-     * @var mixed
-     */
+
     protected $replacementProtocol;
 
-    /**
-     * @return mixed
-     */
     public function getReplacedProtocol()
     {
         return $this->replacedProtocol;
     }
 
-    /**
-     * @param mixed $replacedProtocol
-     */
     public function setReplacedProtocol($replacedProtocol): self
     {
+        $this->initialized['replacedProtocol'] = true;
         $this->replacedProtocol = $replacedProtocol;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getReplacementProtocol()
     {
         return $this->replacementProtocol;
     }
 
-    /**
-     * @param mixed $replacementProtocol
-     */
     public function setReplacementProtocol($replacementProtocol): self
     {
+        $this->initialized['replacementProtocol'] = true;
         $this->replacementProtocol = $replacementProtocol;
 
         return $this;

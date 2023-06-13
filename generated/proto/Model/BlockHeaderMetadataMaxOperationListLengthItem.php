@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class BlockHeaderMetadataMaxOperationListLengthItem
+class BlockHeaderMetadataMaxOperationListLengthItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var int
      */
@@ -28,6 +37,7 @@ class BlockHeaderMetadataMaxOperationListLengthItem
 
     public function setMaxSize(int $maxSize): self
     {
+        $this->initialized['maxSize'] = true;
         $this->maxSize = $maxSize;
 
         return $this;
@@ -40,6 +50,7 @@ class BlockHeaderMetadataMaxOperationListLengthItem
 
     public function setMaxOp(int $maxOp): self
     {
+        $this->initialized['maxOp'] = true;
         $this->maxOp = $maxOp;
 
         return $this;

@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class P2pPointInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\P2pPointInfo';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\P2pPointInfo';
     }
@@ -49,18 +51,23 @@ class P2pPointInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('trusted', $data)) {
             $object->setTrusted($data['trusted']);
+            unset($data['trusted']);
         }
         if (\array_key_exists('greylisted_until', $data)) {
             $object->setGreylistedUntil($data['greylisted_until']);
+            unset($data['greylisted_until']);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
+            unset($data['state']);
         }
         if (\array_key_exists('p2p_peer_id', $data)) {
             $object->setP2pPeerId($data['p2p_peer_id']);
+            unset($data['p2p_peer_id']);
         }
         if (\array_key_exists('last_failed_connection', $data)) {
             $object->setLastFailedConnection($data['last_failed_connection']);
+            unset($data['last_failed_connection']);
         }
         if (\array_key_exists('last_rejected_connection', $data)) {
             $values = [];
@@ -68,6 +75,7 @@ class P2pPointInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values[] = $value;
             }
             $object->setLastRejectedConnection($values);
+            unset($data['last_rejected_connection']);
         }
         if (\array_key_exists('last_established_connection', $data)) {
             $values_1 = [];
@@ -75,6 +83,7 @@ class P2pPointInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values_1[] = $value_1;
             }
             $object->setLastEstablishedConnection($values_1);
+            unset($data['last_established_connection']);
         }
         if (\array_key_exists('last_disconnection', $data)) {
             $values_2 = [];
@@ -82,6 +91,7 @@ class P2pPointInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values_2[] = $value_2;
             }
             $object->setLastDisconnection($values_2);
+            unset($data['last_disconnection']);
         }
         if (\array_key_exists('last_seen', $data)) {
             $values_3 = [];
@@ -89,64 +99,80 @@ class P2pPointInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values_3[] = $value_3;
             }
             $object->setLastSeen($values_3);
+            unset($data['last_seen']);
         }
         if (\array_key_exists('last_miss', $data)) {
             $object->setLastMiss($data['last_miss']);
+            unset($data['last_miss']);
         }
         if (\array_key_exists('expected_peer_id', $data)) {
             $object->setExpectedPeerId($data['expected_peer_id']);
+            unset($data['expected_peer_id']);
+        }
+        foreach ($data as $key => $value_4) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_4;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
         $data['trusted'] = $object->getTrusted();
-        if (null !== $object->getGreylistedUntil()) {
+        if ($object->isInitialized('greylistedUntil') && null !== $object->getGreylistedUntil()) {
             $data['greylisted_until'] = $object->getGreylistedUntil();
         }
         $data['state'] = $object->getState();
-        if (null !== $object->getP2pPeerId()) {
+        if ($object->isInitialized('p2pPeerId') && null !== $object->getP2pPeerId()) {
             $data['p2p_peer_id'] = $object->getP2pPeerId();
         }
-        if (null !== $object->getLastFailedConnection()) {
+        if ($object->isInitialized('lastFailedConnection') && null !== $object->getLastFailedConnection()) {
             $data['last_failed_connection'] = $object->getLastFailedConnection();
         }
-        if (null !== $object->getLastRejectedConnection()) {
+        if ($object->isInitialized('lastRejectedConnection') && null !== $object->getLastRejectedConnection()) {
             $values = [];
             foreach ($object->getLastRejectedConnection() as $value) {
                 $values[] = $value;
             }
             $data['last_rejected_connection'] = $values;
         }
-        if (null !== $object->getLastEstablishedConnection()) {
+        if ($object->isInitialized('lastEstablishedConnection') && null !== $object->getLastEstablishedConnection()) {
             $values_1 = [];
             foreach ($object->getLastEstablishedConnection() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['last_established_connection'] = $values_1;
         }
-        if (null !== $object->getLastDisconnection()) {
+        if ($object->isInitialized('lastDisconnection') && null !== $object->getLastDisconnection()) {
             $values_2 = [];
             foreach ($object->getLastDisconnection() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['last_disconnection'] = $values_2;
         }
-        if (null !== $object->getLastSeen()) {
+        if ($object->isInitialized('lastSeen') && null !== $object->getLastSeen()) {
             $values_3 = [];
             foreach ($object->getLastSeen() as $value_3) {
                 $values_3[] = $value_3;
             }
             $data['last_seen'] = $values_3;
         }
-        if (null !== $object->getLastMiss()) {
+        if ($object->isInitialized('lastMiss') && null !== $object->getLastMiss()) {
             $data['last_miss'] = $object->getLastMiss();
         }
-        if (null !== $object->getExpectedPeerId()) {
+        if ($object->isInitialized('expectedPeerId') && null !== $object->getExpectedPeerId()) {
             $data['expected_peer_id'] = $object->getExpectedPeerId();
+        }
+        foreach ($object as $key => $value_4) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_4;
+            }
         }
 
         return $data;

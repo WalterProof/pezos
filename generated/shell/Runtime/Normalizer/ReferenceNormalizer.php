@@ -10,14 +10,11 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class ReferenceNormalizer implements NormalizerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function normalize($object, $format = null, array $context = [])
     {
         $ref = [];
@@ -26,10 +23,7 @@ class ReferenceNormalizer implements NormalizerInterface
         return $ref;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null): bool
     {
         return $data instanceof Reference;
     }

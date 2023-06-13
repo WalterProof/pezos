@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class NetworkPeersPeerIdPatchResponse200PeerMetadataUnadvertised
+class NetworkPeersPeerIdPatchResponse200PeerMetadataUnadvertised extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Decimal representation of a big number.
      *
@@ -44,6 +53,7 @@ class NetworkPeersPeerIdPatchResponse200PeerMetadataUnadvertised
      */
     public function setBlock(string $block): self
     {
+        $this->initialized['block'] = true;
         $this->block = $block;
 
         return $this;
@@ -62,6 +72,7 @@ class NetworkPeersPeerIdPatchResponse200PeerMetadataUnadvertised
      */
     public function setOperations(string $operations): self
     {
+        $this->initialized['operations'] = true;
         $this->operations = $operations;
 
         return $this;
@@ -80,6 +91,7 @@ class NetworkPeersPeerIdPatchResponse200PeerMetadataUnadvertised
      */
     public function setProtocol(string $protocol): self
     {
+        $this->initialized['protocol'] = true;
         $this->protocol = $protocol;
 
         return $this;

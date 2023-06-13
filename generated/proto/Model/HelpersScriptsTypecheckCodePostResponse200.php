@@ -10,15 +10,22 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsTypecheckCodePostResponse200
+class HelpersScriptsTypecheckCodePostResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var HelpersScriptsTypecheckCodePostResponse200TypeMapItem[]
      */
     protected $typeMap;
-    /**
-     * @var mixed
-     */
+
     protected $gas;
 
     /**
@@ -34,24 +41,20 @@ class HelpersScriptsTypecheckCodePostResponse200
      */
     public function setTypeMap(array $typeMap): self
     {
+        $this->initialized['typeMap'] = true;
         $this->typeMap = $typeMap;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getGas()
     {
         return $this->gas;
     }
 
-    /**
-     * @param mixed $gas
-     */
     public function setGas($gas): self
     {
+        $this->initialized['gas'] = true;
         $this->gas = $gas;
 
         return $this;

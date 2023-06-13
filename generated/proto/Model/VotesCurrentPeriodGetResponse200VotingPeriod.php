@@ -10,25 +10,36 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class VotesCurrentPeriodGetResponse200VotingPeriod
+class VotesCurrentPeriodGetResponse200VotingPeriod extends \ArrayObject
 {
     /**
-     * The voting period's index. Starts at 0 with the first block of protocol alpha.
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
+     * The voting period's index. Starts at 0 with the first block of the Alpha family of protocols.
      *
      * @var int
      */
     protected $index;
     /**
-     * @var mixed
+     * One of the several kinds of periods in the voting procedure.
      */
     protected $kind;
     /**
+     * The relative position of the first level of the period with respect to the first level of the Alpha family of protocols.
+     *
      * @var int
      */
     protected $startPosition;
 
     /**
-     * The voting period's index. Starts at 0 with the first block of protocol alpha.
+     * The voting period's index. Starts at 0 with the first block of the Alpha family of protocols.
      */
     public function getIndex(): int
     {
@@ -36,17 +47,18 @@ class VotesCurrentPeriodGetResponse200VotingPeriod
     }
 
     /**
-     * The voting period's index. Starts at 0 with the first block of protocol alpha.
+     * The voting period's index. Starts at 0 with the first block of the Alpha family of protocols.
      */
     public function setIndex(int $index): self
     {
+        $this->initialized['index'] = true;
         $this->index = $index;
 
         return $this;
     }
 
     /**
-     * @return mixed
+     * One of the several kinds of periods in the voting procedure.
      */
     public function getKind()
     {
@@ -54,22 +66,30 @@ class VotesCurrentPeriodGetResponse200VotingPeriod
     }
 
     /**
-     * @param mixed $kind
+     * One of the several kinds of periods in the voting procedure.
      */
     public function setKind($kind): self
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
 
         return $this;
     }
 
+    /**
+     * The relative position of the first level of the period with respect to the first level of the Alpha family of protocols.
+     */
     public function getStartPosition(): int
     {
         return $this->startPosition;
     }
 
+    /**
+     * The relative position of the first level of the period with respect to the first level of the Alpha family of protocols.
+     */
     public function setStartPosition(int $startPosition): self
     {
+        $this->initialized['startPosition'] = true;
         $this->startPosition = $startPosition;
 
         return $this;

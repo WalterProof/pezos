@@ -10,12 +10,21 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class ConfigGetResponse200ShellPrevalidator
+class ConfigGetResponse200ShellPrevalidator extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * A span of time, as seen by the local computer.
      *
-     * @var int
+     * @var float
      */
     protected $operationsRequestTimeout;
     /**
@@ -27,18 +36,14 @@ class ConfigGetResponse200ShellPrevalidator
      */
     protected $operationsBatchSize;
     /**
-     * @var int
+     * @var bool
      */
-    protected $workerBacklogSize;
-    /**
-     * @var string
-     */
-    protected $workerBacklogLevel;
+    protected $disablePrecheck;
 
     /**
      * A span of time, as seen by the local computer.
      */
-    public function getOperationsRequestTimeout(): int
+    public function getOperationsRequestTimeout(): float
     {
         return $this->operationsRequestTimeout;
     }
@@ -46,8 +51,9 @@ class ConfigGetResponse200ShellPrevalidator
     /**
      * A span of time, as seen by the local computer.
      */
-    public function setOperationsRequestTimeout(int $operationsRequestTimeout): self
+    public function setOperationsRequestTimeout(float $operationsRequestTimeout): self
     {
+        $this->initialized['operationsRequestTimeout'] = true;
         $this->operationsRequestTimeout = $operationsRequestTimeout;
 
         return $this;
@@ -60,6 +66,7 @@ class ConfigGetResponse200ShellPrevalidator
 
     public function setMaxRefusedOperations(int $maxRefusedOperations): self
     {
+        $this->initialized['maxRefusedOperations'] = true;
         $this->maxRefusedOperations = $maxRefusedOperations;
 
         return $this;
@@ -72,31 +79,21 @@ class ConfigGetResponse200ShellPrevalidator
 
     public function setOperationsBatchSize(int $operationsBatchSize): self
     {
+        $this->initialized['operationsBatchSize'] = true;
         $this->operationsBatchSize = $operationsBatchSize;
 
         return $this;
     }
 
-    public function getWorkerBacklogSize(): int
+    public function getDisablePrecheck(): bool
     {
-        return $this->workerBacklogSize;
+        return $this->disablePrecheck;
     }
 
-    public function setWorkerBacklogSize(int $workerBacklogSize): self
+    public function setDisablePrecheck(bool $disablePrecheck): self
     {
-        $this->workerBacklogSize = $workerBacklogSize;
-
-        return $this;
-    }
-
-    public function getWorkerBacklogLevel(): string
-    {
-        return $this->workerBacklogLevel;
-    }
-
-    public function setWorkerBacklogLevel(string $workerBacklogLevel): self
-    {
-        $this->workerBacklogLevel = $workerBacklogLevel;
+        $this->initialized['disablePrecheck'] = true;
+        $this->disablePrecheck = $disablePrecheck;
 
         return $this;
     }

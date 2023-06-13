@@ -10,15 +10,20 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsPackDataPostBody
+class HelpersScriptsPackDataPostBody extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $data;
-    /**
-     * @var mixed
-     */
+
     protected $type;
     /**
      * Decimal representation of a big number.
@@ -27,37 +32,27 @@ class HelpersScriptsPackDataPostBody
      */
     protected $gas;
 
-    /**
-     * @return mixed
-     */
     public function getData()
     {
         return $this->data;
     }
 
-    /**
-     * @param mixed $data
-     */
     public function setData($data): self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getType()
     {
         return $this->type;
     }
 
-    /**
-     * @param mixed $type
-     */
     public function setType($type): self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
 
         return $this;
@@ -76,6 +71,7 @@ class HelpersScriptsPackDataPostBody
      */
     public function setGas(string $gas): self
     {
+        $this->initialized['gas'] = true;
         $this->gas = $gas;
 
         return $this;

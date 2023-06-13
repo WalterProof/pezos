@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class NetworkPeersPeerIdGetResponse200PeerMetadata
+class NetworkPeersPeerIdGetResponse200PeerMetadata extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var NetworkPeersPeerIdGetResponse200PeerMetadataResponses
      */
@@ -70,6 +79,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadata
 
     public function setResponses(NetworkPeersPeerIdGetResponse200PeerMetadataResponses $responses): self
     {
+        $this->initialized['responses'] = true;
         $this->responses = $responses;
 
         return $this;
@@ -82,6 +92,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadata
 
     public function setRequests(NetworkPeersPeerIdGetResponse200PeerMetadataRequests $requests): self
     {
+        $this->initialized['requests'] = true;
         $this->requests = $requests;
 
         return $this;
@@ -100,6 +111,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadata
      */
     public function setValidBlocks(string $validBlocks): self
     {
+        $this->initialized['validBlocks'] = true;
         $this->validBlocks = $validBlocks;
 
         return $this;
@@ -118,6 +130,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadata
      */
     public function setOldHeads(string $oldHeads): self
     {
+        $this->initialized['oldHeads'] = true;
         $this->oldHeads = $oldHeads;
 
         return $this;
@@ -130,6 +143,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadata
 
     public function setPrevalidatorResults(NetworkPeersPeerIdGetResponse200PeerMetadataPrevalidatorResults $prevalidatorResults): self
     {
+        $this->initialized['prevalidatorResults'] = true;
         $this->prevalidatorResults = $prevalidatorResults;
 
         return $this;
@@ -148,6 +162,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadata
      */
     public function setUnactivatedChains(string $unactivatedChains): self
     {
+        $this->initialized['unactivatedChains'] = true;
         $this->unactivatedChains = $unactivatedChains;
 
         return $this;
@@ -166,6 +181,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadata
      */
     public function setInactiveChains(string $inactiveChains): self
     {
+        $this->initialized['inactiveChains'] = true;
         $this->inactiveChains = $inactiveChains;
 
         return $this;
@@ -184,6 +200,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadata
      */
     public function setFutureBlocksAdvertised(string $futureBlocksAdvertised): self
     {
+        $this->initialized['futureBlocksAdvertised'] = true;
         $this->futureBlocksAdvertised = $futureBlocksAdvertised;
 
         return $this;
@@ -196,6 +213,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadata
 
     public function setUnadvertised(NetworkPeersPeerIdGetResponse200PeerMetadataUnadvertised $unadvertised): self
     {
+        $this->initialized['unadvertised'] = true;
         $this->unadvertised = $unadvertised;
 
         return $this;
@@ -208,6 +226,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadata
 
     public function setAdvertisements(NetworkPeersPeerIdGetResponse200PeerMetadataAdvertisements $advertisements): self
     {
+        $this->initialized['advertisements'] = true;
         $this->advertisements = $advertisements;
 
         return $this;

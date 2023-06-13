@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersPreapplyBlockPostResponse200OperationsItem
+class HelpersPreapplyBlockPostResponse200OperationsItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem[]
      */
@@ -20,6 +29,10 @@ class HelpersPreapplyBlockPostResponse200OperationsItem
      * @var HelpersPreapplyBlockPostResponse200OperationsItemRefusedItem[]
      */
     protected $refused;
+    /**
+     * @var HelpersPreapplyBlockPostResponse200OperationsItemOutdatedItem[]
+     */
+    protected $outdated;
     /**
      * @var HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem[]
      */
@@ -42,6 +55,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItem
      */
     public function setApplied(array $applied): self
     {
+        $this->initialized['applied'] = true;
         $this->applied = $applied;
 
         return $this;
@@ -60,7 +74,27 @@ class HelpersPreapplyBlockPostResponse200OperationsItem
      */
     public function setRefused(array $refused): self
     {
+        $this->initialized['refused'] = true;
         $this->refused = $refused;
+
+        return $this;
+    }
+
+    /**
+     * @return HelpersPreapplyBlockPostResponse200OperationsItemOutdatedItem[]
+     */
+    public function getOutdated(): array
+    {
+        return $this->outdated;
+    }
+
+    /**
+     * @param HelpersPreapplyBlockPostResponse200OperationsItemOutdatedItem[] $outdated
+     */
+    public function setOutdated(array $outdated): self
+    {
+        $this->initialized['outdated'] = true;
+        $this->outdated = $outdated;
 
         return $this;
     }
@@ -78,6 +112,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItem
      */
     public function setBranchRefused(array $branchRefused): self
     {
+        $this->initialized['branchRefused'] = true;
         $this->branchRefused = $branchRefused;
 
         return $this;
@@ -96,6 +131,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItem
      */
     public function setBranchDelayed(array $branchDelayed): self
     {
+        $this->initialized['branchDelayed'] = true;
         $this->branchDelayed = $branchDelayed;
 
         return $this;

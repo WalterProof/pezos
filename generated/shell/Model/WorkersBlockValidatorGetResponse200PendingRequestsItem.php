@@ -10,23 +10,26 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class WorkersBlockValidatorGetResponse200PendingRequestsItem
+class WorkersBlockValidatorGetResponse200PendingRequestsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @var mixed
      */
     protected $pushed;
-    /**
-     * @var WorkersBlockValidatorGetResponse200PendingRequestsItemRequest
-     */
+
     protected $request;
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @return mixed
      */
     public function getPushed()
     {
@@ -35,23 +38,23 @@ class WorkersBlockValidatorGetResponse200PendingRequestsItem
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @param mixed $pushed
      */
     public function setPushed($pushed): self
     {
+        $this->initialized['pushed'] = true;
         $this->pushed = $pushed;
 
         return $this;
     }
 
-    public function getRequest(): WorkersBlockValidatorGetResponse200PendingRequestsItemRequest
+    public function getRequest()
     {
         return $this->request;
     }
 
-    public function setRequest(WorkersBlockValidatorGetResponse200PendingRequestsItemRequest $request): self
+    public function setRequest($request): self
     {
+        $this->initialized['request'] = true;
         $this->request = $request;
 
         return $this;

@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class WorkersChainValidatorsChainIdPeersValidatorsGetResponse200ItemPipelines
+class WorkersChainValidatorsChainIdPeersValidatorsGetResponse200ItemPipelines extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var int
      */
@@ -28,6 +37,7 @@ class WorkersChainValidatorsChainIdPeersValidatorsGetResponse200ItemPipelines
 
     public function setFetchedHeaders(int $fetchedHeaders): self
     {
+        $this->initialized['fetchedHeaders'] = true;
         $this->fetchedHeaders = $fetchedHeaders;
 
         return $this;
@@ -40,6 +50,7 @@ class WorkersChainValidatorsChainIdPeersValidatorsGetResponse200ItemPipelines
 
     public function setFetchedBlocks(int $fetchedBlocks): self
     {
+        $this->initialized['fetchedBlocks'] = true;
         $this->fetchedBlocks = $fetchedBlocks;
 
         return $this;

@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class NetworkPeersPeerIdGetResponse200PeerMetadataAdvertisements
+class NetworkPeersPeerIdGetResponse200PeerMetadataAdvertisements extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var NetworkPeersPeerIdGetResponse200PeerMetadataAdvertisementsSent
      */
@@ -28,6 +37,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataAdvertisements
 
     public function setSent(NetworkPeersPeerIdGetResponse200PeerMetadataAdvertisementsSent $sent): self
     {
+        $this->initialized['sent'] = true;
         $this->sent = $sent;
 
         return $this;
@@ -40,6 +50,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataAdvertisements
 
     public function setReceived(NetworkPeersPeerIdGetResponse200PeerMetadataAdvertisementsReceived $received): self
     {
+        $this->initialized['received'] = true;
         $this->received = $received;
 
         return $this;

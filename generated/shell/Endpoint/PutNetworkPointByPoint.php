@@ -24,7 +24,7 @@ class PutNetworkPointByPoint extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client
      *     @var string $timeout A span of time in seconds
      * }
      */
-    public function __construct(string $point, ?\Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointPutBody $requestBody = null, array $queryParameters = [])
+    public function __construct(string $point, \Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointPutBody $requestBody = null, array $queryParameters = [])
     {
         $this->point = $point;
         $this->body = $requestBody;
@@ -61,18 +61,18 @@ class PutNetworkPointByPoint extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client
         $optionsResolver->setDefined(['timeout']);
         $optionsResolver->setRequired(['timeout']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('timeout', ['string']);
+        $optionsResolver->addAllowedTypes('timeout', ['string']);
 
         return $optionsResolver;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointPutResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPointsPointPutResponse200', 'json');
         }

@@ -10,19 +10,22 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsTraceCodePostBody
+class HelpersScriptsTraceCodePostBody extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $script;
-    /**
-     * @var mixed
-     */
+
     protected $storage;
-    /**
-     * @var mixed
-     */
+
     protected $input;
     /**
      * Decimal representation of a positive big number.
@@ -36,22 +39,26 @@ class HelpersScriptsTraceCodePostBody
      * @var string
      */
     protected $balance;
-    /**
-     * @var mixed
-     */
+
     protected $chainId;
     /**
      * A contract notation as given to an RPC or inside scripts. Can be a base58 implicit contract hash or a base58 originated contract hash.
-     *
-     * @var mixed
      */
     protected $source;
     /**
-     * A contract notation as given to an RPC or inside scripts. Can be a base58 implicit contract hash or a base58 originated contract hash.
-     *
-     * @var mixed
+     * A contract notation as given to an RPC or inside scripts. Can be a base58 implicit contract hash.
      */
     protected $payer;
+    /**
+     * A contract notation as given to an RPC or inside scripts. Can be a base58 originated contract hash.
+     */
+    protected $self;
+    /**
+     * Either a plain UTF8 string, or a sequence of bytes for strings that contain invalid byte sequences.
+     */
+    protected $entrypoint;
+
+    protected $unparsingMode;
     /**
      * Decimal representation of a big number.
      *
@@ -59,65 +66,52 @@ class HelpersScriptsTraceCodePostBody
      */
     protected $gas;
     /**
-     * Either a plain UTF8 string, or a sequence of bytes for strings that contain invalid byte sequences.
+     * Decimal representation of a big number.
      *
-     * @var mixed
+     * @var string
      */
-    protected $entrypoint;
+    protected $now;
     /**
-     * @var mixed
+     * Decimal representation of a positive big number.
+     *
+     * @var string
      */
-    protected $unparsingMode;
+    protected $level;
 
-    /**
-     * @return mixed
-     */
     public function getScript()
     {
         return $this->script;
     }
 
-    /**
-     * @param mixed $script
-     */
     public function setScript($script): self
     {
+        $this->initialized['script'] = true;
         $this->script = $script;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getStorage()
     {
         return $this->storage;
     }
 
-    /**
-     * @param mixed $storage
-     */
     public function setStorage($storage): self
     {
+        $this->initialized['storage'] = true;
         $this->storage = $storage;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getInput()
     {
         return $this->input;
     }
 
-    /**
-     * @param mixed $input
-     */
     public function setInput($input): self
     {
+        $this->initialized['input'] = true;
         $this->input = $input;
 
         return $this;
@@ -136,6 +130,7 @@ class HelpersScriptsTraceCodePostBody
      */
     public function setAmount(string $amount): self
     {
+        $this->initialized['amount'] = true;
         $this->amount = $amount;
 
         return $this;
@@ -154,24 +149,20 @@ class HelpersScriptsTraceCodePostBody
      */
     public function setBalance(string $balance): self
     {
+        $this->initialized['balance'] = true;
         $this->balance = $balance;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getChainId()
     {
         return $this->chainId;
     }
 
-    /**
-     * @param mixed $chainId
-     */
     public function setChainId($chainId): self
     {
+        $this->initialized['chainId'] = true;
         $this->chainId = $chainId;
 
         return $this;
@@ -179,8 +170,6 @@ class HelpersScriptsTraceCodePostBody
 
     /**
      * A contract notation as given to an RPC or inside scripts. Can be a base58 implicit contract hash or a base58 originated contract hash.
-     *
-     * @return mixed
      */
     public function getSource()
     {
@@ -189,20 +178,17 @@ class HelpersScriptsTraceCodePostBody
 
     /**
      * A contract notation as given to an RPC or inside scripts. Can be a base58 implicit contract hash or a base58 originated contract hash.
-     *
-     * @param mixed $source
      */
     public function setSource($source): self
     {
+        $this->initialized['source'] = true;
         $this->source = $source;
 
         return $this;
     }
 
     /**
-     * A contract notation as given to an RPC or inside scripts. Can be a base58 implicit contract hash or a base58 originated contract hash.
-     *
-     * @return mixed
+     * A contract notation as given to an RPC or inside scripts. Can be a base58 implicit contract hash.
      */
     public function getPayer()
     {
@@ -210,13 +196,63 @@ class HelpersScriptsTraceCodePostBody
     }
 
     /**
-     * A contract notation as given to an RPC or inside scripts. Can be a base58 implicit contract hash or a base58 originated contract hash.
-     *
-     * @param mixed $payer
+     * A contract notation as given to an RPC or inside scripts. Can be a base58 implicit contract hash.
      */
     public function setPayer($payer): self
     {
+        $this->initialized['payer'] = true;
         $this->payer = $payer;
+
+        return $this;
+    }
+
+    /**
+     * A contract notation as given to an RPC or inside scripts. Can be a base58 originated contract hash.
+     */
+    public function getSelf()
+    {
+        return $this->self;
+    }
+
+    /**
+     * A contract notation as given to an RPC or inside scripts. Can be a base58 originated contract hash.
+     */
+    public function setSelf($self): self
+    {
+        $this->initialized['self'] = true;
+        $this->self = $self;
+
+        return $this;
+    }
+
+    /**
+     * Either a plain UTF8 string, or a sequence of bytes for strings that contain invalid byte sequences.
+     */
+    public function getEntrypoint()
+    {
+        return $this->entrypoint;
+    }
+
+    /**
+     * Either a plain UTF8 string, or a sequence of bytes for strings that contain invalid byte sequences.
+     */
+    public function setEntrypoint($entrypoint): self
+    {
+        $this->initialized['entrypoint'] = true;
+        $this->entrypoint = $entrypoint;
+
+        return $this;
+    }
+
+    public function getUnparsingMode()
+    {
+        return $this->unparsingMode;
+    }
+
+    public function setUnparsingMode($unparsingMode): self
+    {
+        $this->initialized['unparsingMode'] = true;
+        $this->unparsingMode = $unparsingMode;
 
         return $this;
     }
@@ -234,47 +270,46 @@ class HelpersScriptsTraceCodePostBody
      */
     public function setGas(string $gas): self
     {
+        $this->initialized['gas'] = true;
         $this->gas = $gas;
 
         return $this;
     }
 
     /**
-     * Either a plain UTF8 string, or a sequence of bytes for strings that contain invalid byte sequences.
-     *
-     * @return mixed
+     * Decimal representation of a big number.
      */
-    public function getEntrypoint()
+    public function getNow(): string
     {
-        return $this->entrypoint;
+        return $this->now;
     }
 
     /**
-     * Either a plain UTF8 string, or a sequence of bytes for strings that contain invalid byte sequences.
-     *
-     * @param mixed $entrypoint
+     * Decimal representation of a big number.
      */
-    public function setEntrypoint($entrypoint): self
+    public function setNow(string $now): self
     {
-        $this->entrypoint = $entrypoint;
+        $this->initialized['now'] = true;
+        $this->now = $now;
 
         return $this;
     }
 
     /**
-     * @return mixed
+     * Decimal representation of a positive big number.
      */
-    public function getUnparsingMode()
+    public function getLevel(): string
     {
-        return $this->unparsingMode;
+        return $this->level;
     }
 
     /**
-     * @param mixed $unparsingMode
+     * Decimal representation of a positive big number.
      */
-    public function setUnparsingMode($unparsingMode): self
+    public function setLevel(string $level): self
     {
-        $this->unparsingMode = $unparsingMode;
+        $this->initialized['level'] = true;
+        $this->level = $level;
 
         return $this;
     }

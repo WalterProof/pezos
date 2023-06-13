@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataResponsesNormalizer implements
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadataResponses';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPeersPeerIdGetResponse200PeerMetadataResponses';
     }
@@ -49,23 +51,36 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataResponsesNormalizer implements
         }
         if (\array_key_exists('sent', $data)) {
             $object->setSent($data['sent']);
+            unset($data['sent']);
         }
         if (\array_key_exists('failed', $data)) {
             $object->setFailed($data['failed']);
+            unset($data['failed']);
         }
         if (\array_key_exists('received', $data)) {
             $object->setReceived($data['received']);
+            unset($data['received']);
         }
         if (\array_key_exists('unexpected', $data)) {
             $object->setUnexpected($data['unexpected']);
+            unset($data['unexpected']);
         }
         if (\array_key_exists('outdated', $data)) {
             $object->setOutdated($data['outdated']);
+            unset($data['outdated']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
@@ -74,6 +89,11 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataResponsesNormalizer implements
         $data['received'] = $object->getReceived();
         $data['unexpected'] = $object->getUnexpected();
         $data['outdated'] = $object->getOutdated();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
 
         return $data;
     }

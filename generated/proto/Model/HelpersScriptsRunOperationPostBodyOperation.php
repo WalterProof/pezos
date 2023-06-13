@@ -10,34 +10,34 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsRunOperationPostBodyOperation
+class HelpersScriptsRunOperationPostBodyOperation extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $branch;
     /**
      * @var mixed[]
      */
     protected $contents;
-    /**
-     * @var mixed
-     */
+
     protected $signature;
 
-    /**
-     * @return mixed
-     */
     public function getBranch()
     {
         return $this->branch;
     }
 
-    /**
-     * @param mixed $branch
-     */
     public function setBranch($branch): self
     {
+        $this->initialized['branch'] = true;
         $this->branch = $branch;
 
         return $this;
@@ -56,24 +56,20 @@ class HelpersScriptsRunOperationPostBodyOperation
      */
     public function setContents(array $contents): self
     {
+        $this->initialized['contents'] = true;
         $this->contents = $contents;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getSignature()
     {
         return $this->signature;
     }
 
-    /**
-     * @param mixed $signature
-     */
     public function setSignature($signature): self
     {
+        $this->initialized['signature'] = true;
         $this->signature = $signature;
 
         return $this;

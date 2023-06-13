@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersCurrentLevelGetResponse200
+class HelpersCurrentLevelGetResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The level of the block relative to genesis. This is also the Shell's notion of level.
      *
@@ -19,13 +28,13 @@ class HelpersCurrentLevelGetResponse200
      */
     protected $level;
     /**
-     * The level of the block relative to the block that starts protocol alpha. This is specific to the protocol alpha. Other protocols might or might not include a similar notion.
+     * The level of the block relative to the successor of the genesis block. More precisely, it is the position of the block relative to the block that starts the "Alpha family" of protocols, which includes all protocols except Genesis (that is, from 001 onwards).
      *
      * @var int
      */
     protected $levelPosition;
     /**
-     * The current cycle's number. Note that cycles are a protocol-specific notion. As a result, the cycle number starts at 0 with the first block of protocol alpha.
+     * The current cycle's number. Note that cycles are a protocol-specific notion. As a result, the cycle number starts at 0 with the first block of the Alpha family of protocols.
      *
      * @var int
      */
@@ -37,19 +46,7 @@ class HelpersCurrentLevelGetResponse200
      */
     protected $cyclePosition;
     /**
-     * The current voting period's index. Note that cycles are a protocol-specific notion. As a result, the voting period index starts at 0 with the first block of protocol alpha. This field is DEPRECATED: use `..<block_id>/votes/voting_period` RPC instead.
-     *
-     * @var int
-     */
-    protected $votingPeriod;
-    /**
-     * The current level of the block relative to the first block of the current voting period. This field is DEPRECATED: use `..<block_id>/votes/voting_period` RPC instead.
-     *
-     * @var int
-     */
-    protected $votingPeriodPosition;
-    /**
-     * Tells wether the baker of this block has to commit a seed nonce hash.
+     * Tells whether the baker of this block has to commit a seed nonce hash.
      *
      * @var bool
      */
@@ -68,13 +65,14 @@ class HelpersCurrentLevelGetResponse200
      */
     public function setLevel(int $level): self
     {
+        $this->initialized['level'] = true;
         $this->level = $level;
 
         return $this;
     }
 
     /**
-     * The level of the block relative to the block that starts protocol alpha. This is specific to the protocol alpha. Other protocols might or might not include a similar notion.
+     * The level of the block relative to the successor of the genesis block. More precisely, it is the position of the block relative to the block that starts the "Alpha family" of protocols, which includes all protocols except Genesis (that is, from 001 onwards).
      */
     public function getLevelPosition(): int
     {
@@ -82,17 +80,18 @@ class HelpersCurrentLevelGetResponse200
     }
 
     /**
-     * The level of the block relative to the block that starts protocol alpha. This is specific to the protocol alpha. Other protocols might or might not include a similar notion.
+     * The level of the block relative to the successor of the genesis block. More precisely, it is the position of the block relative to the block that starts the "Alpha family" of protocols, which includes all protocols except Genesis (that is, from 001 onwards).
      */
     public function setLevelPosition(int $levelPosition): self
     {
+        $this->initialized['levelPosition'] = true;
         $this->levelPosition = $levelPosition;
 
         return $this;
     }
 
     /**
-     * The current cycle's number. Note that cycles are a protocol-specific notion. As a result, the cycle number starts at 0 with the first block of protocol alpha.
+     * The current cycle's number. Note that cycles are a protocol-specific notion. As a result, the cycle number starts at 0 with the first block of the Alpha family of protocols.
      */
     public function getCycle(): int
     {
@@ -100,10 +99,11 @@ class HelpersCurrentLevelGetResponse200
     }
 
     /**
-     * The current cycle's number. Note that cycles are a protocol-specific notion. As a result, the cycle number starts at 0 with the first block of protocol alpha.
+     * The current cycle's number. Note that cycles are a protocol-specific notion. As a result, the cycle number starts at 0 with the first block of the Alpha family of protocols.
      */
     public function setCycle(int $cycle): self
     {
+        $this->initialized['cycle'] = true;
         $this->cycle = $cycle;
 
         return $this;
@@ -122,49 +122,14 @@ class HelpersCurrentLevelGetResponse200
      */
     public function setCyclePosition(int $cyclePosition): self
     {
+        $this->initialized['cyclePosition'] = true;
         $this->cyclePosition = $cyclePosition;
 
         return $this;
     }
 
     /**
-     * The current voting period's index. Note that cycles are a protocol-specific notion. As a result, the voting period index starts at 0 with the first block of protocol alpha. This field is DEPRECATED: use `..<block_id>/votes/voting_period` RPC instead.
-     */
-    public function getVotingPeriod(): int
-    {
-        return $this->votingPeriod;
-    }
-
-    /**
-     * The current voting period's index. Note that cycles are a protocol-specific notion. As a result, the voting period index starts at 0 with the first block of protocol alpha. This field is DEPRECATED: use `..<block_id>/votes/voting_period` RPC instead.
-     */
-    public function setVotingPeriod(int $votingPeriod): self
-    {
-        $this->votingPeriod = $votingPeriod;
-
-        return $this;
-    }
-
-    /**
-     * The current level of the block relative to the first block of the current voting period. This field is DEPRECATED: use `..<block_id>/votes/voting_period` RPC instead.
-     */
-    public function getVotingPeriodPosition(): int
-    {
-        return $this->votingPeriodPosition;
-    }
-
-    /**
-     * The current level of the block relative to the first block of the current voting period. This field is DEPRECATED: use `..<block_id>/votes/voting_period` RPC instead.
-     */
-    public function setVotingPeriodPosition(int $votingPeriodPosition): self
-    {
-        $this->votingPeriodPosition = $votingPeriodPosition;
-
-        return $this;
-    }
-
-    /**
-     * Tells wether the baker of this block has to commit a seed nonce hash.
+     * Tells whether the baker of this block has to commit a seed nonce hash.
      */
     public function getExpectedCommitment(): bool
     {
@@ -172,10 +137,11 @@ class HelpersCurrentLevelGetResponse200
     }
 
     /**
-     * Tells wether the baker of this block has to commit a seed nonce hash.
+     * Tells whether the baker of this block has to commit a seed nonce hash.
      */
     public function setExpectedCommitment(bool $expectedCommitment): self
     {
+        $this->initialized['expectedCommitment'] = true;
         $this->expectedCommitment = $expectedCommitment;
 
         return $this;

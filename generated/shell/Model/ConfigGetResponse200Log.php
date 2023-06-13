@@ -10,12 +10,19 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class ConfigGetResponse200Log
+class ConfigGetResponse200Log extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Output for the logging function. Either 'stdout', 'stderr' or the name of a log file .
-     *
-     * @var mixed
      */
     protected $output;
     /**
@@ -25,22 +32,16 @@ class ConfigGetResponse200Log
      */
     protected $level;
     /**
-     * Fine-grained logging instructions. Same format as described in `tezos-node run --help`, DEBUG section. In the example below, sections 'p2p' and all sections starting by 'client' will have their messages logged up to the debug level, whereas the rest of log sections will be logged up to the notice level.
-     *
-     * @var mixed
+     * Fine-grained logging instructions. Same format as described in `octez-node run --help`, DEBUG section. In the example below, sections 'p2p' and all sections starting by 'client' will have their messages logged up to the debug level, whereas the rest of log sections will be logged up to the notice level.
      */
     protected $rules;
     /**
-     * Format for the log file, see http://ocsigen.org/lwt/dev/api/Lwt_log_core#2_Logtemplates.
-     *
-     * @var mixed
+     * Format for the log file, see https://github.com/ocsigen/lwt_log/blob/1.1.1/src/core/lwt_log_core.mli#L229.
      */
     protected $template;
 
     /**
      * Output for the logging function. Either 'stdout', 'stderr' or the name of a log file .
-     *
-     * @return mixed
      */
     public function getOutput()
     {
@@ -49,11 +50,10 @@ class ConfigGetResponse200Log
 
     /**
      * Output for the logging function. Either 'stdout', 'stderr' or the name of a log file .
-     *
-     * @param mixed $output
      */
     public function setOutput($output): self
     {
+        $this->initialized['output'] = true;
         $this->output = $output;
 
         return $this;
@@ -72,15 +72,14 @@ class ConfigGetResponse200Log
      */
     public function setLevel(string $level): self
     {
+        $this->initialized['level'] = true;
         $this->level = $level;
 
         return $this;
     }
 
     /**
-     * Fine-grained logging instructions. Same format as described in `tezos-node run --help`, DEBUG section. In the example below, sections 'p2p' and all sections starting by 'client' will have their messages logged up to the debug level, whereas the rest of log sections will be logged up to the notice level.
-     *
-     * @return mixed
+     * Fine-grained logging instructions. Same format as described in `octez-node run --help`, DEBUG section. In the example below, sections 'p2p' and all sections starting by 'client' will have their messages logged up to the debug level, whereas the rest of log sections will be logged up to the notice level.
      */
     public function getRules()
     {
@@ -88,21 +87,18 @@ class ConfigGetResponse200Log
     }
 
     /**
-     * Fine-grained logging instructions. Same format as described in `tezos-node run --help`, DEBUG section. In the example below, sections 'p2p' and all sections starting by 'client' will have their messages logged up to the debug level, whereas the rest of log sections will be logged up to the notice level.
-     *
-     * @param mixed $rules
+     * Fine-grained logging instructions. Same format as described in `octez-node run --help`, DEBUG section. In the example below, sections 'p2p' and all sections starting by 'client' will have their messages logged up to the debug level, whereas the rest of log sections will be logged up to the notice level.
      */
     public function setRules($rules): self
     {
+        $this->initialized['rules'] = true;
         $this->rules = $rules;
 
         return $this;
     }
 
     /**
-     * Format for the log file, see http://ocsigen.org/lwt/dev/api/Lwt_log_core#2_Logtemplates.
-     *
-     * @return mixed
+     * Format for the log file, see https://github.com/ocsigen/lwt_log/blob/1.1.1/src/core/lwt_log_core.mli#L229.
      */
     public function getTemplate()
     {
@@ -110,12 +106,11 @@ class ConfigGetResponse200Log
     }
 
     /**
-     * Format for the log file, see http://ocsigen.org/lwt/dev/api/Lwt_log_core#2_Logtemplates.
-     *
-     * @param mixed $template
+     * Format for the log file, see https://github.com/ocsigen/lwt_log/blob/1.1.1/src/core/lwt_log_core.mli#L229.
      */
     public function setTemplate($template): self
     {
+        $this->initialized['template'] = true;
         $this->template = $template;
 
         return $this;

@@ -10,17 +10,24 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsRunOperationPostBody
+class HelpersScriptsRunOperationPostBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * An operation's shell header.
      *
      * @var HelpersScriptsRunOperationPostBodyOperation
      */
     protected $operation;
-    /**
-     * @var mixed
-     */
+
     protected $chainId;
 
     /**
@@ -36,24 +43,20 @@ class HelpersScriptsRunOperationPostBody
      */
     public function setOperation(HelpersScriptsRunOperationPostBodyOperation $operation): self
     {
+        $this->initialized['operation'] = true;
         $this->operation = $operation;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getChainId()
     {
         return $this->chainId;
     }
 
-    /**
-     * @param mixed $chainId
-     */
     public function setChainId($chainId): self
     {
+        $this->initialized['chainId'] = true;
         $this->chainId = $chainId;
 
         return $this;

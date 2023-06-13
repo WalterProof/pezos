@@ -15,9 +15,9 @@ class PostHelpersScriptsRunOperation extends \Bzzhh\Pezos\Generated\Proto\Runtim
     use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
 
     /**
-     * Run an operation without signature checks.
+     * Run an operation with the context of the given block and without signature checks. Return the operation application result, including the consumed gas. This RPC does not support consensus operations.
      */
-    public function __construct(?\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody $requestBody = null)
+    public function __construct(\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -47,12 +47,12 @@ class PostHelpersScriptsRunOperation extends \Bzzhh\Pezos\Generated\Proto\Runtim
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }

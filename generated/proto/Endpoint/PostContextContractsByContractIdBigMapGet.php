@@ -20,7 +20,7 @@ class PostContextContractsByContractIdBigMapGet extends \Bzzhh\Pezos\Generated\P
      *
      * @param string $contractId a contract identifier encoded in b58check
      */
-    public function __construct(string $contractId, ?\Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdBigMapGetPostBody $requestBody = null)
+    public function __construct(string $contractId, \Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdBigMapGetPostBody $requestBody = null)
     {
         $this->contract_id = $contractId;
         $this->body = $requestBody;
@@ -51,12 +51,12 @@ class PostContextContractsByContractIdBigMapGet extends \Bzzhh\Pezos\Generated\P
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }

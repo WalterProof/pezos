@@ -10,12 +10,19 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class ConfigGetResponse200
+class ConfigGetResponse200 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Location of the data dir on disk.
-     *
-     * @var mixed
      */
     protected $dataDir;
     /**
@@ -44,8 +51,6 @@ class ConfigGetResponse200
     protected $log;
     /**
      * Configuration of the structured logging framework.
-     *
-     * @var ConfigGetResponse200InternalEvents
      */
     protected $internalEvents;
     /**
@@ -56,15 +61,23 @@ class ConfigGetResponse200
     protected $shell;
     /**
      * Configuration of which network/blockchain to connect to.
-     *
-     * @var mixed
      */
     protected $network;
+    /**
+     * Configuration of the Prometheus metrics endpoint.
+     *
+     * @var mixed[]
+     */
+    protected $metricsAddr;
+    /**
+     * USE FOR TESTING PURPOSE ONLY. Configuration for the data-availibility layer.
+     *
+     * @var ConfigGetResponse200Dal
+     */
+    protected $dal;
 
     /**
      * Location of the data dir on disk.
-     *
-     * @return mixed
      */
     public function getDataDir()
     {
@@ -73,11 +86,10 @@ class ConfigGetResponse200
 
     /**
      * Location of the data dir on disk.
-     *
-     * @param mixed $dataDir
      */
     public function setDataDir($dataDir): self
     {
+        $this->initialized['dataDir'] = true;
         $this->dataDir = $dataDir;
 
         return $this;
@@ -96,6 +108,7 @@ class ConfigGetResponse200
      */
     public function setDisableConfigValidation(bool $disableConfigValidation): self
     {
+        $this->initialized['disableConfigValidation'] = true;
         $this->disableConfigValidation = $disableConfigValidation;
 
         return $this;
@@ -114,6 +127,7 @@ class ConfigGetResponse200
      */
     public function setRpc(ConfigGetResponse200Rpc $rpc): self
     {
+        $this->initialized['rpc'] = true;
         $this->rpc = $rpc;
 
         return $this;
@@ -132,6 +146,7 @@ class ConfigGetResponse200
      */
     public function setP2p(ConfigGetResponse200P2p $p2p): self
     {
+        $this->initialized['p2p'] = true;
         $this->p2p = $p2p;
 
         return $this;
@@ -150,6 +165,7 @@ class ConfigGetResponse200
      */
     public function setLog(ConfigGetResponse200Log $log): self
     {
+        $this->initialized['log'] = true;
         $this->log = $log;
 
         return $this;
@@ -158,7 +174,7 @@ class ConfigGetResponse200
     /**
      * Configuration of the structured logging framework.
      */
-    public function getInternalEvents(): ConfigGetResponse200InternalEvents
+    public function getInternalEvents()
     {
         return $this->internalEvents;
     }
@@ -166,8 +182,9 @@ class ConfigGetResponse200
     /**
      * Configuration of the structured logging framework.
      */
-    public function setInternalEvents(ConfigGetResponse200InternalEvents $internalEvents): self
+    public function setInternalEvents($internalEvents): self
     {
+        $this->initialized['internalEvents'] = true;
         $this->internalEvents = $internalEvents;
 
         return $this;
@@ -186,6 +203,7 @@ class ConfigGetResponse200
      */
     public function setShell(ConfigGetResponse200Shell $shell): self
     {
+        $this->initialized['shell'] = true;
         $this->shell = $shell;
 
         return $this;
@@ -193,8 +211,6 @@ class ConfigGetResponse200
 
     /**
      * Configuration of which network/blockchain to connect to.
-     *
-     * @return mixed
      */
     public function getNetwork()
     {
@@ -203,12 +219,53 @@ class ConfigGetResponse200
 
     /**
      * Configuration of which network/blockchain to connect to.
-     *
-     * @param mixed $network
      */
     public function setNetwork($network): self
     {
+        $this->initialized['network'] = true;
         $this->network = $network;
+
+        return $this;
+    }
+
+    /**
+     * Configuration of the Prometheus metrics endpoint.
+     *
+     * @return mixed[]
+     */
+    public function getMetricsAddr(): array
+    {
+        return $this->metricsAddr;
+    }
+
+    /**
+     * Configuration of the Prometheus metrics endpoint.
+     *
+     * @param mixed[] $metricsAddr
+     */
+    public function setMetricsAddr(array $metricsAddr): self
+    {
+        $this->initialized['metricsAddr'] = true;
+        $this->metricsAddr = $metricsAddr;
+
+        return $this;
+    }
+
+    /**
+     * USE FOR TESTING PURPOSE ONLY. Configuration for the data-availibility layer.
+     */
+    public function getDal(): ConfigGetResponse200Dal
+    {
+        return $this->dal;
+    }
+
+    /**
+     * USE FOR TESTING PURPOSE ONLY. Configuration for the data-availibility layer.
+     */
+    public function setDal(ConfigGetResponse200Dal $dal): self
+    {
+        $this->initialized['dal'] = true;
+        $this->dal = $dal;
 
         return $this;
     }

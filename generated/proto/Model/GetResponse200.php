@@ -10,19 +10,24 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class GetResponse200
+class GetResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var string
      */
     protected $protocol;
-    /**
-     * @var mixed
-     */
+
     protected $chainId;
-    /**
-     * @var mixed
-     */
+
     protected $hash;
     /**
      * Block header's shell-related content. It contains information such as the block level, its predecessor and timestamp.
@@ -46,42 +51,33 @@ class GetResponse200
 
     public function setProtocol(string $protocol): self
     {
+        $this->initialized['protocol'] = true;
         $this->protocol = $protocol;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getChainId()
     {
         return $this->chainId;
     }
 
-    /**
-     * @param mixed $chainId
-     */
     public function setChainId($chainId): self
     {
+        $this->initialized['chainId'] = true;
         $this->chainId = $chainId;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getHash()
     {
         return $this->hash;
     }
 
-    /**
-     * @param mixed $hash
-     */
     public function setHash($hash): self
     {
+        $this->initialized['hash'] = true;
         $this->hash = $hash;
 
         return $this;
@@ -100,6 +96,7 @@ class GetResponse200
      */
     public function setHeader(RawBlockHeader $header): self
     {
+        $this->initialized['header'] = true;
         $this->header = $header;
 
         return $this;
@@ -112,6 +109,7 @@ class GetResponse200
 
     public function setMetadata(BlockHeaderMetadata $metadata): self
     {
+        $this->initialized['metadata'] = true;
         $this->metadata = $metadata;
 
         return $this;
@@ -130,6 +128,7 @@ class GetResponse200
      */
     public function setOperations(array $operations): self
     {
+        $this->initialized['operations'] = true;
         $this->operations = $operations;
 
         return $this;

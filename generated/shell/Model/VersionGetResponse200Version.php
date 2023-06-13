@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class VersionGetResponse200Version
+class VersionGetResponse200Version extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var int
      */
@@ -20,9 +29,7 @@ class VersionGetResponse200Version
      * @var int
      */
     protected $minor;
-    /**
-     * @var mixed
-     */
+
     protected $additionalInfo;
 
     public function getMajor(): int
@@ -32,6 +39,7 @@ class VersionGetResponse200Version
 
     public function setMajor(int $major): self
     {
+        $this->initialized['major'] = true;
         $this->major = $major;
 
         return $this;
@@ -44,24 +52,20 @@ class VersionGetResponse200Version
 
     public function setMinor(int $minor): self
     {
+        $this->initialized['minor'] = true;
         $this->minor = $minor;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getAdditionalInfo()
     {
         return $this->additionalInfo;
     }
 
-    /**
-     * @param mixed $additionalInfo
-     */
     public function setAdditionalInfo($additionalInfo): self
     {
+        $this->initialized['additionalInfo'] = true;
         $this->additionalInfo = $additionalInfo;
 
         return $this;

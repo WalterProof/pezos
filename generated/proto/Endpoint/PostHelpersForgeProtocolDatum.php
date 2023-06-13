@@ -17,7 +17,7 @@ class PostHelpersForgeProtocolDatum extends \Bzzhh\Pezos\Generated\Proto\Runtime
     /**
      * Forge the protocol-specific part of a block header.
      */
-    public function __construct(?\Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeProtocolDataPostBody $requestBody = null)
+    public function __construct(\Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeProtocolDataPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -47,12 +47,12 @@ class PostHelpersForgeProtocolDatum extends \Bzzhh\Pezos\Generated\Proto\Runtime
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeProtocolDataPostResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersForgeProtocolDataPostResponse200', 'json');
         }

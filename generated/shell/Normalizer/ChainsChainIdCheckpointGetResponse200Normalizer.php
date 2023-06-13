@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class ChainsChainIdCheckpointGetResponse200Normalizer implements DenormalizerInt
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ChainsChainIdCheckpointGetResponse200';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ChainsChainIdCheckpointGetResponse200';
     }
@@ -49,27 +51,44 @@ class ChainsChainIdCheckpointGetResponse200Normalizer implements DenormalizerInt
         }
         if (\array_key_exists('block', $data)) {
             $object->setBlock($this->denormalizer->denormalize($data['block'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\BlockHeader', 'json', $context));
+            unset($data['block']);
         }
-        if (\array_key_exists('save_point', $data)) {
-            $object->setSavePoint($data['save_point']);
+        if (\array_key_exists('savepoint', $data)) {
+            $object->setSavepoint($data['savepoint']);
+            unset($data['savepoint']);
         }
         if (\array_key_exists('caboose', $data)) {
             $object->setCaboose($data['caboose']);
+            unset($data['caboose']);
         }
         if (\array_key_exists('history_mode', $data)) {
             $object->setHistoryMode($data['history_mode']);
+            unset($data['history_mode']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
         $data['block'] = $this->normalizer->normalize($object->getBlock(), 'json', $context);
-        $data['save_point'] = $object->getSavePoint();
+        $data['savepoint'] = $object->getSavepoint();
         $data['caboose'] = $object->getCaboose();
         $data['history_mode'] = $object->getHistoryMode();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
 
         return $data;
     }

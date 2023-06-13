@@ -10,43 +10,54 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class VotesListingsGetResponse200Item
+class VotesListingsGetResponse200Item extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $pkh;
     /**
-     * @var int
+     * Decimal representation of 64 bit integers.
+     *
+     * @var string
      */
-    protected $rolls;
+    protected $votingPower;
 
-    /**
-     * @return mixed
-     */
     public function getPkh()
     {
         return $this->pkh;
     }
 
-    /**
-     * @param mixed $pkh
-     */
     public function setPkh($pkh): self
     {
+        $this->initialized['pkh'] = true;
         $this->pkh = $pkh;
 
         return $this;
     }
 
-    public function getRolls(): int
+    /**
+     * Decimal representation of 64 bit integers.
+     */
+    public function getVotingPower(): string
     {
-        return $this->rolls;
+        return $this->votingPower;
     }
 
-    public function setRolls(int $rolls): self
+    /**
+     * Decimal representation of 64 bit integers.
+     */
+    public function setVotingPower(string $votingPower): self
     {
-        $this->rolls = $rolls;
+        $this->initialized['votingPower'] = true;
+        $this->votingPower = $votingPower;
 
         return $this;
     }

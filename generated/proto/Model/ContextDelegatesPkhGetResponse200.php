@@ -10,30 +10,47 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class ContextDelegatesPkhGetResponse200
+class ContextDelegatesPkhGetResponse200 extends \ArrayObject
 {
     /**
-     * Decimal representation of a positive big number.
-     *
-     * @var string
+     * @var array
      */
-    protected $balance;
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Decimal representation of a positive big number.
      *
      * @var string
      */
-    protected $frozenBalance;
+    protected $fullBalance;
     /**
-     * @var ContextDelegatesPkhGetResponse200FrozenBalanceByCycleItem[]
+     * Decimal representation of a positive big number.
+     *
+     * @var string
      */
-    protected $frozenBalanceByCycle;
+    protected $currentFrozenDeposits;
+    /**
+     * Decimal representation of a positive big number.
+     *
+     * @var string
+     */
+    protected $frozenDeposits;
     /**
      * Decimal representation of a positive big number.
      *
      * @var string
      */
     protected $stakingBalance;
+    /**
+     * Decimal representation of a positive big number.
+     *
+     * @var string
+     */
+    protected $frozenDepositsLimit;
     /**
      * @var mixed[]
      */
@@ -53,24 +70,45 @@ class ContextDelegatesPkhGetResponse200
      */
     protected $gracePeriod;
     /**
-     * @var int
+     * Decimal representation of 64 bit integers.
+     *
+     * @var string
      */
     protected $votingPower;
+    /**
+     * @var string
+     */
+    protected $currentBallot;
+    /**
+     * @var mixed[]
+     */
+    protected $currentProposals;
+    /**
+     * @var int
+     */
+    protected $remainingProposals;
+
+    protected $activeConsensusKey;
+    /**
+     * @var ContextDelegatesPkhGetResponse200PendingConsensusKeysItem[]
+     */
+    protected $pendingConsensusKeys;
 
     /**
      * Decimal representation of a positive big number.
      */
-    public function getBalance(): string
+    public function getFullBalance(): string
     {
-        return $this->balance;
+        return $this->fullBalance;
     }
 
     /**
      * Decimal representation of a positive big number.
      */
-    public function setBalance(string $balance): self
+    public function setFullBalance(string $fullBalance): self
     {
-        $this->balance = $balance;
+        $this->initialized['fullBalance'] = true;
+        $this->fullBalance = $fullBalance;
 
         return $this;
     }
@@ -78,35 +116,37 @@ class ContextDelegatesPkhGetResponse200
     /**
      * Decimal representation of a positive big number.
      */
-    public function getFrozenBalance(): string
+    public function getCurrentFrozenDeposits(): string
     {
-        return $this->frozenBalance;
+        return $this->currentFrozenDeposits;
     }
 
     /**
      * Decimal representation of a positive big number.
      */
-    public function setFrozenBalance(string $frozenBalance): self
+    public function setCurrentFrozenDeposits(string $currentFrozenDeposits): self
     {
-        $this->frozenBalance = $frozenBalance;
+        $this->initialized['currentFrozenDeposits'] = true;
+        $this->currentFrozenDeposits = $currentFrozenDeposits;
 
         return $this;
     }
 
     /**
-     * @return ContextDelegatesPkhGetResponse200FrozenBalanceByCycleItem[]
+     * Decimal representation of a positive big number.
      */
-    public function getFrozenBalanceByCycle(): array
+    public function getFrozenDeposits(): string
     {
-        return $this->frozenBalanceByCycle;
+        return $this->frozenDeposits;
     }
 
     /**
-     * @param ContextDelegatesPkhGetResponse200FrozenBalanceByCycleItem[] $frozenBalanceByCycle
+     * Decimal representation of a positive big number.
      */
-    public function setFrozenBalanceByCycle(array $frozenBalanceByCycle): self
+    public function setFrozenDeposits(string $frozenDeposits): self
     {
-        $this->frozenBalanceByCycle = $frozenBalanceByCycle;
+        $this->initialized['frozenDeposits'] = true;
+        $this->frozenDeposits = $frozenDeposits;
 
         return $this;
     }
@@ -124,7 +164,27 @@ class ContextDelegatesPkhGetResponse200
      */
     public function setStakingBalance(string $stakingBalance): self
     {
+        $this->initialized['stakingBalance'] = true;
         $this->stakingBalance = $stakingBalance;
+
+        return $this;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function getFrozenDepositsLimit(): string
+    {
+        return $this->frozenDepositsLimit;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function setFrozenDepositsLimit(string $frozenDepositsLimit): self
+    {
+        $this->initialized['frozenDepositsLimit'] = true;
+        $this->frozenDepositsLimit = $frozenDepositsLimit;
 
         return $this;
     }
@@ -142,6 +202,7 @@ class ContextDelegatesPkhGetResponse200
      */
     public function setDelegatedContracts(array $delegatedContracts): self
     {
+        $this->initialized['delegatedContracts'] = true;
         $this->delegatedContracts = $delegatedContracts;
 
         return $this;
@@ -160,6 +221,7 @@ class ContextDelegatesPkhGetResponse200
      */
     public function setDelegatedBalance(string $delegatedBalance): self
     {
+        $this->initialized['delegatedBalance'] = true;
         $this->delegatedBalance = $delegatedBalance;
 
         return $this;
@@ -172,6 +234,7 @@ class ContextDelegatesPkhGetResponse200
 
     public function setDeactivated(bool $deactivated): self
     {
+        $this->initialized['deactivated'] = true;
         $this->deactivated = $deactivated;
 
         return $this;
@@ -184,19 +247,104 @@ class ContextDelegatesPkhGetResponse200
 
     public function setGracePeriod(int $gracePeriod): self
     {
+        $this->initialized['gracePeriod'] = true;
         $this->gracePeriod = $gracePeriod;
 
         return $this;
     }
 
-    public function getVotingPower(): int
+    /**
+     * Decimal representation of 64 bit integers.
+     */
+    public function getVotingPower(): string
     {
         return $this->votingPower;
     }
 
-    public function setVotingPower(int $votingPower): self
+    /**
+     * Decimal representation of 64 bit integers.
+     */
+    public function setVotingPower(string $votingPower): self
     {
+        $this->initialized['votingPower'] = true;
         $this->votingPower = $votingPower;
+
+        return $this;
+    }
+
+    public function getCurrentBallot(): string
+    {
+        return $this->currentBallot;
+    }
+
+    public function setCurrentBallot(string $currentBallot): self
+    {
+        $this->initialized['currentBallot'] = true;
+        $this->currentBallot = $currentBallot;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed[]
+     */
+    public function getCurrentProposals(): array
+    {
+        return $this->currentProposals;
+    }
+
+    /**
+     * @param mixed[] $currentProposals
+     */
+    public function setCurrentProposals(array $currentProposals): self
+    {
+        $this->initialized['currentProposals'] = true;
+        $this->currentProposals = $currentProposals;
+
+        return $this;
+    }
+
+    public function getRemainingProposals(): int
+    {
+        return $this->remainingProposals;
+    }
+
+    public function setRemainingProposals(int $remainingProposals): self
+    {
+        $this->initialized['remainingProposals'] = true;
+        $this->remainingProposals = $remainingProposals;
+
+        return $this;
+    }
+
+    public function getActiveConsensusKey()
+    {
+        return $this->activeConsensusKey;
+    }
+
+    public function setActiveConsensusKey($activeConsensusKey): self
+    {
+        $this->initialized['activeConsensusKey'] = true;
+        $this->activeConsensusKey = $activeConsensusKey;
+
+        return $this;
+    }
+
+    /**
+     * @return ContextDelegatesPkhGetResponse200PendingConsensusKeysItem[]
+     */
+    public function getPendingConsensusKeys(): array
+    {
+        return $this->pendingConsensusKeys;
+    }
+
+    /**
+     * @param ContextDelegatesPkhGetResponse200PendingConsensusKeysItem[] $pendingConsensusKeys
+     */
+    public function setPendingConsensusKeys(array $pendingConsensusKeys): self
+    {
+        $this->initialized['pendingConsensusKeys'] = true;
+        $this->pendingConsensusKeys = $pendingConsensusKeys;
 
         return $this;
     }

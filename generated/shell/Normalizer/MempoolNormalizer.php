@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class MempoolNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\Mempool';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\Mempool';
     }
@@ -53,6 +55,7 @@ class MempoolNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $values[] = $value;
             }
             $object->setKnownValid($values);
+            unset($data['known_valid']);
         }
         if (\array_key_exists('pending', $data)) {
             $values_1 = [];
@@ -60,11 +63,20 @@ class MempoolNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $values_1[] = $value_1;
             }
             $object->setPending($values_1);
+            unset($data['pending']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
@@ -78,6 +90,11 @@ class MempoolNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $values_1[] = $value_1;
         }
         $data['pending'] = $values_1;
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
+        }
 
         return $data;
     }

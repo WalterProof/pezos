@@ -10,58 +10,51 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersPreapplyBlockPostResponse200OperationsItemBranchDelayedItem
+class HelpersPreapplyBlockPostResponse200OperationsItemBranchDelayedItem extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $hash;
-    /**
-     * @var mixed
-     */
+
     protected $branch;
     /**
      * @var string
      */
     protected $data;
     /**
-     * The full list of error is available with the global RPC `GET errors`.
-     *
-     * @var mixed
+     * The full list of errors is available with the global RPC `GET errors`.
      */
     protected $error;
 
-    /**
-     * @return mixed
-     */
     public function getHash()
     {
         return $this->hash;
     }
 
-    /**
-     * @param mixed $hash
-     */
     public function setHash($hash): self
     {
+        $this->initialized['hash'] = true;
         $this->hash = $hash;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getBranch()
     {
         return $this->branch;
     }
 
-    /**
-     * @param mixed $branch
-     */
     public function setBranch($branch): self
     {
+        $this->initialized['branch'] = true;
         $this->branch = $branch;
 
         return $this;
@@ -74,15 +67,14 @@ class HelpersPreapplyBlockPostResponse200OperationsItemBranchDelayedItem
 
     public function setData(string $data): self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
 
         return $this;
     }
 
     /**
-     * The full list of error is available with the global RPC `GET errors`.
-     *
-     * @return mixed
+     * The full list of errors is available with the global RPC `GET errors`.
      */
     public function getError()
     {
@@ -90,12 +82,11 @@ class HelpersPreapplyBlockPostResponse200OperationsItemBranchDelayedItem
     }
 
     /**
-     * The full list of error is available with the global RPC `GET errors`.
-     *
-     * @param mixed $error
+     * The full list of errors is available with the global RPC `GET errors`.
      */
     public function setError($error): self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
 
         return $this;

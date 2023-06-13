@@ -10,11 +10,18 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsTypecheckCodePostBody
+class HelpersScriptsTypecheckCodePostBody extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $program;
     /**
      * Decimal representation of a big number.
@@ -26,20 +33,19 @@ class HelpersScriptsTypecheckCodePostBody
      * @var bool
      */
     protected $legacy;
-
     /**
-     * @return mixed
+     * @var bool
      */
+    protected $showTypes;
+
     public function getProgram()
     {
         return $this->program;
     }
 
-    /**
-     * @param mixed $program
-     */
     public function setProgram($program): self
     {
+        $this->initialized['program'] = true;
         $this->program = $program;
 
         return $this;
@@ -58,6 +64,7 @@ class HelpersScriptsTypecheckCodePostBody
      */
     public function setGas(string $gas): self
     {
+        $this->initialized['gas'] = true;
         $this->gas = $gas;
 
         return $this;
@@ -70,7 +77,21 @@ class HelpersScriptsTypecheckCodePostBody
 
     public function setLegacy(bool $legacy): self
     {
+        $this->initialized['legacy'] = true;
         $this->legacy = $legacy;
+
+        return $this;
+    }
+
+    public function getShowTypes(): bool
+    {
+        return $this->showTypes;
+    }
+
+    public function setShowTypes(bool $showTypes): self
+    {
+        $this->initialized['showTypes'] = true;
+        $this->showTypes = $showTypes;
 
         return $this;
     }

@@ -10,30 +10,32 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class Operation
+class Operation extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $branch;
     /**
      * @var string
      */
     protected $data;
 
-    /**
-     * @return mixed
-     */
     public function getBranch()
     {
         return $this->branch;
     }
 
-    /**
-     * @param mixed $branch
-     */
     public function setBranch($branch): self
     {
+        $this->initialized['branch'] = true;
         $this->branch = $branch;
 
         return $this;
@@ -46,6 +48,7 @@ class Operation
 
     public function setData(string $data): self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
 
         return $this;

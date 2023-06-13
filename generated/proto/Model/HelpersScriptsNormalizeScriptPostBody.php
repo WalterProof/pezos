@@ -10,48 +10,43 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsNormalizeScriptPostBody
+class HelpersScriptsNormalizeScriptPostBody extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $script;
-    /**
-     * @var mixed
-     */
+
     protected $unparsingMode;
 
-    /**
-     * @return mixed
-     */
     public function getScript()
     {
         return $this->script;
     }
 
-    /**
-     * @param mixed $script
-     */
     public function setScript($script): self
     {
+        $this->initialized['script'] = true;
         $this->script = $script;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getUnparsingMode()
     {
         return $this->unparsingMode;
     }
 
-    /**
-     * @param mixed $unparsingMode
-     */
     public function setUnparsingMode($unparsingMode): self
     {
+        $this->initialized['unparsingMode'] = true;
         $this->unparsingMode = $unparsingMode;
 
         return $this;

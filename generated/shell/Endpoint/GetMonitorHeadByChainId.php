@@ -16,11 +16,12 @@ class GetMonitorHeadByChainId extends \Bzzhh\Pezos\Generated\Shell\Runtime\Clien
     protected $chain_id;
 
     /**
-     * Monitor all blocks that are successfully validated by the node and selected as the new head of the given chain.
+     * Monitor all blocks that are successfully validated and applied by the node and selected as the new head of the given chain.
      *
      * @param string $chainId         A chain identifier. This is either a chain hash in Base58Check notation or a one the predefined aliases: 'main', 'test'.
      * @param array  $queryParameters {
      *
+     *     @var string $protocol Protocol_hash (Base58Check-encoded)
      *     @var string $next_protocol Protocol_hash (Base58Check-encoded)
      * }
      */
@@ -53,21 +54,22 @@ class GetMonitorHeadByChainId extends \Bzzhh\Pezos\Generated\Shell\Runtime\Clien
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['next_protocol']);
+        $optionsResolver->setDefined(['protocol', 'next_protocol']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('next_protocol', ['string']);
+        $optionsResolver->addAllowedTypes('protocol', ['string']);
+        $optionsResolver->addAllowedTypes('next_protocol', ['string']);
 
         return $optionsResolver;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \Bzzhh\Pezos\Generated\Shell\Model\MonitorHeadsChainIdGetResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\MonitorHeadsChainIdGetResponse200', 'json');
         }

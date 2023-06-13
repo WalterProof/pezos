@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class P2pStat
+class P2pStat extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Decimal representation of 64 bit integers.
      *
@@ -46,6 +55,7 @@ class P2pStat
      */
     public function setTotalSent(string $totalSent): self
     {
+        $this->initialized['totalSent'] = true;
         $this->totalSent = $totalSent;
 
         return $this;
@@ -64,6 +74,7 @@ class P2pStat
      */
     public function setTotalRecv(string $totalRecv): self
     {
+        $this->initialized['totalRecv'] = true;
         $this->totalRecv = $totalRecv;
 
         return $this;
@@ -76,6 +87,7 @@ class P2pStat
 
     public function setCurrentInflow(int $currentInflow): self
     {
+        $this->initialized['currentInflow'] = true;
         $this->currentInflow = $currentInflow;
 
         return $this;
@@ -88,6 +100,7 @@ class P2pStat
 
     public function setCurrentOutflow(int $currentOutflow): self
     {
+        $this->initialized['currentOutflow'] = true;
         $this->currentOutflow = $currentOutflow;
 
         return $this;

@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class P2pStatNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\P2pStat';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\P2pStat';
     }
@@ -49,20 +51,32 @@ class P2pStatNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('total_sent', $data)) {
             $object->setTotalSent($data['total_sent']);
+            unset($data['total_sent']);
         }
         if (\array_key_exists('total_recv', $data)) {
             $object->setTotalRecv($data['total_recv']);
+            unset($data['total_recv']);
         }
         if (\array_key_exists('current_inflow', $data)) {
             $object->setCurrentInflow($data['current_inflow']);
+            unset($data['current_inflow']);
         }
         if (\array_key_exists('current_outflow', $data)) {
             $object->setCurrentOutflow($data['current_outflow']);
+            unset($data['current_outflow']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
@@ -70,6 +84,11 @@ class P2pStatNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data['total_recv'] = $object->getTotalRecv();
         $data['current_inflow'] = $object->getCurrentInflow();
         $data['current_outflow'] = $object->getCurrentOutflow();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
 
         return $data;
     }

@@ -10,46 +10,68 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersForgeProtocolDataPostBody
+class HelpersForgeProtocolDataPostBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
+    protected $payloadHash;
     /**
      * @var int
      */
-    protected $priority;
-    /**
-     * @var mixed
-     */
+    protected $payloadRound;
+
     protected $nonceHash;
     /**
      * @var string
      */
     protected $proofOfWorkNonce;
+    /**
+     * @var string
+     */
+    protected $liquidityBakingToggleVote;
 
-    public function getPriority(): int
+    public function getPayloadHash()
     {
-        return $this->priority;
+        return $this->payloadHash;
     }
 
-    public function setPriority(int $priority): self
+    public function setPayloadHash($payloadHash): self
     {
-        $this->priority = $priority;
+        $this->initialized['payloadHash'] = true;
+        $this->payloadHash = $payloadHash;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
+    public function getPayloadRound(): int
+    {
+        return $this->payloadRound;
+    }
+
+    public function setPayloadRound(int $payloadRound): self
+    {
+        $this->initialized['payloadRound'] = true;
+        $this->payloadRound = $payloadRound;
+
+        return $this;
+    }
+
     public function getNonceHash()
     {
         return $this->nonceHash;
     }
 
-    /**
-     * @param mixed $nonceHash
-     */
     public function setNonceHash($nonceHash): self
     {
+        $this->initialized['nonceHash'] = true;
         $this->nonceHash = $nonceHash;
 
         return $this;
@@ -62,7 +84,21 @@ class HelpersForgeProtocolDataPostBody
 
     public function setProofOfWorkNonce(string $proofOfWorkNonce): self
     {
+        $this->initialized['proofOfWorkNonce'] = true;
         $this->proofOfWorkNonce = $proofOfWorkNonce;
+
+        return $this;
+    }
+
+    public function getLiquidityBakingToggleVote(): string
+    {
+        return $this->liquidityBakingToggleVote;
+    }
+
+    public function setLiquidityBakingToggleVote(string $liquidityBakingToggleVote): self
+    {
+        $this->initialized['liquidityBakingToggleVote'] = true;
+        $this->liquidityBakingToggleVote = $liquidityBakingToggleVote;
 
         return $this;
     }

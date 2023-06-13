@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class ContextContractsContractIdGetResponse200Normalizer implements Denormalizer
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdGetResponse200';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdGetResponse200';
     }
@@ -49,32 +51,49 @@ class ContextContractsContractIdGetResponse200Normalizer implements Denormalizer
         }
         if (\array_key_exists('balance', $data)) {
             $object->setBalance($data['balance']);
+            unset($data['balance']);
         }
         if (\array_key_exists('delegate', $data)) {
             $object->setDelegate($data['delegate']);
+            unset($data['delegate']);
         }
         if (\array_key_exists('script', $data)) {
-            $object->setScript($this->denormalizer->denormalize($data['script'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_009PsFLorenScriptedContracts', 'json', $context));
+            $object->setScript($this->denormalizer->denormalize($data['script'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_016PtMumbaiScriptedContracts', 'json', $context));
+            unset($data['script']);
         }
         if (\array_key_exists('counter', $data)) {
             $object->setCounter($data['counter']);
+            unset($data['counter']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
         $data['balance'] = $object->getBalance();
-        if (null !== $object->getDelegate()) {
+        if ($object->isInitialized('delegate') && null !== $object->getDelegate()) {
             $data['delegate'] = $object->getDelegate();
         }
-        if (null !== $object->getScript()) {
+        if ($object->isInitialized('script') && null !== $object->getScript()) {
             $data['script'] = $this->normalizer->normalize($object->getScript(), 'json', $context);
         }
-        if (null !== $object->getCounter()) {
+        if ($object->isInitialized('counter') && null !== $object->getCounter()) {
             $data['counter'] = $object->getCounter();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class NetworkConnectionsGetResponse200ItemRemoteMetadata
+class NetworkConnectionsGetResponse200ItemRemoteMetadata extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var bool
      */
@@ -28,6 +37,7 @@ class NetworkConnectionsGetResponse200ItemRemoteMetadata
 
     public function setDisableMempool(bool $disableMempool): self
     {
+        $this->initialized['disableMempool'] = true;
         $this->disableMempool = $disableMempool;
 
         return $this;
@@ -40,6 +50,7 @@ class NetworkConnectionsGetResponse200ItemRemoteMetadata
 
     public function setPrivateNode(bool $privateNode): self
     {
+        $this->initialized['privateNode'] = true;
         $this->privateNode = $privateNode;
 
         return $this;

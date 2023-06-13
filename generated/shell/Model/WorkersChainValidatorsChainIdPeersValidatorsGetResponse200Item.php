@@ -10,15 +10,20 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class WorkersChainValidatorsChainIdPeersValidatorsGetResponse200Item
+class WorkersChainValidatorsChainIdPeersValidatorsGetResponse200Item extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $peerId;
-    /**
-     * @var mixed
-     */
+
     protected $status;
     /**
      * @var WorkersChainValidatorsChainIdPeersValidatorsGetResponse200ItemInformation
@@ -29,37 +34,27 @@ class WorkersChainValidatorsChainIdPeersValidatorsGetResponse200Item
      */
     protected $pipelines;
 
-    /**
-     * @return mixed
-     */
     public function getPeerId()
     {
         return $this->peerId;
     }
 
-    /**
-     * @param mixed $peerId
-     */
     public function setPeerId($peerId): self
     {
+        $this->initialized['peerId'] = true;
         $this->peerId = $peerId;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getStatus()
     {
         return $this->status;
     }
 
-    /**
-     * @param mixed $status
-     */
     public function setStatus($status): self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
 
         return $this;
@@ -72,6 +67,7 @@ class WorkersChainValidatorsChainIdPeersValidatorsGetResponse200Item
 
     public function setInformation(WorkersChainValidatorsChainIdPeersValidatorsGetResponse200ItemInformation $information): self
     {
+        $this->initialized['information'] = true;
         $this->information = $information;
 
         return $this;
@@ -84,6 +80,7 @@ class WorkersChainValidatorsChainIdPeersValidatorsGetResponse200Item
 
     public function setPipelines(WorkersChainValidatorsChainIdPeersValidatorsGetResponse200ItemPipelines $pipelines): self
     {
+        $this->initialized['pipelines'] = true;
         $this->pipelines = $pipelines;
 
         return $this;

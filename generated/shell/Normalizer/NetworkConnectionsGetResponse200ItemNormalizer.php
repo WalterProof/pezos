@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class NetworkConnectionsGetResponse200ItemNormalizer implements DenormalizerInte
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkConnectionsGetResponse200Item';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkConnectionsGetResponse200Item';
     }
@@ -49,32 +51,48 @@ class NetworkConnectionsGetResponse200ItemNormalizer implements DenormalizerInte
         }
         if (\array_key_exists('incoming', $data)) {
             $object->setIncoming($data['incoming']);
+            unset($data['incoming']);
         }
         if (\array_key_exists('peer_id', $data)) {
             $object->setPeerId($data['peer_id']);
+            unset($data['peer_id']);
         }
         if (\array_key_exists('id_point', $data)) {
             $object->setIdPoint($this->denormalizer->denormalize($data['id_point'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\P2pConnectionId', 'json', $context));
+            unset($data['id_point']);
         }
         if (\array_key_exists('remote_socket_port', $data)) {
             $object->setRemoteSocketPort($data['remote_socket_port']);
+            unset($data['remote_socket_port']);
         }
         if (\array_key_exists('announced_version', $data)) {
             $object->setAnnouncedVersion($this->denormalizer->denormalize($data['announced_version'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkVersion', 'json', $context));
+            unset($data['announced_version']);
         }
         if (\array_key_exists('private', $data)) {
             $object->setPrivate($data['private']);
+            unset($data['private']);
         }
         if (\array_key_exists('local_metadata', $data)) {
             $object->setLocalMetadata($this->denormalizer->denormalize($data['local_metadata'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkConnectionsGetResponse200ItemLocalMetadata', 'json', $context));
+            unset($data['local_metadata']);
         }
         if (\array_key_exists('remote_metadata', $data)) {
             $object->setRemoteMetadata($this->denormalizer->denormalize($data['remote_metadata'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkConnectionsGetResponse200ItemRemoteMetadata', 'json', $context));
+            unset($data['remote_metadata']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
@@ -86,6 +104,11 @@ class NetworkConnectionsGetResponse200ItemNormalizer implements DenormalizerInte
         $data['private'] = $object->getPrivate();
         $data['local_metadata'] = $this->normalizer->normalize($object->getLocalMetadata(), 'json', $context);
         $data['remote_metadata'] = $this->normalizer->normalize($object->getRemoteMetadata(), 'json', $context);
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
 
         return $data;
     }

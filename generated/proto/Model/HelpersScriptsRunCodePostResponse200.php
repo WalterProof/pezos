@@ -10,11 +10,18 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsRunCodePostResponse200
+class HelpersScriptsRunCodePostResponse200 extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $storage;
     /**
      * @var mixed[]
@@ -23,25 +30,16 @@ class HelpersScriptsRunCodePostResponse200
     /**
      * @var mixed[]
      */
-    protected $bigMapDiff;
-    /**
-     * @var mixed[]
-     */
     protected $lazyStorageDiff;
 
-    /**
-     * @return mixed
-     */
     public function getStorage()
     {
         return $this->storage;
     }
 
-    /**
-     * @param mixed $storage
-     */
     public function setStorage($storage): self
     {
+        $this->initialized['storage'] = true;
         $this->storage = $storage;
 
         return $this;
@@ -60,25 +58,8 @@ class HelpersScriptsRunCodePostResponse200
      */
     public function setOperations(array $operations): self
     {
+        $this->initialized['operations'] = true;
         $this->operations = $operations;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed[]
-     */
-    public function getBigMapDiff(): array
-    {
-        return $this->bigMapDiff;
-    }
-
-    /**
-     * @param mixed[] $bigMapDiff
-     */
-    public function setBigMapDiff(array $bigMapDiff): self
-    {
-        $this->bigMapDiff = $bigMapDiff;
 
         return $this;
     }
@@ -96,6 +77,7 @@ class HelpersScriptsRunCodePostResponse200
      */
     public function setLazyStorageDiff(array $lazyStorageDiff): self
     {
+        $this->initialized['lazyStorageDiff'] = true;
         $this->lazyStorageDiff = $lazyStorageDiff;
 
         return $this;

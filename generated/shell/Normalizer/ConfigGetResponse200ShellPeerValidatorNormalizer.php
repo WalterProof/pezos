@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class ConfigGetResponse200ShellPeerValidatorNormalizer implements DenormalizerIn
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200ShellPeerValidator';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200ShellPeerValidator';
     }
@@ -44,51 +46,68 @@ class ConfigGetResponse200ShellPeerValidatorNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Bzzhh\Pezos\Generated\Shell\Model\ConfigGetResponse200ShellPeerValidator();
+        if (\array_key_exists('block_header_request_timeout', $data) && \is_int($data['block_header_request_timeout'])) {
+            $data['block_header_request_timeout'] = (float) $data['block_header_request_timeout'];
+        }
+        if (\array_key_exists('block_operations_request_timeout', $data) && \is_int($data['block_operations_request_timeout'])) {
+            $data['block_operations_request_timeout'] = (float) $data['block_operations_request_timeout'];
+        }
+        if (\array_key_exists('protocol_request_timeout', $data) && \is_int($data['protocol_request_timeout'])) {
+            $data['protocol_request_timeout'] = (float) $data['protocol_request_timeout'];
+        }
+        if (\array_key_exists('new_head_request_timeout', $data) && \is_int($data['new_head_request_timeout'])) {
+            $data['new_head_request_timeout'] = (float) $data['new_head_request_timeout'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('block_header_request_timeout', $data)) {
             $object->setBlockHeaderRequestTimeout($data['block_header_request_timeout']);
+            unset($data['block_header_request_timeout']);
         }
         if (\array_key_exists('block_operations_request_timeout', $data)) {
             $object->setBlockOperationsRequestTimeout($data['block_operations_request_timeout']);
+            unset($data['block_operations_request_timeout']);
         }
         if (\array_key_exists('protocol_request_timeout', $data)) {
             $object->setProtocolRequestTimeout($data['protocol_request_timeout']);
+            unset($data['protocol_request_timeout']);
         }
         if (\array_key_exists('new_head_request_timeout', $data)) {
             $object->setNewHeadRequestTimeout($data['new_head_request_timeout']);
+            unset($data['new_head_request_timeout']);
         }
-        if (\array_key_exists('worker_backlog_size', $data)) {
-            $object->setWorkerBacklogSize($data['worker_backlog_size']);
-        }
-        if (\array_key_exists('worker_backlog_level', $data)) {
-            $object->setWorkerBacklogLevel($data['worker_backlog_level']);
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getBlockHeaderRequestTimeout()) {
+        if ($object->isInitialized('blockHeaderRequestTimeout') && null !== $object->getBlockHeaderRequestTimeout()) {
             $data['block_header_request_timeout'] = $object->getBlockHeaderRequestTimeout();
         }
-        if (null !== $object->getBlockOperationsRequestTimeout()) {
+        if ($object->isInitialized('blockOperationsRequestTimeout') && null !== $object->getBlockOperationsRequestTimeout()) {
             $data['block_operations_request_timeout'] = $object->getBlockOperationsRequestTimeout();
         }
-        if (null !== $object->getProtocolRequestTimeout()) {
+        if ($object->isInitialized('protocolRequestTimeout') && null !== $object->getProtocolRequestTimeout()) {
             $data['protocol_request_timeout'] = $object->getProtocolRequestTimeout();
         }
-        if (null !== $object->getNewHeadRequestTimeout()) {
+        if ($object->isInitialized('newHeadRequestTimeout') && null !== $object->getNewHeadRequestTimeout()) {
             $data['new_head_request_timeout'] = $object->getNewHeadRequestTimeout();
         }
-        if (null !== $object->getWorkerBacklogSize()) {
-            $data['worker_backlog_size'] = $object->getWorkerBacklogSize();
-        }
-        if (null !== $object->getWorkerBacklogLevel()) {
-            $data['worker_backlog_level'] = $object->getWorkerBacklogLevel();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class ContextSaplingSaplingStateIdGetDiffGetResponse200
+class ContextSaplingSaplingStateIdGetDiffGetResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var string
      */
@@ -32,6 +41,7 @@ class ContextSaplingSaplingStateIdGetDiffGetResponse200
 
     public function setRoot(string $root): self
     {
+        $this->initialized['root'] = true;
         $this->root = $root;
 
         return $this;
@@ -50,6 +60,7 @@ class ContextSaplingSaplingStateIdGetDiffGetResponse200
      */
     public function setCommitmentsAndCiphertexts(array $commitmentsAndCiphertexts): self
     {
+        $this->initialized['commitmentsAndCiphertexts'] = true;
         $this->commitmentsAndCiphertexts = $commitmentsAndCiphertexts;
 
         return $this;
@@ -68,6 +79,7 @@ class ContextSaplingSaplingStateIdGetDiffGetResponse200
      */
     public function setNullifiers(array $nullifiers): self
     {
+        $this->initialized['nullifiers'] = true;
         $this->nullifiers = $nullifiers;
 
         return $this;

@@ -16,7 +16,7 @@ class GetContextDelegatesByPkhGracePeriod extends \Bzzhh\Pezos\Generated\Proto\R
     protected $pkh;
 
     /**
-     * Returns the cycle by the end of which the delegate might be deactivated if she fails to execute any delegate action. A deactivated delegate might be reactivated (without loosing any rolls) by simply re-registering as a delegate. For deactivated delegates, this value contains the cycle by which they were deactivated.
+     * Returns the cycle by the end of which the delegate might be deactivated if she fails to execute any delegate action. A deactivated delegate might be reactivated (without loosing any stake) by simply re-registering as a delegate. For deactivated delegates, this value contains the cycle at which they were deactivated.
      *
      * @param string $pkh A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      */
@@ -46,12 +46,12 @@ class GetContextDelegatesByPkhGracePeriod extends \Bzzhh\Pezos\Generated\Proto\R
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }

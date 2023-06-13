@@ -10,12 +10,21 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class ConfigGetResponse200P2p
+class ConfigGetResponse200P2p extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Floating point number between 0 and 256 that represents a difficulty, 24 signifies for example that at least 24 leading zeroes are expected in the hash.
      *
-     * @var int
+     * @var float
      */
     protected $expectedProofOfWork;
     /**
@@ -25,11 +34,15 @@ class ConfigGetResponse200P2p
      */
     protected $bootstrapPeers;
     /**
-     * Host to listen to. If the port is not specified, the default port 8732 will be assumed.
-     *
-     * @var mixed
+     * Host to listen to. If the port is not specified, the default port 9732 will be assumed.
      */
     protected $listenAddr;
+    /**
+     * Alternative port advertised to other peers to connect to. If the port is not specified, the port from listen-addr will be assumed.
+     *
+     * @var int
+     */
+    protected $advertisedNetPort;
     /**
      * Host for local peer discovery. If the port is not specified, the default port 10732 will be assumed.
      *
@@ -55,7 +68,7 @@ class ConfigGetResponse200P2p
      */
     protected $disableMempool;
     /**
-     * If set to [true], the node will spawn a testchain during the protocol's testing voting period. Default value is [false]. It is disabled to decrease the node storage usage and computation by dropping the validation of the test network blocks.
+     * DEPRECATED. If set to [true], the node will spawn a testchain during the protocol's testing voting period. Default value is [false]. It is disabled to decrease the node storage usage and computation by dropping the validation of the test network blocks.
      *
      * @var bool
      */
@@ -66,11 +79,17 @@ class ConfigGetResponse200P2p
      * @var ConfigGetResponse200P2pGreylistingConfig
      */
     protected $greylistingConfig;
+    /**
+     * This field should be used for testing purpose only. If set to [true], the node will not participate to the peer discovery mechanism. The node will not be able to find new peers to connect with.
+     *
+     * @var bool
+     */
+    protected $disablePeerDiscovery;
 
     /**
      * Floating point number between 0 and 256 that represents a difficulty, 24 signifies for example that at least 24 leading zeroes are expected in the hash.
      */
-    public function getExpectedProofOfWork(): int
+    public function getExpectedProofOfWork(): float
     {
         return $this->expectedProofOfWork;
     }
@@ -78,8 +97,9 @@ class ConfigGetResponse200P2p
     /**
      * Floating point number between 0 and 256 that represents a difficulty, 24 signifies for example that at least 24 leading zeroes are expected in the hash.
      */
-    public function setExpectedProofOfWork(int $expectedProofOfWork): self
+    public function setExpectedProofOfWork(float $expectedProofOfWork): self
     {
+        $this->initialized['expectedProofOfWork'] = true;
         $this->expectedProofOfWork = $expectedProofOfWork;
 
         return $this;
@@ -102,15 +122,14 @@ class ConfigGetResponse200P2p
      */
     public function setBootstrapPeers(array $bootstrapPeers): self
     {
+        $this->initialized['bootstrapPeers'] = true;
         $this->bootstrapPeers = $bootstrapPeers;
 
         return $this;
     }
 
     /**
-     * Host to listen to. If the port is not specified, the default port 8732 will be assumed.
-     *
-     * @return mixed
+     * Host to listen to. If the port is not specified, the default port 9732 will be assumed.
      */
     public function getListenAddr()
     {
@@ -118,21 +137,37 @@ class ConfigGetResponse200P2p
     }
 
     /**
-     * Host to listen to. If the port is not specified, the default port 8732 will be assumed.
-     *
-     * @param mixed $listenAddr
+     * Host to listen to. If the port is not specified, the default port 9732 will be assumed.
      */
     public function setListenAddr($listenAddr): self
     {
+        $this->initialized['listenAddr'] = true;
         $this->listenAddr = $listenAddr;
 
         return $this;
     }
 
     /**
+     * Alternative port advertised to other peers to connect to. If the port is not specified, the port from listen-addr will be assumed.
+     */
+    public function getAdvertisedNetPort(): int
+    {
+        return $this->advertisedNetPort;
+    }
+
+    /**
+     * Alternative port advertised to other peers to connect to. If the port is not specified, the port from listen-addr will be assumed.
+     */
+    public function setAdvertisedNetPort(int $advertisedNetPort): self
+    {
+        $this->initialized['advertisedNetPort'] = true;
+        $this->advertisedNetPort = $advertisedNetPort;
+
+        return $this;
+    }
+
+    /**
      * Host for local peer discovery. If the port is not specified, the default port 10732 will be assumed.
-     *
-     * @return mixed
      */
     public function getDiscoveryAddr()
     {
@@ -141,11 +176,10 @@ class ConfigGetResponse200P2p
 
     /**
      * Host for local peer discovery. If the port is not specified, the default port 10732 will be assumed.
-     *
-     * @param mixed $discoveryAddr
      */
     public function setDiscoveryAddr($discoveryAddr): self
     {
+        $this->initialized['discoveryAddr'] = true;
         $this->discoveryAddr = $discoveryAddr;
 
         return $this;
@@ -164,6 +198,7 @@ class ConfigGetResponse200P2p
      */
     public function setPrivateMode(bool $privateMode): self
     {
+        $this->initialized['privateMode'] = true;
         $this->privateMode = $privateMode;
 
         return $this;
@@ -182,6 +217,7 @@ class ConfigGetResponse200P2p
      */
     public function setLimits(ConfigGetResponse200P2pLimits $limits): self
     {
+        $this->initialized['limits'] = true;
         $this->limits = $limits;
 
         return $this;
@@ -200,13 +236,14 @@ class ConfigGetResponse200P2p
      */
     public function setDisableMempool(bool $disableMempool): self
     {
+        $this->initialized['disableMempool'] = true;
         $this->disableMempool = $disableMempool;
 
         return $this;
     }
 
     /**
-     * If set to [true], the node will spawn a testchain during the protocol's testing voting period. Default value is [false]. It is disabled to decrease the node storage usage and computation by dropping the validation of the test network blocks.
+     * DEPRECATED. If set to [true], the node will spawn a testchain during the protocol's testing voting period. Default value is [false]. It is disabled to decrease the node storage usage and computation by dropping the validation of the test network blocks.
      */
     public function getEnableTestchain(): bool
     {
@@ -214,10 +251,11 @@ class ConfigGetResponse200P2p
     }
 
     /**
-     * If set to [true], the node will spawn a testchain during the protocol's testing voting period. Default value is [false]. It is disabled to decrease the node storage usage and computation by dropping the validation of the test network blocks.
+     * DEPRECATED. If set to [true], the node will spawn a testchain during the protocol's testing voting period. Default value is [false]. It is disabled to decrease the node storage usage and computation by dropping the validation of the test network blocks.
      */
     public function setEnableTestchain(bool $enableTestchain): self
     {
+        $this->initialized['enableTestchain'] = true;
         $this->enableTestchain = $enableTestchain;
 
         return $this;
@@ -236,7 +274,27 @@ class ConfigGetResponse200P2p
      */
     public function setGreylistingConfig(ConfigGetResponse200P2pGreylistingConfig $greylistingConfig): self
     {
+        $this->initialized['greylistingConfig'] = true;
         $this->greylistingConfig = $greylistingConfig;
+
+        return $this;
+    }
+
+    /**
+     * This field should be used for testing purpose only. If set to [true], the node will not participate to the peer discovery mechanism. The node will not be able to find new peers to connect with.
+     */
+    public function getDisablePeerDiscovery(): bool
+    {
+        return $this->disablePeerDiscovery;
+    }
+
+    /**
+     * This field should be used for testing purpose only. If set to [true], the node will not participate to the peer discovery mechanism. The node will not be able to find new peers to connect with.
+     */
+    public function setDisablePeerDiscovery(bool $disablePeerDiscovery): self
+    {
+        $this->initialized['disablePeerDiscovery'] = true;
+        $this->disablePeerDiscovery = $disablePeerDiscovery;
 
         return $this;
     }

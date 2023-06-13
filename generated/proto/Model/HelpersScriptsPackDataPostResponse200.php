@@ -10,15 +10,22 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsPackDataPostResponse200
+class HelpersScriptsPackDataPostResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var string
      */
     protected $packed;
-    /**
-     * @var mixed
-     */
+
     protected $gas;
 
     public function getPacked(): string
@@ -28,24 +35,20 @@ class HelpersScriptsPackDataPostResponse200
 
     public function setPacked(string $packed): self
     {
+        $this->initialized['packed'] = true;
         $this->packed = $packed;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getGas()
     {
         return $this->gas;
     }
 
-    /**
-     * @param mixed $gas
-     */
     public function setGas($gas): self
     {
+        $this->initialized['gas'] = true;
         $this->gas = $gas;
 
         return $this;

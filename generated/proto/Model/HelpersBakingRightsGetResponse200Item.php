@@ -10,26 +10,33 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersBakingRightsGetResponse200Item
+class HelpersBakingRightsGetResponse200Item extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var int
      */
     protected $level;
-    /**
-     * @var mixed
-     */
+
     protected $delegate;
     /**
      * @var int
      */
-    protected $priority;
+    protected $round;
     /**
      * A timestamp as seen by the protocol: second-level precision, epoch based.
-     *
-     * @var mixed
      */
     protected $estimatedTime;
+
+    protected $consensusKey;
 
     public function getLevel(): int
     {
@@ -38,45 +45,40 @@ class HelpersBakingRightsGetResponse200Item
 
     public function setLevel(int $level): self
     {
+        $this->initialized['level'] = true;
         $this->level = $level;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getDelegate()
     {
         return $this->delegate;
     }
 
-    /**
-     * @param mixed $delegate
-     */
     public function setDelegate($delegate): self
     {
+        $this->initialized['delegate'] = true;
         $this->delegate = $delegate;
 
         return $this;
     }
 
-    public function getPriority(): int
+    public function getRound(): int
     {
-        return $this->priority;
+        return $this->round;
     }
 
-    public function setPriority(int $priority): self
+    public function setRound(int $round): self
     {
-        $this->priority = $priority;
+        $this->initialized['round'] = true;
+        $this->round = $round;
 
         return $this;
     }
 
     /**
      * A timestamp as seen by the protocol: second-level precision, epoch based.
-     *
-     * @return mixed
      */
     public function getEstimatedTime()
     {
@@ -85,12 +87,24 @@ class HelpersBakingRightsGetResponse200Item
 
     /**
      * A timestamp as seen by the protocol: second-level precision, epoch based.
-     *
-     * @param mixed $estimatedTime
      */
     public function setEstimatedTime($estimatedTime): self
     {
+        $this->initialized['estimatedTime'] = true;
         $this->estimatedTime = $estimatedTime;
+
+        return $this;
+    }
+
+    public function getConsensusKey()
+    {
+        return $this->consensusKey;
+    }
+
+    public function setConsensusKey($consensusKey): self
+    {
+        $this->initialized['consensusKey'] = true;
+        $this->consensusKey = $consensusKey;
 
         return $this;
     }

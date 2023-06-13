@@ -17,7 +17,7 @@ class PostHelpersScriptsPackDatum extends \Bzzhh\Pezos\Generated\Proto\Runtime\C
     /**
      * Computes the serialized version of some data expression using the same algorithm as script instruction PACK.
      */
-    public function __construct(?\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsPackDataPostBody $requestBody = null)
+    public function __construct(\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsPackDataPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -47,12 +47,12 @@ class PostHelpersScriptsPackDatum extends \Bzzhh\Pezos\Generated\Proto\Runtime\C
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsPackDataPostResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsPackDataPostResponse200', 'json');
         }

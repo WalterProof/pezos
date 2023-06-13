@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class NetworkPeersPeerIdPatchBody
+class NetworkPeersPeerIdPatchBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var string
      */
@@ -24,6 +33,7 @@ class NetworkPeersPeerIdPatchBody
 
     public function setAcl(string $acl): self
     {
+        $this->initialized['acl'] = true;
         $this->acl = $acl;
 
         return $this;

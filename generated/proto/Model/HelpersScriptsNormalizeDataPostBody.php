@@ -10,74 +10,62 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsNormalizeDataPostBody
+class HelpersScriptsNormalizeDataPostBody extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $data;
-    /**
-     * @var mixed
-     */
+
     protected $type;
-    /**
-     * @var mixed
-     */
+
     protected $unparsingMode;
     /**
      * @var bool
      */
     protected $legacy;
 
-    /**
-     * @return mixed
-     */
     public function getData()
     {
         return $this->data;
     }
 
-    /**
-     * @param mixed $data
-     */
     public function setData($data): self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getType()
     {
         return $this->type;
     }
 
-    /**
-     * @param mixed $type
-     */
     public function setType($type): self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getUnparsingMode()
     {
         return $this->unparsingMode;
     }
 
-    /**
-     * @param mixed $unparsingMode
-     */
     public function setUnparsingMode($unparsingMode): self
     {
+        $this->initialized['unparsingMode'] = true;
         $this->unparsingMode = $unparsingMode;
 
         return $this;
@@ -90,6 +78,7 @@ class HelpersScriptsNormalizeDataPostBody
 
     public function setLegacy(bool $legacy): self
     {
+        $this->initialized['legacy'] = true;
         $this->legacy = $legacy;
 
         return $this;

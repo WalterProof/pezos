@@ -10,27 +10,46 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class ContextContractsContractIdScriptNormalizedPostBody
+class ContextContractsContractIdScriptNormalizedPostBody extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
-    protected $unparsingMode;
+    protected $initialized = [];
 
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
+    protected $unparsingMode;
     /**
-     * @return mixed
+     * @var bool
      */
+    protected $normalizeTypes;
+
     public function getUnparsingMode()
     {
         return $this->unparsingMode;
     }
 
-    /**
-     * @param mixed $unparsingMode
-     */
     public function setUnparsingMode($unparsingMode): self
     {
+        $this->initialized['unparsingMode'] = true;
         $this->unparsingMode = $unparsingMode;
+
+        return $this;
+    }
+
+    public function getNormalizeTypes(): bool
+    {
+        return $this->normalizeTypes;
+    }
+
+    public function setNormalizeTypes(bool $normalizeTypes): self
+    {
+        $this->initialized['normalizeTypes'] = true;
+        $this->normalizeTypes = $normalizeTypes;
 
         return $this;
     }

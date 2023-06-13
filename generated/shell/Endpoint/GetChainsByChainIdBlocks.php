@@ -23,7 +23,7 @@ class GetChainsByChainIdBlocks extends \Bzzhh\Pezos\Generated\Shell\Runtime\Clie
      *
      *     @var string $length the requested number of predecessors to return (per request; see next argument)
      *     @var string $head block_hash (Base58Check-encoded) An empty argument requests blocks starting with the current head. A non empty list allows to request one or more specific fragments of the chain.
-     *     @var string $min_date A date in seconds from epoch When `min_date` is provided, blocks with a timestamp before `min_date` are filtered out
+     *     @var string $min_date A date in seconds from epoch When `min_date` is provided, blocks with a timestamp before `min_date` are filtered out. However, if the `length` parameter is also provided, then up to that number of predecessors will be returned regardless of their date.
      * }
      */
     public function __construct(string $chainId, array $queryParameters = [])
@@ -58,20 +58,20 @@ class GetChainsByChainIdBlocks extends \Bzzhh\Pezos\Generated\Shell\Runtime\Clie
         $optionsResolver->setDefined(['length', 'head', 'min_date']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('length', ['string']);
-        $optionsResolver->setAllowedTypes('head', ['string']);
-        $optionsResolver->setAllowedTypes('min_date', ['string']);
+        $optionsResolver->addAllowedTypes('length', ['string']);
+        $optionsResolver->addAllowedTypes('head', ['string']);
+        $optionsResolver->addAllowedTypes('min_date', ['string']);
 
         return $optionsResolver;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }

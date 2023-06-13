@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class ConfigGetResponse200Normalizer implements DenormalizerInterface, Normalize
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200';
     }
@@ -49,58 +51,101 @@ class ConfigGetResponse200Normalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('data-dir', $data)) {
             $object->setDataDir($data['data-dir']);
+            unset($data['data-dir']);
         }
         if (\array_key_exists('disable-config-validation', $data)) {
             $object->setDisableConfigValidation($data['disable-config-validation']);
+            unset($data['disable-config-validation']);
         }
         if (\array_key_exists('rpc', $data)) {
             $object->setRpc($this->denormalizer->denormalize($data['rpc'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Rpc', 'json', $context));
+            unset($data['rpc']);
         }
         if (\array_key_exists('p2p', $data)) {
             $object->setP2p($this->denormalizer->denormalize($data['p2p'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200P2p', 'json', $context));
+            unset($data['p2p']);
         }
         if (\array_key_exists('log', $data)) {
             $object->setLog($this->denormalizer->denormalize($data['log'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Log', 'json', $context));
+            unset($data['log']);
         }
         if (\array_key_exists('internal-events', $data)) {
-            $object->setInternalEvents($this->denormalizer->denormalize($data['internal-events'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200InternalEvents', 'json', $context));
+            $object->setInternalEvents($data['internal-events']);
+            unset($data['internal-events']);
         }
         if (\array_key_exists('shell', $data)) {
             $object->setShell($this->denormalizer->denormalize($data['shell'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Shell', 'json', $context));
+            unset($data['shell']);
         }
         if (\array_key_exists('network', $data)) {
             $object->setNetwork($data['network']);
+            unset($data['network']);
+        }
+        if (\array_key_exists('metrics_addr', $data)) {
+            $values = [];
+            foreach ($data['metrics_addr'] as $value) {
+                $values[] = $value;
+            }
+            $object->setMetricsAddr($values);
+            unset($data['metrics_addr']);
+        }
+        if (\array_key_exists('dal', $data)) {
+            $object->setDal($this->denormalizer->denormalize($data['dal'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Dal', 'json', $context));
+            unset($data['dal']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getDataDir()) {
+        if ($object->isInitialized('dataDir') && null !== $object->getDataDir()) {
             $data['data-dir'] = $object->getDataDir();
         }
-        if (null !== $object->getDisableConfigValidation()) {
+        if ($object->isInitialized('disableConfigValidation') && null !== $object->getDisableConfigValidation()) {
             $data['disable-config-validation'] = $object->getDisableConfigValidation();
         }
-        if (null !== $object->getRpc()) {
+        if ($object->isInitialized('rpc') && null !== $object->getRpc()) {
             $data['rpc'] = $this->normalizer->normalize($object->getRpc(), 'json', $context);
         }
-        if (null !== $object->getP2p()) {
+        if ($object->isInitialized('p2p') && null !== $object->getP2p()) {
             $data['p2p'] = $this->normalizer->normalize($object->getP2p(), 'json', $context);
         }
-        if (null !== $object->getLog()) {
+        if ($object->isInitialized('log') && null !== $object->getLog()) {
             $data['log'] = $this->normalizer->normalize($object->getLog(), 'json', $context);
         }
-        if (null !== $object->getInternalEvents()) {
-            $data['internal-events'] = $this->normalizer->normalize($object->getInternalEvents(), 'json', $context);
+        if ($object->isInitialized('internalEvents') && null !== $object->getInternalEvents()) {
+            $data['internal-events'] = $object->getInternalEvents();
         }
-        if (null !== $object->getShell()) {
+        if ($object->isInitialized('shell') && null !== $object->getShell()) {
             $data['shell'] = $this->normalizer->normalize($object->getShell(), 'json', $context);
         }
-        if (null !== $object->getNetwork()) {
+        if ($object->isInitialized('network') && null !== $object->getNetwork()) {
             $data['network'] = $object->getNetwork();
+        }
+        if ($object->isInitialized('metricsAddr') && null !== $object->getMetricsAddr()) {
+            $values = [];
+            foreach ($object->getMetricsAddr() as $value) {
+                $values[] = $value;
+            }
+            $data['metrics_addr'] = $values;
+        }
+        if ($object->isInitialized('dal') && null !== $object->getDal()) {
+            $data['dal'] = $this->normalizer->normalize($object->getDal(), 'json', $context);
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
 
         return $data;

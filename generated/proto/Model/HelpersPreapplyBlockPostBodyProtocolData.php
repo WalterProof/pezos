@@ -10,27 +10,38 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersPreapplyBlockPostBodyProtocolData
+class HelpersPreapplyBlockPostBodyProtocolData extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var string
      */
     protected $protocol;
+
+    protected $payloadHash;
     /**
      * @var int
      */
-    protected $priority;
+    protected $payloadRound;
     /**
      * @var string
      */
     protected $proofOfWorkNonce;
-    /**
-     * @var mixed
-     */
+
     protected $seedNonceHash;
     /**
-     * @var mixed
+     * @var string
      */
+    protected $liquidityBakingToggleVote;
+
     protected $signature;
 
     public function getProtocol(): string
@@ -40,19 +51,34 @@ class HelpersPreapplyBlockPostBodyProtocolData
 
     public function setProtocol(string $protocol): self
     {
+        $this->initialized['protocol'] = true;
         $this->protocol = $protocol;
 
         return $this;
     }
 
-    public function getPriority(): int
+    public function getPayloadHash()
     {
-        return $this->priority;
+        return $this->payloadHash;
     }
 
-    public function setPriority(int $priority): self
+    public function setPayloadHash($payloadHash): self
     {
-        $this->priority = $priority;
+        $this->initialized['payloadHash'] = true;
+        $this->payloadHash = $payloadHash;
+
+        return $this;
+    }
+
+    public function getPayloadRound(): int
+    {
+        return $this->payloadRound;
+    }
+
+    public function setPayloadRound(int $payloadRound): self
+    {
+        $this->initialized['payloadRound'] = true;
+        $this->payloadRound = $payloadRound;
 
         return $this;
     }
@@ -64,42 +90,46 @@ class HelpersPreapplyBlockPostBodyProtocolData
 
     public function setProofOfWorkNonce(string $proofOfWorkNonce): self
     {
+        $this->initialized['proofOfWorkNonce'] = true;
         $this->proofOfWorkNonce = $proofOfWorkNonce;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getSeedNonceHash()
     {
         return $this->seedNonceHash;
     }
 
-    /**
-     * @param mixed $seedNonceHash
-     */
     public function setSeedNonceHash($seedNonceHash): self
     {
+        $this->initialized['seedNonceHash'] = true;
         $this->seedNonceHash = $seedNonceHash;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
+    public function getLiquidityBakingToggleVote(): string
+    {
+        return $this->liquidityBakingToggleVote;
+    }
+
+    public function setLiquidityBakingToggleVote(string $liquidityBakingToggleVote): self
+    {
+        $this->initialized['liquidityBakingToggleVote'] = true;
+        $this->liquidityBakingToggleVote = $liquidityBakingToggleVote;
+
+        return $this;
+    }
+
     public function getSignature()
     {
         return $this->signature;
     }
 
-    /**
-     * @param mixed $signature
-     */
     public function setSignature($signature): self
     {
+        $this->initialized['signature'] = true;
         $this->signature = $signature;
 
         return $this;

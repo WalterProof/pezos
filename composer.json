@@ -29,7 +29,8 @@
     "simplito/elliptic-php": "^1.0",
     "symfony/config": "^5.3|^6.0",
     "symfony/dependency-injection": "^5.3|^6.0",
-    "symfony/http-kernel": "^5.3|^6.0"
+    "symfony/http-kernel": "^5.3|^6.0",
+    "jane-php/open-api-runtime": "^7.5"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.0",
@@ -41,7 +42,7 @@
     "php-http/discovery": "^1.13",
     "nyholm/psr7": "^1.4",
     "php-http/curl-client": "^2.2",
-    "jane-php/open-api-runtime": "^6.3"
+    "jane-php/open-api-3": "^7.5"
   },
   "archive": {
     "exclude": [

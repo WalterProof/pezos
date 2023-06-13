@@ -22,7 +22,7 @@ class PostContextBigMapsByBigMapIdByScriptExprNormalized extends \Bzzhh\Pezos\Ge
      * @param string $bigMapId   A big map identifier
      * @param string $scriptExpr script_expr (Base58Check-encoded)
      */
-    public function __construct(string $bigMapId, string $scriptExpr, ?\Bzzhh\Pezos\Generated\Proto\Model\ContextBigMapsBigMapIdScriptExprNormalizedPostBody $requestBody = null)
+    public function __construct(string $bigMapId, string $scriptExpr, \Bzzhh\Pezos\Generated\Proto\Model\ContextBigMapsBigMapIdScriptExprNormalizedPostBody $requestBody = null)
     {
         $this->big_map_id = $bigMapId;
         $this->script_expr = $scriptExpr;
@@ -54,12 +54,12 @@ class PostContextBigMapsByBigMapIdByScriptExprNormalized extends \Bzzhh\Pezos\Ge
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }

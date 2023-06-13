@@ -10,26 +10,28 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsTypecheckDataPostResponse200
+class HelpersScriptsTypecheckDataPostResponse200 extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $gas;
 
-    /**
-     * @return mixed
-     */
     public function getGas()
     {
         return $this->gas;
     }
 
-    /**
-     * @param mixed $gas
-     */
     public function setGas($gas): self
     {
+        $this->initialized['gas'] = true;
         $this->gas = $gas;
 
         return $this;

@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class VersionGetResponse200
+class VersionGetResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var VersionGetResponse200Version
      */
@@ -34,6 +43,7 @@ class VersionGetResponse200
 
     public function setVersion(VersionGetResponse200Version $version): self
     {
+        $this->initialized['version'] = true;
         $this->version = $version;
 
         return $this;
@@ -52,24 +62,20 @@ class VersionGetResponse200
      */
     public function setNetworkVersion(NetworkVersion $networkVersion): self
     {
+        $this->initialized['networkVersion'] = true;
         $this->networkVersion = $networkVersion;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getCommitInfo()
     {
         return $this->commitInfo;
     }
 
-    /**
-     * @param mixed $commitInfo
-     */
     public function setCommitInfo($commitInfo): self
     {
+        $this->initialized['commitInfo'] = true;
         $this->commitInfo = $commitInfo;
 
         return $this;

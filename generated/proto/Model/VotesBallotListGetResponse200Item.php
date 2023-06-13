@@ -10,30 +10,32 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class VotesBallotListGetResponse200Item
+class VotesBallotListGetResponse200Item extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $pkh;
     /**
      * @var string
      */
     protected $ballot;
 
-    /**
-     * @return mixed
-     */
     public function getPkh()
     {
         return $this->pkh;
     }
 
-    /**
-     * @param mixed $pkh
-     */
     public function setPkh($pkh): self
     {
+        $this->initialized['pkh'] = true;
         $this->pkh = $pkh;
 
         return $this;
@@ -46,6 +48,7 @@ class VotesBallotListGetResponse200Item
 
     public function setBallot(string $ballot): self
     {
+        $this->initialized['ballot'] = true;
         $this->ballot = $ballot;
 
         return $this;

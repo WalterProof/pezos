@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class StatsGcGetResponse200Normalizer implements DenormalizerInterface, Normaliz
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\StatsGcGetResponse200';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\StatsGcGetResponse200';
     }
@@ -44,61 +46,98 @@ class StatsGcGetResponse200Normalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Bzzhh\Pezos\Generated\Shell\Model\StatsGcGetResponse200();
+        if (\array_key_exists('minor_words', $data) && \is_int($data['minor_words'])) {
+            $data['minor_words'] = (float) $data['minor_words'];
+        }
+        if (\array_key_exists('promoted_words', $data) && \is_int($data['promoted_words'])) {
+            $data['promoted_words'] = (float) $data['promoted_words'];
+        }
+        if (\array_key_exists('major_words', $data) && \is_int($data['major_words'])) {
+            $data['major_words'] = (float) $data['major_words'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('minor_words', $data)) {
             $object->setMinorWords($data['minor_words']);
+            unset($data['minor_words']);
         }
         if (\array_key_exists('promoted_words', $data)) {
             $object->setPromotedWords($data['promoted_words']);
+            unset($data['promoted_words']);
         }
         if (\array_key_exists('major_words', $data)) {
             $object->setMajorWords($data['major_words']);
+            unset($data['major_words']);
         }
         if (\array_key_exists('minor_collections', $data)) {
             $object->setMinorCollections($data['minor_collections']);
+            unset($data['minor_collections']);
         }
         if (\array_key_exists('major_collections', $data)) {
             $object->setMajorCollections($data['major_collections']);
+            unset($data['major_collections']);
+        }
+        if (\array_key_exists('forced_major_collections', $data)) {
+            $object->setForcedMajorCollections($data['forced_major_collections']);
+            unset($data['forced_major_collections']);
         }
         if (\array_key_exists('heap_words', $data)) {
             $object->setHeapWords($data['heap_words']);
+            unset($data['heap_words']);
         }
         if (\array_key_exists('heap_chunks', $data)) {
             $object->setHeapChunks($data['heap_chunks']);
+            unset($data['heap_chunks']);
         }
         if (\array_key_exists('live_words', $data)) {
             $object->setLiveWords($data['live_words']);
+            unset($data['live_words']);
         }
         if (\array_key_exists('live_blocks', $data)) {
             $object->setLiveBlocks($data['live_blocks']);
+            unset($data['live_blocks']);
         }
         if (\array_key_exists('free_words', $data)) {
             $object->setFreeWords($data['free_words']);
+            unset($data['free_words']);
         }
         if (\array_key_exists('free_blocks', $data)) {
             $object->setFreeBlocks($data['free_blocks']);
+            unset($data['free_blocks']);
         }
         if (\array_key_exists('largest_free', $data)) {
             $object->setLargestFree($data['largest_free']);
+            unset($data['largest_free']);
         }
         if (\array_key_exists('fragments', $data)) {
             $object->setFragments($data['fragments']);
+            unset($data['fragments']);
         }
         if (\array_key_exists('compactions', $data)) {
             $object->setCompactions($data['compactions']);
+            unset($data['compactions']);
         }
         if (\array_key_exists('top_heap_words', $data)) {
             $object->setTopHeapWords($data['top_heap_words']);
+            unset($data['top_heap_words']);
         }
         if (\array_key_exists('stack_size', $data)) {
             $object->setStackSize($data['stack_size']);
+            unset($data['stack_size']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
@@ -107,6 +146,7 @@ class StatsGcGetResponse200Normalizer implements DenormalizerInterface, Normaliz
         $data['major_words'] = $object->getMajorWords();
         $data['minor_collections'] = $object->getMinorCollections();
         $data['major_collections'] = $object->getMajorCollections();
+        $data['forced_major_collections'] = $object->getForcedMajorCollections();
         $data['heap_words'] = $object->getHeapWords();
         $data['heap_chunks'] = $object->getHeapChunks();
         $data['live_words'] = $object->getLiveWords();
@@ -118,6 +158,11 @@ class StatsGcGetResponse200Normalizer implements DenormalizerInterface, Normaliz
         $data['compactions'] = $object->getCompactions();
         $data['top_heap_words'] = $object->getTopHeapWords();
         $data['stack_size'] = $object->getStackSize();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
 
         return $data;
     }

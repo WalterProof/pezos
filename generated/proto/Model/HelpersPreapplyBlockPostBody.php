@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersPreapplyBlockPostBody
+class HelpersPreapplyBlockPostBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var HelpersPreapplyBlockPostBodyProtocolData
      */
@@ -28,6 +37,7 @@ class HelpersPreapplyBlockPostBody
 
     public function setProtocolData(HelpersPreapplyBlockPostBodyProtocolData $protocolData): self
     {
+        $this->initialized['protocolData'] = true;
         $this->protocolData = $protocolData;
 
         return $this;
@@ -46,6 +56,7 @@ class HelpersPreapplyBlockPostBody
      */
     public function setOperations(array $operations): self
     {
+        $this->initialized['operations'] = true;
         $this->operations = $operations;
 
         return $this;

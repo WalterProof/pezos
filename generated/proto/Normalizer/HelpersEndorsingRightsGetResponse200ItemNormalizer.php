@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class HelpersEndorsingRightsGetResponse200ItemNormalizer implements Denormalizer
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersEndorsingRightsGetResponse200Item';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersEndorsingRightsGetResponse200Item';
     }
@@ -49,36 +51,48 @@ class HelpersEndorsingRightsGetResponse200ItemNormalizer implements Denormalizer
         }
         if (\array_key_exists('level', $data)) {
             $object->setLevel($data['level']);
+            unset($data['level']);
         }
-        if (\array_key_exists('delegate', $data)) {
-            $object->setDelegate($data['delegate']);
-        }
-        if (\array_key_exists('slots', $data)) {
+        if (\array_key_exists('delegates', $data)) {
             $values = [];
-            foreach ($data['slots'] as $value) {
-                $values[] = $value;
+            foreach ($data['delegates'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersEndorsingRightsGetResponse200ItemDelegatesItem', 'json', $context);
             }
-            $object->setSlots($values);
+            $object->setDelegates($values);
+            unset($data['delegates']);
         }
         if (\array_key_exists('estimated_time', $data)) {
             $object->setEstimatedTime($data['estimated_time']);
+            unset($data['estimated_time']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
         $data['level'] = $object->getLevel();
-        $data['delegate'] = $object->getDelegate();
         $values = [];
-        foreach ($object->getSlots() as $value) {
-            $values[] = $value;
+        foreach ($object->getDelegates() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        $data['slots'] = $values;
-        if (null !== $object->getEstimatedTime()) {
+        $data['delegates'] = $values;
+        if ($object->isInitialized('estimatedTime') && null !== $object->getEstimatedTime()) {
             $data['estimated_time'] = $object->getEstimatedTime();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
 
         return $data;

@@ -10,18 +10,27 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class StatsGcGetResponse200
+class StatsGcGetResponse200 extends \ArrayObject
 {
     /**
-     * @var int
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
+     * @var float
      */
     protected $minorWords;
     /**
-     * @var int
+     * @var float
      */
     protected $promotedWords;
     /**
-     * @var int
+     * @var float
      */
     protected $majorWords;
     /**
@@ -32,6 +41,10 @@ class StatsGcGetResponse200
      * @var int
      */
     protected $majorCollections;
+    /**
+     * @var int
+     */
+    protected $forcedMajorCollections;
     /**
      * @var int
      */
@@ -77,37 +90,40 @@ class StatsGcGetResponse200
      */
     protected $stackSize;
 
-    public function getMinorWords(): int
+    public function getMinorWords(): float
     {
         return $this->minorWords;
     }
 
-    public function setMinorWords(int $minorWords): self
+    public function setMinorWords(float $minorWords): self
     {
+        $this->initialized['minorWords'] = true;
         $this->minorWords = $minorWords;
 
         return $this;
     }
 
-    public function getPromotedWords(): int
+    public function getPromotedWords(): float
     {
         return $this->promotedWords;
     }
 
-    public function setPromotedWords(int $promotedWords): self
+    public function setPromotedWords(float $promotedWords): self
     {
+        $this->initialized['promotedWords'] = true;
         $this->promotedWords = $promotedWords;
 
         return $this;
     }
 
-    public function getMajorWords(): int
+    public function getMajorWords(): float
     {
         return $this->majorWords;
     }
 
-    public function setMajorWords(int $majorWords): self
+    public function setMajorWords(float $majorWords): self
     {
+        $this->initialized['majorWords'] = true;
         $this->majorWords = $majorWords;
 
         return $this;
@@ -120,6 +136,7 @@ class StatsGcGetResponse200
 
     public function setMinorCollections(int $minorCollections): self
     {
+        $this->initialized['minorCollections'] = true;
         $this->minorCollections = $minorCollections;
 
         return $this;
@@ -132,7 +149,21 @@ class StatsGcGetResponse200
 
     public function setMajorCollections(int $majorCollections): self
     {
+        $this->initialized['majorCollections'] = true;
         $this->majorCollections = $majorCollections;
+
+        return $this;
+    }
+
+    public function getForcedMajorCollections(): int
+    {
+        return $this->forcedMajorCollections;
+    }
+
+    public function setForcedMajorCollections(int $forcedMajorCollections): self
+    {
+        $this->initialized['forcedMajorCollections'] = true;
+        $this->forcedMajorCollections = $forcedMajorCollections;
 
         return $this;
     }
@@ -144,6 +175,7 @@ class StatsGcGetResponse200
 
     public function setHeapWords(int $heapWords): self
     {
+        $this->initialized['heapWords'] = true;
         $this->heapWords = $heapWords;
 
         return $this;
@@ -156,6 +188,7 @@ class StatsGcGetResponse200
 
     public function setHeapChunks(int $heapChunks): self
     {
+        $this->initialized['heapChunks'] = true;
         $this->heapChunks = $heapChunks;
 
         return $this;
@@ -168,6 +201,7 @@ class StatsGcGetResponse200
 
     public function setLiveWords(int $liveWords): self
     {
+        $this->initialized['liveWords'] = true;
         $this->liveWords = $liveWords;
 
         return $this;
@@ -180,6 +214,7 @@ class StatsGcGetResponse200
 
     public function setLiveBlocks(int $liveBlocks): self
     {
+        $this->initialized['liveBlocks'] = true;
         $this->liveBlocks = $liveBlocks;
 
         return $this;
@@ -192,6 +227,7 @@ class StatsGcGetResponse200
 
     public function setFreeWords(int $freeWords): self
     {
+        $this->initialized['freeWords'] = true;
         $this->freeWords = $freeWords;
 
         return $this;
@@ -204,6 +240,7 @@ class StatsGcGetResponse200
 
     public function setFreeBlocks(int $freeBlocks): self
     {
+        $this->initialized['freeBlocks'] = true;
         $this->freeBlocks = $freeBlocks;
 
         return $this;
@@ -216,6 +253,7 @@ class StatsGcGetResponse200
 
     public function setLargestFree(int $largestFree): self
     {
+        $this->initialized['largestFree'] = true;
         $this->largestFree = $largestFree;
 
         return $this;
@@ -228,6 +266,7 @@ class StatsGcGetResponse200
 
     public function setFragments(int $fragments): self
     {
+        $this->initialized['fragments'] = true;
         $this->fragments = $fragments;
 
         return $this;
@@ -240,6 +279,7 @@ class StatsGcGetResponse200
 
     public function setCompactions(int $compactions): self
     {
+        $this->initialized['compactions'] = true;
         $this->compactions = $compactions;
 
         return $this;
@@ -252,6 +292,7 @@ class StatsGcGetResponse200
 
     public function setTopHeapWords(int $topHeapWords): self
     {
+        $this->initialized['topHeapWords'] = true;
         $this->topHeapWords = $topHeapWords;
 
         return $this;
@@ -264,6 +305,7 @@ class StatsGcGetResponse200
 
     public function setStackSize(int $stackSize): self
     {
+        $this->initialized['stackSize'] = true;
         $this->stackSize = $stackSize;
 
         return $this;

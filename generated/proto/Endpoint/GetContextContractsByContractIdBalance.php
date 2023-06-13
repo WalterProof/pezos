@@ -16,7 +16,7 @@ class GetContextContractsByContractIdBalance extends \Bzzhh\Pezos\Generated\Prot
     protected $contract_id;
 
     /**
-     * Access the balance of a contract.
+     * Access the spendable balance of a contract, excluding frozen bonds.
      *
      * @param string $contractId a contract identifier encoded in b58check
      */
@@ -46,12 +46,12 @@ class GetContextContractsByContractIdBalance extends \Bzzhh\Pezos\Generated\Prot
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }

@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class ConfigGetResponse200ShellPrevalidatorNormalizer implements DenormalizerInt
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200ShellPrevalidator';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200ShellPrevalidator';
     }
@@ -44,45 +46,59 @@ class ConfigGetResponse200ShellPrevalidatorNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Bzzhh\Pezos\Generated\Shell\Model\ConfigGetResponse200ShellPrevalidator();
+        if (\array_key_exists('operations_request_timeout', $data) && \is_int($data['operations_request_timeout'])) {
+            $data['operations_request_timeout'] = (float) $data['operations_request_timeout'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('operations_request_timeout', $data)) {
             $object->setOperationsRequestTimeout($data['operations_request_timeout']);
+            unset($data['operations_request_timeout']);
         }
         if (\array_key_exists('max_refused_operations', $data)) {
             $object->setMaxRefusedOperations($data['max_refused_operations']);
+            unset($data['max_refused_operations']);
         }
         if (\array_key_exists('operations_batch_size', $data)) {
             $object->setOperationsBatchSize($data['operations_batch_size']);
+            unset($data['operations_batch_size']);
         }
-        if (\array_key_exists('worker_backlog_size', $data)) {
-            $object->setWorkerBacklogSize($data['worker_backlog_size']);
+        if (\array_key_exists('disable_precheck', $data)) {
+            $object->setDisablePrecheck($data['disable_precheck']);
+            unset($data['disable_precheck']);
         }
-        if (\array_key_exists('worker_backlog_level', $data)) {
-            $object->setWorkerBacklogLevel($data['worker_backlog_level']);
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getOperationsRequestTimeout()) {
+        if ($object->isInitialized('operationsRequestTimeout') && null !== $object->getOperationsRequestTimeout()) {
             $data['operations_request_timeout'] = $object->getOperationsRequestTimeout();
         }
-        if (null !== $object->getMaxRefusedOperations()) {
+        if ($object->isInitialized('maxRefusedOperations') && null !== $object->getMaxRefusedOperations()) {
             $data['max_refused_operations'] = $object->getMaxRefusedOperations();
         }
-        if (null !== $object->getOperationsBatchSize()) {
+        if ($object->isInitialized('operationsBatchSize') && null !== $object->getOperationsBatchSize()) {
             $data['operations_batch_size'] = $object->getOperationsBatchSize();
         }
-        if (null !== $object->getWorkerBacklogSize()) {
-            $data['worker_backlog_size'] = $object->getWorkerBacklogSize();
+        if ($object->isInitialized('disablePrecheck') && null !== $object->getDisablePrecheck()) {
+            $data['disable_precheck'] = $object->getDisablePrecheck();
         }
-        if (null !== $object->getWorkerBacklogLevel()) {
-            $data['worker_backlog_level'] = $object->getWorkerBacklogLevel();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

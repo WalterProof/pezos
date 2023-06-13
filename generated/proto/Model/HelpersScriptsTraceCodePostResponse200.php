@@ -10,42 +10,40 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsTraceCodePostResponse200
+class HelpersScriptsTraceCodePostResponse200 extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $storage;
     /**
      * @var mixed[]
      */
     protected $operations;
     /**
-     * @var _009PsFLorenScriptedTraceItem[]
+     * @var _016PtMumbaiScriptedTraceItem[]
      */
     protected $trace;
     /**
      * @var mixed[]
      */
-    protected $bigMapDiff;
-    /**
-     * @var mixed[]
-     */
     protected $lazyStorageDiff;
 
-    /**
-     * @return mixed
-     */
     public function getStorage()
     {
         return $this->storage;
     }
 
-    /**
-     * @param mixed $storage
-     */
     public function setStorage($storage): self
     {
+        $this->initialized['storage'] = true;
         $this->storage = $storage;
 
         return $this;
@@ -64,13 +62,14 @@ class HelpersScriptsTraceCodePostResponse200
      */
     public function setOperations(array $operations): self
     {
+        $this->initialized['operations'] = true;
         $this->operations = $operations;
 
         return $this;
     }
 
     /**
-     * @return _009PsFLorenScriptedTraceItem[]
+     * @return _016PtMumbaiScriptedTraceItem[]
      */
     public function getTrace(): array
     {
@@ -78,29 +77,12 @@ class HelpersScriptsTraceCodePostResponse200
     }
 
     /**
-     * @param _009PsFLorenScriptedTraceItem[] $trace
+     * @param _016PtMumbaiScriptedTraceItem[] $trace
      */
     public function setTrace(array $trace): self
     {
+        $this->initialized['trace'] = true;
         $this->trace = $trace;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed[]
-     */
-    public function getBigMapDiff(): array
-    {
-        return $this->bigMapDiff;
-    }
-
-    /**
-     * @param mixed[] $bigMapDiff
-     */
-    public function setBigMapDiff(array $bigMapDiff): self
-    {
-        $this->bigMapDiff = $bigMapDiff;
 
         return $this;
     }
@@ -118,6 +100,7 @@ class HelpersScriptsTraceCodePostResponse200
      */
     public function setLazyStorageDiff(array $lazyStorageDiff): self
     {
+        $this->initialized['lazyStorageDiff'] = true;
         $this->lazyStorageDiff = $lazyStorageDiff;
 
         return $this;

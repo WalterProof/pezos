@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class HelpersScriptsRunOperationPostBodyNormalizer implements DenormalizerInterf
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsRunOperationPostBody';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsRunOperationPostBody';
     }
@@ -49,19 +51,34 @@ class HelpersScriptsRunOperationPostBodyNormalizer implements DenormalizerInterf
         }
         if (\array_key_exists('operation', $data)) {
             $object->setOperation($this->denormalizer->denormalize($data['operation'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsRunOperationPostBodyOperation', 'json', $context));
+            unset($data['operation']);
         }
         if (\array_key_exists('chain_id', $data)) {
             $object->setChainId($data['chain_id']);
+            unset($data['chain_id']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
         $data['operation'] = $this->normalizer->normalize($object->getOperation(), 'json', $context);
         $data['chain_id'] = $object->getChainId();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
 
         return $data;
     }

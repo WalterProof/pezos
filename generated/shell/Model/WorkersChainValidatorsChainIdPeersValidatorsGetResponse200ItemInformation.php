@@ -10,15 +10,22 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class WorkersChainValidatorsChainIdPeersValidatorsGetResponse200ItemInformation
+class WorkersChainValidatorsChainIdPeersValidatorsGetResponse200ItemInformation extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var int
      */
     protected $instances;
-    /**
-     * @var mixed
-     */
+
     protected $status;
     /**
      * @var int
@@ -32,24 +39,20 @@ class WorkersChainValidatorsChainIdPeersValidatorsGetResponse200ItemInformation
 
     public function setInstances(int $instances): self
     {
+        $this->initialized['instances'] = true;
         $this->instances = $instances;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getStatus()
     {
         return $this->status;
     }
 
-    /**
-     * @param mixed $status
-     */
     public function setStatus($status): self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
 
         return $this;
@@ -62,6 +65,7 @@ class WorkersChainValidatorsChainIdPeersValidatorsGetResponse200ItemInformation
 
     public function setQueueLength(int $queueLength): self
     {
+        $this->initialized['queueLength'] = true;
         $this->queueLength = $queueLength;
 
         return $this;

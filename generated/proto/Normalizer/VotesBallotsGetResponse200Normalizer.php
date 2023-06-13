@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class VotesBallotsGetResponse200Normalizer implements DenormalizerInterface, Nor
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\VotesBallotsGetResponse200';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\VotesBallotsGetResponse200';
     }
@@ -49,23 +51,39 @@ class VotesBallotsGetResponse200Normalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('yay', $data)) {
             $object->setYay($data['yay']);
+            unset($data['yay']);
         }
         if (\array_key_exists('nay', $data)) {
             $object->setNay($data['nay']);
+            unset($data['nay']);
         }
         if (\array_key_exists('pass', $data)) {
             $object->setPass($data['pass']);
+            unset($data['pass']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
         $data['yay'] = $object->getYay();
         $data['nay'] = $object->getNay();
         $data['pass'] = $object->getPass();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
 
         return $data;
     }

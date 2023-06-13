@@ -17,7 +17,7 @@ class PostHelpersScriptsNormalizeDatum extends \Bzzhh\Pezos\Generated\Proto\Runt
     /**
      * Normalizes some data expression using the requested unparsing mode.
      */
-    public function __construct(?\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsNormalizeDataPostBody $requestBody = null)
+    public function __construct(\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsNormalizeDataPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -47,12 +47,12 @@ class PostHelpersScriptsNormalizeDatum extends \Bzzhh\Pezos\Generated\Proto\Runt
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsNormalizeDataPostResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsNormalizeDataPostResponse200', 'json');
         }

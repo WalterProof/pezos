@@ -10,18 +10,23 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class ConfigGetResponse200P2pLimits
+class ConfigGetResponse200P2pLimits extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Delay acceptable when initiating a connection to a new peer, in seconds.
-     *
-     * @var mixed
      */
     protected $connectionTimeout;
     /**
      * Delay granted to a peer to perform authentication, in seconds.
-     *
-     * @var mixed
      */
     protected $authenticationTimeout;
     /**
@@ -67,9 +72,7 @@ class ConfigGetResponse200P2pLimits
      */
     protected $maxUploadSpeed;
     /**
-     * A span of time, as seen by the local computer.
-     *
-     * @var int
+     * @var mixed|null
      */
     protected $swapLinger;
     /**
@@ -103,11 +106,13 @@ class ConfigGetResponse200P2pLimits
      */
     protected $outgoingMessageQueueSize;
     /**
+     * The max and target size for the known address table.
+     *
      * @var mixed[]
      */
     protected $maxKnownPoints;
     /**
-     * The max and target size for the known address table.
+     * The max and target size for the known peers table.
      *
      * @var mixed[]
      */
@@ -126,27 +131,21 @@ class ConfigGetResponse200P2pLimits
     protected $ipGreylistSizeInKilobytes;
     /**
      * The time an IP address is kept in the greylist.
-     *
-     * @var mixed
      */
     protected $ipGreylistCleanupDelay;
     /**
      * GC delay for the greylists tables, in seconds.
-     *
-     * @var mixed
      */
     protected $greylistTimeout;
     /**
-     * How long to wait at most, in seconds, before running a maintenance loop.
+     * How long to wait at most, in seconds, before running a maintenance loop. If null -- decoding to None -- is provided then the maintenance is disabled.
      *
-     * @var mixed
+     * @var mixed|null
      */
     protected $maintenanceIdleTime;
 
     /**
      * Delay acceptable when initiating a connection to a new peer, in seconds.
-     *
-     * @return mixed
      */
     public function getConnectionTimeout()
     {
@@ -155,11 +154,10 @@ class ConfigGetResponse200P2pLimits
 
     /**
      * Delay acceptable when initiating a connection to a new peer, in seconds.
-     *
-     * @param mixed $connectionTimeout
      */
     public function setConnectionTimeout($connectionTimeout): self
     {
+        $this->initialized['connectionTimeout'] = true;
         $this->connectionTimeout = $connectionTimeout;
 
         return $this;
@@ -167,8 +165,6 @@ class ConfigGetResponse200P2pLimits
 
     /**
      * Delay granted to a peer to perform authentication, in seconds.
-     *
-     * @return mixed
      */
     public function getAuthenticationTimeout()
     {
@@ -177,11 +173,10 @@ class ConfigGetResponse200P2pLimits
 
     /**
      * Delay granted to a peer to perform authentication, in seconds.
-     *
-     * @param mixed $authenticationTimeout
      */
     public function setAuthenticationTimeout($authenticationTimeout): self
     {
+        $this->initialized['authenticationTimeout'] = true;
         $this->authenticationTimeout = $authenticationTimeout;
 
         return $this;
@@ -200,6 +195,7 @@ class ConfigGetResponse200P2pLimits
      */
     public function setMinConnections(int $minConnections): self
     {
+        $this->initialized['minConnections'] = true;
         $this->minConnections = $minConnections;
 
         return $this;
@@ -218,6 +214,7 @@ class ConfigGetResponse200P2pLimits
      */
     public function setExpectedConnections(int $expectedConnections): self
     {
+        $this->initialized['expectedConnections'] = true;
         $this->expectedConnections = $expectedConnections;
 
         return $this;
@@ -236,6 +233,7 @@ class ConfigGetResponse200P2pLimits
      */
     public function setMaxConnections(int $maxConnections): self
     {
+        $this->initialized['maxConnections'] = true;
         $this->maxConnections = $maxConnections;
 
         return $this;
@@ -254,6 +252,7 @@ class ConfigGetResponse200P2pLimits
      */
     public function setBacklog(int $backlog): self
     {
+        $this->initialized['backlog'] = true;
         $this->backlog = $backlog;
 
         return $this;
@@ -272,6 +271,7 @@ class ConfigGetResponse200P2pLimits
      */
     public function setMaxIncomingConnections(int $maxIncomingConnections): self
     {
+        $this->initialized['maxIncomingConnections'] = true;
         $this->maxIncomingConnections = $maxIncomingConnections;
 
         return $this;
@@ -290,6 +290,7 @@ class ConfigGetResponse200P2pLimits
      */
     public function setMaxDownloadSpeed(int $maxDownloadSpeed): self
     {
+        $this->initialized['maxDownloadSpeed'] = true;
         $this->maxDownloadSpeed = $maxDownloadSpeed;
 
         return $this;
@@ -308,24 +309,20 @@ class ConfigGetResponse200P2pLimits
      */
     public function setMaxUploadSpeed(int $maxUploadSpeed): self
     {
+        $this->initialized['maxUploadSpeed'] = true;
         $this->maxUploadSpeed = $maxUploadSpeed;
 
         return $this;
     }
 
-    /**
-     * A span of time, as seen by the local computer.
-     */
-    public function getSwapLinger(): int
+    public function getSwapLinger()
     {
         return $this->swapLinger;
     }
 
-    /**
-     * A span of time, as seen by the local computer.
-     */
-    public function setSwapLinger(int $swapLinger): self
+    public function setSwapLinger($swapLinger): self
     {
+        $this->initialized['swapLinger'] = true;
         $this->swapLinger = $swapLinger;
 
         return $this;
@@ -338,6 +335,7 @@ class ConfigGetResponse200P2pLimits
 
     public function setBinaryChunksSize(int $binaryChunksSize): self
     {
+        $this->initialized['binaryChunksSize'] = true;
         $this->binaryChunksSize = $binaryChunksSize;
 
         return $this;
@@ -356,6 +354,7 @@ class ConfigGetResponse200P2pLimits
      */
     public function setReadBufferSize(int $readBufferSize): self
     {
+        $this->initialized['readBufferSize'] = true;
         $this->readBufferSize = $readBufferSize;
 
         return $this;
@@ -368,6 +367,7 @@ class ConfigGetResponse200P2pLimits
 
     public function setReadQueueSize(int $readQueueSize): self
     {
+        $this->initialized['readQueueSize'] = true;
         $this->readQueueSize = $readQueueSize;
 
         return $this;
@@ -380,6 +380,7 @@ class ConfigGetResponse200P2pLimits
 
     public function setWriteQueueSize(int $writeQueueSize): self
     {
+        $this->initialized['writeQueueSize'] = true;
         $this->writeQueueSize = $writeQueueSize;
 
         return $this;
@@ -392,6 +393,7 @@ class ConfigGetResponse200P2pLimits
 
     public function setIncomingAppMessageQueueSize(int $incomingAppMessageQueueSize): self
     {
+        $this->initialized['incomingAppMessageQueueSize'] = true;
         $this->incomingAppMessageQueueSize = $incomingAppMessageQueueSize;
 
         return $this;
@@ -404,6 +406,7 @@ class ConfigGetResponse200P2pLimits
 
     public function setIncomingMessageQueueSize(int $incomingMessageQueueSize): self
     {
+        $this->initialized['incomingMessageQueueSize'] = true;
         $this->incomingMessageQueueSize = $incomingMessageQueueSize;
 
         return $this;
@@ -416,12 +419,15 @@ class ConfigGetResponse200P2pLimits
 
     public function setOutgoingMessageQueueSize(int $outgoingMessageQueueSize): self
     {
+        $this->initialized['outgoingMessageQueueSize'] = true;
         $this->outgoingMessageQueueSize = $outgoingMessageQueueSize;
 
         return $this;
     }
 
     /**
+     * The max and target size for the known address table.
+     *
      * @return mixed[]
      */
     public function getMaxKnownPoints(): array
@@ -430,17 +436,20 @@ class ConfigGetResponse200P2pLimits
     }
 
     /**
+     * The max and target size for the known address table.
+     *
      * @param mixed[] $maxKnownPoints
      */
     public function setMaxKnownPoints(array $maxKnownPoints): self
     {
+        $this->initialized['maxKnownPoints'] = true;
         $this->maxKnownPoints = $maxKnownPoints;
 
         return $this;
     }
 
     /**
-     * The max and target size for the known address table.
+     * The max and target size for the known peers table.
      *
      * @return mixed[]
      */
@@ -450,12 +459,13 @@ class ConfigGetResponse200P2pLimits
     }
 
     /**
-     * The max and target size for the known address table.
+     * The max and target size for the known peers table.
      *
      * @param mixed[] $maxKnownPeerIds
      */
     public function setMaxKnownPeerIds(array $maxKnownPeerIds): self
     {
+        $this->initialized['maxKnownPeerIds'] = true;
         $this->maxKnownPeerIds = $maxKnownPeerIds;
 
         return $this;
@@ -474,6 +484,7 @@ class ConfigGetResponse200P2pLimits
      */
     public function setPeerGreylistSize(int $peerGreylistSize): self
     {
+        $this->initialized['peerGreylistSize'] = true;
         $this->peerGreylistSize = $peerGreylistSize;
 
         return $this;
@@ -492,6 +503,7 @@ class ConfigGetResponse200P2pLimits
      */
     public function setIpGreylistSizeInKilobytes(int $ipGreylistSizeInKilobytes): self
     {
+        $this->initialized['ipGreylistSizeInKilobytes'] = true;
         $this->ipGreylistSizeInKilobytes = $ipGreylistSizeInKilobytes;
 
         return $this;
@@ -499,8 +511,6 @@ class ConfigGetResponse200P2pLimits
 
     /**
      * The time an IP address is kept in the greylist.
-     *
-     * @return mixed
      */
     public function getIpGreylistCleanupDelay()
     {
@@ -509,11 +519,10 @@ class ConfigGetResponse200P2pLimits
 
     /**
      * The time an IP address is kept in the greylist.
-     *
-     * @param mixed $ipGreylistCleanupDelay
      */
     public function setIpGreylistCleanupDelay($ipGreylistCleanupDelay): self
     {
+        $this->initialized['ipGreylistCleanupDelay'] = true;
         $this->ipGreylistCleanupDelay = $ipGreylistCleanupDelay;
 
         return $this;
@@ -521,8 +530,6 @@ class ConfigGetResponse200P2pLimits
 
     /**
      * GC delay for the greylists tables, in seconds.
-     *
-     * @return mixed
      */
     public function getGreylistTimeout()
     {
@@ -531,20 +538,17 @@ class ConfigGetResponse200P2pLimits
 
     /**
      * GC delay for the greylists tables, in seconds.
-     *
-     * @param mixed $greylistTimeout
      */
     public function setGreylistTimeout($greylistTimeout): self
     {
+        $this->initialized['greylistTimeout'] = true;
         $this->greylistTimeout = $greylistTimeout;
 
         return $this;
     }
 
     /**
-     * How long to wait at most, in seconds, before running a maintenance loop.
-     *
-     * @return mixed
+     * How long to wait at most, in seconds, before running a maintenance loop. If null -- decoding to None -- is provided then the maintenance is disabled.
      */
     public function getMaintenanceIdleTime()
     {
@@ -552,12 +556,11 @@ class ConfigGetResponse200P2pLimits
     }
 
     /**
-     * How long to wait at most, in seconds, before running a maintenance loop.
-     *
-     * @param mixed $maintenanceIdleTime
+     * How long to wait at most, in seconds, before running a maintenance loop. If null -- decoding to None -- is provided then the maintenance is disabled.
      */
     public function setMaintenanceIdleTime($maintenanceIdleTime): self
     {
+        $this->initialized['maintenanceIdleTime'] = true;
         $this->maintenanceIdleTime = $maintenanceIdleTime;
 
         return $this;

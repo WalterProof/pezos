@@ -10,15 +10,22 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class NetworkConnectionsPeerIdGetResponse200
+class NetworkConnectionsPeerIdGetResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var bool
      */
     protected $incoming;
-    /**
-     * @var mixed
-     */
+
     protected $peerId;
     /**
      * The identifier for a p2p connection. It includes an address and a port number.
@@ -56,24 +63,20 @@ class NetworkConnectionsPeerIdGetResponse200
 
     public function setIncoming(bool $incoming): self
     {
+        $this->initialized['incoming'] = true;
         $this->incoming = $incoming;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getPeerId()
     {
         return $this->peerId;
     }
 
-    /**
-     * @param mixed $peerId
-     */
     public function setPeerId($peerId): self
     {
+        $this->initialized['peerId'] = true;
         $this->peerId = $peerId;
 
         return $this;
@@ -92,6 +95,7 @@ class NetworkConnectionsPeerIdGetResponse200
      */
     public function setIdPoint(P2pConnectionId $idPoint): self
     {
+        $this->initialized['idPoint'] = true;
         $this->idPoint = $idPoint;
 
         return $this;
@@ -104,6 +108,7 @@ class NetworkConnectionsPeerIdGetResponse200
 
     public function setRemoteSocketPort(int $remoteSocketPort): self
     {
+        $this->initialized['remoteSocketPort'] = true;
         $this->remoteSocketPort = $remoteSocketPort;
 
         return $this;
@@ -122,6 +127,7 @@ class NetworkConnectionsPeerIdGetResponse200
      */
     public function setAnnouncedVersion(NetworkVersion $announcedVersion): self
     {
+        $this->initialized['announcedVersion'] = true;
         $this->announcedVersion = $announcedVersion;
 
         return $this;
@@ -134,6 +140,7 @@ class NetworkConnectionsPeerIdGetResponse200
 
     public function setPrivate(bool $private): self
     {
+        $this->initialized['private'] = true;
         $this->private = $private;
 
         return $this;
@@ -146,6 +153,7 @@ class NetworkConnectionsPeerIdGetResponse200
 
     public function setLocalMetadata(NetworkConnectionsPeerIdGetResponse200LocalMetadata $localMetadata): self
     {
+        $this->initialized['localMetadata'] = true;
         $this->localMetadata = $localMetadata;
 
         return $this;
@@ -158,6 +166,7 @@ class NetworkConnectionsPeerIdGetResponse200
 
     public function setRemoteMetadata(NetworkConnectionsPeerIdGetResponse200RemoteMetadata $remoteMetadata): self
     {
+        $this->initialized['remoteMetadata'] = true;
         $this->remoteMetadata = $remoteMetadata;
 
         return $this;

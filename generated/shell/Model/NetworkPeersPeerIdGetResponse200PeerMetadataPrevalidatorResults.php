@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class NetworkPeersPeerIdGetResponse200PeerMetadataPrevalidatorResults
+class NetworkPeersPeerIdGetResponse200PeerMetadataPrevalidatorResults extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Decimal representation of a big number.
      *
@@ -86,6 +95,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataPrevalidatorResults
      */
     public function setCannotDownload(string $cannotDownload): self
     {
+        $this->initialized['cannotDownload'] = true;
         $this->cannotDownload = $cannotDownload;
 
         return $this;
@@ -104,6 +114,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataPrevalidatorResults
      */
     public function setCannotParse(string $cannotParse): self
     {
+        $this->initialized['cannotParse'] = true;
         $this->cannotParse = $cannotParse;
 
         return $this;
@@ -122,6 +133,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataPrevalidatorResults
      */
     public function setRefusedByPrefilter(string $refusedByPrefilter): self
     {
+        $this->initialized['refusedByPrefilter'] = true;
         $this->refusedByPrefilter = $refusedByPrefilter;
 
         return $this;
@@ -140,6 +152,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataPrevalidatorResults
      */
     public function setRefusedByPostfilter(string $refusedByPostfilter): self
     {
+        $this->initialized['refusedByPostfilter'] = true;
         $this->refusedByPostfilter = $refusedByPostfilter;
 
         return $this;
@@ -158,6 +171,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataPrevalidatorResults
      */
     public function setApplied(string $applied): self
     {
+        $this->initialized['applied'] = true;
         $this->applied = $applied;
 
         return $this;
@@ -176,6 +190,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataPrevalidatorResults
      */
     public function setBranchDelayed(string $branchDelayed): self
     {
+        $this->initialized['branchDelayed'] = true;
         $this->branchDelayed = $branchDelayed;
 
         return $this;
@@ -194,6 +209,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataPrevalidatorResults
      */
     public function setBranchRefused(string $branchRefused): self
     {
+        $this->initialized['branchRefused'] = true;
         $this->branchRefused = $branchRefused;
 
         return $this;
@@ -212,6 +228,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataPrevalidatorResults
      */
     public function setRefused(string $refused): self
     {
+        $this->initialized['refused'] = true;
         $this->refused = $refused;
 
         return $this;
@@ -230,6 +247,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataPrevalidatorResults
      */
     public function setDuplicate(string $duplicate): self
     {
+        $this->initialized['duplicate'] = true;
         $this->duplicate = $duplicate;
 
         return $this;
@@ -248,6 +266,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataPrevalidatorResults
      */
     public function setOutdated(string $outdated): self
     {
+        $this->initialized['outdated'] = true;
         $this->outdated = $outdated;
 
         return $this;

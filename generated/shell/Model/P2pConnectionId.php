@@ -10,12 +10,19 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class P2pConnectionId
+class P2pConnectionId extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * An address for locating peers.
-     *
-     * @var mixed
      */
     protected $addr;
     /**
@@ -25,8 +32,6 @@ class P2pConnectionId
 
     /**
      * An address for locating peers.
-     *
-     * @return mixed
      */
     public function getAddr()
     {
@@ -35,11 +40,10 @@ class P2pConnectionId
 
     /**
      * An address for locating peers.
-     *
-     * @param mixed $addr
      */
     public function setAddr($addr): self
     {
+        $this->initialized['addr'] = true;
         $this->addr = $addr;
 
         return $this;
@@ -52,6 +56,7 @@ class P2pConnectionId
 
     public function setPort(int $port): self
     {
+        $this->initialized['port'] = true;
         $this->port = $port;
 
         return $this;

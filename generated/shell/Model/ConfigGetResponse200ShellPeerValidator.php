@@ -10,45 +10,46 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class ConfigGetResponse200ShellPeerValidator
+class ConfigGetResponse200ShellPeerValidator extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * A span of time, as seen by the local computer.
      *
-     * @var int
+     * @var float
      */
     protected $blockHeaderRequestTimeout;
     /**
      * A span of time, as seen by the local computer.
      *
-     * @var int
+     * @var float
      */
     protected $blockOperationsRequestTimeout;
     /**
      * A span of time, as seen by the local computer.
      *
-     * @var int
+     * @var float
      */
     protected $protocolRequestTimeout;
     /**
      * A span of time, as seen by the local computer.
      *
-     * @var int
+     * @var float
      */
     protected $newHeadRequestTimeout;
-    /**
-     * @var int
-     */
-    protected $workerBacklogSize;
-    /**
-     * @var string
-     */
-    protected $workerBacklogLevel;
 
     /**
      * A span of time, as seen by the local computer.
      */
-    public function getBlockHeaderRequestTimeout(): int
+    public function getBlockHeaderRequestTimeout(): float
     {
         return $this->blockHeaderRequestTimeout;
     }
@@ -56,8 +57,9 @@ class ConfigGetResponse200ShellPeerValidator
     /**
      * A span of time, as seen by the local computer.
      */
-    public function setBlockHeaderRequestTimeout(int $blockHeaderRequestTimeout): self
+    public function setBlockHeaderRequestTimeout(float $blockHeaderRequestTimeout): self
     {
+        $this->initialized['blockHeaderRequestTimeout'] = true;
         $this->blockHeaderRequestTimeout = $blockHeaderRequestTimeout;
 
         return $this;
@@ -66,7 +68,7 @@ class ConfigGetResponse200ShellPeerValidator
     /**
      * A span of time, as seen by the local computer.
      */
-    public function getBlockOperationsRequestTimeout(): int
+    public function getBlockOperationsRequestTimeout(): float
     {
         return $this->blockOperationsRequestTimeout;
     }
@@ -74,8 +76,9 @@ class ConfigGetResponse200ShellPeerValidator
     /**
      * A span of time, as seen by the local computer.
      */
-    public function setBlockOperationsRequestTimeout(int $blockOperationsRequestTimeout): self
+    public function setBlockOperationsRequestTimeout(float $blockOperationsRequestTimeout): self
     {
+        $this->initialized['blockOperationsRequestTimeout'] = true;
         $this->blockOperationsRequestTimeout = $blockOperationsRequestTimeout;
 
         return $this;
@@ -84,7 +87,7 @@ class ConfigGetResponse200ShellPeerValidator
     /**
      * A span of time, as seen by the local computer.
      */
-    public function getProtocolRequestTimeout(): int
+    public function getProtocolRequestTimeout(): float
     {
         return $this->protocolRequestTimeout;
     }
@@ -92,8 +95,9 @@ class ConfigGetResponse200ShellPeerValidator
     /**
      * A span of time, as seen by the local computer.
      */
-    public function setProtocolRequestTimeout(int $protocolRequestTimeout): self
+    public function setProtocolRequestTimeout(float $protocolRequestTimeout): self
     {
+        $this->initialized['protocolRequestTimeout'] = true;
         $this->protocolRequestTimeout = $protocolRequestTimeout;
 
         return $this;
@@ -102,7 +106,7 @@ class ConfigGetResponse200ShellPeerValidator
     /**
      * A span of time, as seen by the local computer.
      */
-    public function getNewHeadRequestTimeout(): int
+    public function getNewHeadRequestTimeout(): float
     {
         return $this->newHeadRequestTimeout;
     }
@@ -110,33 +114,10 @@ class ConfigGetResponse200ShellPeerValidator
     /**
      * A span of time, as seen by the local computer.
      */
-    public function setNewHeadRequestTimeout(int $newHeadRequestTimeout): self
+    public function setNewHeadRequestTimeout(float $newHeadRequestTimeout): self
     {
+        $this->initialized['newHeadRequestTimeout'] = true;
         $this->newHeadRequestTimeout = $newHeadRequestTimeout;
-
-        return $this;
-    }
-
-    public function getWorkerBacklogSize(): int
-    {
-        return $this->workerBacklogSize;
-    }
-
-    public function setWorkerBacklogSize(int $workerBacklogSize): self
-    {
-        $this->workerBacklogSize = $workerBacklogSize;
-
-        return $this;
-    }
-
-    public function getWorkerBacklogLevel(): string
-    {
-        return $this->workerBacklogLevel;
-    }
-
-    public function setWorkerBacklogLevel(string $workerBacklogLevel): self
-    {
-        $this->workerBacklogLevel = $workerBacklogLevel;
 
         return $this;
     }

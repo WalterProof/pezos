@@ -21,7 +21,7 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function patchChainByChainId(string $chainId, ?Model\ChainsChainIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchChainByChainId(string $chainId, Model\ChainsChainIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\PatchChainByChainId($chainId, $requestBody), $fetch);
     }
@@ -34,7 +34,7 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
      *
      *     @var string $length the requested number of predecessors to return (per request; see next argument)
      *     @var string $head block_hash (Base58Check-encoded) An empty argument requests blocks starting with the current head. A non empty list allows to request one or more specific fragments of the chain.
-     *     @var string $min_date A date in seconds from epoch When `min_date` is provided, blocks with a timestamp before `min_date` are filtered out
+     *     @var string $min_date A date in seconds from epoch When `min_date` is provided, blocks with a timestamp before `min_date` are filtered out. However, if the `length` parameter is also provided, then up to that number of predecessors will be returned regardless of their date.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -60,7 +60,7 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
     }
 
     /**
-     * The current checkpoint for this chain.
+     * DEPRECATED: use `../levels/{checkpoint, savepoint, caboose, history_mode}` instead. The current checkpoint for this chain.
      *
      * @param string $chainId A chain identifier. This is either a chain hash in Base58Check notation or a one the predefined aliases: 'main', 'test'.
      * @param string $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
@@ -127,6 +127,45 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
     }
 
     /**
+     * The current caboose for this chain.
+     *
+     * @param string $chainId A chain identifier. This is either a chain hash in Base58Check notation or a one the predefined aliases: 'main', 'test'.
+     * @param string $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\ChainsChainIdLevelsCabooseGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getChainsByChainIdLevelsCaboose(string $chainId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\GetChainsByChainIdLevelsCaboose($chainId), $fetch);
+    }
+
+    /**
+     * The current checkpoint for this chain.
+     *
+     * @param string $chainId A chain identifier. This is either a chain hash in Base58Check notation or a one the predefined aliases: 'main', 'test'.
+     * @param string $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\ChainsChainIdLevelsCheckpointGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getChainsByChainIdLevelsCheckpoint(string $chainId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\GetChainsByChainIdLevelsCheckpoint($chainId), $fetch);
+    }
+
+    /**
+     * The current savepoint for this chain.
+     *
+     * @param string $chainId A chain identifier. This is either a chain hash in Base58Check notation or a one the predefined aliases: 'main', 'test'.
+     * @param string $fetch   Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\ChainsChainIdLevelsSavepointGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getChainsByChainIdLevelsSavepoint(string $chainId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\GetChainsByChainIdLevelsSavepoint($chainId), $fetch);
+    }
+
+    /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Bzzhh\Pezos\Generated\Shell\Model\ConfigGetResponse200|\Psr\Http\Message\ResponseInterface|null
@@ -139,21 +178,44 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Shell\Model\UserActivatedProtocolOverridesItem[]|\Psr\Http\Message\ResponseInterface|null
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\ConfigHistoryModeGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function getConfigNetworkUserActivatedProtocolOverride(string $fetch = self::FETCH_OBJECT)
+    public function getConfigHistoryMode(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\GetConfigNetworkUserActivatedProtocolOverride(), $fetch);
+        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\GetConfigHistoryMode(), $fetch);
+    }
+
+    /**
+     * Replace the logging configuration of the node.
+     *
+     * @param mixed|null $requestBody
+     * @param string     $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\ConfigLoggingPutResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function putConfigLogging($requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\PutConfigLogging($requestBody), $fetch);
     }
 
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Shell\Model\UserActivatedUpgradesItem[]|\Psr\Http\Message\ResponseInterface|null
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\ConfigNetworkUserActivatedProtocolOverridesGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
      */
-    public function getConfigNetworkUserActivatedUpgrade(string $fetch = self::FETCH_OBJECT)
+    public function getConfigNetworkUserActivatedProtocolOverrides(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\GetConfigNetworkUserActivatedUpgrade(), $fetch);
+        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\GetConfigNetworkUserActivatedProtocolOverrides(), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\ConfigNetworkUserActivatedUpgradesGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getConfigNetworkUserActivatedUpgrades(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\GetConfigNetworkUserActivatedUpgrades(), $fetch);
     }
 
     /**
@@ -194,13 +256,13 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postInjectionBlock(?Model\InjectionBlockPostBody $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function postInjectionBlock(Model\InjectionBlockPostBody $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\PostInjectionBlock($requestBody, $queryParameters), $fetch);
     }
 
     /**
-     * Inject an operation in node and broadcast it. Returns the ID of the operation. The `signedOperationContents` should be constructed using a contextual RPCs from the latest block and signed by the client. By default, the RPC will wait for the operation to be (pre-)validated before answering. See RPCs under /blocks/prevalidation for more details on the prevalidation context. If ?async is true, the function returns immediately. Otherwise, the operation will be validated before the result is returned. An optional ?chain parameter can be used to specify whether to inject on the test chain or the main chain.
+     * Inject an operation in node and broadcast it. Returns the ID of the operation. The `signedOperationContents` should be constructed using contextual RPCs from the latest block and signed by the client. The injection of the operation will apply it on the current mempool context. This context may change at each operation injection or operation reception from peers. By default, the RPC will wait for the operation to be (pre-)validated before returning. However, if ?async is true, the function returns immediately. The optional ?chain parameter can be used to specify whether to inject on the test chain or the main chain.
      *
      * @param array $queryParameters {
      *
@@ -212,7 +274,7 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postInjectionOperation(?string $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function postInjectionOperation(string $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\PostInjectionOperation($requestBody, $queryParameters), $fetch);
     }
@@ -220,8 +282,8 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
     /**
      * Inject a protocol in node. Returns the ID of the protocol. If ?async is true, the function returns immediately. Otherwise, the protocol will be validated before the result is returned.
      *
-     * @param \Bzzhh\Pezos\Generated\Shell\Model\Protocol|null $requestBody
-     * @param array                                            $queryParameters {
+     * @param \Bzzhh\Pezos\Generated\Shell\Model\InjectionProtocolPostBody|null $requestBody
+     * @param array                                                             $queryParameters {
      *
      *     @var string $async
      * }
@@ -230,7 +292,7 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postInjectionProtocol(?Model\Protocol $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function postInjectionProtocol(Model\InjectionProtocolPostBody $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\PostInjectionProtocol($requestBody, $queryParameters), $fetch);
     }
@@ -243,6 +305,25 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
     public function getMonitorActiveChains(string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\GetMonitorActiveChains(), $fetch);
+    }
+
+    /**
+     * Monitor all blocks that are successfully applied and stored by the node, disregarding whether they were selected as the new head or not.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $protocol Protocol_hash (Base58Check-encoded)
+     *     @var string $next_protocol Protocol_hash (Base58Check-encoded)
+     *     @var string $chain A chain identifier. This is either a chain hash in Base58Check notation or a one the predefined aliases: 'main', 'test'.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\MonitorAppliedBlocksGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getMonitorAppliedBlock(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\GetMonitorAppliedBlock($queryParameters), $fetch);
     }
 
     /**
@@ -266,11 +347,12 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
     }
 
     /**
-     * Monitor all blocks that are successfully validated by the node and selected as the new head of the given chain.
+     * Monitor all blocks that are successfully validated and applied by the node and selected as the new head of the given chain.
      *
      * @param string $chainId         A chain identifier. This is either a chain hash in Base58Check notation or a one the predefined aliases: 'main', 'test'.
      * @param array  $queryParameters {
      *
+     *     @var string $protocol Protocol_hash (Base58Check-encoded)
      *     @var string $next_protocol Protocol_hash (Base58Check-encoded)
      * }
      *
@@ -294,7 +376,7 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
     }
 
     /**
-     * Monitor all blocks that are successfully validated by the node, disregarding whether they were selected as the new head or not.
+     * (Deprecated) Monitor all blocks that are successfully applied by the node, disregarding whether they were selected as the new head or not.
      *
      * @param array $queryParameters {
      *
@@ -310,6 +392,25 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
     public function getMonitorValidBlock(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\GetMonitorValidBlock($queryParameters), $fetch);
+    }
+
+    /**
+     * Monitor all blocks that were successfully validated by the node but are not applied nor stored yet, disregarding whether they are going to be selected as the new head or not.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $protocol Protocol_hash (Base58Check-encoded)
+     *     @var string $next_protocol Protocol_hash (Base58Check-encoded)
+     *     @var string $chain A chain identifier. This is either a chain hash in Base58Check notation or a one the predefined aliases: 'main', 'test'.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\MonitorValidatedBlocksGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getMonitorValidatedBlock(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\GetMonitorValidatedBlock($queryParameters), $fetch);
     }
 
     /**
@@ -376,6 +477,26 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\NetworkGreylistIpsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getNetworkGreylistIp(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\GetNetworkGreylistIp(), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getNetworkGreylistPeers(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\GetNetworkGreylistPeers(), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function getNetworkLog(string $fetch = self::FETCH_OBJECT)
@@ -422,7 +543,7 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
      *
      * @return \Bzzhh\Pezos\Generated\Shell\Model\NetworkPeersPeerIdPatchResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function patchNetworkPeerByPeerId(string $peerId, ?Model\NetworkPeersPeerIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchNetworkPeerByPeerId(string $peerId, Model\NetworkPeersPeerIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\PatchNetworkPeerByPeerId($peerId, $requestBody), $fetch);
     }
@@ -533,7 +654,7 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
      * @param string $point a network point (ipv4:port or [ipv6]:port)
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Shell\Model\P2pPointInfo|\Psr\Http\Message\ResponseInterface|null
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getNetworkPointByPoint(string $point, string $fetch = self::FETCH_OBJECT)
     {
@@ -547,9 +668,9 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
      * @param \Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointPatchBody|null $requestBody
      * @param string                                                              $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Shell\Model\P2pPointInfo|\Psr\Http\Message\ResponseInterface|null
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointPatchResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function patchNetworkPointByPoint(string $point, ?Model\NetworkPointsPointPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function patchNetworkPointByPoint(string $point, Model\NetworkPointsPointPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\PatchNetworkPointByPoint($point, $requestBody), $fetch);
     }
@@ -568,7 +689,7 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
      *
      * @return \Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointPutResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function putNetworkPointByPoint(string $point, ?Model\NetworkPointsPointPutBody $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function putNetworkPointByPoint(string $point, Model\NetworkPointsPointPutBody $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\PutNetworkPointByPoint($point, $requestBody, $queryParameters), $fetch);
     }
@@ -631,7 +752,7 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
     }
 
     /**
-     * DEPRECATED: Remove an address from the blacklist. Use PATCH `/network/point/:peerid` instead.
+     * DEPRECATED: Remove an address from the blacklist. Use PATCH `/network/point/<point_id>` instead.
      *
      * @param string $point a network point (ipv4:port or [ipv6]:port)
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -669,7 +790,7 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Shell\Model\P2pStat|\Psr\Http\Message\ResponseInterface|null
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\NetworkStatGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getNetworkStat(string $fetch = self::FETCH_OBJECT)
     {
@@ -679,7 +800,7 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Shell\Model\NetworkVersion|\Psr\Http\Message\ResponseInterface|null
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\NetworkVersionGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getNetworkVersion(string $fetch = self::FETCH_OBJECT)
     {
@@ -712,7 +833,7 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
      * @param string $protocolHash Protocol_hash (Base58Check-encoded)
      * @param string $fetch        Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Shell\Model\Protocol|\Psr\Http\Message\ResponseInterface|null
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\ProtocolsProtocolHashGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getProtocolByProtocolHash(string $protocolHash, string $fetch = self::FETCH_OBJECT)
     {
@@ -858,7 +979,7 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
         return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Shell\Endpoint\GetWorkersPrevalidatorByChainId($chainId), $fetch);
     }
 
-    public static function create($httpClient = null, array $additionalPlugins = [])
+    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
@@ -870,7 +991,11 @@ class Client extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Client
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $serializer = new \Symfony\Component\Serializer\Serializer([new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Bzzhh\Pezos\Generated\Shell\Normalizer\JaneObjectNormalizer()], [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true]))]);
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Bzzhh\Pezos\Generated\Shell\Normalizer\JaneObjectNormalizer()];
+        if (count($additionalNormalizers) > 0) {
+            $normalizers = array_merge($normalizers, $additionalNormalizers);
+        }
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true]))]);
 
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }

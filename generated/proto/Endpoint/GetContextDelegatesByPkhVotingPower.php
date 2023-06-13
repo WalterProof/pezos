@@ -16,7 +16,7 @@ class GetContextDelegatesByPkhVotingPower extends \Bzzhh\Pezos\Generated\Proto\R
     protected $pkh;
 
     /**
-     * The number of rolls in the vote listings for a given delegate.
+     * The voting power in the vote listings for a given delegate.
      *
      * @param string $pkh A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      */
@@ -46,12 +46,12 @@ class GetContextDelegatesByPkhVotingPower extends \Bzzhh\Pezos\Generated\Proto\R
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }

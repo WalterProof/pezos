@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersForgeProtocolDataPostResponse200
+class HelpersForgeProtocolDataPostResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var string
      */
@@ -24,6 +33,7 @@ class HelpersForgeProtocolDataPostResponse200
 
     public function setProtocolData(string $protocolData): self
     {
+        $this->initialized['protocolData'] = true;
         $this->protocolData = $protocolData;
 
         return $this;

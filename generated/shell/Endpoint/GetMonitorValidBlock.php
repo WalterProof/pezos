@@ -15,7 +15,7 @@ class GetMonitorValidBlock extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\B
     use \Bzzhh\Pezos\Generated\Shell\Runtime\Client\EndpointTrait;
 
     /**
-     * Monitor all blocks that are successfully validated by the node, disregarding whether they were selected as the new head or not.
+     * (Deprecated) Monitor all blocks that are successfully applied by the node, disregarding whether they were selected as the new head or not.
      *
      * @param array $queryParameters {
      *
@@ -55,20 +55,20 @@ class GetMonitorValidBlock extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\B
         $optionsResolver->setDefined(['protocol', 'next_protocol', 'chain']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('protocol', ['string']);
-        $optionsResolver->setAllowedTypes('next_protocol', ['string']);
-        $optionsResolver->setAllowedTypes('chain', ['string']);
+        $optionsResolver->addAllowedTypes('protocol', ['string']);
+        $optionsResolver->addAllowedTypes('next_protocol', ['string']);
+        $optionsResolver->addAllowedTypes('chain', ['string']);
 
         return $optionsResolver;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \Bzzhh\Pezos\Generated\Shell\Model\MonitorValidBlocksGetResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\MonitorValidBlocksGetResponse200', 'json');
         }

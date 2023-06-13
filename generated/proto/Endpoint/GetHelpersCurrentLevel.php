@@ -15,7 +15,7 @@ class GetHelpersCurrentLevel extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client
     use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
 
     /**
-     * Returns the level of the interrogated block, or the one of a block located `offset` blocks after in the chain (or before when negative). For instance, the next block if `offset` is 1.
+     * Returns the level of the interrogated block, or the one of a block located `offset` blocks after it in the chain. For instance, the next block if `offset` is 1. The offset cannot be negative.
      *
      * @param array $queryParameters {
      *
@@ -53,18 +53,18 @@ class GetHelpersCurrentLevel extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client
         $optionsResolver->setDefined(['offset']);
         $optionsResolver->setRequired(['offset']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('offset', ['string']);
+        $optionsResolver->addAllowedTypes('offset', ['string']);
 
         return $optionsResolver;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersCurrentLevelGetResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersCurrentLevelGetResponse200', 'json');
         }

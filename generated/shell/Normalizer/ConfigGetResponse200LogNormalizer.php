@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class ConfigGetResponse200LogNormalizer implements DenormalizerInterface, Normal
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Log';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Log';
     }
@@ -49,34 +51,51 @@ class ConfigGetResponse200LogNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('output', $data)) {
             $object->setOutput($data['output']);
+            unset($data['output']);
         }
         if (\array_key_exists('level', $data)) {
             $object->setLevel($data['level']);
+            unset($data['level']);
         }
         if (\array_key_exists('rules', $data)) {
             $object->setRules($data['rules']);
+            unset($data['rules']);
         }
         if (\array_key_exists('template', $data)) {
             $object->setTemplate($data['template']);
+            unset($data['template']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getOutput()) {
+        if ($object->isInitialized('output') && null !== $object->getOutput()) {
             $data['output'] = $object->getOutput();
         }
-        if (null !== $object->getLevel()) {
+        if ($object->isInitialized('level') && null !== $object->getLevel()) {
             $data['level'] = $object->getLevel();
         }
-        if (null !== $object->getRules()) {
+        if ($object->isInitialized('rules') && null !== $object->getRules()) {
             $data['rules'] = $object->getRules();
         }
-        if (null !== $object->getTemplate()) {
+        if ($object->isInitialized('template') && null !== $object->getTemplate()) {
             $data['template'] = $object->getTemplate();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

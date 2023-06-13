@@ -22,7 +22,7 @@ class PostInjectionProtocol extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\
      *     @var string $async
      * }
      */
-    public function __construct(?\Bzzhh\Pezos\Generated\Shell\Model\Protocol $requestBody = null, array $queryParameters = [])
+    public function __construct(\Bzzhh\Pezos\Generated\Shell\Model\InjectionProtocolPostBody $requestBody = null, array $queryParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
@@ -40,7 +40,7 @@ class PostInjectionProtocol extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Bzzhh\Pezos\Generated\Shell\Model\Protocol) {
+        if ($this->body instanceof \Bzzhh\Pezos\Generated\Shell\Model\InjectionProtocolPostBody) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
 
@@ -58,18 +58,18 @@ class PostInjectionProtocol extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\
         $optionsResolver->setDefined(['async']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('async', ['string']);
+        $optionsResolver->addAllowedTypes('async', ['string']);
 
         return $optionsResolver;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }

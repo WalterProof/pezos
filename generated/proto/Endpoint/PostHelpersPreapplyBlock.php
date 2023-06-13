@@ -23,7 +23,7 @@ class PostHelpersPreapplyBlock extends \Bzzhh\Pezos\Generated\Proto\Runtime\Clie
      *     @var string $timestamp A date in seconds from epoch
      * }
      */
-    public function __construct(?\Bzzhh\Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBody $requestBody = null, array $queryParameters = [])
+    public function __construct(\Bzzhh\Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBody $requestBody = null, array $queryParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
@@ -59,19 +59,19 @@ class PostHelpersPreapplyBlock extends \Bzzhh\Pezos\Generated\Proto\Runtime\Clie
         $optionsResolver->setDefined(['sort', 'timestamp']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('sort', ['string']);
-        $optionsResolver->setAllowedTypes('timestamp', ['string']);
+        $optionsResolver->addAllowedTypes('sort', ['string']);
+        $optionsResolver->addAllowedTypes('timestamp', ['string']);
 
         return $optionsResolver;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200', 'json');
         }

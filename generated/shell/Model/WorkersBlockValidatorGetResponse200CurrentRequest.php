@@ -10,29 +10,30 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class WorkersBlockValidatorGetResponse200CurrentRequest
+class WorkersBlockValidatorGetResponse200CurrentRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @var mixed
      */
     protected $pushed;
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @var mixed
      */
     protected $treated;
-    /**
-     * @var WorkersBlockValidatorGetResponse200CurrentRequestRequest
-     */
+
     protected $request;
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @return mixed
      */
     public function getPushed()
     {
@@ -41,11 +42,10 @@ class WorkersBlockValidatorGetResponse200CurrentRequest
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @param mixed $pushed
      */
     public function setPushed($pushed): self
     {
+        $this->initialized['pushed'] = true;
         $this->pushed = $pushed;
 
         return $this;
@@ -53,8 +53,6 @@ class WorkersBlockValidatorGetResponse200CurrentRequest
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @return mixed
      */
     public function getTreated()
     {
@@ -63,23 +61,23 @@ class WorkersBlockValidatorGetResponse200CurrentRequest
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @param mixed $treated
      */
     public function setTreated($treated): self
     {
+        $this->initialized['treated'] = true;
         $this->treated = $treated;
 
         return $this;
     }
 
-    public function getRequest(): WorkersBlockValidatorGetResponse200CurrentRequestRequest
+    public function getRequest()
     {
         return $this->request;
     }
 
-    public function setRequest(WorkersBlockValidatorGetResponse200CurrentRequestRequest $request): self
+    public function setRequest($request): self
     {
+        $this->initialized['request'] = true;
         $this->request = $request;
 
         return $this;

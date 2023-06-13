@@ -10,29 +10,30 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class WorkersChainValidatorsChainIdPeersValidatorsPeerIdGetResponse200CurrentRequest
+class WorkersChainValidatorsChainIdPeersValidatorsPeerIdGetResponse200CurrentRequest extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @var mixed
      */
     protected $pushed;
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @var mixed
      */
     protected $treated;
-    /**
-     * @var mixed
-     */
+
     protected $request;
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @return mixed
      */
     public function getPushed()
     {
@@ -41,11 +42,10 @@ class WorkersChainValidatorsChainIdPeersValidatorsPeerIdGetResponse200CurrentReq
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @param mixed $pushed
      */
     public function setPushed($pushed): self
     {
+        $this->initialized['pushed'] = true;
         $this->pushed = $pushed;
 
         return $this;
@@ -53,8 +53,6 @@ class WorkersChainValidatorsChainIdPeersValidatorsPeerIdGetResponse200CurrentReq
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @return mixed
      */
     public function getTreated()
     {
@@ -63,29 +61,23 @@ class WorkersChainValidatorsChainIdPeersValidatorsPeerIdGetResponse200CurrentReq
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @param mixed $treated
      */
     public function setTreated($treated): self
     {
+        $this->initialized['treated'] = true;
         $this->treated = $treated;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getRequest()
     {
         return $this->request;
     }
 
-    /**
-     * @param mixed $request
-     */
     public function setRequest($request): self
     {
+        $this->initialized['request'] = true;
         $this->request = $request;
 
         return $this;

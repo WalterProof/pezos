@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class ConfigGetResponse200ShellNormalizer implements DenormalizerInterface, Norm
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Shell';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200Shell';
     }
@@ -49,40 +51,58 @@ class ConfigGetResponse200ShellNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('peer_validator', $data)) {
             $object->setPeerValidator($this->denormalizer->denormalize($data['peer_validator'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200ShellPeerValidator', 'json', $context));
+            unset($data['peer_validator']);
         }
         if (\array_key_exists('block_validator', $data)) {
             $object->setBlockValidator($this->denormalizer->denormalize($data['block_validator'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200ShellBlockValidator', 'json', $context));
+            unset($data['block_validator']);
         }
         if (\array_key_exists('prevalidator', $data)) {
             $object->setPrevalidator($this->denormalizer->denormalize($data['prevalidator'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\ConfigGetResponse200ShellPrevalidator', 'json', $context));
+            unset($data['prevalidator']);
         }
         if (\array_key_exists('chain_validator', $data)) {
             $object->setChainValidator($data['chain_validator']);
+            unset($data['chain_validator']);
         }
         if (\array_key_exists('history_mode', $data)) {
             $object->setHistoryMode($data['history_mode']);
+            unset($data['history_mode']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getPeerValidator()) {
+        if ($object->isInitialized('peerValidator') && null !== $object->getPeerValidator()) {
             $data['peer_validator'] = $this->normalizer->normalize($object->getPeerValidator(), 'json', $context);
         }
-        if (null !== $object->getBlockValidator()) {
+        if ($object->isInitialized('blockValidator') && null !== $object->getBlockValidator()) {
             $data['block_validator'] = $this->normalizer->normalize($object->getBlockValidator(), 'json', $context);
         }
-        if (null !== $object->getPrevalidator()) {
+        if ($object->isInitialized('prevalidator') && null !== $object->getPrevalidator()) {
             $data['prevalidator'] = $this->normalizer->normalize($object->getPrevalidator(), 'json', $context);
         }
-        if (null !== $object->getChainValidator()) {
+        if ($object->isInitialized('chainValidator') && null !== $object->getChainValidator()) {
             $data['chain_validator'] = $object->getChainValidator();
         }
-        if (null !== $object->getHistoryMode()) {
+        if ($object->isInitialized('historyMode') && null !== $object->getHistoryMode()) {
             $data['history_mode'] = $object->getHistoryMode();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

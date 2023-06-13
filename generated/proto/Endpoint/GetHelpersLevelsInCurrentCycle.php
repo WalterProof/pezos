@@ -53,18 +53,18 @@ class GetHelpersLevelsInCurrentCycle extends \Bzzhh\Pezos\Generated\Proto\Runtim
         $optionsResolver->setDefined(['offset']);
         $optionsResolver->setRequired(['offset']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('offset', ['string']);
+        $optionsResolver->addAllowedTypes('offset', ['string']);
 
         return $optionsResolver;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersLevelsInCurrentCycleGetResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersLevelsInCurrentCycleGetResponse200', 'json');
         }

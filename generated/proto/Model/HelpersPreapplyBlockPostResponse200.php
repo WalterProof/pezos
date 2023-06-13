@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersPreapplyBlockPostResponse200
+class HelpersPreapplyBlockPostResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Block header's shell-related content. It contains information such as the block level, its predecessor and timestamp.
      *
@@ -36,6 +45,7 @@ class HelpersPreapplyBlockPostResponse200
      */
     public function setShellHeader(BlockHeaderShell $shellHeader): self
     {
+        $this->initialized['shellHeader'] = true;
         $this->shellHeader = $shellHeader;
 
         return $this;
@@ -54,6 +64,7 @@ class HelpersPreapplyBlockPostResponse200
      */
     public function setOperations(array $operations): self
     {
+        $this->initialized['operations'] = true;
         $this->operations = $operations;
 
         return $this;

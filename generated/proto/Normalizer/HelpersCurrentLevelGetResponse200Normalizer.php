@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class HelpersCurrentLevelGetResponse200Normalizer implements DenormalizerInterfa
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersCurrentLevelGetResponse200';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersCurrentLevelGetResponse200';
     }
@@ -49,29 +51,36 @@ class HelpersCurrentLevelGetResponse200Normalizer implements DenormalizerInterfa
         }
         if (\array_key_exists('level', $data)) {
             $object->setLevel($data['level']);
+            unset($data['level']);
         }
         if (\array_key_exists('level_position', $data)) {
             $object->setLevelPosition($data['level_position']);
+            unset($data['level_position']);
         }
         if (\array_key_exists('cycle', $data)) {
             $object->setCycle($data['cycle']);
+            unset($data['cycle']);
         }
         if (\array_key_exists('cycle_position', $data)) {
             $object->setCyclePosition($data['cycle_position']);
-        }
-        if (\array_key_exists('voting_period', $data)) {
-            $object->setVotingPeriod($data['voting_period']);
-        }
-        if (\array_key_exists('voting_period_position', $data)) {
-            $object->setVotingPeriodPosition($data['voting_period_position']);
+            unset($data['cycle_position']);
         }
         if (\array_key_exists('expected_commitment', $data)) {
             $object->setExpectedCommitment($data['expected_commitment']);
+            unset($data['expected_commitment']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
@@ -79,9 +88,12 @@ class HelpersCurrentLevelGetResponse200Normalizer implements DenormalizerInterfa
         $data['level_position'] = $object->getLevelPosition();
         $data['cycle'] = $object->getCycle();
         $data['cycle_position'] = $object->getCyclePosition();
-        $data['voting_period'] = $object->getVotingPeriod();
-        $data['voting_period_position'] = $object->getVotingPeriodPosition();
         $data['expected_commitment'] = $object->getExpectedCommitment();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
 
         return $data;
     }

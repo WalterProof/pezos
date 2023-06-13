@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class HelpersScriptsTraceCodePostBodyNormalizer implements DenormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsTraceCodePostBody';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsTraceCodePostBody';
     }
@@ -49,41 +51,72 @@ class HelpersScriptsTraceCodePostBodyNormalizer implements DenormalizerInterface
         }
         if (\array_key_exists('script', $data)) {
             $object->setScript($data['script']);
+            unset($data['script']);
         }
         if (\array_key_exists('storage', $data)) {
             $object->setStorage($data['storage']);
+            unset($data['storage']);
         }
         if (\array_key_exists('input', $data)) {
             $object->setInput($data['input']);
+            unset($data['input']);
         }
         if (\array_key_exists('amount', $data)) {
             $object->setAmount($data['amount']);
+            unset($data['amount']);
         }
         if (\array_key_exists('balance', $data)) {
             $object->setBalance($data['balance']);
+            unset($data['balance']);
         }
         if (\array_key_exists('chain_id', $data)) {
             $object->setChainId($data['chain_id']);
+            unset($data['chain_id']);
         }
         if (\array_key_exists('source', $data)) {
             $object->setSource($data['source']);
+            unset($data['source']);
         }
         if (\array_key_exists('payer', $data)) {
             $object->setPayer($data['payer']);
+            unset($data['payer']);
         }
-        if (\array_key_exists('gas', $data)) {
-            $object->setGas($data['gas']);
+        if (\array_key_exists('self', $data)) {
+            $object->setSelf($data['self']);
+            unset($data['self']);
         }
         if (\array_key_exists('entrypoint', $data)) {
             $object->setEntrypoint($data['entrypoint']);
+            unset($data['entrypoint']);
         }
         if (\array_key_exists('unparsing_mode', $data)) {
             $object->setUnparsingMode($data['unparsing_mode']);
+            unset($data['unparsing_mode']);
+        }
+        if (\array_key_exists('gas', $data)) {
+            $object->setGas($data['gas']);
+            unset($data['gas']);
+        }
+        if (\array_key_exists('now', $data)) {
+            $object->setNow($data['now']);
+            unset($data['now']);
+        }
+        if (\array_key_exists('level', $data)) {
+            $object->setLevel($data['level']);
+            unset($data['level']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
@@ -91,22 +124,38 @@ class HelpersScriptsTraceCodePostBodyNormalizer implements DenormalizerInterface
         $data['storage'] = $object->getStorage();
         $data['input'] = $object->getInput();
         $data['amount'] = $object->getAmount();
-        $data['balance'] = $object->getBalance();
+        if ($object->isInitialized('balance') && null !== $object->getBalance()) {
+            $data['balance'] = $object->getBalance();
+        }
         $data['chain_id'] = $object->getChainId();
-        if (null !== $object->getSource()) {
+        if ($object->isInitialized('source') && null !== $object->getSource()) {
             $data['source'] = $object->getSource();
         }
-        if (null !== $object->getPayer()) {
+        if ($object->isInitialized('payer') && null !== $object->getPayer()) {
             $data['payer'] = $object->getPayer();
         }
-        if (null !== $object->getGas()) {
-            $data['gas'] = $object->getGas();
+        if ($object->isInitialized('self') && null !== $object->getSelf()) {
+            $data['self'] = $object->getSelf();
         }
-        if (null !== $object->getEntrypoint()) {
+        if ($object->isInitialized('entrypoint') && null !== $object->getEntrypoint()) {
             $data['entrypoint'] = $object->getEntrypoint();
         }
-        if (null !== $object->getUnparsingMode()) {
+        if ($object->isInitialized('unparsingMode') && null !== $object->getUnparsingMode()) {
             $data['unparsing_mode'] = $object->getUnparsingMode();
+        }
+        if ($object->isInitialized('gas') && null !== $object->getGas()) {
+            $data['gas'] = $object->getGas();
+        }
+        if ($object->isInitialized('now') && null !== $object->getNow()) {
+            $data['now'] = $object->getNow();
+        }
+        if ($object->isInitialized('level') && null !== $object->getLevel()) {
+            $data['level'] = $object->getLevel();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

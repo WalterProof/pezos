@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class WorkersChainValidatorsChainIdDdbGetResponse200BlockHeaderDb
+class WorkersChainValidatorsChainIdDdbGetResponse200BlockHeaderDb extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var int
      */
@@ -28,6 +37,7 @@ class WorkersChainValidatorsChainIdDdbGetResponse200BlockHeaderDb
 
     public function setTableLength(int $tableLength): self
     {
+        $this->initialized['tableLength'] = true;
         $this->tableLength = $tableLength;
 
         return $this;
@@ -40,6 +50,7 @@ class WorkersChainValidatorsChainIdDdbGetResponse200BlockHeaderDb
 
     public function setSchedulerLength(int $schedulerLength): self
     {
+        $this->initialized['schedulerLength'] = true;
         $this->schedulerLength = $schedulerLength;
 
         return $this;

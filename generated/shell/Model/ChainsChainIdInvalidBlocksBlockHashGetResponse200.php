@@ -10,36 +10,36 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class ChainsChainIdInvalidBlocksBlockHashGetResponse200
+class ChainsChainIdInvalidBlocksBlockHashGetResponse200 extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $block;
     /**
      * @var int
      */
     protected $level;
     /**
-     * The full list of error is available with the global RPC `GET errors`.
-     *
-     * @var mixed
+     * The full list of errors is available with the global RPC `GET errors`.
      */
     protected $errors;
 
-    /**
-     * @return mixed
-     */
     public function getBlock()
     {
         return $this->block;
     }
 
-    /**
-     * @param mixed $block
-     */
     public function setBlock($block): self
     {
+        $this->initialized['block'] = true;
         $this->block = $block;
 
         return $this;
@@ -52,15 +52,14 @@ class ChainsChainIdInvalidBlocksBlockHashGetResponse200
 
     public function setLevel(int $level): self
     {
+        $this->initialized['level'] = true;
         $this->level = $level;
 
         return $this;
     }
 
     /**
-     * The full list of error is available with the global RPC `GET errors`.
-     *
-     * @return mixed
+     * The full list of errors is available with the global RPC `GET errors`.
      */
     public function getErrors()
     {
@@ -68,12 +67,11 @@ class ChainsChainIdInvalidBlocksBlockHashGetResponse200
     }
 
     /**
-     * The full list of error is available with the global RPC `GET errors`.
-     *
-     * @param mixed $errors
+     * The full list of errors is available with the global RPC `GET errors`.
      */
     public function setErrors($errors): self
     {
+        $this->initialized['errors'] = true;
         $this->errors = $errors;
 
         return $this;

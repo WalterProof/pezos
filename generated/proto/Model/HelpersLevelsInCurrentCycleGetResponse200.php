@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersLevelsInCurrentCycleGetResponse200
+class HelpersLevelsInCurrentCycleGetResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var int
      */
@@ -28,6 +37,7 @@ class HelpersLevelsInCurrentCycleGetResponse200
 
     public function setFirst(int $first): self
     {
+        $this->initialized['first'] = true;
         $this->first = $first;
 
         return $this;
@@ -40,6 +50,7 @@ class HelpersLevelsInCurrentCycleGetResponse200
 
     public function setLast(int $last): self
     {
+        $this->initialized['last'] = true;
         $this->last = $last;
 
         return $this;

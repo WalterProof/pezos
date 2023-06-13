@@ -56,18 +56,18 @@ class GetNetworkPeersByPeerIdLog extends \Bzzhh\Pezos\Generated\Shell\Runtime\Cl
         $optionsResolver->setDefined(['monitor']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('monitor', ['string']);
+        $optionsResolver->addAllowedTypes('monitor', ['string']);
 
         return $optionsResolver;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \Bzzhh\Pezos\Generated\Shell\Model\P2pPeerPoolEvent[]|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\P2pPeerPoolEvent[]', 'json');
         }

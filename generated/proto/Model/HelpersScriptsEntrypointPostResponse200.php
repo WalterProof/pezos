@@ -10,26 +10,28 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsEntrypointPostResponse200
+class HelpersScriptsEntrypointPostResponse200 extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $entrypointType;
 
-    /**
-     * @return mixed
-     */
     public function getEntrypointType()
     {
         return $this->entrypointType;
     }
 
-    /**
-     * @param mixed $entrypointType
-     */
     public function setEntrypointType($entrypointType): self
     {
+        $this->initialized['entrypointType'] = true;
         $this->entrypointType = $entrypointType;
 
         return $this;

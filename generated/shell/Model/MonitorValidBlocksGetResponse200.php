@@ -10,15 +10,20 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class MonitorValidBlocksGetResponse200
+class MonitorValidBlocksGetResponse200 extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $chainId;
-    /**
-     * @var mixed
-     */
+
     protected $hash;
     /**
      * @var int
@@ -28,23 +33,17 @@ class MonitorValidBlocksGetResponse200
      * @var int
      */
     protected $proto;
-    /**
-     * @var mixed
-     */
+
     protected $predecessor;
     /**
      * A timestamp as seen by the protocol: second-level precision, epoch based.
-     *
-     * @var mixed
      */
     protected $timestamp;
     /**
      * @var int
      */
     protected $validationPass;
-    /**
-     * @var mixed
-     */
+
     protected $operationsHash;
     /**
      * The fitness, or score, of a block, that allow the Tezos to decide which chain is the best. A fitness value is a list of byte sequences. They are compared as follows: shortest lists are smaller; lists of the same length are compared according to the lexicographical order.
@@ -52,46 +51,34 @@ class MonitorValidBlocksGetResponse200
      * @var string[]
      */
     protected $fitness;
-    /**
-     * @var mixed
-     */
+
     protected $context;
     /**
      * @var string
      */
     protected $protocolData;
 
-    /**
-     * @return mixed
-     */
     public function getChainId()
     {
         return $this->chainId;
     }
 
-    /**
-     * @param mixed $chainId
-     */
     public function setChainId($chainId): self
     {
+        $this->initialized['chainId'] = true;
         $this->chainId = $chainId;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getHash()
     {
         return $this->hash;
     }
 
-    /**
-     * @param mixed $hash
-     */
     public function setHash($hash): self
     {
+        $this->initialized['hash'] = true;
         $this->hash = $hash;
 
         return $this;
@@ -104,6 +91,7 @@ class MonitorValidBlocksGetResponse200
 
     public function setLevel(int $level): self
     {
+        $this->initialized['level'] = true;
         $this->level = $level;
 
         return $this;
@@ -116,24 +104,20 @@ class MonitorValidBlocksGetResponse200
 
     public function setProto(int $proto): self
     {
+        $this->initialized['proto'] = true;
         $this->proto = $proto;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getPredecessor()
     {
         return $this->predecessor;
     }
 
-    /**
-     * @param mixed $predecessor
-     */
     public function setPredecessor($predecessor): self
     {
+        $this->initialized['predecessor'] = true;
         $this->predecessor = $predecessor;
 
         return $this;
@@ -141,8 +125,6 @@ class MonitorValidBlocksGetResponse200
 
     /**
      * A timestamp as seen by the protocol: second-level precision, epoch based.
-     *
-     * @return mixed
      */
     public function getTimestamp()
     {
@@ -151,11 +133,10 @@ class MonitorValidBlocksGetResponse200
 
     /**
      * A timestamp as seen by the protocol: second-level precision, epoch based.
-     *
-     * @param mixed $timestamp
      */
     public function setTimestamp($timestamp): self
     {
+        $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
 
         return $this;
@@ -168,24 +149,20 @@ class MonitorValidBlocksGetResponse200
 
     public function setValidationPass(int $validationPass): self
     {
+        $this->initialized['validationPass'] = true;
         $this->validationPass = $validationPass;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getOperationsHash()
     {
         return $this->operationsHash;
     }
 
-    /**
-     * @param mixed $operationsHash
-     */
     public function setOperationsHash($operationsHash): self
     {
+        $this->initialized['operationsHash'] = true;
         $this->operationsHash = $operationsHash;
 
         return $this;
@@ -208,24 +185,20 @@ class MonitorValidBlocksGetResponse200
      */
     public function setFitness(array $fitness): self
     {
+        $this->initialized['fitness'] = true;
         $this->fitness = $fitness;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getContext()
     {
         return $this->context;
     }
 
-    /**
-     * @param mixed $context
-     */
     public function setContext($context): self
     {
+        $this->initialized['context'] = true;
         $this->context = $context;
 
         return $this;
@@ -238,6 +211,7 @@ class MonitorValidBlocksGetResponse200
 
     public function setProtocolData(string $protocolData): self
     {
+        $this->initialized['protocolData'] = true;
         $this->protocolData = $protocolData;
 
         return $this;

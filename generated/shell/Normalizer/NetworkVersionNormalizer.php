@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class NetworkVersionNormalizer implements DenormalizerInterface, NormalizerInter
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkVersion';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkVersion';
     }
@@ -49,23 +51,39 @@ class NetworkVersionNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('chain_name', $data)) {
             $object->setChainName($data['chain_name']);
+            unset($data['chain_name']);
         }
         if (\array_key_exists('distributed_db_version', $data)) {
             $object->setDistributedDbVersion($data['distributed_db_version']);
+            unset($data['distributed_db_version']);
         }
         if (\array_key_exists('p2p_version', $data)) {
             $object->setP2pVersion($data['p2p_version']);
+            unset($data['p2p_version']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
         $data['chain_name'] = $object->getChainName();
         $data['distributed_db_version'] = $object->getDistributedDbVersion();
         $data['p2p_version'] = $object->getP2pVersion();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
 
         return $data;
     }

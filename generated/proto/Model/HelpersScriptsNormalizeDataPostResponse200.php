@@ -10,26 +10,28 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsNormalizeDataPostResponse200
+class HelpersScriptsNormalizeDataPostResponse200 extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $normalized;
 
-    /**
-     * @return mixed
-     */
     public function getNormalized()
     {
         return $this->normalized;
     }
 
-    /**
-     * @param mixed $normalized
-     */
     public function setNormalized($normalized): self
     {
+        $this->initialized['normalized'] = true;
         $this->normalized = $normalized;
 
         return $this;

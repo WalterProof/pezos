@@ -17,7 +17,7 @@ class PostHelpersParseOperations extends \Bzzhh\Pezos\Generated\Proto\Runtime\Cl
     /**
      * Parse operations.
      */
-    public function __construct(?\Bzzhh\Pezos\Generated\Proto\Model\HelpersParseOperationsPostBody $requestBody = null)
+    public function __construct(\Bzzhh\Pezos\Generated\Proto\Model\HelpersParseOperationsPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -47,12 +47,12 @@ class PostHelpersParseOperations extends \Bzzhh\Pezos\Generated\Proto\Runtime\Cl
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersParseOperationsPostResponse200Item[]|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersParseOperationsPostResponse200Item[]', 'json');
         }

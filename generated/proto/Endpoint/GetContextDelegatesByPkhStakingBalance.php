@@ -16,7 +16,7 @@ class GetContextDelegatesByPkhStakingBalance extends \Bzzhh\Pezos\Generated\Prot
     protected $pkh;
 
     /**
-     * Returns the total amount of tokens delegated to a given delegate. This includes the balances of all the contracts that delegate to it, but also the balance of the delegate itself and its frozen fees and deposits. The rewards do not count in the delegated balance until they are unfrozen.
+     * Returns the total amount of tokens (in mutez) delegated to a given delegate. This includes the balances of all the contracts that delegate to it, but also the balance of the delegate itself, its frozen deposits, and its frozen bonds.
      *
      * @param string $pkh A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      */
@@ -46,12 +46,12 @@ class GetContextDelegatesByPkhStakingBalance extends \Bzzhh\Pezos\Generated\Prot
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }

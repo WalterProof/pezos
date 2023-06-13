@@ -10,23 +10,26 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class WorkersPrevalidatorsChainIdGetResponse200PendingRequestsItem
+class WorkersPrevalidatorsChainIdGetResponse200PendingRequestsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @var mixed
      */
     protected $pushed;
-    /**
-     * @var mixed
-     */
+
     protected $request;
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @return mixed
      */
     public function getPushed()
     {
@@ -35,29 +38,23 @@ class WorkersPrevalidatorsChainIdGetResponse200PendingRequestsItem
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @param mixed $pushed
      */
     public function setPushed($pushed): self
     {
+        $this->initialized['pushed'] = true;
         $this->pushed = $pushed;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getRequest()
     {
         return $this->request;
     }
 
-    /**
-     * @param mixed $request
-     */
     public function setRequest($request): self
     {
+        $this->initialized['request'] = true;
         $this->request = $request;
 
         return $this;

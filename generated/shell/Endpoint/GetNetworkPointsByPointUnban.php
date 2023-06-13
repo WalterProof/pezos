@@ -16,7 +16,7 @@ class GetNetworkPointsByPointUnban extends \Bzzhh\Pezos\Generated\Shell\Runtime\
     protected $point;
 
     /**
-     * DEPRECATED: Remove an address from the blacklist. Use PATCH `/network/point/:peerid` instead.
+     * DEPRECATED: Remove an address from the blacklist. Use PATCH `/network/point/<point_id>` instead.
      *
      * @param string $point a network point (ipv4:port or [ipv6]:port)
      */
@@ -46,12 +46,12 @@ class GetNetworkPointsByPointUnban extends \Bzzhh\Pezos\Generated\Shell\Runtime\
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointUnbanGetResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPointsPointUnbanGetResponse200', 'json');
         }

@@ -13,6 +13,15 @@ namespace Bzzhh\Pezos\Generated\Proto\Model;
 class BlockHeaderMetadata extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * @var string
      */
     protected $protocol;
@@ -22,8 +31,6 @@ class BlockHeaderMetadata extends \ArrayObject
     protected $nextProtocol;
     /**
      * The status of the test chain: not_running (there is no test chain at the moment), forking (the test chain is being setup), running (the test chain is running).
-     *
-     * @var mixed
      */
     protected $testChainStatus;
     /**
@@ -50,6 +57,7 @@ class BlockHeaderMetadata extends \ArrayObject
 
     public function setProtocol(string $protocol): self
     {
+        $this->initialized['protocol'] = true;
         $this->protocol = $protocol;
 
         return $this;
@@ -62,6 +70,7 @@ class BlockHeaderMetadata extends \ArrayObject
 
     public function setNextProtocol(string $nextProtocol): self
     {
+        $this->initialized['nextProtocol'] = true;
         $this->nextProtocol = $nextProtocol;
 
         return $this;
@@ -69,8 +78,6 @@ class BlockHeaderMetadata extends \ArrayObject
 
     /**
      * The status of the test chain: not_running (there is no test chain at the moment), forking (the test chain is being setup), running (the test chain is running).
-     *
-     * @return mixed
      */
     public function getTestChainStatus()
     {
@@ -79,11 +86,10 @@ class BlockHeaderMetadata extends \ArrayObject
 
     /**
      * The status of the test chain: not_running (there is no test chain at the moment), forking (the test chain is being setup), running (the test chain is running).
-     *
-     * @param mixed $testChainStatus
      */
     public function setTestChainStatus($testChainStatus): self
     {
+        $this->initialized['testChainStatus'] = true;
         $this->testChainStatus = $testChainStatus;
 
         return $this;
@@ -96,6 +102,7 @@ class BlockHeaderMetadata extends \ArrayObject
 
     public function setMaxOperationsTtl(int $maxOperationsTtl): self
     {
+        $this->initialized['maxOperationsTtl'] = true;
         $this->maxOperationsTtl = $maxOperationsTtl;
 
         return $this;
@@ -108,6 +115,7 @@ class BlockHeaderMetadata extends \ArrayObject
 
     public function setMaxOperationDataLength(int $maxOperationDataLength): self
     {
+        $this->initialized['maxOperationDataLength'] = true;
         $this->maxOperationDataLength = $maxOperationDataLength;
 
         return $this;
@@ -120,6 +128,7 @@ class BlockHeaderMetadata extends \ArrayObject
 
     public function setMaxBlockHeaderLength(int $maxBlockHeaderLength): self
     {
+        $this->initialized['maxBlockHeaderLength'] = true;
         $this->maxBlockHeaderLength = $maxBlockHeaderLength;
 
         return $this;
@@ -138,6 +147,7 @@ class BlockHeaderMetadata extends \ArrayObject
      */
     public function setMaxOperationListLength(array $maxOperationListLength): self
     {
+        $this->initialized['maxOperationListLength'] = true;
         $this->maxOperationListLength = $maxOperationListLength;
 
         return $this;

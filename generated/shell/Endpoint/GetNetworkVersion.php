@@ -35,14 +35,14 @@ class GetNetworkVersion extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Base
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @return \Bzzhh\Pezos\Generated\Shell\Model\NetworkVersion|null
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\NetworkVersionGetResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkVersion', 'json');
+            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkVersionGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class ConfigGetResponse200Shell
+class ConfigGetResponse200Shell extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var ConfigGetResponse200ShellPeerValidator
      */
@@ -24,12 +33,10 @@ class ConfigGetResponse200Shell
      * @var ConfigGetResponse200ShellPrevalidator
      */
     protected $prevalidator;
-    /**
-     * @var mixed
-     */
+
     protected $chainValidator;
     /**
-     * @var string
+     * Storage mode for the Tezos shell.
      */
     protected $historyMode;
 
@@ -40,6 +47,7 @@ class ConfigGetResponse200Shell
 
     public function setPeerValidator(ConfigGetResponse200ShellPeerValidator $peerValidator): self
     {
+        $this->initialized['peerValidator'] = true;
         $this->peerValidator = $peerValidator;
 
         return $this;
@@ -52,6 +60,7 @@ class ConfigGetResponse200Shell
 
     public function setBlockValidator(ConfigGetResponse200ShellBlockValidator $blockValidator): self
     {
+        $this->initialized['blockValidator'] = true;
         $this->blockValidator = $blockValidator;
 
         return $this;
@@ -64,36 +73,39 @@ class ConfigGetResponse200Shell
 
     public function setPrevalidator(ConfigGetResponse200ShellPrevalidator $prevalidator): self
     {
+        $this->initialized['prevalidator'] = true;
         $this->prevalidator = $prevalidator;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getChainValidator()
     {
         return $this->chainValidator;
     }
 
-    /**
-     * @param mixed $chainValidator
-     */
     public function setChainValidator($chainValidator): self
     {
+        $this->initialized['chainValidator'] = true;
         $this->chainValidator = $chainValidator;
 
         return $this;
     }
 
-    public function getHistoryMode(): string
+    /**
+     * Storage mode for the Tezos shell.
+     */
+    public function getHistoryMode()
     {
         return $this->historyMode;
     }
 
-    public function setHistoryMode(string $historyMode): self
+    /**
+     * Storage mode for the Tezos shell.
+     */
+    public function setHistoryMode($historyMode): self
     {
+        $this->initialized['historyMode'] = true;
         $this->historyMode = $historyMode;
 
         return $this;

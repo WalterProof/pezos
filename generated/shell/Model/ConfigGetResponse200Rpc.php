@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class ConfigGetResponse200Rpc
+class ConfigGetResponse200Rpc extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Hosts to listen to. If the port is not specified, the default port 8732 will be assumed.
      *
@@ -20,8 +29,6 @@ class ConfigGetResponse200Rpc
     protected $listenAddrs;
     /**
      * Legacy value: Host to listen to.
-     *
-     * @var mixed
      */
     protected $listenAddr;
     /**
@@ -38,16 +45,24 @@ class ConfigGetResponse200Rpc
     protected $corsHeaders;
     /**
      * Certificate file (necessary when TLS is used).
-     *
-     * @var mixed
      */
     protected $crt;
     /**
      * Key file (necessary when TLS is used).
-     *
-     * @var mixed
      */
     protected $key;
+    /**
+     * A list of RPC ACLs for specific listening addresses.
+     *
+     * @var mixed[]
+     */
+    protected $acl;
+    /**
+     * The media types supported by the server.
+     *
+     * @var string
+     */
+    protected $mediaType;
 
     /**
      * Hosts to listen to. If the port is not specified, the default port 8732 will be assumed.
@@ -66,6 +81,7 @@ class ConfigGetResponse200Rpc
      */
     public function setListenAddrs(array $listenAddrs): self
     {
+        $this->initialized['listenAddrs'] = true;
         $this->listenAddrs = $listenAddrs;
 
         return $this;
@@ -73,8 +89,6 @@ class ConfigGetResponse200Rpc
 
     /**
      * Legacy value: Host to listen to.
-     *
-     * @return mixed
      */
     public function getListenAddr()
     {
@@ -83,11 +97,10 @@ class ConfigGetResponse200Rpc
 
     /**
      * Legacy value: Host to listen to.
-     *
-     * @param mixed $listenAddr
      */
     public function setListenAddr($listenAddr): self
     {
+        $this->initialized['listenAddr'] = true;
         $this->listenAddr = $listenAddr;
 
         return $this;
@@ -110,6 +123,7 @@ class ConfigGetResponse200Rpc
      */
     public function setCorsOrigin(array $corsOrigin): self
     {
+        $this->initialized['corsOrigin'] = true;
         $this->corsOrigin = $corsOrigin;
 
         return $this;
@@ -132,6 +146,7 @@ class ConfigGetResponse200Rpc
      */
     public function setCorsHeaders(array $corsHeaders): self
     {
+        $this->initialized['corsHeaders'] = true;
         $this->corsHeaders = $corsHeaders;
 
         return $this;
@@ -139,8 +154,6 @@ class ConfigGetResponse200Rpc
 
     /**
      * Certificate file (necessary when TLS is used).
-     *
-     * @return mixed
      */
     public function getCrt()
     {
@@ -149,11 +162,10 @@ class ConfigGetResponse200Rpc
 
     /**
      * Certificate file (necessary when TLS is used).
-     *
-     * @param mixed $crt
      */
     public function setCrt($crt): self
     {
+        $this->initialized['crt'] = true;
         $this->crt = $crt;
 
         return $this;
@@ -161,8 +173,6 @@ class ConfigGetResponse200Rpc
 
     /**
      * Key file (necessary when TLS is used).
-     *
-     * @return mixed
      */
     public function getKey()
     {
@@ -171,12 +181,53 @@ class ConfigGetResponse200Rpc
 
     /**
      * Key file (necessary when TLS is used).
-     *
-     * @param mixed $key
      */
     public function setKey($key): self
     {
+        $this->initialized['key'] = true;
         $this->key = $key;
+
+        return $this;
+    }
+
+    /**
+     * A list of RPC ACLs for specific listening addresses.
+     *
+     * @return mixed[]
+     */
+    public function getAcl(): array
+    {
+        return $this->acl;
+    }
+
+    /**
+     * A list of RPC ACLs for specific listening addresses.
+     *
+     * @param mixed[] $acl
+     */
+    public function setAcl(array $acl): self
+    {
+        $this->initialized['acl'] = true;
+        $this->acl = $acl;
+
+        return $this;
+    }
+
+    /**
+     * The media types supported by the server.
+     */
+    public function getMediaType(): string
+    {
+        return $this->mediaType;
+    }
+
+    /**
+     * The media types supported by the server.
+     */
+    public function setMediaType(string $mediaType): self
+    {
+        $this->initialized['mediaType'] = true;
+        $this->mediaType = $mediaType;
 
         return $this;
     }

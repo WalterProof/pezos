@@ -18,11 +18,16 @@ class GetContextContractByContractId extends \Bzzhh\Pezos\Generated\Proto\Runtim
     /**
      * Access the complete status of a contract.
      *
-     * @param string $contractId a contract identifier encoded in b58check
+     * @param string $contractId      a contract identifier encoded in b58check
+     * @param array  $queryParameters {
+     *
+     *     @var string $normalize_types Whether types should be normalized (annotations removed, combs flattened) or kept as they appeared in the original script.
+     * }
      */
-    public function __construct(string $contractId)
+    public function __construct(string $contractId, array $queryParameters = [])
     {
         $this->contract_id = $contractId;
+        $this->queryParameters = $queryParameters;
     }
 
     public function getMethod(): string
@@ -45,13 +50,24 @@ class GetContextContractByContractId extends \Bzzhh\Pezos\Generated\Proto\Runtim
         return ['Accept' => ['application/json']];
     }
 
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['normalize_types']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('normalize_types', ['string']);
+
+        return $optionsResolver;
+    }
+
     /**
-     * {@inheritdoc}
-     *
      * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdGetResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdGetResponse200', 'json');
         }

@@ -10,32 +10,32 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class MonitorBootstrappedGetResponse200
+class MonitorBootstrappedGetResponse200 extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $block;
     /**
      * A timestamp as seen by the protocol: second-level precision, epoch based.
-     *
-     * @var mixed
      */
     protected $timestamp;
 
-    /**
-     * @return mixed
-     */
     public function getBlock()
     {
         return $this->block;
     }
 
-    /**
-     * @param mixed $block
-     */
     public function setBlock($block): self
     {
+        $this->initialized['block'] = true;
         $this->block = $block;
 
         return $this;
@@ -43,8 +43,6 @@ class MonitorBootstrappedGetResponse200
 
     /**
      * A timestamp as seen by the protocol: second-level precision, epoch based.
-     *
-     * @return mixed
      */
     public function getTimestamp()
     {
@@ -53,11 +51,10 @@ class MonitorBootstrappedGetResponse200
 
     /**
      * A timestamp as seen by the protocol: second-level precision, epoch based.
-     *
-     * @param mixed $timestamp
      */
     public function setTimestamp($timestamp): self
     {
+        $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
 
         return $this;

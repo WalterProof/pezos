@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class NetworkPeersPeerIdGetResponse200PeerMetadataAdvertisementsReceived
+class NetworkPeersPeerIdGetResponse200PeerMetadataAdvertisementsReceived extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Decimal representation of a big number.
      *
@@ -38,6 +47,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataAdvertisementsReceived
      */
     public function setHead(string $head): self
     {
+        $this->initialized['head'] = true;
         $this->head = $head;
 
         return $this;
@@ -56,6 +66,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataAdvertisementsReceived
      */
     public function setBranch(string $branch): self
     {
+        $this->initialized['branch'] = true;
         $this->branch = $branch;
 
         return $this;

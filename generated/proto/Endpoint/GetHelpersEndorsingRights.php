@@ -16,12 +16,17 @@ class GetHelpersEndorsingRights extends \Bzzhh\Pezos\Generated\Proto\Runtime\Cli
 
     /**
      * Retrieves the delegates allowed to endorse a block.
+     * By default, it gives the endorsing power for delegates that have at least one endorsing slot for the next block.
+     * Parameters `level` and `cycle` can be used to specify the (valid) level(s) in the past or future at which the endorsing rights have to be returned. Parameter `delegate` can be used to restrict the results to the given delegates.
+     * Parameter `consensus_key` can be used to restrict the results to the given consensus_keys.
+     * Returns the smallest endorsing slots and the endorsing power. Also returns the minimal timestamp that corresponds to endorsing at the given level. The timestamps are omitted for levels in the past, and are only estimates for levels higher that the next block's, based on the hypothesis that all predecessor blocks were baked at the first round.
      *
      * @param array $queryParameters {
      *
      *     @var string $level A level integer
      *     @var string $cycle A cycle integer
      *     @var string $delegate A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     *     @var string $consensus_key A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -52,23 +57,24 @@ class GetHelpersEndorsingRights extends \Bzzhh\Pezos\Generated\Proto\Runtime\Cli
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['level', 'cycle', 'delegate']);
+        $optionsResolver->setDefined(['level', 'cycle', 'delegate', 'consensus_key']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('level', ['string']);
-        $optionsResolver->setAllowedTypes('cycle', ['string']);
-        $optionsResolver->setAllowedTypes('delegate', ['string']);
+        $optionsResolver->addAllowedTypes('level', ['string']);
+        $optionsResolver->addAllowedTypes('cycle', ['string']);
+        $optionsResolver->addAllowedTypes('delegate', ['string']);
+        $optionsResolver->addAllowedTypes('consensus_key', ['string']);
 
         return $optionsResolver;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersEndorsingRightsGetResponse200Item[]|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersEndorsingRightsGetResponse200Item[]', 'json');
         }

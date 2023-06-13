@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Mempool\Normalizer;
 
 use Bzzhh\Pezos\Generated\Mempool\Runtime\Normalizer\CheckArray;
+use Bzzhh\Pezos\Generated\Mempool\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -23,19 +24,23 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    protected $normalizers = ['Bzzhh\\Pezos\\Generated\\Mempool\\Model\\NextOperation' => 'Bzzhh\\Pezos\\Generated\\Mempool\\Normalizer\\NextOperationNormalizer', 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\PendingOperationsGetResponse200' => 'Bzzhh\\Pezos\\Generated\\Mempool\\Normalizer\\PendingOperationsGetResponse200Normalizer', 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\PendingOperationsGetResponse200AppliedItem' => 'Bzzhh\\Pezos\\Generated\\Mempool\\Normalizer\\PendingOperationsGetResponse200AppliedItemNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Bzzhh\\Pezos\\Generated\\Mempool\\Runtime\\Normalizer\\ReferenceNormalizer'];
+    use ValidatorTrait;
+    protected $normalizers = ['Bzzhh\\Pezos\\Generated\\Mempool\\Model\\_016PtMumbaiBlockHeaderAlphaFullHeader' => 'Bzzhh\\Pezos\\Generated\\Mempool\\Normalizer\\_016PtMumbaiBlockHeaderAlphaFullHeaderNormalizer', 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\_016PtMumbaiInlinedEndorsement' => 'Bzzhh\\Pezos\\Generated\\Mempool\\Normalizer\\_016PtMumbaiInlinedEndorsementNormalizer', 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\_016PtMumbaiInlinedEndorsementMempoolContents' => 'Bzzhh\\Pezos\\Generated\\Mempool\\Normalizer\\_016PtMumbaiInlinedEndorsementMempoolContentsNormalizer', 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\_016PtMumbaiInlinedPreendorsement' => 'Bzzhh\\Pezos\\Generated\\Mempool\\Normalizer\\_016PtMumbaiInlinedPreendorsementNormalizer', 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\_016PtMumbaiInlinedPreendorsementContents' => 'Bzzhh\\Pezos\\Generated\\Mempool\\Normalizer\\_016PtMumbaiInlinedPreendorsementContentsNormalizer', 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\_016PtMumbaiScriptedContracts' => 'Bzzhh\\Pezos\\Generated\\Mempool\\Normalizer\\_016PtMumbaiScriptedContractsNormalizer', 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\NextOperation' => 'Bzzhh\\Pezos\\Generated\\Mempool\\Normalizer\\NextOperationNormalizer', 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\MonitorOperationsGetResponse200Item' => 'Bzzhh\\Pezos\\Generated\\Mempool\\Normalizer\\MonitorOperationsGetResponse200ItemNormalizer', 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\RequestOperationsPostBody' => 'Bzzhh\\Pezos\\Generated\\Mempool\\Normalizer\\RequestOperationsPostBodyNormalizer', 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\RequestOperationsPostResponse200' => 'Bzzhh\\Pezos\\Generated\\Mempool\\Normalizer\\RequestOperationsPostResponse200Normalizer', 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\UnbanAllOperationsPostBody' => 'Bzzhh\\Pezos\\Generated\\Mempool\\Normalizer\\UnbanAllOperationsPostBodyNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Bzzhh\\Pezos\\Generated\\Mempool\\Runtime\\Normalizer\\ReferenceNormalizer'];
     protected $normalizersCache = [];
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return array_key_exists($type, $this->normalizers);
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $normalizerClass = $this->normalizers[get_class($object)];

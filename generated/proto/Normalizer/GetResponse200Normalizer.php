@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class GetResponse200Normalizer implements DenormalizerInterface, NormalizerInter
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\GetResponse200';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\GetResponse200';
     }
@@ -49,18 +51,23 @@ class GetResponse200Normalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('protocol', $data)) {
             $object->setProtocol($data['protocol']);
+            unset($data['protocol']);
         }
         if (\array_key_exists('chain_id', $data)) {
             $object->setChainId($data['chain_id']);
+            unset($data['chain_id']);
         }
         if (\array_key_exists('hash', $data)) {
             $object->setHash($data['hash']);
+            unset($data['hash']);
         }
         if (\array_key_exists('header', $data)) {
             $object->setHeader($this->denormalizer->denormalize($data['header'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\RawBlockHeader', 'json', $context));
+            unset($data['header']);
         }
         if (\array_key_exists('metadata', $data)) {
             $object->setMetadata($this->denormalizer->denormalize($data['metadata'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\BlockHeaderMetadata', 'json', $context));
+            unset($data['metadata']);
         }
         if (\array_key_exists('operations', $data)) {
             $values = [];
@@ -72,11 +79,20 @@ class GetResponse200Normalizer implements DenormalizerInterface, NormalizerInter
                 $values[] = $values_1;
             }
             $object->setOperations($values);
+            unset($data['operations']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
@@ -84,7 +100,7 @@ class GetResponse200Normalizer implements DenormalizerInterface, NormalizerInter
         $data['chain_id'] = $object->getChainId();
         $data['hash'] = $object->getHash();
         $data['header'] = $this->normalizer->normalize($object->getHeader(), 'json', $context);
-        if (null !== $object->getMetadata()) {
+        if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
             $data['metadata'] = $this->normalizer->normalize($object->getMetadata(), 'json', $context);
         }
         $values = [];
@@ -96,6 +112,11 @@ class GetResponse200Normalizer implements DenormalizerInterface, NormalizerInter
             $values[] = $values_1;
         }
         $data['operations'] = $values;
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
+        }
 
         return $data;
     }

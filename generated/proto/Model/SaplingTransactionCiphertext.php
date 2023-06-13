@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class SaplingTransactionCiphertext
+class SaplingTransactionCiphertext extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var string
      */
@@ -44,6 +53,7 @@ class SaplingTransactionCiphertext
 
     public function setCv(string $cv): self
     {
+        $this->initialized['cv'] = true;
         $this->cv = $cv;
 
         return $this;
@@ -56,6 +66,7 @@ class SaplingTransactionCiphertext
 
     public function setEpk(string $epk): self
     {
+        $this->initialized['epk'] = true;
         $this->epk = $epk;
 
         return $this;
@@ -68,6 +79,7 @@ class SaplingTransactionCiphertext
 
     public function setPayloadEnc(string $payloadEnc): self
     {
+        $this->initialized['payloadEnc'] = true;
         $this->payloadEnc = $payloadEnc;
 
         return $this;
@@ -80,6 +92,7 @@ class SaplingTransactionCiphertext
 
     public function setNonceEnc(string $nonceEnc): self
     {
+        $this->initialized['nonceEnc'] = true;
         $this->nonceEnc = $nonceEnc;
 
         return $this;
@@ -92,6 +105,7 @@ class SaplingTransactionCiphertext
 
     public function setPayloadOut(string $payloadOut): self
     {
+        $this->initialized['payloadOut'] = true;
         $this->payloadOut = $payloadOut;
 
         return $this;
@@ -104,6 +118,7 @@ class SaplingTransactionCiphertext
 
     public function setNonceOut(string $nonceOut): self
     {
+        $this->initialized['nonceOut'] = true;
         $this->nonceOut = $nonceOut;
 
         return $this;

@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class HelpersScriptsTraceCodePostResponse200Normalizer implements DenormalizerIn
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsTraceCodePostResponse200';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsTraceCodePostResponse200';
     }
@@ -49,6 +51,7 @@ class HelpersScriptsTraceCodePostResponse200Normalizer implements DenormalizerIn
         }
         if (\array_key_exists('storage', $data)) {
             $object->setStorage($data['storage']);
+            unset($data['storage']);
         }
         if (\array_key_exists('operations', $data)) {
             $values = [];
@@ -56,32 +59,36 @@ class HelpersScriptsTraceCodePostResponse200Normalizer implements DenormalizerIn
                 $values[] = $value;
             }
             $object->setOperations($values);
+            unset($data['operations']);
         }
         if (\array_key_exists('trace', $data)) {
             $values_1 = [];
             foreach ($data['trace'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_009PsFLorenScriptedTraceItem', 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_016PtMumbaiScriptedTraceItem', 'json', $context);
             }
             $object->setTrace($values_1);
-        }
-        if (\array_key_exists('big_map_diff', $data)) {
-            $values_2 = [];
-            foreach ($data['big_map_diff'] as $value_2) {
-                $values_2[] = $value_2;
-            }
-            $object->setBigMapDiff($values_2);
+            unset($data['trace']);
         }
         if (\array_key_exists('lazy_storage_diff', $data)) {
-            $values_3 = [];
-            foreach ($data['lazy_storage_diff'] as $value_3) {
-                $values_3[] = $value_3;
+            $values_2 = [];
+            foreach ($data['lazy_storage_diff'] as $value_2) {
+                $values_2[] = $value_2;
             }
-            $object->setLazyStorageDiff($values_3);
+            $object->setLazyStorageDiff($values_2);
+            unset($data['lazy_storage_diff']);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
@@ -96,19 +103,17 @@ class HelpersScriptsTraceCodePostResponse200Normalizer implements DenormalizerIn
             $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
         $data['trace'] = $values_1;
-        if (null !== $object->getBigMapDiff()) {
+        if ($object->isInitialized('lazyStorageDiff') && null !== $object->getLazyStorageDiff()) {
             $values_2 = [];
-            foreach ($object->getBigMapDiff() as $value_2) {
+            foreach ($object->getLazyStorageDiff() as $value_2) {
                 $values_2[] = $value_2;
             }
-            $data['big_map_diff'] = $values_2;
+            $data['lazy_storage_diff'] = $values_2;
         }
-        if (null !== $object->getLazyStorageDiff()) {
-            $values_3 = [];
-            foreach ($object->getLazyStorageDiff() as $value_3) {
-                $values_3[] = $value_3;
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
             }
-            $data['lazy_storage_diff'] = $values_3;
         }
 
         return $data;

@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsTypecheckCodePostResponse200TypeMapItem
+class HelpersScriptsTypecheckCodePostResponse200TypeMapItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The location of a node in a Micheline expression tree in prefix order, with zero being the root and adding one for every basic node, sequence and primitive application.
      *
@@ -19,11 +28,11 @@ class HelpersScriptsTypecheckCodePostResponse200TypeMapItem
      */
     protected $location;
     /**
-     * @var mixed[][]
+     * @var mixed[]
      */
     protected $stackBefore;
     /**
-     * @var mixed[][]
+     * @var mixed[]
      */
     protected $stackAfter;
 
@@ -40,13 +49,14 @@ class HelpersScriptsTypecheckCodePostResponse200TypeMapItem
      */
     public function setLocation(int $location): self
     {
+        $this->initialized['location'] = true;
         $this->location = $location;
 
         return $this;
     }
 
     /**
-     * @return mixed[][]
+     * @return mixed[]
      */
     public function getStackBefore(): array
     {
@@ -54,17 +64,18 @@ class HelpersScriptsTypecheckCodePostResponse200TypeMapItem
     }
 
     /**
-     * @param mixed[][] $stackBefore
+     * @param mixed[] $stackBefore
      */
     public function setStackBefore(array $stackBefore): self
     {
+        $this->initialized['stackBefore'] = true;
         $this->stackBefore = $stackBefore;
 
         return $this;
     }
 
     /**
-     * @return mixed[][]
+     * @return mixed[]
      */
     public function getStackAfter(): array
     {
@@ -72,10 +83,11 @@ class HelpersScriptsTypecheckCodePostResponse200TypeMapItem
     }
 
     /**
-     * @param mixed[][] $stackAfter
+     * @param mixed[] $stackAfter
      */
     public function setStackAfter(array $stackAfter): self
     {
+        $this->initialized['stackAfter'] = true;
         $this->stackAfter = $stackAfter;
 
         return $this;

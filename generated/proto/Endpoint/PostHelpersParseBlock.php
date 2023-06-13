@@ -17,7 +17,7 @@ class PostHelpersParseBlock extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\
     /**
      * Parse a block.
      */
-    public function __construct(?\Bzzhh\Pezos\Generated\Proto\Model\BlockHeader $requestBody = null)
+    public function __construct(\Bzzhh\Pezos\Generated\Proto\Model\HelpersParseBlockPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -34,7 +34,7 @@ class PostHelpersParseBlock extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\BlockHeader) {
+        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\HelpersParseBlockPostBody) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
 
@@ -47,14 +47,14 @@ class PostHelpersParseBlock extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\_009PsFLorenBlockHeaderAlphaSignedContents|null
+     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersParseBlockPostResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\_009PsFLorenBlockHeaderAlphaSignedContents', 'json');
+            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersParseBlockPostResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

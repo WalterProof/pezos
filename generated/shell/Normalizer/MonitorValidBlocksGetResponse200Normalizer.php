@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class MonitorValidBlocksGetResponse200Normalizer implements DenormalizerInterfac
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\MonitorValidBlocksGetResponse200';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\MonitorValidBlocksGetResponse200';
     }
@@ -49,27 +51,35 @@ class MonitorValidBlocksGetResponse200Normalizer implements DenormalizerInterfac
         }
         if (\array_key_exists('chain_id', $data)) {
             $object->setChainId($data['chain_id']);
+            unset($data['chain_id']);
         }
         if (\array_key_exists('hash', $data)) {
             $object->setHash($data['hash']);
+            unset($data['hash']);
         }
         if (\array_key_exists('level', $data)) {
             $object->setLevel($data['level']);
+            unset($data['level']);
         }
         if (\array_key_exists('proto', $data)) {
             $object->setProto($data['proto']);
+            unset($data['proto']);
         }
         if (\array_key_exists('predecessor', $data)) {
             $object->setPredecessor($data['predecessor']);
+            unset($data['predecessor']);
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp($data['timestamp']);
+            unset($data['timestamp']);
         }
         if (\array_key_exists('validation_pass', $data)) {
             $object->setValidationPass($data['validation_pass']);
+            unset($data['validation_pass']);
         }
         if (\array_key_exists('operations_hash', $data)) {
             $object->setOperationsHash($data['operations_hash']);
+            unset($data['operations_hash']);
         }
         if (\array_key_exists('fitness', $data)) {
             $values = [];
@@ -77,17 +87,28 @@ class MonitorValidBlocksGetResponse200Normalizer implements DenormalizerInterfac
                 $values[] = $value;
             }
             $object->setFitness($values);
+            unset($data['fitness']);
         }
         if (\array_key_exists('context', $data)) {
             $object->setContext($data['context']);
+            unset($data['context']);
         }
         if (\array_key_exists('protocol_data', $data)) {
             $object->setProtocolData($data['protocol_data']);
+            unset($data['protocol_data']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
@@ -106,6 +127,11 @@ class MonitorValidBlocksGetResponse200Normalizer implements DenormalizerInterfac
         $data['fitness'] = $values;
         $data['context'] = $object->getContext();
         $data['protocol_data'] = $object->getProtocolData();
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
 
         return $data;
     }

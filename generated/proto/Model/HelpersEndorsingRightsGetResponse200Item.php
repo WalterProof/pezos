@@ -10,24 +10,27 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersEndorsingRightsGetResponse200Item
+class HelpersEndorsingRightsGetResponse200Item extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var int
      */
     protected $level;
     /**
-     * @var mixed
+     * @var HelpersEndorsingRightsGetResponse200ItemDelegatesItem[]
      */
-    protected $delegate;
-    /**
-     * @var int[]
-     */
-    protected $slots;
+    protected $delegates;
     /**
      * A timestamp as seen by the protocol: second-level precision, epoch based.
-     *
-     * @var mixed
      */
     protected $estimatedTime;
 
@@ -38,51 +41,33 @@ class HelpersEndorsingRightsGetResponse200Item
 
     public function setLevel(int $level): self
     {
+        $this->initialized['level'] = true;
         $this->level = $level;
 
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return HelpersEndorsingRightsGetResponse200ItemDelegatesItem[]
      */
-    public function getDelegate()
+    public function getDelegates(): array
     {
-        return $this->delegate;
+        return $this->delegates;
     }
 
     /**
-     * @param mixed $delegate
+     * @param HelpersEndorsingRightsGetResponse200ItemDelegatesItem[] $delegates
      */
-    public function setDelegate($delegate): self
+    public function setDelegates(array $delegates): self
     {
-        $this->delegate = $delegate;
-
-        return $this;
-    }
-
-    /**
-     * @return int[]
-     */
-    public function getSlots(): array
-    {
-        return $this->slots;
-    }
-
-    /**
-     * @param int[] $slots
-     */
-    public function setSlots(array $slots): self
-    {
-        $this->slots = $slots;
+        $this->initialized['delegates'] = true;
+        $this->delegates = $delegates;
 
         return $this;
     }
 
     /**
      * A timestamp as seen by the protocol: second-level precision, epoch based.
-     *
-     * @return mixed
      */
     public function getEstimatedTime()
     {
@@ -91,11 +76,10 @@ class HelpersEndorsingRightsGetResponse200Item
 
     /**
      * A timestamp as seen by the protocol: second-level precision, epoch based.
-     *
-     * @param mixed $estimatedTime
      */
     public function setEstimatedTime($estimatedTime): self
     {
+        $this->initialized['estimatedTime'] = true;
         $this->estimatedTime = $estimatedTime;
 
         return $this;

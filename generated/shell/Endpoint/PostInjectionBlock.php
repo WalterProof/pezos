@@ -24,7 +24,7 @@ class PostInjectionBlock extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Bas
      *     @var string $chain A chain identifier. This is either a chain hash in Base58Check notation or a one the predefined aliases: 'main', 'test'.
      * }
      */
-    public function __construct(?\Bzzhh\Pezos\Generated\Shell\Model\InjectionBlockPostBody $requestBody = null, array $queryParameters = [])
+    public function __construct(\Bzzhh\Pezos\Generated\Shell\Model\InjectionBlockPostBody $requestBody = null, array $queryParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
@@ -60,20 +60,20 @@ class PostInjectionBlock extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Bas
         $optionsResolver->setDefined(['async', 'force', 'chain']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('async', ['string']);
-        $optionsResolver->setAllowedTypes('force', ['string']);
-        $optionsResolver->setAllowedTypes('chain', ['string']);
+        $optionsResolver->addAllowedTypes('async', ['string']);
+        $optionsResolver->addAllowedTypes('force', ['string']);
+        $optionsResolver->addAllowedTypes('chain', ['string']);
 
         return $optionsResolver;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }

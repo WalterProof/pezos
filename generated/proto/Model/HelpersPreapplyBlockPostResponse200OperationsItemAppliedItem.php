@@ -10,52 +10,47 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem
+class HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $hash;
-    /**
-     * @var mixed
-     */
+
     protected $branch;
     /**
      * @var string
      */
     protected $data;
 
-    /**
-     * @return mixed
-     */
     public function getHash()
     {
         return $this->hash;
     }
 
-    /**
-     * @param mixed $hash
-     */
     public function setHash($hash): self
     {
+        $this->initialized['hash'] = true;
         $this->hash = $hash;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getBranch()
     {
         return $this->branch;
     }
 
-    /**
-     * @param mixed $branch
-     */
     public function setBranch($branch): self
     {
+        $this->initialized['branch'] = true;
         $this->branch = $branch;
 
         return $this;
@@ -68,6 +63,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem
 
     public function setData(string $data): self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
 
         return $this;

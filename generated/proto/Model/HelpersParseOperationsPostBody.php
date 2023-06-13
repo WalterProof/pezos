@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersParseOperationsPostBody
+class HelpersParseOperationsPostBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var mixed[]
      */
@@ -34,6 +43,7 @@ class HelpersParseOperationsPostBody
      */
     public function setOperations(array $operations): self
     {
+        $this->initialized['operations'] = true;
         $this->operations = $operations;
 
         return $this;
@@ -46,6 +56,7 @@ class HelpersParseOperationsPostBody
 
     public function setCheckSignature(bool $checkSignature): self
     {
+        $this->initialized['checkSignature'] = true;
         $this->checkSignature = $checkSignature;
 
         return $this;

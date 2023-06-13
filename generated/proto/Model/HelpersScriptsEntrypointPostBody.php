@@ -10,32 +10,32 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersScriptsEntrypointPostBody
+class HelpersScriptsEntrypointPostBody extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $script;
     /**
      * Either a plain UTF8 string, or a sequence of bytes for strings that contain invalid byte sequences.
-     *
-     * @var mixed
      */
     protected $entrypoint;
 
-    /**
-     * @return mixed
-     */
     public function getScript()
     {
         return $this->script;
     }
 
-    /**
-     * @param mixed $script
-     */
     public function setScript($script): self
     {
+        $this->initialized['script'] = true;
         $this->script = $script;
 
         return $this;
@@ -43,8 +43,6 @@ class HelpersScriptsEntrypointPostBody
 
     /**
      * Either a plain UTF8 string, or a sequence of bytes for strings that contain invalid byte sequences.
-     *
-     * @return mixed
      */
     public function getEntrypoint()
     {
@@ -53,11 +51,10 @@ class HelpersScriptsEntrypointPostBody
 
     /**
      * Either a plain UTF8 string, or a sequence of bytes for strings that contain invalid byte sequences.
-     *
-     * @param mixed $entrypoint
      */
     public function setEntrypoint($entrypoint): self
     {
+        $this->initialized['entrypoint'] = true;
         $this->entrypoint = $entrypoint;
 
         return $this;

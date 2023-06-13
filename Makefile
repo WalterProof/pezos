@@ -49,6 +49,12 @@ install: ##@Tools install deps
 update: ##@Tools update deps
 	composer update
 
+jane-all: ##@Tools (re)-generate all clients
+		@if [ -d generated ]; then rm -rf generated; fi
+		$(MAKE) jane CONFIG=config/jane-mempool-openapi.php
+		$(MAKE) jane CONFIG=config/jane-proto-openapi.php
+		$(MAKE) jane CONFIG=config/jane-shell-openapi.php
+
 jane: ##@Tools generate a client (make jane CONFIG=config/jane-rpc-openapi.php)
 	vendor/bin/jane-openapi generate --config-file=$(CONFIG)
 	composer dumpautoload

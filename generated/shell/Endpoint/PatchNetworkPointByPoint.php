@@ -20,7 +20,7 @@ class PatchNetworkPointByPoint extends \Bzzhh\Pezos\Generated\Shell\Runtime\Clie
      *
      * @param string $point a network point (ipv4:port or [ipv6]:port)
      */
-    public function __construct(string $point, ?\Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointPatchBody $requestBody = null)
+    public function __construct(string $point, \Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointPatchBody $requestBody = null)
     {
         $this->point = $point;
         $this->body = $requestBody;
@@ -51,14 +51,14 @@ class PatchNetworkPointByPoint extends \Bzzhh\Pezos\Generated\Shell\Runtime\Clie
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @return \Bzzhh\Pezos\Generated\Shell\Model\P2pPointInfo|null
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointPatchResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\P2pPointInfo', 'json');
+            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPointsPointPatchResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

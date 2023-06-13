@@ -10,15 +10,22 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class UserActivatedUpgradesItem
+class UserActivatedUpgradesItem extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var int
      */
     protected $level;
-    /**
-     * @var mixed
-     */
+
     protected $replacementProtocol;
 
     public function getLevel(): int
@@ -28,24 +35,20 @@ class UserActivatedUpgradesItem
 
     public function setLevel(int $level): self
     {
+        $this->initialized['level'] = true;
         $this->level = $level;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getReplacementProtocol()
     {
         return $this->replacementProtocol;
     }
 
-    /**
-     * @param mixed $replacementProtocol
-     */
     public function setReplacementProtocol($replacementProtocol): self
     {
+        $this->initialized['replacementProtocol'] = true;
         $this->replacementProtocol = $replacementProtocol;
 
         return $this;

@@ -10,19 +10,24 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HeaderProtocolDataGetResponse200
+class HeaderProtocolDataGetResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var string
      */
     protected $protocol;
-    /**
-     * @var mixed
-     */
+
     protected $content;
-    /**
-     * @var mixed
-     */
+
     protected $signature;
 
     public function getProtocol(): string
@@ -32,42 +37,33 @@ class HeaderProtocolDataGetResponse200
 
     public function setProtocol(string $protocol): self
     {
+        $this->initialized['protocol'] = true;
         $this->protocol = $protocol;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getContent()
     {
         return $this->content;
     }
 
-    /**
-     * @param mixed $content
-     */
     public function setContent($content): self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getSignature()
     {
         return $this->signature;
     }
 
-    /**
-     * @param mixed $signature
-     */
     public function setSignature($signature): self
     {
+        $this->initialized['signature'] = true;
         $this->signature = $signature;
 
         return $this;

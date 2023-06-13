@@ -10,12 +10,19 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class NetworkVersion
+class NetworkVersion extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * A name for the distributed DB protocol.
-     *
-     * @var mixed
      */
     protected $chainName;
     /**
@@ -33,8 +40,6 @@ class NetworkVersion
 
     /**
      * A name for the distributed DB protocol.
-     *
-     * @return mixed
      */
     public function getChainName()
     {
@@ -43,11 +48,10 @@ class NetworkVersion
 
     /**
      * A name for the distributed DB protocol.
-     *
-     * @param mixed $chainName
      */
     public function setChainName($chainName): self
     {
+        $this->initialized['chainName'] = true;
         $this->chainName = $chainName;
 
         return $this;
@@ -66,6 +70,7 @@ class NetworkVersion
      */
     public function setDistributedDbVersion(int $distributedDbVersion): self
     {
+        $this->initialized['distributedDbVersion'] = true;
         $this->distributedDbVersion = $distributedDbVersion;
 
         return $this;
@@ -84,6 +89,7 @@ class NetworkVersion
      */
     public function setP2pVersion(int $p2pVersion): self
     {
+        $this->initialized['p2pVersion'] = true;
         $this->p2pVersion = $p2pVersion;
 
         return $this;

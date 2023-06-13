@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class WorkersChainValidatorsChainIdDdbGetResponse200
+class WorkersChainValidatorsChainIdDdbGetResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var int
      */
@@ -48,6 +57,7 @@ class WorkersChainValidatorsChainIdDdbGetResponse200
 
     public function setP2pReaders(int $p2pReaders): self
     {
+        $this->initialized['p2pReaders'] = true;
         $this->p2pReaders = $p2pReaders;
 
         return $this;
@@ -60,6 +70,7 @@ class WorkersChainValidatorsChainIdDdbGetResponse200
 
     public function setActiveChains(int $activeChains): self
     {
+        $this->initialized['activeChains'] = true;
         $this->activeChains = $activeChains;
 
         return $this;
@@ -72,6 +83,7 @@ class WorkersChainValidatorsChainIdDdbGetResponse200
 
     public function setOperationDb(WorkersChainValidatorsChainIdDdbGetResponse200OperationDb $operationDb): self
     {
+        $this->initialized['operationDb'] = true;
         $this->operationDb = $operationDb;
 
         return $this;
@@ -84,6 +96,7 @@ class WorkersChainValidatorsChainIdDdbGetResponse200
 
     public function setOperationsDb(WorkersChainValidatorsChainIdDdbGetResponse200OperationsDb $operationsDb): self
     {
+        $this->initialized['operationsDb'] = true;
         $this->operationsDb = $operationsDb;
 
         return $this;
@@ -96,6 +109,7 @@ class WorkersChainValidatorsChainIdDdbGetResponse200
 
     public function setBlockHeaderDb(WorkersChainValidatorsChainIdDdbGetResponse200BlockHeaderDb $blockHeaderDb): self
     {
+        $this->initialized['blockHeaderDb'] = true;
         $this->blockHeaderDb = $blockHeaderDb;
 
         return $this;
@@ -108,6 +122,7 @@ class WorkersChainValidatorsChainIdDdbGetResponse200
 
     public function setActiveConnections(int $activeConnections): self
     {
+        $this->initialized['activeConnections'] = true;
         $this->activeConnections = $activeConnections;
 
         return $this;
@@ -120,6 +135,7 @@ class WorkersChainValidatorsChainIdDdbGetResponse200
 
     public function setActivePeers(int $activePeers): self
     {
+        $this->initialized['activePeers'] = true;
         $this->activePeers = $activePeers;
 
         return $this;

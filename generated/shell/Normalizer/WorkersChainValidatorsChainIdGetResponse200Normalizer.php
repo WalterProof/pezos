@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Shell\Normalizer;
 
 use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Shell\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class WorkersChainValidatorsChainIdGetResponse200Normalizer implements Denormali
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdGetResponse200';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdGetResponse200';
     }
@@ -49,6 +51,7 @@ class WorkersChainValidatorsChainIdGetResponse200Normalizer implements Denormali
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
         }
         if (\array_key_exists('pending_requests', $data)) {
             $values = [];
@@ -56,21 +59,24 @@ class WorkersChainValidatorsChainIdGetResponse200Normalizer implements Denormali
                 $values[] = $this->denormalizer->denormalize($value, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdGetResponse200PendingRequestsItem', 'json', $context);
             }
             $object->setPendingRequests($values);
-        }
-        if (\array_key_exists('backlog', $data)) {
-            $values_1 = [];
-            foreach ($data['backlog'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdGetResponse200BacklogItem', 'json', $context);
-            }
-            $object->setBacklog($values_1);
+            unset($data['pending_requests']);
         }
         if (\array_key_exists('current_request', $data)) {
             $object->setCurrentRequest($this->denormalizer->denormalize($data['current_request'], 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\WorkersChainValidatorsChainIdGetResponse200CurrentRequest', 'json', $context));
+            unset($data['current_request']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
@@ -80,13 +86,13 @@ class WorkersChainValidatorsChainIdGetResponse200Normalizer implements Denormali
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['pending_requests'] = $values;
-        $values_1 = [];
-        foreach ($object->getBacklog() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
-        }
-        $data['backlog'] = $values_1;
-        if (null !== $object->getCurrentRequest()) {
+        if ($object->isInitialized('currentRequest') && null !== $object->getCurrentRequest()) {
             $data['current_request'] = $this->normalizer->normalize($object->getCurrentRequest(), 'json', $context);
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
 
         return $data;

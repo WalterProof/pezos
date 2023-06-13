@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class HelpersForgeProtocolDataPostBodyNormalizer implements DenormalizerInterfac
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersForgeProtocolDataPostBody';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersForgeProtocolDataPostBody';
     }
@@ -47,28 +49,56 @@ class HelpersForgeProtocolDataPostBodyNormalizer implements DenormalizerInterfac
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('priority', $data)) {
-            $object->setPriority($data['priority']);
+        if (\array_key_exists('payload_hash', $data)) {
+            $object->setPayloadHash($data['payload_hash']);
+            unset($data['payload_hash']);
+        }
+        if (\array_key_exists('payload_round', $data)) {
+            $object->setPayloadRound($data['payload_round']);
+            unset($data['payload_round']);
         }
         if (\array_key_exists('nonce_hash', $data)) {
             $object->setNonceHash($data['nonce_hash']);
+            unset($data['nonce_hash']);
         }
         if (\array_key_exists('proof_of_work_nonce', $data)) {
             $object->setProofOfWorkNonce($data['proof_of_work_nonce']);
+            unset($data['proof_of_work_nonce']);
+        }
+        if (\array_key_exists('liquidity_baking_toggle_vote', $data)) {
+            $object->setLiquidityBakingToggleVote($data['liquidity_baking_toggle_vote']);
+            unset($data['liquidity_baking_toggle_vote']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        $data['priority'] = $object->getPriority();
-        if (null !== $object->getNonceHash()) {
+        $data['payload_hash'] = $object->getPayloadHash();
+        $data['payload_round'] = $object->getPayloadRound();
+        if ($object->isInitialized('nonceHash') && null !== $object->getNonceHash()) {
             $data['nonce_hash'] = $object->getNonceHash();
         }
-        if (null !== $object->getProofOfWorkNonce()) {
+        if ($object->isInitialized('proofOfWorkNonce') && null !== $object->getProofOfWorkNonce()) {
             $data['proof_of_work_nonce'] = $object->getProofOfWorkNonce();
+        }
+        if ($object->isInitialized('liquidityBakingToggleVote') && null !== $object->getLiquidityBakingToggleVote()) {
+            $data['liquidity_baking_toggle_vote'] = $object->getLiquidityBakingToggleVote();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

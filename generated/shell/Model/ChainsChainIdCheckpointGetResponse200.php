@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class ChainsChainIdCheckpointGetResponse200
+class ChainsChainIdCheckpointGetResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Block header. It contains both shell and protocol specific data.
      *
@@ -21,13 +30,13 @@ class ChainsChainIdCheckpointGetResponse200
     /**
      * @var int
      */
-    protected $savePoint;
+    protected $savepoint;
     /**
      * @var int
      */
     protected $caboose;
     /**
-     * @var string
+     * Storage mode for the Tezos shell.
      */
     protected $historyMode;
 
@@ -44,19 +53,21 @@ class ChainsChainIdCheckpointGetResponse200
      */
     public function setBlock(BlockHeader $block): self
     {
+        $this->initialized['block'] = true;
         $this->block = $block;
 
         return $this;
     }
 
-    public function getSavePoint(): int
+    public function getSavepoint(): int
     {
-        return $this->savePoint;
+        return $this->savepoint;
     }
 
-    public function setSavePoint(int $savePoint): self
+    public function setSavepoint(int $savepoint): self
     {
-        $this->savePoint = $savePoint;
+        $this->initialized['savepoint'] = true;
+        $this->savepoint = $savepoint;
 
         return $this;
     }
@@ -68,18 +79,26 @@ class ChainsChainIdCheckpointGetResponse200
 
     public function setCaboose(int $caboose): self
     {
+        $this->initialized['caboose'] = true;
         $this->caboose = $caboose;
 
         return $this;
     }
 
-    public function getHistoryMode(): string
+    /**
+     * Storage mode for the Tezos shell.
+     */
+    public function getHistoryMode()
     {
         return $this->historyMode;
     }
 
-    public function setHistoryMode(string $historyMode): self
+    /**
+     * Storage mode for the Tezos shell.
+     */
+    public function setHistoryMode($historyMode): self
     {
+        $this->initialized['historyMode'] = true;
         $this->historyMode = $historyMode;
 
         return $this;

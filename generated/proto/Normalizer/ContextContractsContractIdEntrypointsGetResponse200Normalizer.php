@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class ContextContractsContractIdEntrypointsGetResponse200Normalizer implements D
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdEntrypointsGetResponse200';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdEntrypointsGetResponse200';
     }
@@ -53,18 +55,28 @@ class ContextContractsContractIdEntrypointsGetResponse200Normalizer implements D
                 $values[] = $this->denormalizer->denormalize($value, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdEntrypointsGetResponse200UnreachableItem', 'json', $context);
             }
             $object->setUnreachable($values);
+            unset($data['unreachable']);
         }
         if (\array_key_exists('entrypoints', $data)) {
             $object->setEntrypoints($this->denormalizer->denormalize($data['entrypoints'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdEntrypointsGetResponse200Entrypoints', 'json', $context));
+            unset($data['entrypoints']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getUnreachable()) {
+        if ($object->isInitialized('unreachable') && null !== $object->getUnreachable()) {
             $values = [];
             foreach ($object->getUnreachable() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
@@ -72,6 +84,11 @@ class ContextContractsContractIdEntrypointsGetResponse200Normalizer implements D
             $data['unreachable'] = $values;
         }
         $data['entrypoints'] = $this->normalizer->normalize($object->getEntrypoints(), 'json', $context);
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
 
         return $data;
     }

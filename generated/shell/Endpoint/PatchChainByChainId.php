@@ -20,7 +20,7 @@ class PatchChainByChainId extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Ba
      *
      * @param string $chainId A chain identifier. This is either a chain hash in Base58Check notation or a one the predefined aliases: 'main', 'test'.
      */
-    public function __construct(string $chainId, ?\Bzzhh\Pezos\Generated\Shell\Model\ChainsChainIdPatchBody $requestBody = null)
+    public function __construct(string $chainId, \Bzzhh\Pezos\Generated\Shell\Model\ChainsChainIdPatchBody $requestBody = null)
     {
         $this->chain_id = $chainId;
         $this->body = $requestBody;
@@ -51,12 +51,12 @@ class PatchChainByChainId extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client\Ba
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }

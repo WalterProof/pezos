@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class HelpersForgeBlockHeaderPostResponse200
+class HelpersForgeBlockHeaderPostResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var string
      */
@@ -24,6 +33,7 @@ class HelpersForgeBlockHeaderPostResponse200
 
     public function setBlock(string $block): self
     {
+        $this->initialized['block'] = true;
         $this->block = $block;
 
         return $this;

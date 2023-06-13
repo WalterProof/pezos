@@ -10,27 +10,32 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class ConfigGetResponse200ShellBlockValidator
+class ConfigGetResponse200ShellBlockValidator extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * A span of time, as seen by the local computer.
      *
-     * @var int
+     * @var float
      */
     protected $protocolRequestTimeout;
     /**
-     * @var int
+     * The operation metadata size limit.
      */
-    protected $workerBacklogSize;
-    /**
-     * @var string
-     */
-    protected $workerBacklogLevel;
+    protected $operationMetadataSizeLimit;
 
     /**
      * A span of time, as seen by the local computer.
      */
-    public function getProtocolRequestTimeout(): int
+    public function getProtocolRequestTimeout(): float
     {
         return $this->protocolRequestTimeout;
     }
@@ -38,33 +43,29 @@ class ConfigGetResponse200ShellBlockValidator
     /**
      * A span of time, as seen by the local computer.
      */
-    public function setProtocolRequestTimeout(int $protocolRequestTimeout): self
+    public function setProtocolRequestTimeout(float $protocolRequestTimeout): self
     {
+        $this->initialized['protocolRequestTimeout'] = true;
         $this->protocolRequestTimeout = $protocolRequestTimeout;
 
         return $this;
     }
 
-    public function getWorkerBacklogSize(): int
+    /**
+     * The operation metadata size limit.
+     */
+    public function getOperationMetadataSizeLimit()
     {
-        return $this->workerBacklogSize;
+        return $this->operationMetadataSizeLimit;
     }
 
-    public function setWorkerBacklogSize(int $workerBacklogSize): self
+    /**
+     * The operation metadata size limit.
+     */
+    public function setOperationMetadataSizeLimit($operationMetadataSizeLimit): self
     {
-        $this->workerBacklogSize = $workerBacklogSize;
-
-        return $this;
-    }
-
-    public function getWorkerBacklogLevel(): string
-    {
-        return $this->workerBacklogLevel;
-    }
-
-    public function setWorkerBacklogLevel(string $workerBacklogLevel): self
-    {
-        $this->workerBacklogLevel = $workerBacklogLevel;
+        $this->initialized['operationMetadataSizeLimit'] = true;
+        $this->operationMetadataSizeLimit = $operationMetadataSizeLimit;
 
         return $this;
     }

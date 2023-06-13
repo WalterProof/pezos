@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class ContextContractsContractIdSingleSaplingGetDiffGetResponse200Normalizer imp
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdSingleSaplingGetDiffGetResponse200';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextContractsContractIdSingleSaplingGetDiffGetResponse200';
     }
@@ -49,6 +51,7 @@ class ContextContractsContractIdSingleSaplingGetDiffGetResponse200Normalizer imp
         }
         if (\array_key_exists('root', $data)) {
             $object->setRoot($data['root']);
+            unset($data['root']);
         }
         if (\array_key_exists('commitments_and_ciphertexts', $data)) {
             $values = [];
@@ -60,6 +63,7 @@ class ContextContractsContractIdSingleSaplingGetDiffGetResponse200Normalizer imp
                 $values[] = $values_1;
             }
             $object->setCommitmentsAndCiphertexts($values);
+            unset($data['commitments_and_ciphertexts']);
         }
         if (\array_key_exists('nullifiers', $data)) {
             $values_2 = [];
@@ -67,11 +71,20 @@ class ContextContractsContractIdSingleSaplingGetDiffGetResponse200Normalizer imp
                 $values_2[] = $value_2;
             }
             $object->setNullifiers($values_2);
+            unset($data['nullifiers']);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
@@ -90,6 +103,11 @@ class ContextContractsContractIdSingleSaplingGetDiffGetResponse200Normalizer imp
             $values_2[] = $value_2;
         }
         $data['nullifiers'] = $values_2;
+        foreach ($object as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_3;
+            }
+        }
 
         return $data;
     }

@@ -10,26 +10,28 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class ContextBigMapsBigMapIdScriptExprNormalizedPostBody
+class ContextBigMapsBigMapIdScriptExprNormalizedPostBody extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $unparsingMode;
 
-    /**
-     * @return mixed
-     */
     public function getUnparsingMode()
     {
         return $this->unparsingMode;
     }
 
-    /**
-     * @param mixed $unparsingMode
-     */
     public function setUnparsingMode($unparsingMode): self
     {
+        $this->initialized['unparsingMode'] = true;
         $this->unparsingMode = $unparsingMode;
 
         return $this;

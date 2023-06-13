@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class HelpersScriptsTypecheckCodePostResponse200TypeMapItemNormalizer implements
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsTypecheckCodePostResponse200TypeMapItem';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsTypecheckCodePostResponse200TypeMapItem';
     }
@@ -49,55 +51,55 @@ class HelpersScriptsTypecheckCodePostResponse200TypeMapItemNormalizer implements
         }
         if (\array_key_exists('location', $data)) {
             $object->setLocation($data['location']);
+            unset($data['location']);
         }
         if (\array_key_exists('stack_before', $data)) {
             $values = [];
             foreach ($data['stack_before'] as $value) {
-                $values_1 = [];
-                foreach ($value as $value_1) {
-                    $values_1[] = $value_1;
-                }
-                $values[] = $values_1;
+                $values[] = $value;
             }
             $object->setStackBefore($values);
+            unset($data['stack_before']);
         }
         if (\array_key_exists('stack_after', $data)) {
-            $values_2 = [];
-            foreach ($data['stack_after'] as $value_2) {
-                $values_3 = [];
-                foreach ($value_2 as $value_3) {
-                    $values_3[] = $value_3;
-                }
-                $values_2[] = $values_3;
+            $values_1 = [];
+            foreach ($data['stack_after'] as $value_1) {
+                $values_1[] = $value_1;
             }
-            $object->setStackAfter($values_2);
+            $object->setStackAfter($values_1);
+            unset($data['stack_after']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
         $data['location'] = $object->getLocation();
         $values = [];
         foreach ($object->getStackBefore() as $value) {
-            $values_1 = [];
-            foreach ($value as $value_1) {
-                $values_1[] = $value_1;
-            }
-            $values[] = $values_1;
+            $values[] = $value;
         }
         $data['stack_before'] = $values;
-        $values_2 = [];
-        foreach ($object->getStackAfter() as $value_2) {
-            $values_3 = [];
-            foreach ($value_2 as $value_3) {
-                $values_3[] = $value_3;
-            }
-            $values_2[] = $values_3;
+        $values_1 = [];
+        foreach ($object->getStackAfter() as $value_1) {
+            $values_1[] = $value_1;
         }
-        $data['stack_after'] = $values_2;
+        $data['stack_after'] = $values_1;
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
+        }
 
         return $data;
     }

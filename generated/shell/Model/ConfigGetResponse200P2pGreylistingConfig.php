@@ -10,37 +10,40 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class ConfigGetResponse200P2pGreylistingConfig
+class ConfigGetResponse200P2pGreylistingConfig extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The factor by which the reconnection delay is increased when a peer that was previously disconnected is disconnected again. This value should be set to 1 for a linear back-off and to >1 for an exponential back-off.
      *
-     * @var int
+     * @var float
      */
     protected $factor;
     /**
      * The span of time a peer is disconnected for when it is first disconnected.
-     *
-     * @var mixed
      */
     protected $initialDelay;
     /**
      * The span of time a peer is disconnected for when it is disconnected as the result of an error.
-     *
-     * @var mixed
      */
     protected $disconnectionDelay;
     /**
      * The maximum amount by which the reconnection is extended. This limits the rate of the exponential back-off, which eventually becomes linear when it reaches this limit. This limit is set to avoid reaching the End-of-Time when repeatedly reconnection a peer.
-     *
-     * @var mixed
      */
     protected $increaseCap;
 
     /**
      * The factor by which the reconnection delay is increased when a peer that was previously disconnected is disconnected again. This value should be set to 1 for a linear back-off and to >1 for an exponential back-off.
      */
-    public function getFactor(): int
+    public function getFactor(): float
     {
         return $this->factor;
     }
@@ -48,8 +51,9 @@ class ConfigGetResponse200P2pGreylistingConfig
     /**
      * The factor by which the reconnection delay is increased when a peer that was previously disconnected is disconnected again. This value should be set to 1 for a linear back-off and to >1 for an exponential back-off.
      */
-    public function setFactor(int $factor): self
+    public function setFactor(float $factor): self
     {
+        $this->initialized['factor'] = true;
         $this->factor = $factor;
 
         return $this;
@@ -57,8 +61,6 @@ class ConfigGetResponse200P2pGreylistingConfig
 
     /**
      * The span of time a peer is disconnected for when it is first disconnected.
-     *
-     * @return mixed
      */
     public function getInitialDelay()
     {
@@ -67,11 +69,10 @@ class ConfigGetResponse200P2pGreylistingConfig
 
     /**
      * The span of time a peer is disconnected for when it is first disconnected.
-     *
-     * @param mixed $initialDelay
      */
     public function setInitialDelay($initialDelay): self
     {
+        $this->initialized['initialDelay'] = true;
         $this->initialDelay = $initialDelay;
 
         return $this;
@@ -79,8 +80,6 @@ class ConfigGetResponse200P2pGreylistingConfig
 
     /**
      * The span of time a peer is disconnected for when it is disconnected as the result of an error.
-     *
-     * @return mixed
      */
     public function getDisconnectionDelay()
     {
@@ -89,11 +88,10 @@ class ConfigGetResponse200P2pGreylistingConfig
 
     /**
      * The span of time a peer is disconnected for when it is disconnected as the result of an error.
-     *
-     * @param mixed $disconnectionDelay
      */
     public function setDisconnectionDelay($disconnectionDelay): self
     {
+        $this->initialized['disconnectionDelay'] = true;
         $this->disconnectionDelay = $disconnectionDelay;
 
         return $this;
@@ -101,8 +99,6 @@ class ConfigGetResponse200P2pGreylistingConfig
 
     /**
      * The maximum amount by which the reconnection is extended. This limits the rate of the exponential back-off, which eventually becomes linear when it reaches this limit. This limit is set to avoid reaching the End-of-Time when repeatedly reconnection a peer.
-     *
-     * @return mixed
      */
     public function getIncreaseCap()
     {
@@ -111,11 +107,10 @@ class ConfigGetResponse200P2pGreylistingConfig
 
     /**
      * The maximum amount by which the reconnection is extended. This limits the rate of the exponential back-off, which eventually becomes linear when it reaches this limit. This limit is set to avoid reaching the End-of-Time when repeatedly reconnection a peer.
-     *
-     * @param mixed $increaseCap
      */
     public function setIncreaseCap($increaseCap): self
     {
+        $this->initialized['increaseCap'] = true;
         $this->increaseCap = $increaseCap;
 
         return $this;

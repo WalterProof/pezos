@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class ContextContractsContractIdEntrypointsGetResponse200
+class ContextContractsContractIdEntrypointsGetResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var ContextContractsContractIdEntrypointsGetResponse200UnreachableItem[]
      */
@@ -34,6 +43,7 @@ class ContextContractsContractIdEntrypointsGetResponse200
      */
     public function setUnreachable(array $unreachable): self
     {
+        $this->initialized['unreachable'] = true;
         $this->unreachable = $unreachable;
 
         return $this;
@@ -46,6 +56,7 @@ class ContextContractsContractIdEntrypointsGetResponse200
 
     public function setEntrypoints(ContextContractsContractIdEntrypointsGetResponse200Entrypoints $entrypoints): self
     {
+        $this->initialized['entrypoints'] = true;
         $this->entrypoints = $entrypoints;
 
         return $this;

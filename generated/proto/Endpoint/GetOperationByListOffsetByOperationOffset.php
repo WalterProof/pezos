@@ -21,11 +21,17 @@ class GetOperationByListOffsetByOperationOffset extends \Bzzhh\Pezos\Generated\P
      *
      * @param string $listOffset      index `n` of the requested validation pass
      * @param string $operationOffset index `m` of the requested operation in its validation pass
+     * @param array  $queryParameters {
+     *
+     *     @var string $force_metadata DEPRECATED: Forces to recompute the operations metadata if it was considered as too large
+     *     @var string $metadata defines the way metadata are queried Specifies whether or not if the operations metadata should be returned. To get the metadata, even if it is needed to recompute them, use "always". To avoid getting the metadata, use "never". By default, the metadata will be returned depending on the node's metadata size limit policy.
+     * }
      */
-    public function __construct(string $listOffset, string $operationOffset)
+    public function __construct(string $listOffset, string $operationOffset, array $queryParameters = [])
     {
         $this->list_offset = $listOffset;
         $this->operation_offset = $operationOffset;
+        $this->queryParameters = $queryParameters;
     }
 
     public function getMethod(): string
@@ -48,13 +54,25 @@ class GetOperationByListOffsetByOperationOffset extends \Bzzhh\Pezos\Generated\P
         return ['Accept' => ['application/json']];
     }
 
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['force_metadata', 'metadata']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('force_metadata', ['string']);
+        $optionsResolver->addAllowedTypes('metadata', ['string']);
+
+        return $optionsResolver;
+    }
+
     /**
-     * {@inheritdoc}
-     *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }

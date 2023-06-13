@@ -10,10 +10,19 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class NetworkPeersPeerIdGetResponse200
+class NetworkPeersPeerIdGetResponse200 extends \ArrayObject
 {
     /**
-     * @var int
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
+     * @var float
      */
     protected $score;
     /**
@@ -71,13 +80,14 @@ class NetworkPeersPeerIdGetResponse200
      */
     protected $lastMiss;
 
-    public function getScore(): int
+    public function getScore(): float
     {
         return $this->score;
     }
 
-    public function setScore(int $score): self
+    public function setScore(float $score): self
     {
+        $this->initialized['score'] = true;
         $this->score = $score;
 
         return $this;
@@ -90,6 +100,7 @@ class NetworkPeersPeerIdGetResponse200
 
     public function setTrusted(bool $trusted): self
     {
+        $this->initialized['trusted'] = true;
         $this->trusted = $trusted;
 
         return $this;
@@ -102,6 +113,7 @@ class NetworkPeersPeerIdGetResponse200
 
     public function setConnMetadata(NetworkPeersPeerIdGetResponse200ConnMetadata $connMetadata): self
     {
+        $this->initialized['connMetadata'] = true;
         $this->connMetadata = $connMetadata;
 
         return $this;
@@ -114,6 +126,7 @@ class NetworkPeersPeerIdGetResponse200
 
     public function setPeerMetadata(NetworkPeersPeerIdGetResponse200PeerMetadata $peerMetadata): self
     {
+        $this->initialized['peerMetadata'] = true;
         $this->peerMetadata = $peerMetadata;
 
         return $this;
@@ -132,6 +145,7 @@ class NetworkPeersPeerIdGetResponse200
      */
     public function setState(string $state): self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
 
         return $this;
@@ -150,6 +164,7 @@ class NetworkPeersPeerIdGetResponse200
      */
     public function setReachableAt(P2pConnectionId $reachableAt): self
     {
+        $this->initialized['reachableAt'] = true;
         $this->reachableAt = $reachableAt;
 
         return $this;
@@ -168,6 +183,7 @@ class NetworkPeersPeerIdGetResponse200
      */
     public function setStat(P2pStat $stat): self
     {
+        $this->initialized['stat'] = true;
         $this->stat = $stat;
 
         return $this;
@@ -186,6 +202,7 @@ class NetworkPeersPeerIdGetResponse200
      */
     public function setLastFailedConnection(array $lastFailedConnection): self
     {
+        $this->initialized['lastFailedConnection'] = true;
         $this->lastFailedConnection = $lastFailedConnection;
 
         return $this;
@@ -204,6 +221,7 @@ class NetworkPeersPeerIdGetResponse200
      */
     public function setLastRejectedConnection(array $lastRejectedConnection): self
     {
+        $this->initialized['lastRejectedConnection'] = true;
         $this->lastRejectedConnection = $lastRejectedConnection;
 
         return $this;
@@ -222,6 +240,7 @@ class NetworkPeersPeerIdGetResponse200
      */
     public function setLastEstablishedConnection(array $lastEstablishedConnection): self
     {
+        $this->initialized['lastEstablishedConnection'] = true;
         $this->lastEstablishedConnection = $lastEstablishedConnection;
 
         return $this;
@@ -240,6 +259,7 @@ class NetworkPeersPeerIdGetResponse200
      */
     public function setLastDisconnection(array $lastDisconnection): self
     {
+        $this->initialized['lastDisconnection'] = true;
         $this->lastDisconnection = $lastDisconnection;
 
         return $this;
@@ -258,6 +278,7 @@ class NetworkPeersPeerIdGetResponse200
      */
     public function setLastSeen(array $lastSeen): self
     {
+        $this->initialized['lastSeen'] = true;
         $this->lastSeen = $lastSeen;
 
         return $this;
@@ -276,6 +297,7 @@ class NetworkPeersPeerIdGetResponse200
      */
     public function setLastMiss(array $lastMiss): self
     {
+        $this->initialized['lastMiss'] = true;
         $this->lastMiss = $lastMiss;
 
         return $this;

@@ -10,14 +10,25 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class ChainsChainIdIsBootstrappedGetResponse200
+class ChainsChainIdIsBootstrappedGetResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var bool
      */
     protected $bootstrapped;
     /**
      * If 'unsynced', the node is not currently synchronized with of its peers (it is probably still bootstrapping and its head is lagging behind the chain's).
+     * If 'synced', the node considers itself synchronized with its peers and the current head timestamp is recent.
+     * If 'stuck', the node considers itself synchronized with its peers but the chain seems to be halted from its viewpoint.
      *
      * @var string
      */
@@ -30,6 +41,7 @@ class ChainsChainIdIsBootstrappedGetResponse200
 
     public function setBootstrapped(bool $bootstrapped): self
     {
+        $this->initialized['bootstrapped'] = true;
         $this->bootstrapped = $bootstrapped;
 
         return $this;
@@ -37,7 +49,8 @@ class ChainsChainIdIsBootstrappedGetResponse200
 
     /**
      * If 'unsynced', the node is not currently synchronized with of its peers (it is probably still bootstrapping and its head is lagging behind the chain's).
-    If 'stuck', the node considers itself synchronized with its peers but the chain seems to be halted from its viewpoint.
+     * If 'synced', the node considers itself synchronized with its peers and the current head timestamp is recent.
+     * If 'stuck', the node considers itself synchronized with its peers but the chain seems to be halted from its viewpoint.
      */
     public function getSyncState(): string
     {
@@ -46,10 +59,12 @@ class ChainsChainIdIsBootstrappedGetResponse200
 
     /**
      * If 'unsynced', the node is not currently synchronized with of its peers (it is probably still bootstrapping and its head is lagging behind the chain's).
-    If 'stuck', the node considers itself synchronized with its peers but the chain seems to be halted from its viewpoint.
+     * If 'synced', the node considers itself synchronized with its peers and the current head timestamp is recent.
+     * If 'stuck', the node considers itself synchronized with its peers but the chain seems to be halted from its viewpoint.
      */
     public function setSyncState(string $syncState): self
     {
+        $this->initialized['syncState'] = true;
         $this->syncState = $syncState;
 
         return $this;

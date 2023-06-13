@@ -10,15 +10,22 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class NetworkPointsPointPatchBody
+class NetworkPointsPointPatchBody extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var string
      */
     protected $acl;
-    /**
-     * @var mixed
-     */
+
     protected $peerId;
 
     public function getAcl(): string
@@ -28,24 +35,20 @@ class NetworkPointsPointPatchBody
 
     public function setAcl(string $acl): self
     {
+        $this->initialized['acl'] = true;
         $this->acl = $acl;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getPeerId()
     {
         return $this->peerId;
     }
 
-    /**
-     * @param mixed $peerId
-     */
     public function setPeerId($peerId): self
     {
+        $this->initialized['peerId'] = true;
         $this->peerId = $peerId;
 
         return $this;

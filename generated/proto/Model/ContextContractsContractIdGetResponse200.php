@@ -10,20 +10,27 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class ContextContractsContractIdGetResponse200
+class ContextContractsContractIdGetResponse200 extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Decimal representation of a positive big number.
      *
      * @var string
      */
     protected $balance;
-    /**
-     * @var mixed
-     */
+
     protected $delegate;
     /**
-     * @var _009PsFLorenScriptedContracts
+     * @var _016PtMumbaiScriptedContracts
      */
     protected $script;
     /**
@@ -46,36 +53,33 @@ class ContextContractsContractIdGetResponse200
      */
     public function setBalance(string $balance): self
     {
+        $this->initialized['balance'] = true;
         $this->balance = $balance;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getDelegate()
     {
         return $this->delegate;
     }
 
-    /**
-     * @param mixed $delegate
-     */
     public function setDelegate($delegate): self
     {
+        $this->initialized['delegate'] = true;
         $this->delegate = $delegate;
 
         return $this;
     }
 
-    public function getScript(): _009PsFLorenScriptedContracts
+    public function getScript(): _016PtMumbaiScriptedContracts
     {
         return $this->script;
     }
 
-    public function setScript(_009PsFLorenScriptedContracts $script): self
+    public function setScript(_016PtMumbaiScriptedContracts $script): self
     {
+        $this->initialized['script'] = true;
         $this->script = $script;
 
         return $this;
@@ -94,6 +98,7 @@ class ContextContractsContractIdGetResponse200
      */
     public function setCounter(string $counter): self
     {
+        $this->initialized['counter'] = true;
         $this->counter = $counter;
 
         return $this;

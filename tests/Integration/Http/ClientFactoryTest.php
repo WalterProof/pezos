@@ -55,14 +55,4 @@ class ClientFactoryTest extends TestCase
             $response,
         );
     }
-
-    public function testPendingOperations(): void
-    {
-        $response = $this->mempoolClient->getPendingOperation();
-
-        self::assertInstanceOf(
-            PendingOperationsGetResponse200::class,
-            $response,
-        );
-    }
 }

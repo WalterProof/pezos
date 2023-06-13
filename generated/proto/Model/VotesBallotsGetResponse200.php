@@ -10,52 +10,88 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class VotesBallotsGetResponse200
+class VotesBallotsGetResponse200 extends \ArrayObject
 {
     /**
-     * @var int
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
+     * Decimal representation of 64 bit integers.
+     *
+     * @var string
      */
     protected $yay;
     /**
-     * @var int
+     * Decimal representation of 64 bit integers.
+     *
+     * @var string
      */
     protected $nay;
     /**
-     * @var int
+     * Decimal representation of 64 bit integers.
+     *
+     * @var string
      */
     protected $pass;
 
-    public function getYay(): int
+    /**
+     * Decimal representation of 64 bit integers.
+     */
+    public function getYay(): string
     {
         return $this->yay;
     }
 
-    public function setYay(int $yay): self
+    /**
+     * Decimal representation of 64 bit integers.
+     */
+    public function setYay(string $yay): self
     {
+        $this->initialized['yay'] = true;
         $this->yay = $yay;
 
         return $this;
     }
 
-    public function getNay(): int
+    /**
+     * Decimal representation of 64 bit integers.
+     */
+    public function getNay(): string
     {
         return $this->nay;
     }
 
-    public function setNay(int $nay): self
+    /**
+     * Decimal representation of 64 bit integers.
+     */
+    public function setNay(string $nay): self
     {
+        $this->initialized['nay'] = true;
         $this->nay = $nay;
 
         return $this;
     }
 
-    public function getPass(): int
+    /**
+     * Decimal representation of 64 bit integers.
+     */
+    public function getPass(): string
     {
         return $this->pass;
     }
 
-    public function setPass(int $pass): self
+    /**
+     * Decimal representation of 64 bit integers.
+     */
+    public function setPass(string $pass): self
     {
+        $this->initialized['pass'] = true;
         $this->pass = $pass;
 
         return $this;

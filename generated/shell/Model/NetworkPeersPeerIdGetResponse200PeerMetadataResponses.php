@@ -10,19 +10,22 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class NetworkPeersPeerIdGetResponse200PeerMetadataResponses
+class NetworkPeersPeerIdGetResponse200PeerMetadataResponses extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $sent;
-    /**
-     * @var mixed
-     */
+
     protected $failed;
-    /**
-     * @var mixed
-     */
+
     protected $received;
     /**
      * Decimal representation of a big number.
@@ -37,55 +40,40 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataResponses
      */
     protected $outdated;
 
-    /**
-     * @return mixed
-     */
     public function getSent()
     {
         return $this->sent;
     }
 
-    /**
-     * @param mixed $sent
-     */
     public function setSent($sent): self
     {
+        $this->initialized['sent'] = true;
         $this->sent = $sent;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getFailed()
     {
         return $this->failed;
     }
 
-    /**
-     * @param mixed $failed
-     */
     public function setFailed($failed): self
     {
+        $this->initialized['failed'] = true;
         $this->failed = $failed;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getReceived()
     {
         return $this->received;
     }
 
-    /**
-     * @param mixed $received
-     */
     public function setReceived($received): self
     {
+        $this->initialized['received'] = true;
         $this->received = $received;
 
         return $this;
@@ -104,6 +92,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataResponses
      */
     public function setUnexpected(string $unexpected): self
     {
+        $this->initialized['unexpected'] = true;
         $this->unexpected = $unexpected;
 
         return $this;
@@ -122,6 +111,7 @@ class NetworkPeersPeerIdGetResponse200PeerMetadataResponses
      */
     public function setOutdated(string $outdated): self
     {
+        $this->initialized['outdated'] = true;
         $this->outdated = $outdated;
 
         return $this;

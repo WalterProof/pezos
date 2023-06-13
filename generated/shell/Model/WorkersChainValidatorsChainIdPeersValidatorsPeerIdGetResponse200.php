@@ -10,38 +10,36 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class WorkersChainValidatorsChainIdPeersValidatorsPeerIdGetResponse200
+class WorkersChainValidatorsChainIdPeersValidatorsPeerIdGetResponse200 extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $status;
     /**
      * @var WorkersChainValidatorsChainIdPeersValidatorsPeerIdGetResponse200PendingRequestsItem[]
      */
     protected $pendingRequests;
     /**
-     * @var WorkersChainValidatorsChainIdPeersValidatorsPeerIdGetResponse200BacklogItem[]
-     */
-    protected $backlog;
-    /**
      * @var WorkersChainValidatorsChainIdPeersValidatorsPeerIdGetResponse200CurrentRequest
      */
     protected $currentRequest;
 
-    /**
-     * @return mixed
-     */
     public function getStatus()
     {
         return $this->status;
     }
 
-    /**
-     * @param mixed $status
-     */
     public function setStatus($status): self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
 
         return $this;
@@ -60,25 +58,8 @@ class WorkersChainValidatorsChainIdPeersValidatorsPeerIdGetResponse200
      */
     public function setPendingRequests(array $pendingRequests): self
     {
+        $this->initialized['pendingRequests'] = true;
         $this->pendingRequests = $pendingRequests;
-
-        return $this;
-    }
-
-    /**
-     * @return WorkersChainValidatorsChainIdPeersValidatorsPeerIdGetResponse200BacklogItem[]
-     */
-    public function getBacklog(): array
-    {
-        return $this->backlog;
-    }
-
-    /**
-     * @param WorkersChainValidatorsChainIdPeersValidatorsPeerIdGetResponse200BacklogItem[] $backlog
-     */
-    public function setBacklog(array $backlog): self
-    {
-        $this->backlog = $backlog;
 
         return $this;
     }
@@ -90,6 +71,7 @@ class WorkersChainValidatorsChainIdPeersValidatorsPeerIdGetResponse200
 
     public function setCurrentRequest(WorkersChainValidatorsChainIdPeersValidatorsPeerIdGetResponse200CurrentRequest $currentRequest): self
     {
+        $this->initialized['currentRequest'] = true;
         $this->currentRequest = $currentRequest;
 
         return $this;

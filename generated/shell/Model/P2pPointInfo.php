@@ -10,32 +10,33 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class P2pPointInfo
+class P2pPointInfo extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var bool
      */
     protected $trusted;
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @var mixed
      */
     protected $greylistedUntil;
     /**
      * The state a connection to a peer point can be in: requested (connection open from here), accepted (handshake), running (connection already established), disconnected (no connection).
-     *
-     * @var mixed
      */
     protected $state;
-    /**
-     * @var mixed
-     */
+
     protected $p2pPeerId;
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @var mixed
      */
     protected $lastFailedConnection;
     /**
@@ -56,13 +57,9 @@ class P2pPointInfo
     protected $lastSeen;
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @var mixed
      */
     protected $lastMiss;
-    /**
-     * @var mixed
-     */
+
     protected $expectedPeerId;
 
     public function getTrusted(): bool
@@ -72,6 +69,7 @@ class P2pPointInfo
 
     public function setTrusted(bool $trusted): self
     {
+        $this->initialized['trusted'] = true;
         $this->trusted = $trusted;
 
         return $this;
@@ -79,8 +77,6 @@ class P2pPointInfo
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @return mixed
      */
     public function getGreylistedUntil()
     {
@@ -89,11 +85,10 @@ class P2pPointInfo
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @param mixed $greylistedUntil
      */
     public function setGreylistedUntil($greylistedUntil): self
     {
+        $this->initialized['greylistedUntil'] = true;
         $this->greylistedUntil = $greylistedUntil;
 
         return $this;
@@ -101,8 +96,6 @@ class P2pPointInfo
 
     /**
      * The state a connection to a peer point can be in: requested (connection open from here), accepted (handshake), running (connection already established), disconnected (no connection).
-     *
-     * @return mixed
      */
     public function getState()
     {
@@ -111,29 +104,23 @@ class P2pPointInfo
 
     /**
      * The state a connection to a peer point can be in: requested (connection open from here), accepted (handshake), running (connection already established), disconnected (no connection).
-     *
-     * @param mixed $state
      */
     public function setState($state): self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getP2pPeerId()
     {
         return $this->p2pPeerId;
     }
 
-    /**
-     * @param mixed $p2pPeerId
-     */
     public function setP2pPeerId($p2pPeerId): self
     {
+        $this->initialized['p2pPeerId'] = true;
         $this->p2pPeerId = $p2pPeerId;
 
         return $this;
@@ -141,8 +128,6 @@ class P2pPointInfo
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @return mixed
      */
     public function getLastFailedConnection()
     {
@@ -151,11 +136,10 @@ class P2pPointInfo
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @param mixed $lastFailedConnection
      */
     public function setLastFailedConnection($lastFailedConnection): self
     {
+        $this->initialized['lastFailedConnection'] = true;
         $this->lastFailedConnection = $lastFailedConnection;
 
         return $this;
@@ -174,6 +158,7 @@ class P2pPointInfo
      */
     public function setLastRejectedConnection(array $lastRejectedConnection): self
     {
+        $this->initialized['lastRejectedConnection'] = true;
         $this->lastRejectedConnection = $lastRejectedConnection;
 
         return $this;
@@ -192,6 +177,7 @@ class P2pPointInfo
      */
     public function setLastEstablishedConnection(array $lastEstablishedConnection): self
     {
+        $this->initialized['lastEstablishedConnection'] = true;
         $this->lastEstablishedConnection = $lastEstablishedConnection;
 
         return $this;
@@ -210,6 +196,7 @@ class P2pPointInfo
      */
     public function setLastDisconnection(array $lastDisconnection): self
     {
+        $this->initialized['lastDisconnection'] = true;
         $this->lastDisconnection = $lastDisconnection;
 
         return $this;
@@ -228,6 +215,7 @@ class P2pPointInfo
      */
     public function setLastSeen(array $lastSeen): self
     {
+        $this->initialized['lastSeen'] = true;
         $this->lastSeen = $lastSeen;
 
         return $this;
@@ -235,8 +223,6 @@ class P2pPointInfo
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @return mixed
      */
     public function getLastMiss()
     {
@@ -245,29 +231,23 @@ class P2pPointInfo
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @param mixed $lastMiss
      */
     public function setLastMiss($lastMiss): self
     {
+        $this->initialized['lastMiss'] = true;
         $this->lastMiss = $lastMiss;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getExpectedPeerId()
     {
         return $this->expectedPeerId;
     }
 
-    /**
-     * @param mixed $expectedPeerId
-     */
     public function setExpectedPeerId($expectedPeerId): self
     {
+        $this->initialized['expectedPeerId'] = true;
         $this->expectedPeerId = $expectedPeerId;
 
         return $this;

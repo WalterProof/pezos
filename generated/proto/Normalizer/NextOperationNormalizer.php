@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
 
 use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Jane\JsonSchemaRuntime\Reference;
+use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,13 +25,14 @@ class NextOperationNormalizer implements DenormalizerInterface, NormalizerInterf
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
+    use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\NextOperation';
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\NextOperation';
     }
@@ -49,9 +51,11 @@ class NextOperationNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('protocol', $data)) {
             $object->setProtocol($data['protocol']);
+            unset($data['protocol']);
         }
         if (\array_key_exists('branch', $data)) {
             $object->setBranch($data['branch']);
+            unset($data['branch']);
         }
         if (\array_key_exists('contents', $data)) {
             $values = [];
@@ -59,14 +63,24 @@ class NextOperationNormalizer implements DenormalizerInterface, NormalizerInterf
                 $values[] = $value;
             }
             $object->setContents($values);
+            unset($data['contents']);
         }
         if (\array_key_exists('signature', $data)) {
             $object->setSignature($data['signature']);
+            unset($data['signature']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
 
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
@@ -77,7 +91,14 @@ class NextOperationNormalizer implements DenormalizerInterface, NormalizerInterf
             $values[] = $value;
         }
         $data['contents'] = $values;
-        $data['signature'] = $object->getSignature();
+        if ($object->isInitialized('signature') && null !== $object->getSignature()) {
+            $data['signature'] = $object->getSignature();
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
 
         return $data;
     }

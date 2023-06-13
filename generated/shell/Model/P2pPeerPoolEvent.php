@@ -10,22 +10,27 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class P2pPeerPoolEvent
+class P2pPeerPoolEvent extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var string
      */
     protected $kind;
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @var mixed
      */
     protected $timestamp;
     /**
      * An address for locating peers.
-     *
-     * @var mixed
      */
     protected $addr;
     /**
@@ -40,6 +45,7 @@ class P2pPeerPoolEvent
 
     public function setKind(string $kind): self
     {
+        $this->initialized['kind'] = true;
         $this->kind = $kind;
 
         return $this;
@@ -47,8 +53,6 @@ class P2pPeerPoolEvent
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @return mixed
      */
     public function getTimestamp()
     {
@@ -57,11 +61,10 @@ class P2pPeerPoolEvent
 
     /**
      * A timestamp as seen by the underlying, local computer: subsecond-level precision, epoch or rfc3339 based.
-     *
-     * @param mixed $timestamp
      */
     public function setTimestamp($timestamp): self
     {
+        $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
 
         return $this;
@@ -69,8 +72,6 @@ class P2pPeerPoolEvent
 
     /**
      * An address for locating peers.
-     *
-     * @return mixed
      */
     public function getAddr()
     {
@@ -79,11 +80,10 @@ class P2pPeerPoolEvent
 
     /**
      * An address for locating peers.
-     *
-     * @param mixed $addr
      */
     public function setAddr($addr): self
     {
+        $this->initialized['addr'] = true;
         $this->addr = $addr;
 
         return $this;
@@ -96,6 +96,7 @@ class P2pPeerPoolEvent
 
     public function setPort(int $port): self
     {
+        $this->initialized['port'] = true;
         $this->port = $port;
 
         return $this;

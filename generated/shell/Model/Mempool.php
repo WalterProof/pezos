@@ -10,8 +10,17 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class Mempool
+class Mempool extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * @var mixed[]
      */
@@ -34,6 +43,7 @@ class Mempool
      */
     public function setKnownValid(array $knownValid): self
     {
+        $this->initialized['knownValid'] = true;
         $this->knownValid = $knownValid;
 
         return $this;
@@ -52,6 +62,7 @@ class Mempool
      */
     public function setPending(array $pending): self
     {
+        $this->initialized['pending'] = true;
         $this->pending = $pending;
 
         return $this;

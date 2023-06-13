@@ -10,48 +10,43 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Proto\Model;
 
-class ProtocolsGetResponse200
+class ProtocolsGetResponse200 extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $protocol;
-    /**
-     * @var mixed
-     */
+
     protected $nextProtocol;
 
-    /**
-     * @return mixed
-     */
     public function getProtocol()
     {
         return $this->protocol;
     }
 
-    /**
-     * @param mixed $protocol
-     */
     public function setProtocol($protocol): self
     {
+        $this->initialized['protocol'] = true;
         $this->protocol = $protocol;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getNextProtocol()
     {
         return $this->nextProtocol;
     }
 
-    /**
-     * @param mixed $nextProtocol
-     */
     public function setNextProtocol($nextProtocol): self
     {
+        $this->initialized['nextProtocol'] = true;
         $this->nextProtocol = $nextProtocol;
 
         return $this;

@@ -15,12 +15,14 @@ class GetContextDelegates extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Ba
     use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
 
     /**
-     * Lists all registered delegates.
+     * Lists all registered delegates by default. The arguments `active`, `inactive`, `with_minimal_stake`, and `without_minimal_stake` allow to enumerate only the delegates that are active, inactive, have at least a minimal stake to participate in consensus and in governance, or do not have such a minimal stake, respectively. Note, setting these arguments to false has no effect.
      *
      * @param array $queryParameters {
      *
      *     @var string $active
      *     @var string $inactive
+     *     @var string $with_minimal_stake
+     *     @var string $without_minimal_stake
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -51,22 +53,24 @@ class GetContextDelegates extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Ba
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['active', 'inactive']);
+        $optionsResolver->setDefined(['active', 'inactive', 'with_minimal_stake', 'without_minimal_stake']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('active', ['string']);
-        $optionsResolver->setAllowedTypes('inactive', ['string']);
+        $optionsResolver->addAllowedTypes('active', ['string']);
+        $optionsResolver->addAllowedTypes('inactive', ['string']);
+        $optionsResolver->addAllowedTypes('with_minimal_stake', ['string']);
+        $optionsResolver->addAllowedTypes('without_minimal_stake', ['string']);
 
         return $optionsResolver;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return json_decode($body);
         }

@@ -46,14 +46,14 @@ class GetNetworkPointByPoint extends \Bzzhh\Pezos\Generated\Shell\Runtime\Client
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @return \Bzzhh\Pezos\Generated\Shell\Model\P2pPointInfo|null
+     * @return \Bzzhh\Pezos\Generated\Shell\Model\NetworkPointsPointGetResponse200|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
     {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\P2pPointInfo', 'json');
+            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Shell\\Model\\NetworkPointsPointGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

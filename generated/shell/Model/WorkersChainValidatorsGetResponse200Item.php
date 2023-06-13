@@ -10,15 +10,20 @@ declare(strict_types=1);
 
 namespace Bzzhh\Pezos\Generated\Shell\Model;
 
-class WorkersChainValidatorsGetResponse200Item
+class WorkersChainValidatorsGetResponse200Item extends \ArrayObject
 {
     /**
-     * @var mixed
+     * @var array
      */
+    protected $initialized = [];
+
+    public function isInitialized($property): bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+
     protected $chainId;
-    /**
-     * @var mixed
-     */
+
     protected $status;
     /**
      * @var WorkersChainValidatorsGetResponse200ItemInformation
@@ -29,37 +34,27 @@ class WorkersChainValidatorsGetResponse200Item
      */
     protected $pipelines;
 
-    /**
-     * @return mixed
-     */
     public function getChainId()
     {
         return $this->chainId;
     }
 
-    /**
-     * @param mixed $chainId
-     */
     public function setChainId($chainId): self
     {
+        $this->initialized['chainId'] = true;
         $this->chainId = $chainId;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getStatus()
     {
         return $this->status;
     }
 
-    /**
-     * @param mixed $status
-     */
     public function setStatus($status): self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
 
         return $this;
@@ -72,6 +67,7 @@ class WorkersChainValidatorsGetResponse200Item
 
     public function setInformation(WorkersChainValidatorsGetResponse200ItemInformation $information): self
     {
+        $this->initialized['information'] = true;
         $this->information = $information;
 
         return $this;
@@ -84,6 +80,7 @@ class WorkersChainValidatorsGetResponse200Item
 
     public function setPipelines(int $pipelines): self
     {
+        $this->initialized['pipelines'] = true;
         $this->pipelines = $pipelines;
 
         return $this;
