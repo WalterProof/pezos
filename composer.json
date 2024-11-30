@@ -1,65 +1,62 @@
 {
-  "name": "bzzhh/pezos",
-  "description": "Tezos library",
-  "type": "library",
-  "license": "MIT",
-  "keywords": [
-    "tezos"
-  ],
-  "autoload": {
-    "psr-4": {
-      "Bzzhh\\Pezos\\": "src/",
-      "Bzzhh\\Pezos\\Generated\\Shell\\": "generated/shell",
-      "Bzzhh\\Pezos\\Generated\\Proto\\": "generated/proto",
-      "Bzzhh\\Pezos\\Generated\\Mempool\\": "generated/mempool"
+    "name": "bzzhh/pezos",
+    "description": "Tezos library",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "tezos"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bzzhh\\Pezos\\": "src/",
+            "Bzzhh\\Pezos\\Generated\\Shell\\": "generated/shell",
+            "Bzzhh\\Pezos\\Generated\\Proto\\": "generated/proto",
+            "Bzzhh\\Pezos\\Generated\\Mempool\\": "generated/mempool"
+        },
+        "files": [
+            "src/_bootstrap.php"
+        ]
     },
-    "files": [
-      "src/_bootstrap.php"
-    ]
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Bzzhh\\Pezos\\Tests\\": "tests/"
-    }
-  },
-  "require": {
-    "php": "^8.1",
-    "ext-sodium": "*",
-    "tuupola/base58": "^2.1",
-    "simplito/elliptic-php": "^1.0",
-    "symfony/config": "^5.3|^6.0",
-    "symfony/dependency-injection": "^5.3|^6.0",
-    "symfony/http-kernel": "^5.3|^6.0",
-    "jane-php/open-api-runtime": "^7.5"
-  },
-  "require-dev": {
-    "friendsofphp/php-cs-fixer": "^3.0",
-    "phpunit/phpunit": "^10",
-    "vimeo/psalm": "^5.8",
-    "symfony/var-dumper": "^5.2",
-    "php-http/client-common": "^2.3",
-    "php-http/message": "^1.11",
-    "php-http/discovery": "^1.13",
-    "nyholm/psr7": "^1.4",
-    "php-http/curl-client": "^2.2",
-    "jane-php/open-api-3": "^7.5"
-  },
-  "archive": {
-    "exclude": [
-      "*",
-      ".*",
-      "*/",
-      "!/src/*",
-      "!/generated/*",
-      "!/composer.json",
-      "!/README.md"
-    ]
-  },
-  "config": {
-    "allow-plugins": {
-      "php-http/discovery": true
-    }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+    "autoload-dev": {
+        "psr-4": {
+            "Bzzhh\\Pezos\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^8.1",
+        "ext-sodium": "*",
+        "tuupola/base58": "^2.1",
+        "simplito/elliptic-php": "^1.0",
+        "jane-php/open-api-runtime": "^7.5"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpunit/phpunit": "^10",
+        "vimeo/psalm": "^5.8",
+        "symfony/var-dumper": "^5.2",
+        "php-http/client-common": "^2.3",
+        "php-http/message": "^1.11",
+        "php-http/discovery": "^1.13",
+        "nyholm/psr7": "^1.4",
+        "php-http/curl-client": "^2.2",
+        "jane-php/open-api-3": "^7.5"
+    },
+    "archive": {
+        "exclude": [
+            "*",
+            ".*",
+            "*/",
+            "!/src/*",
+            "!/generated/*",
+            "!/composer.json",
+            "!/README.md"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

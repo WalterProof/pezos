@@ -55,32 +55,6 @@ RPC clients generated with [jane](https://jane.readthedocs.io/en/latest/document
 
 The open api files are taken from [the official Tezos repo](https://gitlab.com/tezos/tezos/-/tree/master/docs/api).
 
-### Symfony
-
-#### Enable the Bundle
-
-enable the bundle by adding it to the list of registered bundles
-in the `config/bundles.php` file of your project:
-
-```php
-// config/bundles.php
-
-return [
-  // ...
-  Bzzhh\Pezos\Bridge\Symfony\BzzhhPezosBundle::class => ['all' => true],
-];
-```
-
-#### Configuration
-
-Configure your host:
-
-```yaml
-# config/packages/bzzhh_pezos.yaml
-bzzhh_pezos:
-  rpc_host: https://mainnet-tezos.giganode.io/
-```
-
 ## Dev workflow
 
 1. Launch services with `make up`
