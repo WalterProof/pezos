@@ -29,7 +29,7 @@ class Validator
 
     private function validatePrefixedValue(string $value, array $prefixes): bool
     {
-        $pattern = sprintf('/^(%s)/', implode('|', $prefixes));
+        $pattern = \sprintf('/^(%s)/', implode('|', $prefixes));
 
         if (0 === preg_match($pattern, $value, $matches)) {
             $this->error = static::NO_PREFIX_MATCHED;

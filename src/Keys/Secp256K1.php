@@ -43,7 +43,7 @@ class Secp256K1 implements Curve
         $key       = $ec->keyFromPrivate($privKey, 'hex');
         $signature = $key->sign(bin2hex($hash));
 
-        \assert($signature instanceof Ec\Signature);
+        \assert($signature instanceof EC\Signature);
 
         $hex = bin2hex(
             pack('C*', ...$signature->r->toArray()).
@@ -56,7 +56,7 @@ class Secp256K1 implements Curve
     public function verifySignature(
         string $signature,
         string $message,
-        string $pubKey
+        string $pubKey,
     ): bool {
         $hash      = bin2hex(sodium_crypto_generichash(hex2bin($message)));
         $signature = b58cdecode($signature, $this->signaturePrefix());

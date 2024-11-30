@@ -21,6 +21,6 @@ interface Curve
     public function verifySignature(
         string $signature,
         string $hash,
-        string $publicKey
+        string $publicKey,
     ): bool;
 }

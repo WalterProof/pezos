@@ -15,7 +15,7 @@ class Signature
         Account $account,
         string $message,
         string $signature,
-        bool $valid = true
+        bool $valid = true,
     ) {
         $this->account   = $account;
         $this->message   = $message;

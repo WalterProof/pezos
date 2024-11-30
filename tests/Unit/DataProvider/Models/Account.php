@@ -13,7 +13,7 @@ class Account
     public function __construct(
         string $privateKey,
         string $publicKey,
-        string $publicKeyHash
+        string $publicKeyHash,
     ) {
         $this->privateKey    = $privateKey;
         $this->publicKey     = $publicKey;

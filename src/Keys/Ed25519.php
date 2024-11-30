@@ -69,7 +69,7 @@ class Ed25519 implements Curve
     public function verifySignature(
         string $signature,
         string $message,
-        string $pubKey
+        string $pubKey,
     ): bool {
         $signature = b58cdecode($signature, $this->signaturePrefix());
         $message   = blake2b(hex2bin($message));
