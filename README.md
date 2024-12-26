@@ -1,6 +1,6 @@
 # Pezos 🌮
 
-![tests](https://github.com/catsoap/pezos/workflows/tests/badge.svg)
+![tests](https://github.com/WalterProof/pezos/workflows/tests/badge.svg) [![Latest Stable Version](http://poser.pugx.org/bzzhh/pezos/v)](https://packagist.org/packages/bzzhh/pezos) [![Total Downloads](http://poser.pugx.org/bzzhh/pezos/downloads)](https://packagist.org/packages/bzzhh/pezos) [![Latest Unstable Version](http://poser.pugx.org/bzzhh/pezos/v/unstable)](https://packagist.org/packages/bzzhh/pezos) [![License](http://poser.pugx.org/bzzhh/pezos/license)](https://packagist.org/packages/bzzhh/pezos) [![PHP Version Require](http://poser.pugx.org/bzzhh/pezos/require/php)](https://packagist.org/packages/bzzhh/pezos)
 
 PHP lib for Tezos
 
