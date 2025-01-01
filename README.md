@@ -1,11 +1,11 @@
 # Pezos 🌮
 
 ![tests](https://github.com/ziwot/pezos/workflows/tests/badge.svg)
-![Latest Stable Version](http://poser.pugx.org/ziwot/pezos/v)
-![Total Downloads](http://poser.pugx.org/ziwot/pezos/downloads)
-![Latest Unstable Version](http://poser.pugx.org/ziwot/pezos/v/unstable)
-![License](http://poser.pugx.org/ziwot/pezos/license)
-![PHP Version Require](http://poser.pugx.org/ziwot/pezos/require/php)
+[![Latest Stable Version](http://poser.pugx.org/ziwot/pezos/v)](https://packagist.org/packages/ziwot/pezos)
+[![Total Downloads](http://poser.pugx.org/ziwot/pezos/downloads)](https://packagist.org/packages/ziwot/pezos)
+[![Latest Unstable Version](http://poser.pugx.org/ziwot/pezos/v/unstable)](https://packagist.org/packages/ziwot/pezos)
+[![License](http://poser.pugx.org/ziwot/pezos/license)](https://packagist.org/packages/ziwot/pezos)
+[![PHP Version Require](http://poser.pugx.org/ziwot/pezos/require/php)](https://packagist.org/packages/ziwot/pezos)
 
 PHP lib for Tezos
 
