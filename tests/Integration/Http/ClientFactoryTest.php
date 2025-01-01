@@ -9,7 +9,6 @@ use Pezos\Generated\Proto\Client as ProtoClient;
 use Pezos\Generated\Proto\Model\ContextConstantsGetResponse200;
 use Pezos\Generated\Shell\Client as ShellClient;
 use Pezos\Generated\Shell\Model\ChainsChainIdIsBootstrappedGetResponse200;
-use Pezos\Generated\Shell\Model\MonitorBootstrappedGetResponse200;
 use Pezos\Http\ClientFactory;
 use PHPUnit\Framework\TestCase;
 

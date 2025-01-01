@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Pezos\Http;
 
-use Pezos\Generated\Mempool\Client as MempoolClient;
-use Pezos\Generated\Proto\Client as ProtoClient;
-use Pezos\Generated\Shell\Client as ShellClient;
 use Http\Client\Common\Plugin;
 use Http\Client\Common\Plugin\AddHostPlugin;
 use Http\Client\Common\Plugin\AddPathPlugin;
 use Http\Client\Common\PluginClient;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
+use Pezos\Generated\Mempool\Client as MempoolClient;
+use Pezos\Generated\Proto\Client as ProtoClient;
+use Pezos\Generated\Shell\Client as ShellClient;
 
 class ClientFactory
 {
@@ -28,7 +28,7 @@ class ClientFactory
 
     public static function createMempool(
         string $host,
-        string $path
+        string $path,
     ): MempoolClient {
         $pluginClient = new PluginClient(Psr18ClientDiscovery::find(), [
             static::createHostPlugin($host),

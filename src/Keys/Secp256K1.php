@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Pezos\Keys;
 
-use Pezos\Prefix;
 use Elliptic\EC;
+use Pezos\Prefix;
 
 use function Pezos\b58cdecode;
 
@@ -46,7 +46,7 @@ class Secp256K1 implements Curve
         \assert($signature instanceof EC\Signature);
 
         $hex = bin2hex(
-            pack('C*', ...$signature->r->toArray()) .
+            pack('C*', ...$signature->r->toArray()).
                 pack('C*', ...$signature->s->toArray()),
         );
 
