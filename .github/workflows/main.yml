@@ -35,3 +35,8 @@ jobs:
 
       - name: Unit Tests
         run: make test-u
+
+      - name: Integration Tests
+        run: make test-i
+        env:
+          NODE_URL: https://ghostnet.ecadinfra.com
