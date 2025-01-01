@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersValidatorsGetResponse200Item extends \ArrayObject
 {
@@ -25,13 +25,11 @@ class HelpersValidatorsGetResponse200Item extends \ArrayObject
      * @var int
      */
     protected $level;
-
     protected $delegate;
     /**
-     * @var int[]
+     * @var list<int>
      */
     protected $slots;
-
     protected $consensusKey;
 
     public function getLevel(): int
@@ -61,7 +59,7 @@ class HelpersValidatorsGetResponse200Item extends \ArrayObject
     }
 
     /**
-     * @return int[]
+     * @return list<int>
      */
     public function getSlots(): array
     {
@@ -69,7 +67,7 @@ class HelpersValidatorsGetResponse200Item extends \ArrayObject
     }
 
     /**
-     * @param int[] $slots
+     * @param list<int> $slots
      */
     public function setSlots(array $slots): self
     {

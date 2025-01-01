@@ -8,11 +8,11 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class GetContextDelegatesByPkhVotingInfo extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetContextDelegatesByPkhVotingInfo extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     protected $pkh;
 
     /**
@@ -46,14 +46,14 @@ class GetContextDelegatesByPkhVotingInfo extends \Bzzhh\Pezos\Generated\Proto\Ru
     }
 
     /**
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextDelegatesPkhVotingInfoGetResponse200|null
+     * @return \Pezos\Generated\Proto\Model\ContextDelegatesPkhVotingInfoGetResponse200|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextDelegatesPkhVotingInfoGetResponse200', 'json');
+            return $serializer->deserialize($body, 'Pezos\\Generated\\Proto\\Model\\ContextDelegatesPkhVotingInfoGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

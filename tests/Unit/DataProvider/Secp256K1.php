@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bzzhh\Pezos\Tests\Unit\DataProvider;
+namespace Pezos\Tests\Unit\DataProvider;
 
 class Secp256K1
 {

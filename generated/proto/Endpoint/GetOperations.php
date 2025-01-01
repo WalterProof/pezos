@@ -8,20 +8,21 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class GetOperations extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetOperations extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
 
     /**
      * All the operations included in the block.
      *
      * @param array $queryParameters {
      *
-     *     @var string $force_metadata DEPRECATED: Forces to recompute the operations metadata if it was considered as too large
-     *     @var string $metadata defines the way metadata are queried Specifies whether or not if the operations metadata should be returned. To get the metadata, even if it is needed to recompute them, use "always". To avoid getting the metadata, use "never". By default, the metadata will be returned depending on the node's metadata size limit policy.
-     * }
+     * @var string $version Supported RPC versions are version "1" (default)
+     * @var string $force_metadata DEPRECATED: Forces to recompute the operations metadata if it was considered as too large
+     * @var string $metadata defines the way metadata are queried Specifies whether or not if the operations metadata should be returned. To get the metadata, even if it is needed to recompute them, use "always". To avoid getting the metadata, use "never". By default, the metadata will be returned depending on the node's metadata size limit policy.
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -51,9 +52,10 @@ class GetOperations extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndp
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['force_metadata', 'metadata']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefined(['version', 'force_metadata', 'metadata']);
+        $optionsResolver->setRequired(['version']);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('version', ['string']);
         $optionsResolver->addAllowedTypes('force_metadata', ['string']);
         $optionsResolver->addAllowedTypes('metadata', ['string']);
 
@@ -63,7 +65,7 @@ class GetOperations extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndp
     /**
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

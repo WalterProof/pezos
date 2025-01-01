@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class ContextContractsContractIdEntrypointsGetResponse200 extends \ArrayObject
 {
@@ -22,7 +22,7 @@ class ContextContractsContractIdEntrypointsGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var ContextContractsContractIdEntrypointsGetResponse200UnreachableItem[]
+     * @var list<ContextContractsContractIdEntrypointsGetResponse200UnreachableItem>
      */
     protected $unreachable;
     /**
@@ -31,7 +31,7 @@ class ContextContractsContractIdEntrypointsGetResponse200 extends \ArrayObject
     protected $entrypoints;
 
     /**
-     * @return ContextContractsContractIdEntrypointsGetResponse200UnreachableItem[]
+     * @return list<ContextContractsContractIdEntrypointsGetResponse200UnreachableItem>
      */
     public function getUnreachable(): array
     {
@@ -39,7 +39,7 @@ class ContextContractsContractIdEntrypointsGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ContextContractsContractIdEntrypointsGetResponse200UnreachableItem[] $unreachable
+     * @param list<ContextContractsContractIdEntrypointsGetResponse200UnreachableItem> $unreachable
      */
     public function setUnreachable(array $unreachable): self
     {

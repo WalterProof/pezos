@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Bzzhh\Pezos\Tests\Unit\Validator;
+namespace Pezos\Tests\Unit\Validator;
 
-use Bzzhh\Pezos\Validator;
+use Pezos\Validator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 

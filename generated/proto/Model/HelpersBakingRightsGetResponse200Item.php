@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersBakingRightsGetResponse200Item extends \ArrayObject
 {
@@ -25,7 +25,6 @@ class HelpersBakingRightsGetResponse200Item extends \ArrayObject
      * @var int
      */
     protected $level;
-
     protected $delegate;
     /**
      * @var int
@@ -35,7 +34,6 @@ class HelpersBakingRightsGetResponse200Item extends \ArrayObject
      * A timestamp as seen by the protocol: second-level precision, epoch based.
      */
     protected $estimatedTime;
-
     protected $consensusKey;
 
     public function getLevel(): int

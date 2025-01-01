@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersParseOperationsPostBody extends \ArrayObject
 {
@@ -22,7 +22,7 @@ class HelpersParseOperationsPostBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $operations;
     /**
@@ -31,7 +31,7 @@ class HelpersParseOperationsPostBody extends \ArrayObject
     protected $checkSignature;
 
     /**
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getOperations(): array
     {
@@ -39,7 +39,7 @@ class HelpersParseOperationsPostBody extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $operations
+     * @param list<mixed> $operations
      */
     public function setOperations(array $operations): self
     {

@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem extends \ArrayObject
 {
@@ -21,9 +21,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem extends \Arra
     {
         return array_key_exists($property, $this->initialized);
     }
-
     protected $hash;
-
     protected $branch;
     /**
      * @var string

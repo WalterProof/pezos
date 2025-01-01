@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersScriptsNormalizeDataPostBody extends \ArrayObject
 {
@@ -21,16 +21,21 @@ class HelpersScriptsNormalizeDataPostBody extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-
     protected $data;
-
     protected $type;
-
     protected $unparsingMode;
     /**
      * @var bool
      */
     protected $legacy;
+    /**
+     * @var list<HelpersScriptsNormalizeDataPostBodyOtherContractsItem>
+     */
+    protected $otherContracts;
+    /**
+     * @var list<HelpersScriptsNormalizeDataPostBodyExtraBigMapsItem>
+     */
+    protected $extraBigMaps;
 
     public function getData()
     {
@@ -80,6 +85,44 @@ class HelpersScriptsNormalizeDataPostBody extends \ArrayObject
     {
         $this->initialized['legacy'] = true;
         $this->legacy = $legacy;
+
+        return $this;
+    }
+
+    /**
+     * @return list<HelpersScriptsNormalizeDataPostBodyOtherContractsItem>
+     */
+    public function getOtherContracts(): array
+    {
+        return $this->otherContracts;
+    }
+
+    /**
+     * @param list<HelpersScriptsNormalizeDataPostBodyOtherContractsItem> $otherContracts
+     */
+    public function setOtherContracts(array $otherContracts): self
+    {
+        $this->initialized['otherContracts'] = true;
+        $this->otherContracts = $otherContracts;
+
+        return $this;
+    }
+
+    /**
+     * @return list<HelpersScriptsNormalizeDataPostBodyExtraBigMapsItem>
+     */
+    public function getExtraBigMaps(): array
+    {
+        return $this->extraBigMaps;
+    }
+
+    /**
+     * @param list<HelpersScriptsNormalizeDataPostBodyExtraBigMapsItem> $extraBigMaps
+     */
+    public function setExtraBigMaps(array $extraBigMaps): self
+    {
+        $this->initialized['extraBigMaps'] = true;
+        $this->extraBigMaps = $extraBigMaps;
 
         return $this;
     }

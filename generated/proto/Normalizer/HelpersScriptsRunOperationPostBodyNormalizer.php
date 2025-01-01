@@ -8,11 +8,12 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
+namespace Pezos\Generated\Proto\Normalizer;
 
-use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,66 +21,139 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class HelpersScriptsRunOperationPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class HelpersScriptsRunOperationPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsRunOperationPostBody';
-    }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsRunOperationPostBody';
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === \Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody::class;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === \Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody::class;
         }
-        $object = new \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('operation', $data)) {
+                $object->setOperation($this->denormalizer->denormalize($data['operation'], \Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBodyOperation::class, 'json', $context));
+                unset($data['operation']);
+            }
+            if (\array_key_exists('chain_id', $data)) {
+                $object->setChainId($data['chain_id']);
+                unset($data['chain_id']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('operation', $data)) {
-            $object->setOperation($this->denormalizer->denormalize($data['operation'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsRunOperationPostBodyOperation', 'json', $context));
-            unset($data['operation']);
-        }
-        if (\array_key_exists('chain_id', $data)) {
-            $object->setChainId($data['chain_id']);
-            unset($data['chain_id']);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['operation'] = $this->normalizer->normalize($object->getOperation(), 'json', $context);
+            $data['chain_id'] = $object->getChainId();
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
             }
+
+            return $data;
         }
 
-        return $object;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody::class => false];
+        }
     }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
+} else {
+    class HelpersScriptsRunOperationPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = [];
-        $data['operation'] = $this->normalizer->normalize($object->getOperation(), 'json', $context);
-        $data['chain_id'] = $object->getChainId();
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
-            }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === \Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody::class;
         }
 
-        return $data;
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === \Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody::class;
+        }
+
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('operation', $data)) {
+                $object->setOperation($this->denormalizer->denormalize($data['operation'], \Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBodyOperation::class, 'json', $context));
+                unset($data['operation']);
+            }
+            if (\array_key_exists('chain_id', $data)) {
+                $object->setChainId($data['chain_id']);
+                unset($data['chain_id']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
+            return $object;
+        }
+
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['operation'] = $this->normalizer->normalize($object->getOperation(), 'json', $context);
+            $data['chain_id'] = $object->getChainId();
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody::class => false];
+        }
     }
 }

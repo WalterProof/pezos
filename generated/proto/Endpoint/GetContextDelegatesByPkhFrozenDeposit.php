@@ -8,15 +8,15 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class GetContextDelegatesByPkhFrozenDeposit extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetContextDelegatesByPkhFrozenDeposit extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     protected $pkh;
 
     /**
-     * Returns the initial amount (that is, at the beginning of a cycle) of the frozen deposits (in mutez). This amount is the same as the current amount of the frozen deposits, unless the delegate has been punished.
+     * DEPRECATED; call RPC total_staked on the last block of (current_cycle - 3) instead. Returns the total amount (in mutez) that was staked for the baker by all stakers (including the baker itself) at the time the staking rights for the current cycle were computed.
      *
      * @param string $pkh A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      */
@@ -48,7 +48,7 @@ class GetContextDelegatesByPkhFrozenDeposit extends \Bzzhh\Pezos\Generated\Proto
     /**
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

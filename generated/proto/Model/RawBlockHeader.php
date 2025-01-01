@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class RawBlockHeader extends \ArrayObject
 {
@@ -29,7 +29,6 @@ class RawBlockHeader extends \ArrayObject
      * @var int
      */
     protected $proto;
-
     protected $predecessor;
     /**
      * A timestamp as seen by the protocol: second-level precision, epoch based.
@@ -39,19 +38,15 @@ class RawBlockHeader extends \ArrayObject
      * @var int
      */
     protected $validationPass;
-
     protected $operationsHash;
     /**
      * The fitness, or score, of a block, that allow the Tezos to decide which chain is the best. A fitness value is a list of byte sequences. They are compared as follows: shortest lists are smaller; lists of the same length are compared according to the lexicographical order.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $fitness;
-
     protected $context;
-
     protected $content;
-
     protected $signature;
 
     public function getLevel(): int
@@ -141,7 +136,7 @@ class RawBlockHeader extends \ArrayObject
     /**
      * The fitness, or score, of a block, that allow the Tezos to decide which chain is the best. A fitness value is a list of byte sequences. They are compared as follows: shortest lists are smaller; lists of the same length are compared according to the lexicographical order.
      *
-     * @return string[]
+     * @return list<string>
      */
     public function getFitness(): array
     {
@@ -151,7 +146,7 @@ class RawBlockHeader extends \ArrayObject
     /**
      * The fitness, or score, of a block, that allow the Tezos to decide which chain is the best. A fitness value is a list of byte sequences. They are compared as follows: shortest lists are smaller; lists of the same length are compared according to the lexicographical order.
      *
-     * @param string[] $fitness
+     * @param list<string> $fitness
      */
     public function setFitness(array $fitness): self
     {

@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Mempool\Model;
+namespace Pezos\Generated\Mempool\Model;
 
 class MonitorOperationsGetResponse200Item extends \ArrayObject
 {
@@ -21,19 +21,16 @@ class MonitorOperationsGetResponse200Item extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-
     protected $hash;
     /**
      * @var string
      */
     protected $protocol;
-
     protected $branch;
     /**
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $contents;
-
     protected $signature;
     /**
      * An optional error-trace (None indicates no error). The full list of errors is available with the global RPC `GET errors`.
@@ -80,7 +77,7 @@ class MonitorOperationsGetResponse200Item extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getContents(): array
     {
@@ -88,7 +85,7 @@ class MonitorOperationsGetResponse200Item extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $contents
+     * @param list<mixed> $contents
      */
     public function setContents(array $contents): self
     {

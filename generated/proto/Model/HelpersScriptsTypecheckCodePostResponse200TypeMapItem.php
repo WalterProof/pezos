@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersScriptsTypecheckCodePostResponse200TypeMapItem extends \ArrayObject
 {
@@ -28,11 +28,11 @@ class HelpersScriptsTypecheckCodePostResponse200TypeMapItem extends \ArrayObject
      */
     protected $location;
     /**
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $stackBefore;
     /**
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $stackAfter;
 
@@ -56,7 +56,7 @@ class HelpersScriptsTypecheckCodePostResponse200TypeMapItem extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getStackBefore(): array
     {
@@ -64,7 +64,7 @@ class HelpersScriptsTypecheckCodePostResponse200TypeMapItem extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $stackBefore
+     * @param list<mixed> $stackBefore
      */
     public function setStackBefore(array $stackBefore): self
     {
@@ -75,7 +75,7 @@ class HelpersScriptsTypecheckCodePostResponse200TypeMapItem extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getStackAfter(): array
     {
@@ -83,7 +83,7 @@ class HelpersScriptsTypecheckCodePostResponse200TypeMapItem extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $stackAfter
+     * @param list<mixed> $stackAfter
      */
     public function setStackAfter(array $stackAfter): self
     {

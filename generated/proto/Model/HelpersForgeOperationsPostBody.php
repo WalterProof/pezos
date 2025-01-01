@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersForgeOperationsPostBody extends \ArrayObject
 {
@@ -21,10 +21,9 @@ class HelpersForgeOperationsPostBody extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-
     protected $branch;
     /**
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $contents;
 
@@ -42,7 +41,7 @@ class HelpersForgeOperationsPostBody extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getContents(): array
     {
@@ -50,7 +49,7 @@ class HelpersForgeOperationsPostBody extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $contents
+     * @param list<mixed> $contents
      */
     public function setContents(array $contents): self
     {

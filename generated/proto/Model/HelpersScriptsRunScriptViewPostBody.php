@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersScriptsRunScriptViewPostBody extends \ArrayObject
 {
@@ -29,13 +29,11 @@ class HelpersScriptsRunScriptViewPostBody extends \ArrayObject
      * Either a plain UTF8 string, or a sequence of bytes for strings that contain invalid byte sequences.
      */
     protected $view;
-
     protected $input;
     /**
      * @var bool
      */
     protected $unlimitedGas;
-
     protected $chainId;
     /**
      * A contract notation as given to an RPC or inside scripts. Can be a base58 implicit contract hash or a base58 originated contract hash.
@@ -51,7 +49,6 @@ class HelpersScriptsRunScriptViewPostBody extends \ArrayObject
      * @var string
      */
     protected $gas;
-
     protected $unparsingMode;
     /**
      * Decimal representation of a big number.
@@ -65,6 +62,14 @@ class HelpersScriptsRunScriptViewPostBody extends \ArrayObject
      * @var string
      */
     protected $level;
+    /**
+     * @var list<HelpersScriptsRunScriptViewPostBodyOtherContractsItem>
+     */
+    protected $otherContracts;
+    /**
+     * @var list<HelpersScriptsRunScriptViewPostBodyExtraBigMapsItem>
+     */
+    protected $extraBigMaps;
 
     /**
      * A contract notation as given to an RPC or inside scripts. Can be a base58 originated contract hash.
@@ -247,6 +252,44 @@ class HelpersScriptsRunScriptViewPostBody extends \ArrayObject
     {
         $this->initialized['level'] = true;
         $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * @return list<HelpersScriptsRunScriptViewPostBodyOtherContractsItem>
+     */
+    public function getOtherContracts(): array
+    {
+        return $this->otherContracts;
+    }
+
+    /**
+     * @param list<HelpersScriptsRunScriptViewPostBodyOtherContractsItem> $otherContracts
+     */
+    public function setOtherContracts(array $otherContracts): self
+    {
+        $this->initialized['otherContracts'] = true;
+        $this->otherContracts = $otherContracts;
+
+        return $this;
+    }
+
+    /**
+     * @return list<HelpersScriptsRunScriptViewPostBodyExtraBigMapsItem>
+     */
+    public function getExtraBigMaps(): array
+    {
+        return $this->extraBigMaps;
+    }
+
+    /**
+     * @param list<HelpersScriptsRunScriptViewPostBodyExtraBigMapsItem> $extraBigMaps
+     */
+    public function setExtraBigMaps(array $extraBigMaps): self
+    {
+        $this->initialized['extraBigMaps'] = true;
+        $this->extraBigMaps = $extraBigMaps;
 
         return $this;
     }

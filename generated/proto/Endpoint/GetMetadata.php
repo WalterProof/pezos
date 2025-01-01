@@ -8,11 +8,24 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class GetMetadata extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetMetadata extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+
+    /**
+     * All the metadata associated to the block.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $version Supported RPC versions are version "1" (default)
+     *             }
+     */
+    public function __construct(array $queryParameters = [])
+    {
+        $this->queryParameters = $queryParameters;
+    }
 
     public function getMethod(): string
     {
@@ -34,15 +47,26 @@ class GetMetadata extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoi
         return ['Accept' => ['application/json']];
     }
 
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['version']);
+        $optionsResolver->setRequired(['version']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('version', ['string']);
+
+        return $optionsResolver;
+    }
+
     /**
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\MetadataGetResponse200|null
+     * @return \Pezos\Generated\Proto\Model\BlockHeaderMetadata|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\MetadataGetResponse200', 'json');
+            return $serializer->deserialize($body, 'Pezos\\Generated\\Proto\\Model\\BlockHeaderMetadata', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

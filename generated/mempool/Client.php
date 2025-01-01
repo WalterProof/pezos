@@ -8,12 +8,12 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Mempool;
+namespace Pezos\Generated\Mempool;
 
-class Client extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Client
+class Client extends Runtime\Client\Client
 {
     /**
-     * Remove an operation from the mempool if present, reverting its effect if it was applied. Add it to the set of banned operations to prevent it from being fetched/processed/injected in the future. Note: If the baker has already received the operation, then it's necessary to restart it to flush the operation from it.
+     * Remove an operation from the mempool if present. Also add it to the set of banned operations to prevent it from being fetched/processed/injected in the future. Note: If the baker has already received the operation, then it's necessary to restart it to flush the operation from it.
      *
      * @param mixed|null $requestBody
      * @param string     $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
@@ -22,16 +22,16 @@ class Client extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Client
      */
     public function postBanOperation($requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Mempool\Endpoint\PostBanOperation($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostBanOperation($requestBody), $fetch);
     }
 
     /**
-     * Get the configuration of the mempool filter. The minimal_fees are in mutez. Each field minimal_nanotez_per_xxx is a rational number given as a numerator and a denominator, e.g. "minimal_nanotez_per_gas_unit": [ "100", "1" ].
+     * Get the configuration of the mempool's filter and bounds. Values of the form [ "21", "20" ] are rational numbers given as a numerator and a denominator, e.g. 21/20 = 1.05. The minimal_fees (in mutez), minimal_nanotez_per_gas_unit, and minimal_nanotez_per_byte are requirements that a manager operation must meet to be considered by the mempool. replace_by_fee_factor is how much better a manager operation must be to replace a previous valid operation **from the same manager** (both its fee and its fee/gas ratio must exceed the old operation's by at least this factor). max_operations and max_total_bytes are the bounds on respectively the number of valid operations in the mempool and the sum of their sizes in bytes.
      *
      * @param array $queryParameters {
      *
-     *     @var string $include_default Show fields equal to their default value (set by default)
-     * }
+     * @var string $include_default Show fields equal to their default value (set by default)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -39,11 +39,11 @@ class Client extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Client
      */
     public function getFilter(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Mempool\Endpoint\GetFilter($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetFilter($queryParameters), $fetch);
     }
 
     /**
-     * Set the configuration of the mempool filter. **If any of the fields is absent from the input JSON, then it is set to the default value for this field (i.e. its value in the default configuration), even if it previously had a different value.** If the input JSON does not describe a valid configuration, then the configuration is left unchanged. Also return the new configuration (which may differ from the input if it had omitted fields or was invalid). You may call [./octez-client rpc get '/chains/main/mempool/filter?include_default=true'] to see an example of JSON describing a valid configuration.
+     * Set the configuration of the mempool's filter and bounds. **If any of the fields is absent from the input JSON, then it is set to the default value for this field (i.e. its value in the default configuration), even if it previously had a different value.** If the input JSON does not describe a valid configuration, then the configuration is left unchanged. This RPC also returns the new configuration of the mempool (which may differ from the input if the latter omits fields or is invalid). You may call [octez-client rpc get '/chains/main/mempool/filter?include_default=true'] to see an example of JSON describing a valid configuration. See the description of that RPC for details on each configurable value.
      *
      * @param mixed|null $requestBody
      * @param string     $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
@@ -52,7 +52,7 @@ class Client extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Client
      */
     public function postFilter($requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Mempool\Endpoint\PostFilter($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostFilter($requestBody), $fetch);
     }
 
     /**
@@ -60,21 +60,23 @@ class Client extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var string $applied Include applied operations (set by default)
-     *     @var string $refused Include refused operations
-     *     @var string $outdated Include outdated operations
-     *     @var string $branch_refused Include branch refused operations
-     *     @var string $branch_delayed Include branch delayed operations (set by default)
-     *     @var string $validation_pass Include operations filtered by validation pass (all by default)
-     * }
+     * @var string $version Supported RPC versions are version "1" (default)
+     * @var string $validated Include validated operations (set by default)
+     * @var string $refused Include refused operations
+     * @var string $outdated Include outdated operations
+     * @var string $branch_refused Include branch refused operations
+     * @var string $branch_delayed Include branch delayed operations (set by default)
+     * @var string $validation_pass Include operations filtered by validation pass (all by default)
+     * @var string $sources Include operations filtered by sources (all by default)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Mempool\Model\MonitorOperationsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\MonitorOperationsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function getMonitorOperations(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Mempool\Endpoint\GetMonitorOperations($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetMonitorOperations($queryParameters), $fetch);
     }
 
     /**
@@ -82,53 +84,53 @@ class Client extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var string $version
-     *     @var string $applied Include applied operations (true by default)
-     *     @var string $refused Include refused operations (true by default)
-     *     @var string $outdated Include outdated operations (true by default)
-     *     @var string $branch_refused Include branch refused operations (true by default)
-     *     @var string $branch_delayed Include branch delayed operations (true by default)
-     *     @var string $validation_pass Include operations filtered by validation pass (all by default)
-     * }
+     * @var string $version Supported RPC versions are version "2" (default)
+     * @var string $validated Include validated operations (true by default)
+     * @var string $refused Include refused operations (true by default)
+     * @var string $outdated Include outdated operations (true by default)
+     * @var string $branch_refused Include branch refused operations (true by default)
+     * @var string $branch_delayed Include branch delayed operations (true by default)
+     * @var string $validation_pass Include operations filtered by validation pass (all by default)
+     * @var string $source Include operations filtered by source (all by default)
+     * @var string $operation_hash Include operations filtered by hash (all by default)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Psr\Http\Message\ResponseInterface|null
+     * @return Model\PendingOperationsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getPendingOperation(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Mempool\Endpoint\GetPendingOperation($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetPendingOperation($queryParameters), $fetch);
     }
 
     /**
      * Request the operations of our peers or a specific peer if specified via a query parameter.
      *
-     * @param \Bzzhh\Pezos\Generated\Mempool\Model\RequestOperationsPostBody|null $requestBody
-     * @param array                                                               $queryParameters {
+     * @param array $queryParameters {
      *
-     *     @var string $peer_id A cryptographic node identity (Base58Check-encoded)
-     * }
+     * @var string $peer_id A cryptographic node identity (Base58Check-encoded)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Mempool\Model\RequestOperationsPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\RequestOperationsPostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postRequestOperation(Model\RequestOperationsPostBody $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function postRequestOperation(?Model\RequestOperationsPostBody $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Mempool\Endpoint\PostRequestOperation($requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostRequestOperation($requestBody, $queryParameters), $fetch);
     }
 
     /**
      * Clear the set of banned operations.
      *
-     * @param \Bzzhh\Pezos\Generated\Mempool\Model\UnbanAllOperationsPostBody|null $requestBody
-     * @param string                                                               $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postUnbanAllOperation(Model\UnbanAllOperationsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postUnbanAllOperation(?Model\UnbanAllOperationsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Mempool\Endpoint\PostUnbanAllOperation($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostUnbanAllOperation($requestBody), $fetch);
     }
 
     /**
@@ -141,7 +143,7 @@ class Client extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Client
      */
     public function postUnbanOperation($requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Mempool\Endpoint\PostUnbanOperation($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostUnbanOperation($requestBody), $fetch);
     }
 
     public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
@@ -156,7 +158,7 @@ class Client extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Client
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Bzzhh\Pezos\Generated\Mempool\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }

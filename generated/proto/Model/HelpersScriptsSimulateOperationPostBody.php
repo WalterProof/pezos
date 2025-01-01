@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersScriptsSimulateOperationPostBody extends \ArrayObject
 {
@@ -31,7 +31,6 @@ class HelpersScriptsSimulateOperationPostBody extends \ArrayObject
      * @var HelpersScriptsSimulateOperationPostBodyOperation
      */
     protected $operation;
-
     protected $chainId;
     /**
      * @var int

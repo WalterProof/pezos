@@ -8,22 +8,22 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class GetContextDelegates extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetContextDelegates extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
 
     /**
      * Lists all registered delegates by default. The arguments `active`, `inactive`, `with_minimal_stake`, and `without_minimal_stake` allow to enumerate only the delegates that are active, inactive, have at least a minimal stake to participate in consensus and in governance, or do not have such a minimal stake, respectively. Note, setting these arguments to false has no effect.
      *
      * @param array $queryParameters {
      *
-     *     @var string $active
-     *     @var string $inactive
-     *     @var string $with_minimal_stake
-     *     @var string $without_minimal_stake
-     * }
+     * @var string $active
+     * @var string $inactive
+     * @var string $with_minimal_stake
+     * @var string $without_minimal_stake
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -67,7 +67,7 @@ class GetContextDelegates extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Ba
     /**
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

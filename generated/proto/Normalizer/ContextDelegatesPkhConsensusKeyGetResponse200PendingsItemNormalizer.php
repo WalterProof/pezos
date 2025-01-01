@@ -8,11 +8,12 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
+namespace Pezos\Generated\Proto\Normalizer;
 
-use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,66 +21,149 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ContextDelegatesPkhConsensusKeyGetResponse200PendingsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class ContextDelegatesPkhConsensusKeyGetResponse200PendingsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem';
-    }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem';
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === \Pezos\Generated\Proto\Model\ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem::class;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === \Pezos\Generated\Proto\Model\ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem::class;
         }
-        $object = new \Bzzhh\Pezos\Generated\Proto\Model\ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Pezos\Generated\Proto\Model\ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('cycle', $data)) {
+                $object->setCycle($data['cycle']);
+                unset($data['cycle']);
+            }
+            if (\array_key_exists('pkh', $data)) {
+                $object->setPkh($data['pkh']);
+                unset($data['pkh']);
+            }
+            if (\array_key_exists('pk', $data)) {
+                $object->setPk($data['pk']);
+                unset($data['pk']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('cycle', $data)) {
-            $object->setCycle($data['cycle']);
-            unset($data['cycle']);
-        }
-        if (\array_key_exists('pkh', $data)) {
-            $object->setPkh($data['pkh']);
-            unset($data['pkh']);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['cycle'] = $object->getCycle();
+            $data['pkh'] = $object->getPkh();
+            $data['pk'] = $object->getPk();
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
             }
+
+            return $data;
         }
 
-        return $object;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\Pezos\Generated\Proto\Model\ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem::class => false];
+        }
     }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
+} else {
+    class ContextDelegatesPkhConsensusKeyGetResponse200PendingsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = [];
-        $data['cycle'] = $object->getCycle();
-        $data['pkh'] = $object->getPkh();
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
-            }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === \Pezos\Generated\Proto\Model\ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem::class;
         }
 
-        return $data;
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === \Pezos\Generated\Proto\Model\ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem::class;
+        }
+
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Pezos\Generated\Proto\Model\ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('cycle', $data)) {
+                $object->setCycle($data['cycle']);
+                unset($data['cycle']);
+            }
+            if (\array_key_exists('pkh', $data)) {
+                $object->setPkh($data['pkh']);
+                unset($data['pkh']);
+            }
+            if (\array_key_exists('pk', $data)) {
+                $object->setPk($data['pk']);
+                unset($data['pk']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
+            return $object;
+        }
+
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['cycle'] = $object->getCycle();
+            $data['pkh'] = $object->getPkh();
+            $data['pk'] = $object->getPk();
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\Pezos\Generated\Proto\Model\ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem::class => false];
+        }
     }
 }

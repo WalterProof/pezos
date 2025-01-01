@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class ContextSmartRollupsAllInboxGetResponse200OldLevelsMessages extends \ArrayObject
 {
@@ -32,7 +32,7 @@ class ContextSmartRollupsAllInboxGetResponse200OldLevelsMessages extends \ArrayO
      */
     protected $content;
     /**
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $backPointers;
 
@@ -69,7 +69,7 @@ class ContextSmartRollupsAllInboxGetResponse200OldLevelsMessages extends \ArrayO
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getBackPointers(): array
     {
@@ -77,7 +77,7 @@ class ContextSmartRollupsAllInboxGetResponse200OldLevelsMessages extends \ArrayO
     }
 
     /**
-     * @param mixed[] $backPointers
+     * @param list<mixed> $backPointers
      */
     public function setBackPointers(array $backPointers): self
     {

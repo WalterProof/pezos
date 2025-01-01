@@ -8,21 +8,22 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class PostHelpersScriptsSimulateOperation extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class PostHelpersScriptsSimulateOperation extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
 
     /**
      * Simulate running an operation at some future moment (based on the number of blocks given in the `latency` argument), and return the operation application result. The result is the same as run_operation except for the consumed gas, which depends on the contents of the cache at that future moment. This RPC estimates future gas consumption by trying to predict the state of the cache using some heuristics.
      *
      * @param array $queryParameters {
      *
-     *     @var string $successor_level If true, the simulation is done on the successor level of the current context.
-     * }
+     * @var string $version Supported RPC version is version '1'
+     * @var string $successor_level If true, the simulation is done on the successor level of the current context.
+     *             }
      */
-    public function __construct(\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsSimulateOperationPostBody $requestBody = null, array $queryParameters = [])
+    public function __construct(?\Pezos\Generated\Proto\Model\HelpersScriptsSimulateOperationPostBody $requestBody = null, array $queryParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
@@ -40,7 +41,7 @@ class PostHelpersScriptsSimulateOperation extends \Bzzhh\Pezos\Generated\Proto\R
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsSimulateOperationPostBody) {
+        if ($this->body instanceof \Pezos\Generated\Proto\Model\HelpersScriptsSimulateOperationPostBody) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
 
@@ -55,9 +56,10 @@ class PostHelpersScriptsSimulateOperation extends \Bzzhh\Pezos\Generated\Proto\R
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['successor_level']);
+        $optionsResolver->setDefined(['version', 'successor_level']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('version', ['string']);
         $optionsResolver->addAllowedTypes('successor_level', ['string']);
 
         return $optionsResolver;
@@ -66,7 +68,7 @@ class PostHelpersScriptsSimulateOperation extends \Bzzhh\Pezos\Generated\Proto\R
     /**
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

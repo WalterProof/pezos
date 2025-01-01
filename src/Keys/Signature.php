@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Bzzhh\Pezos\Keys;
+namespace Pezos\Keys;
 
-use function Bzzhh\Pezos\b58cencode;
+use function Pezos\b58cencode;
 
 class Signature
 {

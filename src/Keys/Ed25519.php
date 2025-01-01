@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Bzzhh\Pezos\Keys;
+namespace Pezos\Keys;
 
-use Bzzhh\Pezos\Prefix;
+use Pezos\Prefix;
 
-use function Bzzhh\Pezos\b58cdecode;
-use function Bzzhh\Pezos\b58cencode;
-use function Bzzhh\Pezos\blake2b;
+use function Pezos\b58cdecode;
+use function Pezos\b58cencode;
+use function Pezos\blake2b;
 
 class Ed25519 implements Curve
 {

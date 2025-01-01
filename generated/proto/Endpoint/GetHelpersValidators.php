@@ -8,23 +8,23 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class GetHelpersValidators extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetHelpersValidators extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
 
     /**
-     * Retrieves the level, the endorsement slots and the public key hash of each delegate allowed to endorse a block.
+     * Retrieves the level, the attestation slots and the public key hash of each delegate allowed to attest a block.
      * By default, it provides this information for the next level.
-     * Parameter `level` can be used to specify the (valid) level(s) in the past or future at which the endorsement rights have to be returned. Parameter `delegate` can be used to restrict the results results to the given delegates. Parameter `consensus_key` can be used to restrict the results to the given consensus_keys.
+     * Parameter `level` can be used to specify the (valid) level(s) in the past or future at which the attestation rights have to be returned. Parameter `delegate` can be used to restrict the results results to the given delegates. Parameter `consensus_key` can be used to restrict the results to the given consensus_keys.
      *
      * @param array $queryParameters {
      *
-     *     @var string $level A level integer
-     *     @var string $delegate A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     *     @var string $consensus_key A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     * }
+     * @var string $level A level integer
+     * @var string $delegate A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @var string $consensus_key A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -65,14 +65,14 @@ class GetHelpersValidators extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\B
     }
 
     /**
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersValidatorsGetResponse200Item[]|null
+     * @return \Pezos\Generated\Proto\Model\HelpersValidatorsGetResponse200Item[]|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersValidatorsGetResponse200Item[]', 'json');
+            return $serializer->deserialize($body, 'Pezos\\Generated\\Proto\\Model\\HelpersValidatorsGetResponse200Item[]', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

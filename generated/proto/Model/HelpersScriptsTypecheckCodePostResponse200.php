@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersScriptsTypecheckCodePostResponse200 extends \ArrayObject
 {
@@ -22,14 +22,13 @@ class HelpersScriptsTypecheckCodePostResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var HelpersScriptsTypecheckCodePostResponse200TypeMapItem[]
+     * @var list<HelpersScriptsTypecheckCodePostResponse200TypeMapItem>
      */
     protected $typeMap;
-
     protected $gas;
 
     /**
-     * @return HelpersScriptsTypecheckCodePostResponse200TypeMapItem[]
+     * @return list<HelpersScriptsTypecheckCodePostResponse200TypeMapItem>
      */
     public function getTypeMap(): array
     {
@@ -37,7 +36,7 @@ class HelpersScriptsTypecheckCodePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param HelpersScriptsTypecheckCodePostResponse200TypeMapItem[] $typeMap
+     * @param list<HelpersScriptsTypecheckCodePostResponse200TypeMapItem> $typeMap
      */
     public function setTypeMap(array $typeMap): self
     {

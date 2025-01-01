@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class ContextDelegatesPkhParticipationGetResponse200 extends \ArrayObject
 {
@@ -46,7 +46,7 @@ class ContextDelegatesPkhParticipationGetResponse200 extends \ArrayObject
      *
      * @var string
      */
-    protected $expectedEndorsingRewards;
+    protected $expectedAttestingRewards;
 
     public function getExpectedCycleActivity(): int
     {
@@ -116,18 +116,18 @@ class ContextDelegatesPkhParticipationGetResponse200 extends \ArrayObject
     /**
      * Decimal representation of a positive big number.
      */
-    public function getExpectedEndorsingRewards(): string
+    public function getExpectedAttestingRewards(): string
     {
-        return $this->expectedEndorsingRewards;
+        return $this->expectedAttestingRewards;
     }
 
     /**
      * Decimal representation of a positive big number.
      */
-    public function setExpectedEndorsingRewards(string $expectedEndorsingRewards): self
+    public function setExpectedAttestingRewards(string $expectedAttestingRewards): self
     {
-        $this->initialized['expectedEndorsingRewards'] = true;
-        $this->expectedEndorsingRewards = $expectedEndorsingRewards;
+        $this->initialized['expectedAttestingRewards'] = true;
+        $this->expectedAttestingRewards = $expectedAttestingRewards;
 
         return $this;
     }

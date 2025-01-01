@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class ProtocolsGetResponse200 extends \ArrayObject
 {
@@ -21,9 +21,7 @@ class ProtocolsGetResponse200 extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-
     protected $protocol;
-
     protected $nextProtocol;
 
     public function getProtocol()

@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class ContextDelegatesPkhVotingInfoGetResponse200 extends \ArrayObject
 {
@@ -32,7 +32,7 @@ class ContextDelegatesPkhVotingInfoGetResponse200 extends \ArrayObject
      */
     protected $currentBallot;
     /**
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $currentProposals;
     /**
@@ -73,7 +73,7 @@ class ContextDelegatesPkhVotingInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getCurrentProposals(): array
     {
@@ -81,7 +81,7 @@ class ContextDelegatesPkhVotingInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $currentProposals
+     * @param list<mixed> $currentProposals
      */
     public function setCurrentProposals(array $currentProposals): self
     {

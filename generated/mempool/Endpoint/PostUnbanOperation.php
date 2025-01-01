@@ -8,11 +8,11 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Mempool\Endpoint;
+namespace Pezos\Generated\Mempool\Endpoint;
 
-class PostUnbanOperation extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Endpoint
+class PostUnbanOperation extends \Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Mempool\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
 
     /**
      * Remove an operation from the set of banned operations (nothing happens if it was not banned).
@@ -51,7 +51,7 @@ class PostUnbanOperation extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\B
     /**
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

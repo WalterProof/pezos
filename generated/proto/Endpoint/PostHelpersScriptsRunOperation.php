@@ -8,18 +8,24 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class PostHelpersScriptsRunOperation extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class PostHelpersScriptsRunOperation extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
 
     /**
      * Run an operation with the context of the given block and without signature checks. Return the operation application result, including the consumed gas. This RPC does not support consensus operations.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $version Supported RPC version is version '1'
+     *             }
      */
-    public function __construct(\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody $requestBody = null)
+    public function __construct(?\Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody $requestBody = null, array $queryParameters = [])
     {
         $this->body = $requestBody;
+        $this->queryParameters = $queryParameters;
     }
 
     public function getMethod(): string
@@ -34,7 +40,7 @@ class PostHelpersScriptsRunOperation extends \Bzzhh\Pezos\Generated\Proto\Runtim
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody) {
+        if ($this->body instanceof \Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
 
@@ -46,10 +52,21 @@ class PostHelpersScriptsRunOperation extends \Bzzhh\Pezos\Generated\Proto\Runtim
         return ['Accept' => ['application/json']];
     }
 
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['version']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('version', ['string']);
+
+        return $optionsResolver;
+    }
+
     /**
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Mempool\Runtime\Client;
+namespace Pezos\Generated\Mempool\Runtime\Client;
 
 use Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use Psr\Http\Client\ClientInterface;
@@ -83,7 +83,7 @@ abstract class Client
             }
         }
         foreach ($endpoint->getHeaders($bodyHeaders) as $name => $value) {
-            $request = $request->withHeader($name, $value);
+            $request = $request->withHeader($name, !is_bool($value) ? $value : ($value ? 'true' : 'false'));
         }
         if (count($endpoint->getAuthenticationScopes()) > 0) {
             $scopes = [];

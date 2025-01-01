@@ -8,11 +8,11 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class PostContextContractsByContractIdScriptNormalized extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class PostContextContractsByContractIdScriptNormalized extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     protected $contract_id;
 
     /**
@@ -20,7 +20,7 @@ class PostContextContractsByContractIdScriptNormalized extends \Bzzhh\Pezos\Gene
      *
      * @param string $contractId a contract identifier encoded in b58check
      */
-    public function __construct(string $contractId, \Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdScriptNormalizedPostBody $requestBody = null)
+    public function __construct(string $contractId, ?\Pezos\Generated\Proto\Model\ContextContractsContractIdScriptNormalizedPostBody $requestBody = null)
     {
         $this->contract_id = $contractId;
         $this->body = $requestBody;
@@ -38,7 +38,7 @@ class PostContextContractsByContractIdScriptNormalized extends \Bzzhh\Pezos\Gene
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdScriptNormalizedPostBody) {
+        if ($this->body instanceof \Pezos\Generated\Proto\Model\ContextContractsContractIdScriptNormalizedPostBody) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
 
@@ -53,7 +53,7 @@ class PostContextContractsByContractIdScriptNormalized extends \Bzzhh\Pezos\Gene
     /**
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

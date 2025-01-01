@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem extends \ArrayObject
 {
@@ -25,8 +25,8 @@ class ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem extends \ArrayOb
      * @var int
      */
     protected $cycle;
-
     protected $pkh;
+    protected $pk;
 
     public function getCycle(): int
     {
@@ -50,6 +50,19 @@ class ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem extends \ArrayOb
     {
         $this->initialized['pkh'] = true;
         $this->pkh = $pkh;
+
+        return $this;
+    }
+
+    public function getPk()
+    {
+        return $this->pk;
+    }
+
+    public function setPk($pk): self
+    {
+        $this->initialized['pk'] = true;
+        $this->pk = $pk;
 
         return $this;
     }

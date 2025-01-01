@@ -8,14 +8,14 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Mempool\Endpoint;
+namespace Pezos\Generated\Mempool\Endpoint;
 
-class PostBanOperation extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Endpoint
+class PostBanOperation extends \Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Mempool\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
 
     /**
-     * Remove an operation from the mempool if present, reverting its effect if it was applied. Add it to the set of banned operations to prevent it from being fetched/processed/injected in the future. Note: If the baker has already received the operation, then it's necessary to restart it to flush the operation from it.
+     * Remove an operation from the mempool if present. Also add it to the set of banned operations to prevent it from being fetched/processed/injected in the future. Note: If the baker has already received the operation, then it's necessary to restart it to flush the operation from it.
      *
      * @param mixed|null $requestBody
      */
@@ -51,7 +51,7 @@ class PostBanOperation extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Bas
     /**
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

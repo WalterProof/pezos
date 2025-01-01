@@ -8,11 +8,12 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
+namespace Pezos\Generated\Proto\Normalizer;
 
-use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,121 +21,249 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class HelpersPreapplyBlockPostResponse200OperationsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class HelpersPreapplyBlockPostResponse200OperationsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItem';
-    }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItem';
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItem::class;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItem::class;
         }
-        $object = new \Bzzhh\Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItem();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItem();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('applied', $data)) {
+                $values = [];
+                foreach ($data['applied'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem::class, 'json', $context);
+                }
+                $object->setApplied($values);
+                unset($data['applied']);
+            }
+            if (\array_key_exists('refused', $data)) {
+                $values_1 = [];
+                foreach ($data['refused'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItemRefusedItem::class, 'json', $context);
+                }
+                $object->setRefused($values_1);
+                unset($data['refused']);
+            }
+            if (\array_key_exists('outdated', $data)) {
+                $values_2 = [];
+                foreach ($data['outdated'] as $value_2) {
+                    $values_2[] = $this->denormalizer->denormalize($value_2, \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItemOutdatedItem::class, 'json', $context);
+                }
+                $object->setOutdated($values_2);
+                unset($data['outdated']);
+            }
+            if (\array_key_exists('branch_refused', $data)) {
+                $values_3 = [];
+                foreach ($data['branch_refused'] as $value_3) {
+                    $values_3[] = $this->denormalizer->denormalize($value_3, \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem::class, 'json', $context);
+                }
+                $object->setBranchRefused($values_3);
+                unset($data['branch_refused']);
+            }
+            if (\array_key_exists('branch_delayed', $data)) {
+                $values_4 = [];
+                foreach ($data['branch_delayed'] as $value_4) {
+                    $values_4[] = $this->denormalizer->denormalize($value_4, \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItemBranchDelayedItem::class, 'json', $context);
+                }
+                $object->setBranchDelayed($values_4);
+                unset($data['branch_delayed']);
+            }
+            foreach ($data as $key => $value_5) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_5;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('applied', $data)) {
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
             $values = [];
-            foreach ($data['applied'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem', 'json', $context);
+            foreach ($object->getApplied() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $object->setApplied($values);
-            unset($data['applied']);
-        }
-        if (\array_key_exists('refused', $data)) {
+            $data['applied'] = $values;
             $values_1 = [];
-            foreach ($data['refused'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItemRefusedItem', 'json', $context);
+            foreach ($object->getRefused() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $object->setRefused($values_1);
-            unset($data['refused']);
-        }
-        if (\array_key_exists('outdated', $data)) {
+            $data['refused'] = $values_1;
             $values_2 = [];
-            foreach ($data['outdated'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItemOutdatedItem', 'json', $context);
+            foreach ($object->getOutdated() as $value_2) {
+                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
-            $object->setOutdated($values_2);
-            unset($data['outdated']);
-        }
-        if (\array_key_exists('branch_refused', $data)) {
+            $data['outdated'] = $values_2;
             $values_3 = [];
-            foreach ($data['branch_refused'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem', 'json', $context);
+            foreach ($object->getBranchRefused() as $value_3) {
+                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
-            $object->setBranchRefused($values_3);
-            unset($data['branch_refused']);
-        }
-        if (\array_key_exists('branch_delayed', $data)) {
+            $data['branch_refused'] = $values_3;
             $values_4 = [];
-            foreach ($data['branch_delayed'] as $value_4) {
-                $values_4[] = $this->denormalizer->denormalize($value_4, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostResponse200OperationsItemBranchDelayedItem', 'json', $context);
+            foreach ($object->getBranchDelayed() as $value_4) {
+                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
-            $object->setBranchDelayed($values_4);
-            unset($data['branch_delayed']);
-        }
-        foreach ($data as $key => $value_5) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_5;
+            $data['branch_delayed'] = $values_4;
+            foreach ($object as $key => $value_5) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_5;
+                }
             }
+
+            return $data;
         }
 
-        return $object;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItem::class => false];
+        }
     }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
+} else {
+    class HelpersPreapplyBlockPostResponse200OperationsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = [];
-        $values = [];
-        foreach ($object->getApplied() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
-        }
-        $data['applied'] = $values;
-        $values_1 = [];
-        foreach ($object->getRefused() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
-        }
-        $data['refused'] = $values_1;
-        $values_2 = [];
-        foreach ($object->getOutdated() as $value_2) {
-            $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
-        }
-        $data['outdated'] = $values_2;
-        $values_3 = [];
-        foreach ($object->getBranchRefused() as $value_3) {
-            $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
-        }
-        $data['branch_refused'] = $values_3;
-        $values_4 = [];
-        foreach ($object->getBranchDelayed() as $value_4) {
-            $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
-        }
-        $data['branch_delayed'] = $values_4;
-        foreach ($object as $key => $value_5) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_5;
-            }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItem::class;
         }
 
-        return $data;
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItem::class;
+        }
+
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItem();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('applied', $data)) {
+                $values = [];
+                foreach ($data['applied'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem::class, 'json', $context);
+                }
+                $object->setApplied($values);
+                unset($data['applied']);
+            }
+            if (\array_key_exists('refused', $data)) {
+                $values_1 = [];
+                foreach ($data['refused'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItemRefusedItem::class, 'json', $context);
+                }
+                $object->setRefused($values_1);
+                unset($data['refused']);
+            }
+            if (\array_key_exists('outdated', $data)) {
+                $values_2 = [];
+                foreach ($data['outdated'] as $value_2) {
+                    $values_2[] = $this->denormalizer->denormalize($value_2, \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItemOutdatedItem::class, 'json', $context);
+                }
+                $object->setOutdated($values_2);
+                unset($data['outdated']);
+            }
+            if (\array_key_exists('branch_refused', $data)) {
+                $values_3 = [];
+                foreach ($data['branch_refused'] as $value_3) {
+                    $values_3[] = $this->denormalizer->denormalize($value_3, \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem::class, 'json', $context);
+                }
+                $object->setBranchRefused($values_3);
+                unset($data['branch_refused']);
+            }
+            if (\array_key_exists('branch_delayed', $data)) {
+                $values_4 = [];
+                foreach ($data['branch_delayed'] as $value_4) {
+                    $values_4[] = $this->denormalizer->denormalize($value_4, \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItemBranchDelayedItem::class, 'json', $context);
+                }
+                $object->setBranchDelayed($values_4);
+                unset($data['branch_delayed']);
+            }
+            foreach ($data as $key => $value_5) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_5;
+                }
+            }
+
+            return $object;
+        }
+
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $values = [];
+            foreach ($object->getApplied() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data['applied'] = $values;
+            $values_1 = [];
+            foreach ($object->getRefused() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            }
+            $data['refused'] = $values_1;
+            $values_2 = [];
+            foreach ($object->getOutdated() as $value_2) {
+                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            }
+            $data['outdated'] = $values_2;
+            $values_3 = [];
+            foreach ($object->getBranchRefused() as $value_3) {
+                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+            }
+            $data['branch_refused'] = $values_3;
+            $values_4 = [];
+            foreach ($object->getBranchDelayed() as $value_4) {
+                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+            }
+            $data['branch_delayed'] = $values_4;
+            foreach ($object as $key => $value_5) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_5;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200OperationsItem::class => false];
+        }
     }
 }

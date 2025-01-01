@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bzzhh\Pezos\Keys;
+namespace Pezos\Keys;
 
 interface Curve
 {

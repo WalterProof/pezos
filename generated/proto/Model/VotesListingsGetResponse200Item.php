@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class VotesListingsGetResponse200Item extends \ArrayObject
 {
@@ -21,7 +21,6 @@ class VotesListingsGetResponse200Item extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-
     protected $pkh;
     /**
      * Decimal representation of 64 bit integers.

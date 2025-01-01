@@ -8,25 +8,27 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Mempool\Endpoint;
+namespace Pezos\Generated\Mempool\Endpoint;
 
-class GetPendingOperation extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Endpoint
+class GetPendingOperation extends \Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Mempool\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
 
     /**
      * List the prevalidated operations.
      *
      * @param array $queryParameters {
      *
-     *     @var string $version
-     *     @var string $applied Include applied operations (true by default)
-     *     @var string $refused Include refused operations (true by default)
-     *     @var string $outdated Include outdated operations (true by default)
-     *     @var string $branch_refused Include branch refused operations (true by default)
-     *     @var string $branch_delayed Include branch delayed operations (true by default)
-     *     @var string $validation_pass Include operations filtered by validation pass (all by default)
-     * }
+     * @var string $version Supported RPC versions are version "2" (default)
+     * @var string $validated Include validated operations (true by default)
+     * @var string $refused Include refused operations (true by default)
+     * @var string $outdated Include outdated operations (true by default)
+     * @var string $branch_refused Include branch refused operations (true by default)
+     * @var string $branch_delayed Include branch delayed operations (true by default)
+     * @var string $validation_pass Include operations filtered by validation pass (all by default)
+     * @var string $source Include operations filtered by source (all by default)
+     * @var string $operation_hash Include operations filtered by hash (all by default)
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -56,29 +58,31 @@ class GetPendingOperation extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['version', 'applied', 'refused', 'outdated', 'branch_refused', 'branch_delayed', 'validation_pass']);
-        $optionsResolver->setRequired(['version', 'applied', 'refused', 'outdated', 'branch_refused', 'branch_delayed']);
+        $optionsResolver->setDefined(['version', 'validated', 'refused', 'outdated', 'branch_refused', 'branch_delayed', 'validation_pass', 'source', 'operation_hash']);
+        $optionsResolver->setRequired(['version', 'validated', 'refused', 'outdated', 'branch_refused', 'branch_delayed']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('version', ['string']);
-        $optionsResolver->addAllowedTypes('applied', ['string']);
+        $optionsResolver->addAllowedTypes('validated', ['string']);
         $optionsResolver->addAllowedTypes('refused', ['string']);
         $optionsResolver->addAllowedTypes('outdated', ['string']);
         $optionsResolver->addAllowedTypes('branch_refused', ['string']);
         $optionsResolver->addAllowedTypes('branch_delayed', ['string']);
         $optionsResolver->addAllowedTypes('validation_pass', ['string']);
+        $optionsResolver->addAllowedTypes('source', ['string']);
+        $optionsResolver->addAllowedTypes('operation_hash', ['string']);
 
         return $optionsResolver;
     }
 
     /**
-     * @return null
+     * @return \Pezos\Generated\Mempool\Model\PendingOperationsGetResponse200|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return json_decode($body);
+            return $serializer->deserialize($body, 'Pezos\\Generated\\Mempool\\Model\\PendingOperationsGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

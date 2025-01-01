@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class ContextContractsContractIdAllTicketBalancesGetResponse200Item extends \ArrayObject
 {
@@ -25,9 +25,7 @@ class ContextContractsContractIdAllTicketBalancesGetResponse200Item extends \Arr
      * A contract notation as given to an RPC or inside scripts. Can be a base58 implicit contract hash or a base58 originated contract hash.
      */
     protected $ticketer;
-
     protected $contentType;
-
     protected $content;
     /**
      * Decimal representation of a positive big number.

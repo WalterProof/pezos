@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class ContextSaplingSaplingStateIdGetDiffGetResponse200 extends \ArrayObject
 {
@@ -26,11 +26,11 @@ class ContextSaplingSaplingStateIdGetDiffGetResponse200 extends \ArrayObject
      */
     protected $root;
     /**
-     * @var mixed[][]
+     * @var list<list<mixed>>
      */
     protected $commitmentsAndCiphertexts;
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $nullifiers;
 
@@ -48,7 +48,7 @@ class ContextSaplingSaplingStateIdGetDiffGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed[][]
+     * @return list<list<mixed>>
      */
     public function getCommitmentsAndCiphertexts(): array
     {
@@ -56,7 +56,7 @@ class ContextSaplingSaplingStateIdGetDiffGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[][] $commitmentsAndCiphertexts
+     * @param list<list<mixed>> $commitmentsAndCiphertexts
      */
     public function setCommitmentsAndCiphertexts(array $commitmentsAndCiphertexts): self
     {
@@ -67,7 +67,7 @@ class ContextSaplingSaplingStateIdGetDiffGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getNullifiers(): array
     {
@@ -75,7 +75,7 @@ class ContextSaplingSaplingStateIdGetDiffGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string[] $nullifiers
+     * @param list<string> $nullifiers
      */
     public function setNullifiers(array $nullifiers): self
     {

@@ -8,18 +8,24 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class PostHelpersParseOperations extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class PostHelpersParseOperations extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
 
     /**
      * Parse operations.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $version Supported RPC version is version '1'
+     *             }
      */
-    public function __construct(\Bzzhh\Pezos\Generated\Proto\Model\HelpersParseOperationsPostBody $requestBody = null)
+    public function __construct(?\Pezos\Generated\Proto\Model\HelpersParseOperationsPostBody $requestBody = null, array $queryParameters = [])
     {
         $this->body = $requestBody;
+        $this->queryParameters = $queryParameters;
     }
 
     public function getMethod(): string
@@ -34,7 +40,7 @@ class PostHelpersParseOperations extends \Bzzhh\Pezos\Generated\Proto\Runtime\Cl
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\HelpersParseOperationsPostBody) {
+        if ($this->body instanceof \Pezos\Generated\Proto\Model\HelpersParseOperationsPostBody) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
 
@@ -46,15 +52,26 @@ class PostHelpersParseOperations extends \Bzzhh\Pezos\Generated\Proto\Runtime\Cl
         return ['Accept' => ['application/json']];
     }
 
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['version']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('version', ['string']);
+
+        return $optionsResolver;
+    }
+
     /**
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersParseOperationsPostResponse200Item[]|null
+     * @return \Pezos\Generated\Proto\Model\HelpersParseOperationsPostResponse200Item[]|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersParseOperationsPostResponse200Item[]', 'json');
+            return $serializer->deserialize($body, 'Pezos\\Generated\\Proto\\Model\\HelpersParseOperationsPostResponse200Item[]', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

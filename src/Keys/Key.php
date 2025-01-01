@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Bzzhh\Pezos\Keys;
+namespace Pezos\Keys;
 
-use Bzzhh\Pezos\Prefix;
+use Pezos\Prefix;
 
-use function Bzzhh\Pezos\b58cdecode;
+use function Pezos\b58cdecode;
 
 class Key
 {

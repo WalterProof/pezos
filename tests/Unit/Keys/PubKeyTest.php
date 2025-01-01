@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Bzzhh\Pezos\Tests\Unit\Keys;
+namespace Pezos\Tests\Unit\Keys;
 
-use Bzzhh\Pezos\Keys\PubKey;
-use Bzzhh\Pezos\Tests\Unit\DataProvider\Ed25519;
-use Bzzhh\Pezos\Tests\Unit\DataProvider\Models\Account;
-use Bzzhh\Pezos\Tests\Unit\DataProvider\Models\Signature;
-use Bzzhh\Pezos\Tests\Unit\DataProvider\Secp256K1;
+use Pezos\Keys\PubKey;
+use Pezos\Tests\Unit\DataProvider\Ed25519;
+use Pezos\Tests\Unit\DataProvider\Models\Account;
+use Pezos\Tests\Unit\DataProvider\Models\Signature;
+use Pezos\Tests\Unit\DataProvider\Secp256K1;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 

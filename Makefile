@@ -51,9 +51,7 @@ update: ##@Tools update deps
 
 jane-all: ##@Tools (re)-generate all clients
 		@if [ -d generated ]; then rm -rf generated; fi
-		$(MAKE) jane CONFIG=config/jane-mempool-openapi.php
-		$(MAKE) jane CONFIG=config/jane-proto-openapi.php
-		$(MAKE) jane CONFIG=config/jane-shell-openapi.php
+		find ./config -name '*.php' -exec sh -c 'make jane CONFIG=$$1' _ {} \;
 
 jane: ##@Tools generate a client (make jane CONFIG=config/jane-rpc-openapi.php)
 	vendor/bin/jane-openapi generate --config-file=$(CONFIG)

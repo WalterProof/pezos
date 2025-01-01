@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Bzzhh\Pezos\Tests\Unit\Validator;
+namespace Pezos\Tests\Unit\Validator;
 
-use Bzzhh\Pezos\Prefix;
+use Pezos\Prefix;
 use PHPUnit\Framework\TestCase;
 
-use function Bzzhh\Pezos\b58cdecode;
-use function Bzzhh\Pezos\b58cencode;
+use function Pezos\b58cdecode;
+use function Pezos\b58cencode;
 
 class CryptoTest extends TestCase
 {

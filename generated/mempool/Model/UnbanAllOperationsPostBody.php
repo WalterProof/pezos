@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Mempool\Model;
+namespace Pezos\Generated\Mempool\Model;
 
 class UnbanAllOperationsPostBody extends \ArrayObject
 {

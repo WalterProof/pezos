@@ -8,24 +8,26 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Mempool\Endpoint;
+namespace Pezos\Generated\Mempool\Endpoint;
 
-class GetMonitorOperations extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Endpoint
+class GetMonitorOperations extends \Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Mempool\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
 
     /**
      * Monitor the mempool operations.
      *
      * @param array $queryParameters {
      *
-     *     @var string $applied Include applied operations (set by default)
-     *     @var string $refused Include refused operations
-     *     @var string $outdated Include outdated operations
-     *     @var string $branch_refused Include branch refused operations
-     *     @var string $branch_delayed Include branch delayed operations (set by default)
-     *     @var string $validation_pass Include operations filtered by validation pass (all by default)
-     * }
+     * @var string $version Supported RPC versions are version "1" (default)
+     * @var string $validated Include validated operations (set by default)
+     * @var string $refused Include refused operations
+     * @var string $outdated Include outdated operations
+     * @var string $branch_refused Include branch refused operations
+     * @var string $branch_delayed Include branch delayed operations (set by default)
+     * @var string $validation_pass Include operations filtered by validation pass (all by default)
+     * @var string $sources Include operations filtered by sources (all by default)
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {
@@ -55,28 +57,30 @@ class GetMonitorOperations extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['applied', 'refused', 'outdated', 'branch_refused', 'branch_delayed', 'validation_pass']);
-        $optionsResolver->setRequired(['applied', 'refused', 'outdated', 'branch_refused', 'branch_delayed']);
+        $optionsResolver->setDefined(['version', 'validated', 'refused', 'outdated', 'branch_refused', 'branch_delayed', 'validation_pass', 'sources']);
+        $optionsResolver->setRequired(['version', 'validated', 'refused', 'outdated', 'branch_refused', 'branch_delayed']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('applied', ['string']);
+        $optionsResolver->addAllowedTypes('version', ['string']);
+        $optionsResolver->addAllowedTypes('validated', ['string']);
         $optionsResolver->addAllowedTypes('refused', ['string']);
         $optionsResolver->addAllowedTypes('outdated', ['string']);
         $optionsResolver->addAllowedTypes('branch_refused', ['string']);
         $optionsResolver->addAllowedTypes('branch_delayed', ['string']);
         $optionsResolver->addAllowedTypes('validation_pass', ['string']);
+        $optionsResolver->addAllowedTypes('sources', ['string']);
 
         return $optionsResolver;
     }
 
     /**
-     * @return \Bzzhh\Pezos\Generated\Mempool\Model\MonitorOperationsGetResponse200Item[]|null
+     * @return \Pezos\Generated\Mempool\Model\MonitorOperationsGetResponse200Item[]|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\MonitorOperationsGetResponse200Item[]', 'json');
+            return $serializer->deserialize($body, 'Pezos\\Generated\\Mempool\\Model\\MonitorOperationsGetResponse200Item[]', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

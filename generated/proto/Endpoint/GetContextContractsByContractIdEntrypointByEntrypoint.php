@@ -8,11 +8,11 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class GetContextContractsByContractIdEntrypointByEntrypoint extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetContextContractsByContractIdEntrypointByEntrypoint extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     protected $contract_id;
     protected $entrypoint;
 
@@ -23,8 +23,8 @@ class GetContextContractsByContractIdEntrypointByEntrypoint extends \Bzzhh\Pezos
      * @param string $entrypoint      A Michelson entrypoint (string of length < 32)
      * @param array  $queryParameters {
      *
-     *     @var string $normalize_types Whether types should be normalized (annotations removed, combs flattened) or kept as they appeared in the original script.
-     * }
+     * @var string $normalize_types Whether types should be normalized (annotations removed, combs flattened) or kept as they appeared in the original script.
+     *             }
      */
     public function __construct(string $contractId, string $entrypoint, array $queryParameters = [])
     {
@@ -67,7 +67,7 @@ class GetContextContractsByContractIdEntrypointByEntrypoint extends \Bzzhh\Pezos
     /**
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

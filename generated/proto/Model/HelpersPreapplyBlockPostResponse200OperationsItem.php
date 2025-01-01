@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersPreapplyBlockPostResponse200OperationsItem extends \ArrayObject
 {
@@ -22,28 +22,28 @@ class HelpersPreapplyBlockPostResponse200OperationsItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem[]
+     * @var list<HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem>
      */
     protected $applied;
     /**
-     * @var HelpersPreapplyBlockPostResponse200OperationsItemRefusedItem[]
+     * @var list<HelpersPreapplyBlockPostResponse200OperationsItemRefusedItem>
      */
     protected $refused;
     /**
-     * @var HelpersPreapplyBlockPostResponse200OperationsItemOutdatedItem[]
+     * @var list<HelpersPreapplyBlockPostResponse200OperationsItemOutdatedItem>
      */
     protected $outdated;
     /**
-     * @var HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem[]
+     * @var list<HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem>
      */
     protected $branchRefused;
     /**
-     * @var HelpersPreapplyBlockPostResponse200OperationsItemBranchDelayedItem[]
+     * @var list<HelpersPreapplyBlockPostResponse200OperationsItemBranchDelayedItem>
      */
     protected $branchDelayed;
 
     /**
-     * @return HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem[]
+     * @return list<HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem>
      */
     public function getApplied(): array
     {
@@ -51,7 +51,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItem extends \ArrayObject
     }
 
     /**
-     * @param HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem[] $applied
+     * @param list<HelpersPreapplyBlockPostResponse200OperationsItemAppliedItem> $applied
      */
     public function setApplied(array $applied): self
     {
@@ -62,7 +62,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItem extends \ArrayObject
     }
 
     /**
-     * @return HelpersPreapplyBlockPostResponse200OperationsItemRefusedItem[]
+     * @return list<HelpersPreapplyBlockPostResponse200OperationsItemRefusedItem>
      */
     public function getRefused(): array
     {
@@ -70,7 +70,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItem extends \ArrayObject
     }
 
     /**
-     * @param HelpersPreapplyBlockPostResponse200OperationsItemRefusedItem[] $refused
+     * @param list<HelpersPreapplyBlockPostResponse200OperationsItemRefusedItem> $refused
      */
     public function setRefused(array $refused): self
     {
@@ -81,7 +81,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItem extends \ArrayObject
     }
 
     /**
-     * @return HelpersPreapplyBlockPostResponse200OperationsItemOutdatedItem[]
+     * @return list<HelpersPreapplyBlockPostResponse200OperationsItemOutdatedItem>
      */
     public function getOutdated(): array
     {
@@ -89,7 +89,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItem extends \ArrayObject
     }
 
     /**
-     * @param HelpersPreapplyBlockPostResponse200OperationsItemOutdatedItem[] $outdated
+     * @param list<HelpersPreapplyBlockPostResponse200OperationsItemOutdatedItem> $outdated
      */
     public function setOutdated(array $outdated): self
     {
@@ -100,7 +100,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItem extends \ArrayObject
     }
 
     /**
-     * @return HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem[]
+     * @return list<HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem>
      */
     public function getBranchRefused(): array
     {
@@ -108,7 +108,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItem extends \ArrayObject
     }
 
     /**
-     * @param HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem[] $branchRefused
+     * @param list<HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem> $branchRefused
      */
     public function setBranchRefused(array $branchRefused): self
     {
@@ -119,7 +119,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItem extends \ArrayObject
     }
 
     /**
-     * @return HelpersPreapplyBlockPostResponse200OperationsItemBranchDelayedItem[]
+     * @return list<HelpersPreapplyBlockPostResponse200OperationsItemBranchDelayedItem>
      */
     public function getBranchDelayed(): array
     {
@@ -127,7 +127,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItem extends \ArrayObject
     }
 
     /**
-     * @param HelpersPreapplyBlockPostResponse200OperationsItemBranchDelayedItem[] $branchDelayed
+     * @param list<HelpersPreapplyBlockPostResponse200OperationsItemBranchDelayedItem> $branchDelayed
      */
     public function setBranchDelayed(array $branchDelayed): self
     {

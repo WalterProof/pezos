@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem extends \ArrayObject
 {
@@ -21,16 +21,14 @@ class HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem extends
     {
         return array_key_exists($property, $this->initialized);
     }
-
     protected $hash;
-
     protected $branch;
     /**
      * @var string
      */
     protected $data;
     /**
-     * The full list of errors is available with the global RPC `GET errors`.
+     * An error trace. The full list of errors is available with the global RPC `GET errors`.
      */
     protected $error;
 
@@ -74,7 +72,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem extends
     }
 
     /**
-     * The full list of errors is available with the global RPC `GET errors`.
+     * An error trace. The full list of errors is available with the global RPC `GET errors`.
      */
     public function getError()
     {
@@ -82,7 +80,7 @@ class HelpersPreapplyBlockPostResponse200OperationsItemBranchRefusedItem extends
     }
 
     /**
-     * The full list of errors is available with the global RPC `GET errors`.
+     * An error trace. The full list of errors is available with the global RPC `GET errors`.
      */
     public function setError($error): self
     {

@@ -8,16 +8,16 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class PostContextSeed extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class PostContextSeed extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
 
     /**
      * Seed of the cycle to which the block belongs.
      */
-    public function __construct(\Bzzhh\Pezos\Generated\Proto\Model\ContextSeedPostBody $requestBody = null)
+    public function __construct(?\Pezos\Generated\Proto\Model\ContextSeedPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -34,7 +34,7 @@ class PostContextSeed extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEn
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\ContextSeedPostBody) {
+        if ($this->body instanceof \Pezos\Generated\Proto\Model\ContextSeedPostBody) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
 
@@ -49,7 +49,7 @@ class PostContextSeed extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEn
     /**
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

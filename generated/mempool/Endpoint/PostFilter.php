@@ -8,14 +8,14 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Mempool\Endpoint;
+namespace Pezos\Generated\Mempool\Endpoint;
 
-class PostFilter extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Endpoint
+class PostFilter extends \Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Mempool\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
 
     /**
-     * Set the configuration of the mempool filter. **If any of the fields is absent from the input JSON, then it is set to the default value for this field (i.e. its value in the default configuration), even if it previously had a different value.** If the input JSON does not describe a valid configuration, then the configuration is left unchanged. Also return the new configuration (which may differ from the input if it had omitted fields or was invalid). You may call [./octez-client rpc get '/chains/main/mempool/filter?include_default=true'] to see an example of JSON describing a valid configuration.
+     * Set the configuration of the mempool's filter and bounds. **If any of the fields is absent from the input JSON, then it is set to the default value for this field (i.e. its value in the default configuration), even if it previously had a different value.** If the input JSON does not describe a valid configuration, then the configuration is left unchanged. This RPC also returns the new configuration of the mempool (which may differ from the input if the latter omits fields or is invalid). You may call [octez-client rpc get '/chains/main/mempool/filter?include_default=true'] to see an example of JSON describing a valid configuration. See the description of that RPC for details on each configurable value.
      *
      * @param mixed|null $requestBody
      */
@@ -51,7 +51,7 @@ class PostFilter extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\BaseEndpo
     /**
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

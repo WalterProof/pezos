@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersForgeProtocolDataPostBody extends \ArrayObject
 {
@@ -21,22 +21,20 @@ class HelpersForgeProtocolDataPostBody extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-
     protected $payloadHash;
     /**
      * @var int
      */
     protected $payloadRound;
-
     protected $nonceHash;
     /**
      * @var string
      */
     protected $proofOfWorkNonce;
     /**
-     * @var string
+     * @var _021PsQuebecPerBlockVotes
      */
-    protected $liquidityBakingToggleVote;
+    protected $perBlockVotes;
 
     public function getPayloadHash()
     {
@@ -90,15 +88,15 @@ class HelpersForgeProtocolDataPostBody extends \ArrayObject
         return $this;
     }
 
-    public function getLiquidityBakingToggleVote(): string
+    public function getPerBlockVotes(): _021PsQuebecPerBlockVotes
     {
-        return $this->liquidityBakingToggleVote;
+        return $this->perBlockVotes;
     }
 
-    public function setLiquidityBakingToggleVote(string $liquidityBakingToggleVote): self
+    public function setPerBlockVotes(_021PsQuebecPerBlockVotes $perBlockVotes): self
     {
-        $this->initialized['liquidityBakingToggleVote'] = true;
-        $this->liquidityBakingToggleVote = $liquidityBakingToggleVote;
+        $this->initialized['perBlockVotes'] = true;
+        $this->perBlockVotes = $perBlockVotes;
 
         return $this;
     }

@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class ContextContractsContractIdStorageNormalizedPostBody extends \ArrayObject
 {
@@ -21,7 +21,6 @@ class ContextContractsContractIdStorageNormalizedPostBody extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-
     protected $unparsingMode;
 
     public function getUnparsingMode()

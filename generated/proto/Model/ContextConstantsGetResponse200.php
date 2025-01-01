@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class ContextConstantsGetResponse200 extends \ArrayObject
 {
@@ -64,6 +64,10 @@ class ContextConstantsGetResponse200 extends \ArrayObject
     /**
      * @var int
      */
+    protected $maxSlashingPeriod;
+    /**
+     * @var int
+     */
     protected $smartRollupMaxWrappedProofBinarySize;
     /**
      * @var int
@@ -78,7 +82,15 @@ class ContextConstantsGetResponse200 extends \ArrayObject
     /**
      * @var int
      */
-    protected $preservedCycles;
+    protected $consensusRightsDelay;
+    /**
+     * @var int
+     */
+    protected $blocksPreservationCycles;
+    /**
+     * @var int
+     */
+    protected $delegateParametersActivationDelay;
     /**
      * @var int
      */
@@ -91,10 +103,6 @@ class ContextConstantsGetResponse200 extends \ArrayObject
      * @var int
      */
     protected $nonceRevelationThreshold;
-    /**
-     * @var int
-     */
-    protected $blocksPerStakeSnapshot;
     /**
      * @var int
      */
@@ -124,39 +132,25 @@ class ContextConstantsGetResponse200 extends \ArrayObject
      */
     protected $minimalStake;
     /**
+     * Decimal representation of a positive big number.
+     *
+     * @var string
+     */
+    protected $minimalFrozenStake;
+    /**
      * Decimal representation of 64 bit integers.
      *
      * @var string
      */
     protected $vdfDifficulty;
     /**
-     * Decimal representation of a positive big number.
-     *
-     * @var string
-     */
-    protected $seedNonceRevelationTip;
-    /**
      * @var int
      */
     protected $originationSize;
     /**
-     * Decimal representation of a positive big number.
-     *
-     * @var string
+     * @var ContextConstantsGetResponse200IssuanceWeights
      */
-    protected $bakingRewardFixedPortion;
-    /**
-     * Decimal representation of a positive big number.
-     *
-     * @var string
-     */
-    protected $bakingRewardBonusPerSlot;
-    /**
-     * Decimal representation of a positive big number.
-     *
-     * @var string
-     */
-    protected $endorsingRewardPerSlot;
+    protected $issuanceWeights;
     /**
      * Decimal representation of a positive big number.
      *
@@ -222,24 +216,24 @@ class ContextConstantsGetResponse200 extends \ArrayObject
     /**
      * @var int
      */
-    protected $maxSlashingPeriod;
+    protected $limitOfDelegationOverBaking;
     /**
      * @var int
      */
-    protected $frozenDepositsPercentage;
+    protected $percentageOfFrozenDepositsSlashedPerDoubleBaking;
     /**
-     * Decimal representation of a positive big number.
-     *
-     * @var string
+     * @var int
      */
-    protected $doubleBakingPunishment;
+    protected $percentageOfFrozenDepositsSlashedPerDoubleAttestation;
     /**
-     * @var ContextConstantsGetResponse200RatioOfFrozenDepositsSlashedPerDoubleEndorsement
+     * @var int
      */
-    protected $ratioOfFrozenDepositsSlashedPerDoubleEndorsement;
-
+    protected $maxSlashingPerBlock;
+    /**
+     * @var int
+     */
+    protected $maxSlashingThreshold;
     protected $testnetDictator;
-
     protected $initialSeed;
     /**
      * @var int
@@ -254,75 +248,9 @@ class ContextConstantsGetResponse200 extends \ArrayObject
      */
     protected $cacheSamplerStateCycles;
     /**
-     * @var bool
-     */
-    protected $txRollupEnable;
-    /**
-     * @var int
-     */
-    protected $txRollupOriginationSize;
-    /**
-     * @var int
-     */
-    protected $txRollupHardSizeLimitPerInbox;
-    /**
-     * @var int
-     */
-    protected $txRollupHardSizeLimitPerMessage;
-    /**
-     * @var int
-     */
-    protected $txRollupMaxWithdrawalsPerBatch;
-    /**
-     * Decimal representation of a positive big number.
-     *
-     * @var string
-     */
-    protected $txRollupCommitmentBond;
-    /**
-     * @var int
-     */
-    protected $txRollupFinalityPeriod;
-    /**
-     * @var int
-     */
-    protected $txRollupWithdrawPeriod;
-    /**
-     * @var int
-     */
-    protected $txRollupMaxInboxesCount;
-    /**
-     * @var int
-     */
-    protected $txRollupMaxMessagesPerInbox;
-    /**
-     * @var int
-     */
-    protected $txRollupMaxCommitmentsCount;
-    /**
-     * @var int
-     */
-    protected $txRollupCostPerByteEmaFactor;
-    /**
-     * @var int
-     */
-    protected $txRollupMaxTicketPayloadSize;
-    /**
-     * @var int
-     */
-    protected $txRollupRejectionMaxProofSize;
-    /**
-     * @var int
-     */
-    protected $txRollupSunsetLevel;
-    /**
      * @var ContextConstantsGetResponse200DalParametric
      */
     protected $dalParametric;
-    /**
-     * @var bool
-     */
-    protected $smartRollupEnable;
     /**
      * @var bool
      */
@@ -374,6 +302,18 @@ class ContextConstantsGetResponse200 extends \ArrayObject
      */
     protected $smartRollupMaxNumberOfParallelGames;
     /**
+     * @var ContextConstantsGetResponse200SmartRollupRevealActivationLevel
+     */
+    protected $smartRollupRevealActivationLevel;
+    /**
+     * @var bool
+     */
+    protected $smartRollupPrivateEnable;
+    /**
+     * @var bool
+     */
+    protected $smartRollupRiscvPvmEnable;
+    /**
      * @var bool
      */
     protected $zkRollupEnable;
@@ -385,6 +325,46 @@ class ContextConstantsGetResponse200 extends \ArrayObject
      * @var int
      */
     protected $zkRollupMinPendingToProcess;
+    /**
+     * @var int
+     */
+    protected $zkRollupMaxTicketPayloadSize;
+    /**
+     * @var int
+     */
+    protected $globalLimitOfStakingOverBaking;
+    /**
+     * @var int
+     */
+    protected $edgeOfStakingOverDelegation;
+    /**
+     * @var int
+     */
+    protected $adaptiveIssuanceLaunchEmaThreshold;
+    /**
+     * @var ContextConstantsGetResponse200AdaptiveRewardsParams
+     */
+    protected $adaptiveRewardsParams;
+    /**
+     * @var bool
+     */
+    protected $adaptiveIssuanceActivationVoteEnable;
+    /**
+     * @var bool
+     */
+    protected $autostakingEnable;
+    /**
+     * @var bool
+     */
+    protected $adaptiveIssuanceForceActivation;
+    /**
+     * @var bool
+     */
+    protected $nsEnable;
+    /**
+     * @var bool
+     */
+    protected $directTicketSpendingEnable;
 
     public function getProofOfWorkNonceSize(): int
     {
@@ -516,6 +496,19 @@ class ContextConstantsGetResponse200 extends \ArrayObject
         return $this;
     }
 
+    public function getMaxSlashingPeriod(): int
+    {
+        return $this->maxSlashingPeriod;
+    }
+
+    public function setMaxSlashingPeriod(int $maxSlashingPeriod): self
+    {
+        $this->initialized['maxSlashingPeriod'] = true;
+        $this->maxSlashingPeriod = $maxSlashingPeriod;
+
+        return $this;
+    }
+
     public function getSmartRollupMaxWrappedProofBinarySize(): int
     {
         return $this->smartRollupMaxWrappedProofBinarySize;
@@ -561,15 +554,41 @@ class ContextConstantsGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    public function getPreservedCycles(): int
+    public function getConsensusRightsDelay(): int
     {
-        return $this->preservedCycles;
+        return $this->consensusRightsDelay;
     }
 
-    public function setPreservedCycles(int $preservedCycles): self
+    public function setConsensusRightsDelay(int $consensusRightsDelay): self
     {
-        $this->initialized['preservedCycles'] = true;
-        $this->preservedCycles = $preservedCycles;
+        $this->initialized['consensusRightsDelay'] = true;
+        $this->consensusRightsDelay = $consensusRightsDelay;
+
+        return $this;
+    }
+
+    public function getBlocksPreservationCycles(): int
+    {
+        return $this->blocksPreservationCycles;
+    }
+
+    public function setBlocksPreservationCycles(int $blocksPreservationCycles): self
+    {
+        $this->initialized['blocksPreservationCycles'] = true;
+        $this->blocksPreservationCycles = $blocksPreservationCycles;
+
+        return $this;
+    }
+
+    public function getDelegateParametersActivationDelay(): int
+    {
+        return $this->delegateParametersActivationDelay;
+    }
+
+    public function setDelegateParametersActivationDelay(int $delegateParametersActivationDelay): self
+    {
+        $this->initialized['delegateParametersActivationDelay'] = true;
+        $this->delegateParametersActivationDelay = $delegateParametersActivationDelay;
 
         return $this;
     }
@@ -609,19 +628,6 @@ class ContextConstantsGetResponse200 extends \ArrayObject
     {
         $this->initialized['nonceRevelationThreshold'] = true;
         $this->nonceRevelationThreshold = $nonceRevelationThreshold;
-
-        return $this;
-    }
-
-    public function getBlocksPerStakeSnapshot(): int
-    {
-        return $this->blocksPerStakeSnapshot;
-    }
-
-    public function setBlocksPerStakeSnapshot(int $blocksPerStakeSnapshot): self
-    {
-        $this->initialized['blocksPerStakeSnapshot'] = true;
-        $this->blocksPerStakeSnapshot = $blocksPerStakeSnapshot;
 
         return $this;
     }
@@ -716,6 +722,25 @@ class ContextConstantsGetResponse200 extends \ArrayObject
     }
 
     /**
+     * Decimal representation of a positive big number.
+     */
+    public function getMinimalFrozenStake(): string
+    {
+        return $this->minimalFrozenStake;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function setMinimalFrozenStake(string $minimalFrozenStake): self
+    {
+        $this->initialized['minimalFrozenStake'] = true;
+        $this->minimalFrozenStake = $minimalFrozenStake;
+
+        return $this;
+    }
+
+    /**
      * Decimal representation of 64 bit integers.
      */
     public function getVdfDifficulty(): string
@@ -734,25 +759,6 @@ class ContextConstantsGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function getSeedNonceRevelationTip(): string
-    {
-        return $this->seedNonceRevelationTip;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function setSeedNonceRevelationTip(string $seedNonceRevelationTip): self
-    {
-        $this->initialized['seedNonceRevelationTip'] = true;
-        $this->seedNonceRevelationTip = $seedNonceRevelationTip;
-
-        return $this;
-    }
-
     public function getOriginationSize(): int
     {
         return $this->originationSize;
@@ -766,59 +772,15 @@ class ContextConstantsGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function getBakingRewardFixedPortion(): string
+    public function getIssuanceWeights(): ContextConstantsGetResponse200IssuanceWeights
     {
-        return $this->bakingRewardFixedPortion;
+        return $this->issuanceWeights;
     }
 
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function setBakingRewardFixedPortion(string $bakingRewardFixedPortion): self
+    public function setIssuanceWeights(ContextConstantsGetResponse200IssuanceWeights $issuanceWeights): self
     {
-        $this->initialized['bakingRewardFixedPortion'] = true;
-        $this->bakingRewardFixedPortion = $bakingRewardFixedPortion;
-
-        return $this;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function getBakingRewardBonusPerSlot(): string
-    {
-        return $this->bakingRewardBonusPerSlot;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function setBakingRewardBonusPerSlot(string $bakingRewardBonusPerSlot): self
-    {
-        $this->initialized['bakingRewardBonusPerSlot'] = true;
-        $this->bakingRewardBonusPerSlot = $bakingRewardBonusPerSlot;
-
-        return $this;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function getEndorsingRewardPerSlot(): string
-    {
-        return $this->endorsingRewardPerSlot;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function setEndorsingRewardPerSlot(string $endorsingRewardPerSlot): self
-    {
-        $this->initialized['endorsingRewardPerSlot'] = true;
-        $this->endorsingRewardPerSlot = $endorsingRewardPerSlot;
+        $this->initialized['issuanceWeights'] = true;
+        $this->issuanceWeights = $issuanceWeights;
 
         return $this;
     }
@@ -1022,60 +984,67 @@ class ContextConstantsGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    public function getMaxSlashingPeriod(): int
+    public function getLimitOfDelegationOverBaking(): int
     {
-        return $this->maxSlashingPeriod;
+        return $this->limitOfDelegationOverBaking;
     }
 
-    public function setMaxSlashingPeriod(int $maxSlashingPeriod): self
+    public function setLimitOfDelegationOverBaking(int $limitOfDelegationOverBaking): self
     {
-        $this->initialized['maxSlashingPeriod'] = true;
-        $this->maxSlashingPeriod = $maxSlashingPeriod;
+        $this->initialized['limitOfDelegationOverBaking'] = true;
+        $this->limitOfDelegationOverBaking = $limitOfDelegationOverBaking;
 
         return $this;
     }
 
-    public function getFrozenDepositsPercentage(): int
+    public function getPercentageOfFrozenDepositsSlashedPerDoubleBaking(): int
     {
-        return $this->frozenDepositsPercentage;
+        return $this->percentageOfFrozenDepositsSlashedPerDoubleBaking;
     }
 
-    public function setFrozenDepositsPercentage(int $frozenDepositsPercentage): self
+    public function setPercentageOfFrozenDepositsSlashedPerDoubleBaking(int $percentageOfFrozenDepositsSlashedPerDoubleBaking): self
     {
-        $this->initialized['frozenDepositsPercentage'] = true;
-        $this->frozenDepositsPercentage = $frozenDepositsPercentage;
+        $this->initialized['percentageOfFrozenDepositsSlashedPerDoubleBaking'] = true;
+        $this->percentageOfFrozenDepositsSlashedPerDoubleBaking = $percentageOfFrozenDepositsSlashedPerDoubleBaking;
 
         return $this;
     }
 
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function getDoubleBakingPunishment(): string
+    public function getPercentageOfFrozenDepositsSlashedPerDoubleAttestation(): int
     {
-        return $this->doubleBakingPunishment;
+        return $this->percentageOfFrozenDepositsSlashedPerDoubleAttestation;
     }
 
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function setDoubleBakingPunishment(string $doubleBakingPunishment): self
+    public function setPercentageOfFrozenDepositsSlashedPerDoubleAttestation(int $percentageOfFrozenDepositsSlashedPerDoubleAttestation): self
     {
-        $this->initialized['doubleBakingPunishment'] = true;
-        $this->doubleBakingPunishment = $doubleBakingPunishment;
+        $this->initialized['percentageOfFrozenDepositsSlashedPerDoubleAttestation'] = true;
+        $this->percentageOfFrozenDepositsSlashedPerDoubleAttestation = $percentageOfFrozenDepositsSlashedPerDoubleAttestation;
 
         return $this;
     }
 
-    public function getRatioOfFrozenDepositsSlashedPerDoubleEndorsement(): ContextConstantsGetResponse200RatioOfFrozenDepositsSlashedPerDoubleEndorsement
+    public function getMaxSlashingPerBlock(): int
     {
-        return $this->ratioOfFrozenDepositsSlashedPerDoubleEndorsement;
+        return $this->maxSlashingPerBlock;
     }
 
-    public function setRatioOfFrozenDepositsSlashedPerDoubleEndorsement(ContextConstantsGetResponse200RatioOfFrozenDepositsSlashedPerDoubleEndorsement $ratioOfFrozenDepositsSlashedPerDoubleEndorsement): self
+    public function setMaxSlashingPerBlock(int $maxSlashingPerBlock): self
     {
-        $this->initialized['ratioOfFrozenDepositsSlashedPerDoubleEndorsement'] = true;
-        $this->ratioOfFrozenDepositsSlashedPerDoubleEndorsement = $ratioOfFrozenDepositsSlashedPerDoubleEndorsement;
+        $this->initialized['maxSlashingPerBlock'] = true;
+        $this->maxSlashingPerBlock = $maxSlashingPerBlock;
+
+        return $this;
+    }
+
+    public function getMaxSlashingThreshold(): int
+    {
+        return $this->maxSlashingThreshold;
+    }
+
+    public function setMaxSlashingThreshold(int $maxSlashingThreshold): self
+    {
+        $this->initialized['maxSlashingThreshold'] = true;
+        $this->maxSlashingThreshold = $maxSlashingThreshold;
 
         return $this;
     }
@@ -1145,207 +1114,6 @@ class ContextConstantsGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    public function getTxRollupEnable(): bool
-    {
-        return $this->txRollupEnable;
-    }
-
-    public function setTxRollupEnable(bool $txRollupEnable): self
-    {
-        $this->initialized['txRollupEnable'] = true;
-        $this->txRollupEnable = $txRollupEnable;
-
-        return $this;
-    }
-
-    public function getTxRollupOriginationSize(): int
-    {
-        return $this->txRollupOriginationSize;
-    }
-
-    public function setTxRollupOriginationSize(int $txRollupOriginationSize): self
-    {
-        $this->initialized['txRollupOriginationSize'] = true;
-        $this->txRollupOriginationSize = $txRollupOriginationSize;
-
-        return $this;
-    }
-
-    public function getTxRollupHardSizeLimitPerInbox(): int
-    {
-        return $this->txRollupHardSizeLimitPerInbox;
-    }
-
-    public function setTxRollupHardSizeLimitPerInbox(int $txRollupHardSizeLimitPerInbox): self
-    {
-        $this->initialized['txRollupHardSizeLimitPerInbox'] = true;
-        $this->txRollupHardSizeLimitPerInbox = $txRollupHardSizeLimitPerInbox;
-
-        return $this;
-    }
-
-    public function getTxRollupHardSizeLimitPerMessage(): int
-    {
-        return $this->txRollupHardSizeLimitPerMessage;
-    }
-
-    public function setTxRollupHardSizeLimitPerMessage(int $txRollupHardSizeLimitPerMessage): self
-    {
-        $this->initialized['txRollupHardSizeLimitPerMessage'] = true;
-        $this->txRollupHardSizeLimitPerMessage = $txRollupHardSizeLimitPerMessage;
-
-        return $this;
-    }
-
-    public function getTxRollupMaxWithdrawalsPerBatch(): int
-    {
-        return $this->txRollupMaxWithdrawalsPerBatch;
-    }
-
-    public function setTxRollupMaxWithdrawalsPerBatch(int $txRollupMaxWithdrawalsPerBatch): self
-    {
-        $this->initialized['txRollupMaxWithdrawalsPerBatch'] = true;
-        $this->txRollupMaxWithdrawalsPerBatch = $txRollupMaxWithdrawalsPerBatch;
-
-        return $this;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function getTxRollupCommitmentBond(): string
-    {
-        return $this->txRollupCommitmentBond;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function setTxRollupCommitmentBond(string $txRollupCommitmentBond): self
-    {
-        $this->initialized['txRollupCommitmentBond'] = true;
-        $this->txRollupCommitmentBond = $txRollupCommitmentBond;
-
-        return $this;
-    }
-
-    public function getTxRollupFinalityPeriod(): int
-    {
-        return $this->txRollupFinalityPeriod;
-    }
-
-    public function setTxRollupFinalityPeriod(int $txRollupFinalityPeriod): self
-    {
-        $this->initialized['txRollupFinalityPeriod'] = true;
-        $this->txRollupFinalityPeriod = $txRollupFinalityPeriod;
-
-        return $this;
-    }
-
-    public function getTxRollupWithdrawPeriod(): int
-    {
-        return $this->txRollupWithdrawPeriod;
-    }
-
-    public function setTxRollupWithdrawPeriod(int $txRollupWithdrawPeriod): self
-    {
-        $this->initialized['txRollupWithdrawPeriod'] = true;
-        $this->txRollupWithdrawPeriod = $txRollupWithdrawPeriod;
-
-        return $this;
-    }
-
-    public function getTxRollupMaxInboxesCount(): int
-    {
-        return $this->txRollupMaxInboxesCount;
-    }
-
-    public function setTxRollupMaxInboxesCount(int $txRollupMaxInboxesCount): self
-    {
-        $this->initialized['txRollupMaxInboxesCount'] = true;
-        $this->txRollupMaxInboxesCount = $txRollupMaxInboxesCount;
-
-        return $this;
-    }
-
-    public function getTxRollupMaxMessagesPerInbox(): int
-    {
-        return $this->txRollupMaxMessagesPerInbox;
-    }
-
-    public function setTxRollupMaxMessagesPerInbox(int $txRollupMaxMessagesPerInbox): self
-    {
-        $this->initialized['txRollupMaxMessagesPerInbox'] = true;
-        $this->txRollupMaxMessagesPerInbox = $txRollupMaxMessagesPerInbox;
-
-        return $this;
-    }
-
-    public function getTxRollupMaxCommitmentsCount(): int
-    {
-        return $this->txRollupMaxCommitmentsCount;
-    }
-
-    public function setTxRollupMaxCommitmentsCount(int $txRollupMaxCommitmentsCount): self
-    {
-        $this->initialized['txRollupMaxCommitmentsCount'] = true;
-        $this->txRollupMaxCommitmentsCount = $txRollupMaxCommitmentsCount;
-
-        return $this;
-    }
-
-    public function getTxRollupCostPerByteEmaFactor(): int
-    {
-        return $this->txRollupCostPerByteEmaFactor;
-    }
-
-    public function setTxRollupCostPerByteEmaFactor(int $txRollupCostPerByteEmaFactor): self
-    {
-        $this->initialized['txRollupCostPerByteEmaFactor'] = true;
-        $this->txRollupCostPerByteEmaFactor = $txRollupCostPerByteEmaFactor;
-
-        return $this;
-    }
-
-    public function getTxRollupMaxTicketPayloadSize(): int
-    {
-        return $this->txRollupMaxTicketPayloadSize;
-    }
-
-    public function setTxRollupMaxTicketPayloadSize(int $txRollupMaxTicketPayloadSize): self
-    {
-        $this->initialized['txRollupMaxTicketPayloadSize'] = true;
-        $this->txRollupMaxTicketPayloadSize = $txRollupMaxTicketPayloadSize;
-
-        return $this;
-    }
-
-    public function getTxRollupRejectionMaxProofSize(): int
-    {
-        return $this->txRollupRejectionMaxProofSize;
-    }
-
-    public function setTxRollupRejectionMaxProofSize(int $txRollupRejectionMaxProofSize): self
-    {
-        $this->initialized['txRollupRejectionMaxProofSize'] = true;
-        $this->txRollupRejectionMaxProofSize = $txRollupRejectionMaxProofSize;
-
-        return $this;
-    }
-
-    public function getTxRollupSunsetLevel(): int
-    {
-        return $this->txRollupSunsetLevel;
-    }
-
-    public function setTxRollupSunsetLevel(int $txRollupSunsetLevel): self
-    {
-        $this->initialized['txRollupSunsetLevel'] = true;
-        $this->txRollupSunsetLevel = $txRollupSunsetLevel;
-
-        return $this;
-    }
-
     public function getDalParametric(): ContextConstantsGetResponse200DalParametric
     {
         return $this->dalParametric;
@@ -1355,19 +1123,6 @@ class ContextConstantsGetResponse200 extends \ArrayObject
     {
         $this->initialized['dalParametric'] = true;
         $this->dalParametric = $dalParametric;
-
-        return $this;
-    }
-
-    public function getSmartRollupEnable(): bool
-    {
-        return $this->smartRollupEnable;
-    }
-
-    public function setSmartRollupEnable(bool $smartRollupEnable): self
-    {
-        $this->initialized['smartRollupEnable'] = true;
-        $this->smartRollupEnable = $smartRollupEnable;
 
         return $this;
     }
@@ -1534,6 +1289,45 @@ class ContextConstantsGetResponse200 extends \ArrayObject
         return $this;
     }
 
+    public function getSmartRollupRevealActivationLevel(): ContextConstantsGetResponse200SmartRollupRevealActivationLevel
+    {
+        return $this->smartRollupRevealActivationLevel;
+    }
+
+    public function setSmartRollupRevealActivationLevel(ContextConstantsGetResponse200SmartRollupRevealActivationLevel $smartRollupRevealActivationLevel): self
+    {
+        $this->initialized['smartRollupRevealActivationLevel'] = true;
+        $this->smartRollupRevealActivationLevel = $smartRollupRevealActivationLevel;
+
+        return $this;
+    }
+
+    public function getSmartRollupPrivateEnable(): bool
+    {
+        return $this->smartRollupPrivateEnable;
+    }
+
+    public function setSmartRollupPrivateEnable(bool $smartRollupPrivateEnable): self
+    {
+        $this->initialized['smartRollupPrivateEnable'] = true;
+        $this->smartRollupPrivateEnable = $smartRollupPrivateEnable;
+
+        return $this;
+    }
+
+    public function getSmartRollupRiscvPvmEnable(): bool
+    {
+        return $this->smartRollupRiscvPvmEnable;
+    }
+
+    public function setSmartRollupRiscvPvmEnable(bool $smartRollupRiscvPvmEnable): self
+    {
+        $this->initialized['smartRollupRiscvPvmEnable'] = true;
+        $this->smartRollupRiscvPvmEnable = $smartRollupRiscvPvmEnable;
+
+        return $this;
+    }
+
     public function getZkRollupEnable(): bool
     {
         return $this->zkRollupEnable;
@@ -1569,6 +1363,136 @@ class ContextConstantsGetResponse200 extends \ArrayObject
     {
         $this->initialized['zkRollupMinPendingToProcess'] = true;
         $this->zkRollupMinPendingToProcess = $zkRollupMinPendingToProcess;
+
+        return $this;
+    }
+
+    public function getZkRollupMaxTicketPayloadSize(): int
+    {
+        return $this->zkRollupMaxTicketPayloadSize;
+    }
+
+    public function setZkRollupMaxTicketPayloadSize(int $zkRollupMaxTicketPayloadSize): self
+    {
+        $this->initialized['zkRollupMaxTicketPayloadSize'] = true;
+        $this->zkRollupMaxTicketPayloadSize = $zkRollupMaxTicketPayloadSize;
+
+        return $this;
+    }
+
+    public function getGlobalLimitOfStakingOverBaking(): int
+    {
+        return $this->globalLimitOfStakingOverBaking;
+    }
+
+    public function setGlobalLimitOfStakingOverBaking(int $globalLimitOfStakingOverBaking): self
+    {
+        $this->initialized['globalLimitOfStakingOverBaking'] = true;
+        $this->globalLimitOfStakingOverBaking = $globalLimitOfStakingOverBaking;
+
+        return $this;
+    }
+
+    public function getEdgeOfStakingOverDelegation(): int
+    {
+        return $this->edgeOfStakingOverDelegation;
+    }
+
+    public function setEdgeOfStakingOverDelegation(int $edgeOfStakingOverDelegation): self
+    {
+        $this->initialized['edgeOfStakingOverDelegation'] = true;
+        $this->edgeOfStakingOverDelegation = $edgeOfStakingOverDelegation;
+
+        return $this;
+    }
+
+    public function getAdaptiveIssuanceLaunchEmaThreshold(): int
+    {
+        return $this->adaptiveIssuanceLaunchEmaThreshold;
+    }
+
+    public function setAdaptiveIssuanceLaunchEmaThreshold(int $adaptiveIssuanceLaunchEmaThreshold): self
+    {
+        $this->initialized['adaptiveIssuanceLaunchEmaThreshold'] = true;
+        $this->adaptiveIssuanceLaunchEmaThreshold = $adaptiveIssuanceLaunchEmaThreshold;
+
+        return $this;
+    }
+
+    public function getAdaptiveRewardsParams(): ContextConstantsGetResponse200AdaptiveRewardsParams
+    {
+        return $this->adaptiveRewardsParams;
+    }
+
+    public function setAdaptiveRewardsParams(ContextConstantsGetResponse200AdaptiveRewardsParams $adaptiveRewardsParams): self
+    {
+        $this->initialized['adaptiveRewardsParams'] = true;
+        $this->adaptiveRewardsParams = $adaptiveRewardsParams;
+
+        return $this;
+    }
+
+    public function getAdaptiveIssuanceActivationVoteEnable(): bool
+    {
+        return $this->adaptiveIssuanceActivationVoteEnable;
+    }
+
+    public function setAdaptiveIssuanceActivationVoteEnable(bool $adaptiveIssuanceActivationVoteEnable): self
+    {
+        $this->initialized['adaptiveIssuanceActivationVoteEnable'] = true;
+        $this->adaptiveIssuanceActivationVoteEnable = $adaptiveIssuanceActivationVoteEnable;
+
+        return $this;
+    }
+
+    public function getAutostakingEnable(): bool
+    {
+        return $this->autostakingEnable;
+    }
+
+    public function setAutostakingEnable(bool $autostakingEnable): self
+    {
+        $this->initialized['autostakingEnable'] = true;
+        $this->autostakingEnable = $autostakingEnable;
+
+        return $this;
+    }
+
+    public function getAdaptiveIssuanceForceActivation(): bool
+    {
+        return $this->adaptiveIssuanceForceActivation;
+    }
+
+    public function setAdaptiveIssuanceForceActivation(bool $adaptiveIssuanceForceActivation): self
+    {
+        $this->initialized['adaptiveIssuanceForceActivation'] = true;
+        $this->adaptiveIssuanceForceActivation = $adaptiveIssuanceForceActivation;
+
+        return $this;
+    }
+
+    public function getNsEnable(): bool
+    {
+        return $this->nsEnable;
+    }
+
+    public function setNsEnable(bool $nsEnable): self
+    {
+        $this->initialized['nsEnable'] = true;
+        $this->nsEnable = $nsEnable;
+
+        return $this;
+    }
+
+    public function getDirectTicketSpendingEnable(): bool
+    {
+        return $this->directTicketSpendingEnable;
+    }
+
+    public function setDirectTicketSpendingEnable(bool $directTicketSpendingEnable): self
+    {
+        $this->initialized['directTicketSpendingEnable'] = true;
+        $this->directTicketSpendingEnable = $directTicketSpendingEnable;
 
         return $this;
     }

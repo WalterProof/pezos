@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bzzhh\Pezos;
+namespace Pezos;
 
 use Tuupola\Base58;
 
@@ -14,7 +14,7 @@ function b58cencode(string $hex, array $prefix): string
         'version'    => $prefix[0],
     ]);
 
-    $bytes = pack('C*', ...\array_slice($prefix, 1)).hex2bin($hex);
+    $bytes = pack('C*', ...\array_slice($prefix, 1)) . hex2bin($hex);
 
     return $base58check->encode($bytes);
 }

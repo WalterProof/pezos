@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Bzzhh\Pezos\Tests\Unit\Pezos\Keys;
+namespace Pezos\Tests\Unit\Pezos\Keys;
 
-use Bzzhh\Pezos\Keys\Ed25519;
-use Bzzhh\Pezos\Tests\Unit\DataProvider\Ed25519 as DataProviderEd25519;
-use Bzzhh\Pezos\Tests\Unit\DataProvider\Models\Account;
+use Pezos\Keys\Ed25519;
+use Pezos\Tests\Unit\DataProvider\Ed25519 as DataProviderEd25519;
+use Pezos\Tests\Unit\DataProvider\Models\Account;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 

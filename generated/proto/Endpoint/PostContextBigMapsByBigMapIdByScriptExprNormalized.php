@@ -8,11 +8,11 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class PostContextBigMapsByBigMapIdByScriptExprNormalized extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class PostContextBigMapsByBigMapIdByScriptExprNormalized extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     protected $big_map_id;
     protected $script_expr;
 
@@ -22,7 +22,7 @@ class PostContextBigMapsByBigMapIdByScriptExprNormalized extends \Bzzhh\Pezos\Ge
      * @param string $bigMapId   A big map identifier
      * @param string $scriptExpr script_expr (Base58Check-encoded)
      */
-    public function __construct(string $bigMapId, string $scriptExpr, \Bzzhh\Pezos\Generated\Proto\Model\ContextBigMapsBigMapIdScriptExprNormalizedPostBody $requestBody = null)
+    public function __construct(string $bigMapId, string $scriptExpr, ?\Pezos\Generated\Proto\Model\ContextBigMapsBigMapIdScriptExprNormalizedPostBody $requestBody = null)
     {
         $this->big_map_id = $bigMapId;
         $this->script_expr = $scriptExpr;
@@ -41,7 +41,7 @@ class PostContextBigMapsByBigMapIdByScriptExprNormalized extends \Bzzhh\Pezos\Ge
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\ContextBigMapsBigMapIdScriptExprNormalizedPostBody) {
+        if ($this->body instanceof \Pezos\Generated\Proto\Model\ContextBigMapsBigMapIdScriptExprNormalizedPostBody) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
 
@@ -56,7 +56,7 @@ class PostContextBigMapsByBigMapIdByScriptExprNormalized extends \Bzzhh\Pezos\Ge
     /**
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

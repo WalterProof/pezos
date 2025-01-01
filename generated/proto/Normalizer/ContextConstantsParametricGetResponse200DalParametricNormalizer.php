@@ -8,11 +8,12 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
+namespace Pezos\Generated\Proto\Normalizer;
 
-use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,96 +21,209 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ContextConstantsParametricGetResponse200DalParametricNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class ContextConstantsParametricGetResponse200DalParametricNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextConstantsParametricGetResponse200DalParametric';
-    }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextConstantsParametricGetResponse200DalParametric';
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === \Pezos\Generated\Proto\Model\ContextConstantsParametricGetResponse200DalParametric::class;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === \Pezos\Generated\Proto\Model\ContextConstantsParametricGetResponse200DalParametric::class;
         }
-        $object = new \Bzzhh\Pezos\Generated\Proto\Model\ContextConstantsParametricGetResponse200DalParametric();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Pezos\Generated\Proto\Model\ContextConstantsParametricGetResponse200DalParametric();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('feature_enable', $data)) {
+                $object->setFeatureEnable($data['feature_enable']);
+                unset($data['feature_enable']);
+            }
+            if (\array_key_exists('incentives_enable', $data)) {
+                $object->setIncentivesEnable($data['incentives_enable']);
+                unset($data['incentives_enable']);
+            }
+            if (\array_key_exists('number_of_slots', $data)) {
+                $object->setNumberOfSlots($data['number_of_slots']);
+                unset($data['number_of_slots']);
+            }
+            if (\array_key_exists('attestation_lag', $data)) {
+                $object->setAttestationLag($data['attestation_lag']);
+                unset($data['attestation_lag']);
+            }
+            if (\array_key_exists('attestation_threshold', $data)) {
+                $object->setAttestationThreshold($data['attestation_threshold']);
+                unset($data['attestation_threshold']);
+            }
+            if (\array_key_exists('redundancy_factor', $data)) {
+                $object->setRedundancyFactor($data['redundancy_factor']);
+                unset($data['redundancy_factor']);
+            }
+            if (\array_key_exists('page_size', $data)) {
+                $object->setPageSize($data['page_size']);
+                unset($data['page_size']);
+            }
+            if (\array_key_exists('slot_size', $data)) {
+                $object->setSlotSize($data['slot_size']);
+                unset($data['slot_size']);
+            }
+            if (\array_key_exists('number_of_shards', $data)) {
+                $object->setNumberOfShards($data['number_of_shards']);
+                unset($data['number_of_shards']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('feature_enable', $data)) {
-            $object->setFeatureEnable($data['feature_enable']);
-            unset($data['feature_enable']);
-        }
-        if (\array_key_exists('number_of_slots', $data)) {
-            $object->setNumberOfSlots($data['number_of_slots']);
-            unset($data['number_of_slots']);
-        }
-        if (\array_key_exists('attestation_lag', $data)) {
-            $object->setAttestationLag($data['attestation_lag']);
-            unset($data['attestation_lag']);
-        }
-        if (\array_key_exists('availability_threshold', $data)) {
-            $object->setAvailabilityThreshold($data['availability_threshold']);
-            unset($data['availability_threshold']);
-        }
-        if (\array_key_exists('redundancy_factor', $data)) {
-            $object->setRedundancyFactor($data['redundancy_factor']);
-            unset($data['redundancy_factor']);
-        }
-        if (\array_key_exists('page_size', $data)) {
-            $object->setPageSize($data['page_size']);
-            unset($data['page_size']);
-        }
-        if (\array_key_exists('slot_size', $data)) {
-            $object->setSlotSize($data['slot_size']);
-            unset($data['slot_size']);
-        }
-        if (\array_key_exists('number_of_shards', $data)) {
-            $object->setNumberOfShards($data['number_of_shards']);
-            unset($data['number_of_shards']);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['feature_enable'] = $object->getFeatureEnable();
+            $data['incentives_enable'] = $object->getIncentivesEnable();
+            $data['number_of_slots'] = $object->getNumberOfSlots();
+            $data['attestation_lag'] = $object->getAttestationLag();
+            $data['attestation_threshold'] = $object->getAttestationThreshold();
+            $data['redundancy_factor'] = $object->getRedundancyFactor();
+            $data['page_size'] = $object->getPageSize();
+            $data['slot_size'] = $object->getSlotSize();
+            $data['number_of_shards'] = $object->getNumberOfShards();
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
             }
+
+            return $data;
         }
 
-        return $object;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\Pezos\Generated\Proto\Model\ContextConstantsParametricGetResponse200DalParametric::class => false];
+        }
     }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
+} else {
+    class ContextConstantsParametricGetResponse200DalParametricNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = [];
-        $data['feature_enable'] = $object->getFeatureEnable();
-        $data['number_of_slots'] = $object->getNumberOfSlots();
-        $data['attestation_lag'] = $object->getAttestationLag();
-        $data['availability_threshold'] = $object->getAvailabilityThreshold();
-        $data['redundancy_factor'] = $object->getRedundancyFactor();
-        $data['page_size'] = $object->getPageSize();
-        $data['slot_size'] = $object->getSlotSize();
-        $data['number_of_shards'] = $object->getNumberOfShards();
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
-            }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === \Pezos\Generated\Proto\Model\ContextConstantsParametricGetResponse200DalParametric::class;
         }
 
-        return $data;
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === \Pezos\Generated\Proto\Model\ContextConstantsParametricGetResponse200DalParametric::class;
+        }
+
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Pezos\Generated\Proto\Model\ContextConstantsParametricGetResponse200DalParametric();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('feature_enable', $data)) {
+                $object->setFeatureEnable($data['feature_enable']);
+                unset($data['feature_enable']);
+            }
+            if (\array_key_exists('incentives_enable', $data)) {
+                $object->setIncentivesEnable($data['incentives_enable']);
+                unset($data['incentives_enable']);
+            }
+            if (\array_key_exists('number_of_slots', $data)) {
+                $object->setNumberOfSlots($data['number_of_slots']);
+                unset($data['number_of_slots']);
+            }
+            if (\array_key_exists('attestation_lag', $data)) {
+                $object->setAttestationLag($data['attestation_lag']);
+                unset($data['attestation_lag']);
+            }
+            if (\array_key_exists('attestation_threshold', $data)) {
+                $object->setAttestationThreshold($data['attestation_threshold']);
+                unset($data['attestation_threshold']);
+            }
+            if (\array_key_exists('redundancy_factor', $data)) {
+                $object->setRedundancyFactor($data['redundancy_factor']);
+                unset($data['redundancy_factor']);
+            }
+            if (\array_key_exists('page_size', $data)) {
+                $object->setPageSize($data['page_size']);
+                unset($data['page_size']);
+            }
+            if (\array_key_exists('slot_size', $data)) {
+                $object->setSlotSize($data['slot_size']);
+                unset($data['slot_size']);
+            }
+            if (\array_key_exists('number_of_shards', $data)) {
+                $object->setNumberOfShards($data['number_of_shards']);
+                unset($data['number_of_shards']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
+            return $object;
+        }
+
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['feature_enable'] = $object->getFeatureEnable();
+            $data['incentives_enable'] = $object->getIncentivesEnable();
+            $data['number_of_slots'] = $object->getNumberOfSlots();
+            $data['attestation_lag'] = $object->getAttestationLag();
+            $data['attestation_threshold'] = $object->getAttestationThreshold();
+            $data['redundancy_factor'] = $object->getRedundancyFactor();
+            $data['page_size'] = $object->getPageSize();
+            $data['slot_size'] = $object->getSlotSize();
+            $data['number_of_shards'] = $object->getNumberOfShards();
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\Pezos\Generated\Proto\Model\ContextConstantsParametricGetResponse200DalParametric::class => false];
+        }
     }
 }

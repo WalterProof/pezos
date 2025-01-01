@@ -8,26 +8,37 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto;
+namespace Pezos\Generated\Proto;
 
-class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
+class Client extends Runtime\Client\Client
 {
     /**
      * All the information about a block. The associated metadata may not be present depending on the history mode and block's distance from the head.
      *
      * @param array $queryParameters {
      *
-     *     @var string $force_metadata DEPRECATED: Forces to recompute the operations metadata if it was considered as too large
-     *     @var string $metadata defines the way metadata are queried Specifies whether or not if the operations metadata should be returned. To get the metadata, even if it is needed to recompute them, use "always". To avoid getting the metadata, use "never". By default, the metadata will be returned depending on the node's metadata size limit policy.
-     * }
+     * @var string $version Supported RPC versions are version "1" (default)
+     * @var string $force_metadata DEPRECATED: Forces to recompute the operations metadata if it was considered as too large
+     * @var string $metadata defines the way metadata are queried Specifies whether or not if the operations metadata should be returned. To get the metadata, even if it is needed to recompute them, use "always". To avoid getting the metadata, use "never". By default, the metadata will be returned depending on the node's metadata size limit policy.
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\GetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\GetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function get(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\Get($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\Get($queryParameters), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextAdaptiveIssuanceLaunchCycle(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextAdaptiveIssuanceLaunchCycle(), $fetch);
     }
 
     /**
@@ -36,9 +47,9 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      * @param string $bigMapId        A big map identifier
      * @param array  $queryParameters {
      *
-     *     @var string $offset A non-negative integer (greater than or equal to 0). Skip the first [offset] values. Useful in combination with [length] for pagination.
-     *     @var string $length A non-negative integer (greater than or equal to 0). Only retrieve [length] values. Useful in combination with [offset] for pagination.
-     * }
+     * @var string $offset A non-negative integer (greater than or equal to 0). Skip the first [offset] values. Useful in combination with [length] for pagination.
+     * @var string $length A non-negative integer (greater than or equal to 0). Only retrieve [length] values. Useful in combination with [offset] for pagination.
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -46,7 +57,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextBigMapsByBigMapId(string $bigMapId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextBigMapsByBigMapId($bigMapId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextBigMapsByBigMapId($bigMapId, $queryParameters), $fetch);
     }
 
     /**
@@ -60,22 +71,21 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextBigMapByBigMapIdByScriptExpr(string $bigMapId, string $scriptExpr, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextBigMapByBigMapIdByScriptExpr($bigMapId, $scriptExpr), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextBigMapByBigMapIdByScriptExpr($bigMapId, $scriptExpr), $fetch);
     }
 
     /**
      * Access the value associated with a key in a big map, normalize the output using the requested unparsing mode.
      *
-     * @param string                                                                                     $bigMapId    A big map identifier
-     * @param string                                                                                     $scriptExpr  script_expr (Base58Check-encoded)
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\ContextBigMapsBigMapIdScriptExprNormalizedPostBody|null $requestBody
-     * @param string                                                                                     $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $bigMapId   A big map identifier
+     * @param string $scriptExpr script_expr (Base58Check-encoded)
+     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postContextBigMapsByBigMapIdByScriptExprNormalized(string $bigMapId, string $scriptExpr, Model\ContextBigMapsBigMapIdScriptExprNormalizedPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postContextBigMapsByBigMapIdByScriptExprNormalized(string $bigMapId, string $scriptExpr, ?Model\ContextBigMapsBigMapIdScriptExprNormalizedPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostContextBigMapsByBigMapIdByScriptExprNormalized($bigMapId, $scriptExpr, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostContextBigMapsByBigMapIdByScriptExprNormalized($bigMapId, $scriptExpr, $requestBody), $fetch);
     }
 
     /**
@@ -85,7 +95,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextCacheContractsAll(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextCacheContractsAll(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextCacheContractsAll(), $fetch);
     }
 
     /**
@@ -98,7 +108,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function postContextCacheContractsRank($requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostContextCacheContractsRank($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostContextCacheContractsRank($requestBody), $fetch);
     }
 
     /**
@@ -108,7 +118,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextCacheContractsSize(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextCacheContractsSize(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextCacheContractsSize(), $fetch);
     }
 
     /**
@@ -118,17 +128,17 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextCacheContractsSizeLimit(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextCacheContractsSizeLimit(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextCacheContractsSizeLimit(), $fetch);
     }
 
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextConstantsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextConstantsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getContextConstant(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextConstant(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextConstant(), $fetch);
     }
 
     /**
@@ -138,17 +148,17 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextConstantsError(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextConstantsError(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextConstantsError(), $fetch);
     }
 
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextConstantsParametricGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextConstantsParametricGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getContextConstantsParametric(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextConstantsParametric(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextConstantsParametric(), $fetch);
     }
 
     /**
@@ -158,7 +168,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextContracts(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContracts(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContracts(), $fetch);
     }
 
     /**
@@ -167,16 +177,16 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      * @param string $contractId      a contract identifier encoded in b58check
      * @param array  $queryParameters {
      *
-     *     @var string $normalize_types Whether types should be normalized (annotations removed, combs flattened) or kept as they appeared in the original script.
-     * }
+     * @var string $normalize_types Whether types should be normalized (annotations removed, combs flattened) or kept as they appeared in the original script.
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextContractsContractIdGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getContextContractByContractId(string $contractId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContractByContractId($contractId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContractByContractId($contractId, $queryParameters), $fetch);
     }
 
     /**
@@ -185,15 +195,15 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      * @param string $contractId a contract identifier encoded in b58check
      * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdAllTicketBalancesGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextContractsContractIdAllTicketBalancesGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function getContextContractsByContractIdAllTicketBalances(string $contractId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContractsByContractIdAllTicketBalances($contractId), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdAllTicketBalances($contractId), $fetch);
     }
 
     /**
-     * Access the spendable balance of a contract, excluding frozen bonds.
+     * The spendable balance of a contract (in mutez), also known as liquid balance. Corresponds to tez owned by the contract that are neither staked, nor in unstaked requests, nor in frozen bonds. Identical to the 'spendable' RPC.
      *
      * @param string $contractId a contract identifier encoded in b58check
      * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
@@ -202,11 +212,11 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextContractsByContractIdBalance(string $contractId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContractsByContractIdBalance($contractId), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdBalance($contractId), $fetch);
     }
 
     /**
-     * Access the sum of the spendable balance and frozen bonds of a contract. This sum is part of the contract's stake, and it is exactly the contract's stake if the contract is not a delegate.
+     * The sum (in mutez) of the spendable balance and frozen bonds of a contract. Corresponds to the contract's full balance from which staked funds and unstake requests have been excluded. Identical to the 'spendable_and_frozen_bonds' RPC.
      *
      * @param string $contractId a contract identifier encoded in b58check
      * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
@@ -215,21 +225,20 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextContractsByContractIdBalanceAndFrozenBond(string $contractId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContractsByContractIdBalanceAndFrozenBond($contractId), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdBalanceAndFrozenBond($contractId), $fetch);
     }
 
     /**
      * Access the value associated with a key in a big map of the contract (deprecated).
      *
-     * @param string                                                                              $contractId  a contract identifier encoded in b58check
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdBigMapGetPostBody|null $requestBody
-     * @param string                                                                              $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $contractId a contract identifier encoded in b58check
+     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postContextContractsByContractIdBigMapGet(string $contractId, Model\ContextContractsContractIdBigMapGetPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postContextContractsByContractIdBigMapGet(string $contractId, ?Model\ContextContractsContractIdBigMapGetPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostContextContractsByContractIdBigMapGet($contractId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostContextContractsByContractIdBigMapGet($contractId, $requestBody), $fetch);
     }
 
     /**
@@ -242,7 +251,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextContractsByContractIdCounter(string $contractId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContractsByContractIdCounter($contractId), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdCounter($contractId), $fetch);
     }
 
     /**
@@ -255,7 +264,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextContractsByContractIdDelegate(string $contractId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContractsByContractIdDelegate($contractId), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdDelegate($contractId), $fetch);
     }
 
     /**
@@ -264,16 +273,16 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      * @param string $contractId      a contract identifier encoded in b58check
      * @param array  $queryParameters {
      *
-     *     @var string $normalize_types Whether types should be normalized (annotations removed, combs flattened) or kept as they appeared in the original script.
-     * }
+     * @var string $normalize_types Whether types should be normalized (annotations removed, combs flattened) or kept as they appeared in the original script.
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdEntrypointsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextContractsContractIdEntrypointsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getContextContractsByContractIdEntrypoint(string $contractId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContractsByContractIdEntrypoint($contractId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdEntrypoint($contractId, $queryParameters), $fetch);
     }
 
     /**
@@ -283,8 +292,8 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      * @param string $entrypoint      A Michelson entrypoint (string of length < 32)
      * @param array  $queryParameters {
      *
-     *     @var string $normalize_types Whether types should be normalized (annotations removed, combs flattened) or kept as they appeared in the original script.
-     * }
+     * @var string $normalize_types Whether types should be normalized (annotations removed, combs flattened) or kept as they appeared in the original script.
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -292,7 +301,20 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextContractsByContractIdEntrypointByEntrypoint(string $contractId, string $entrypoint, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContractsByContractIdEntrypointByEntrypoint($contractId, $entrypoint, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdEntrypointByEntrypoint($contractId, $entrypoint, $queryParameters), $fetch);
+    }
+
+    /**
+     * Returns the estimated own pending slashed amount (in mutez) of a given contract.
+     *
+     * @param string $contractId a contract identifier encoded in b58check
+     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextContractsByContractIdEstimatedOwnPendingSlashedAmount(string $contractId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdEstimatedOwnPendingSlashedAmount($contractId), $fetch);
     }
 
     /**
@@ -305,7 +327,20 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextContractsByContractIdFrozenBond(string $contractId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContractsByContractIdFrozenBond($contractId), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdFrozenBond($contractId), $fetch);
+    }
+
+    /**
+     * The full balance (in mutez) of the contract. Includes its spendable balance, staked tez, unstake requests, and frozen bonds. Even if the contract is a delegate, it does not include any staked or delegated tez owned by external delegators.
+     *
+     * @param string $contractId a contract identifier encoded in b58check
+     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextContractsByContractIdFullBalance(string $contractId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdFullBalance($contractId), $fetch);
     }
 
     /**
@@ -318,7 +353,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextContractsByContractIdManagerKey(string $contractId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContractsByContractIdManagerKey($contractId), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdManagerKey($contractId), $fetch);
     }
 
     /**
@@ -327,25 +362,24 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      * @param string $contractId a contract identifier encoded in b58check
      * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdScriptGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextContractsContractIdScriptGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getContextContractsByContractIdScript(string $contractId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContractsByContractIdScript($contractId), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdScript($contractId), $fetch);
     }
 
     /**
      * Access the script of the contract and normalize it using the requested unparsing mode.
      *
-     * @param string                                                                                     $contractId  a contract identifier encoded in b58check
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdScriptNormalizedPostBody|null $requestBody
-     * @param string                                                                                     $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $contractId a contract identifier encoded in b58check
+     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postContextContractsByContractIdScriptNormalized(string $contractId, Model\ContextContractsContractIdScriptNormalizedPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postContextContractsByContractIdScriptNormalized(string $contractId, ?Model\ContextContractsContractIdScriptNormalizedPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostContextContractsByContractIdScriptNormalized($contractId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostContextContractsByContractIdScriptNormalized($contractId, $requestBody), $fetch);
     }
 
     /**
@@ -354,17 +388,69 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      * @param string $contractId      a contract identifier encoded in b58check
      * @param array  $queryParameters {
      *
-     *     @var string $offset_commitment commitments and ciphertexts are returned from the specified offset up to the most recent
-     *     @var string $offset_nullifier Nullifiers are returned from the specified offset up to the most recent.
-     * }
+     * @var string $offset_commitment commitments and ciphertexts are returned from the specified offset up to the most recent
+     * @var string $offset_nullifier Nullifiers are returned from the specified offset up to the most recent.
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdSingleSaplingGetDiffGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextContractsContractIdSingleSaplingGetDiffGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getContextContractsByContractIdSingleSaplingGetDiff(string $contractId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContractsByContractIdSingleSaplingGetDiff($contractId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdSingleSaplingGetDiff($contractId, $queryParameters), $fetch);
+    }
+
+    /**
+     * The spendable balance of a contract (in mutez), also known as liquid balance. Corresponds to tez owned by the contract that are neither staked, nor in unstaked requests, nor in frozen bonds. Identical to the 'balance' RPC.
+     *
+     * @param string $contractId a contract identifier encoded in b58check
+     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextContractsByContractIdSpendable(string $contractId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdSpendable($contractId), $fetch);
+    }
+
+    /**
+     * The sum (in mutez) of the spendable balance and frozen bonds of a contract. Corresponds to the contract's full balance from which staked funds and unstake requests have been excluded. Identical to the 'balance_and_frozen_bonds' RPC.
+     *
+     * @param string $contractId a contract identifier encoded in b58check
+     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextContractsByContractIdSpendableAndFrozenBond(string $contractId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdSpendableAndFrozenBond($contractId), $fetch);
+    }
+
+    /**
+     * Access the staked balance of a contract (in mutez). Returns None if the contract is originated, or neither delegated nor a delegate.
+     *
+     * @param string $contractId a contract identifier encoded in b58check
+     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextContractsByContractIdStakedBalance(string $contractId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdStakedBalance($contractId), $fetch);
+    }
+
+    /**
+     * Returns an abstract representation of the contract's total_delegated_stake.
+     *
+     * @param string $contractId a contract identifier encoded in b58check
+     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextContractsByContractIdStakingNumerator(string $contractId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdStakingNumerator($contractId), $fetch);
     }
 
     /**
@@ -377,21 +463,20 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextContractsByContractIdStorage(string $contractId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContractsByContractIdStorage($contractId), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdStorage($contractId), $fetch);
     }
 
     /**
      * Access the data of the contract and normalize it using the requested unparsing mode.
      *
-     * @param string                                                                                      $contractId  a contract identifier encoded in b58check
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdStorageNormalizedPostBody|null $requestBody
-     * @param string                                                                                      $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $contractId a contract identifier encoded in b58check
+     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postContextContractsByContractIdStorageNormalized(string $contractId, Model\ContextContractsContractIdStorageNormalizedPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postContextContractsByContractIdStorageNormalized(string $contractId, ?Model\ContextContractsContractIdStorageNormalizedPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostContextContractsByContractIdStorageNormalized($contractId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostContextContractsByContractIdStorageNormalized($contractId, $requestBody), $fetch);
     }
 
     /**
@@ -404,7 +489,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextContractsByContractIdStoragePaidSpace(string $contractId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContractsByContractIdStoragePaidSpace($contractId), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdStoragePaidSpace($contractId), $fetch);
     }
 
     /**
@@ -417,21 +502,59 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextContractsByContractIdStorageUsedSpace(string $contractId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextContractsByContractIdStorageUsedSpace($contractId), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdStorageUsedSpace($contractId), $fetch);
     }
 
     /**
      * Access the contract's balance of ticket with specified ticketer, content type, and content.
      *
-     * @param string                                                                                  $contractId  a contract identifier encoded in b58check
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\ContextContractsContractIdTicketBalancePostBody|null $requestBody
-     * @param string                                                                                  $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $contractId a contract identifier encoded in b58check
+     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postContextContractsByContractIdTicketBalance(string $contractId, Model\ContextContractsContractIdTicketBalancePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postContextContractsByContractIdTicketBalance(string $contractId, ?Model\ContextContractsContractIdTicketBalancePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostContextContractsByContractIdTicketBalance($contractId, $requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostContextContractsByContractIdTicketBalance($contractId, $requestBody), $fetch);
+    }
+
+    /**
+     * Access the unstake requests of the contract. The requests that appear in the finalizable field can be finalized, which means that the contract can transfer these (no longer frozen) funds to their spendable balance with a [finalize_unstake] operation call. Returns None if there is no unstake request pending.
+     *
+     * @param string $contractId a contract identifier encoded in b58check
+     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextContractsByContractIdUnstakeRequest(string $contractId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdUnstakeRequest($contractId), $fetch);
+    }
+
+    /**
+     * Access the balance of a contract that was requested for an unstake operation, and is no longer frozen, which means it will appear in the spendable balance of the contract after any stake/unstake/finalize_unstake operation. Returns None if the contract is originated.
+     *
+     * @param string $contractId a contract identifier encoded in b58check
+     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextContractsByContractIdUnstakedFinalizableBalance(string $contractId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdUnstakedFinalizableBalance($contractId), $fetch);
+    }
+
+    /**
+     * Access the balance of a contract that was requested for an unstake operation, but is still frozen for the duration of the slashing period. Returns None if the contract is originated.
+     *
+     * @param string $contractId a contract identifier encoded in b58check
+     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextContractsByContractIdUnstakedFrozenBalance(string $contractId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextContractsByContractIdUnstakedFrozenBalance($contractId), $fetch);
     }
 
     /**
@@ -439,26 +562,44 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextDalConfirmedSlotHeadersHistory(string $fetch = self::FETCH_OBJECT)
+    public function getContextDalCommitmentsHistory(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDalConfirmedSlotHeadersHistory(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDalCommitmentsHistory(), $fetch);
     }
 
     /**
-     * Get the shard assignements for a given level.
+     * Get the published slots headers for the given level.
      *
      * @param array $queryParameters {
      *
-     *     @var string $level A level integer
-     * }
+     * @var string $level A level integer
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextDalPublishedSlotHeadersGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDalPublishedSlotHeaders(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDalPublishedSlotHeaders($queryParameters), $fetch);
+    }
+
+    /**
+     * Get the shards assignment for a given level (the default is the current level) and given delegates (the default is all delegates).
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $level A level integer
+     * @var string $delegates A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ContextDalShardsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function getContextDalShards(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDalShards($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDalShards($queryParameters), $fetch);
     }
 
     /**
@@ -466,11 +607,11 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var string $active
-     *     @var string $inactive
-     *     @var string $with_minimal_stake
-     *     @var string $without_minimal_stake
-     * }
+     * @var string $active
+     * @var string $inactive
+     * @var string $with_minimal_stake
+     * @var string $without_minimal_stake
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -478,20 +619,46 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextDelegates(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDelegates($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDelegates($queryParameters), $fetch);
     }
 
     /**
-     * Everything about a delegate.
+     * Everything about a delegate. Gathers the outputs of all RPCs with the ../delegates/<pkh> prefix.
      *
      * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextDelegatesPkhGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextDelegatesPkhGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getContextDelegateByPkh(string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDelegateByPkh($pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDelegateByPkh($pkh), $fetch);
+    }
+
+    /**
+     * Returns the currently active staking parameters for the given delegate.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ContextDelegatesPkhActiveStakingParametersGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhActiveStakingParameter(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhActiveStakingParameter($pkh), $fetch);
+    }
+
+    /**
+     * The current baking power of a delegate, using the current staked and delegated balances of the baker and its delegators. In other words, the baking rights that the baker would get for a future cycle if the current cycle ended right at the current block.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhBakingPower(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhBakingPower($pkh), $fetch);
     }
 
     /**
@@ -500,15 +667,28 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextDelegatesPkhConsensusKeyGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextDelegatesPkhConsensusKeyGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getContextDelegatesByPkhConsensusKey(string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDelegatesByPkhConsensusKey($pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhConsensusKey($pkh), $fetch);
     }
 
     /**
-     * Returns the current amount of the frozen deposits (in mutez).
+     * DEPRECATED; use baking_power instead.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhCurrentBakingPower(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhCurrentBakingPower($pkh), $fetch);
+    }
+
+    /**
+     * DEPRECATED; use total_staked instead.
      *
      * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -517,7 +697,20 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextDelegatesByPkhCurrentFrozenDeposit(string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDelegatesByPkhCurrentFrozenDeposit($pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhCurrentFrozenDeposit($pkh), $fetch);
+    }
+
+    /**
+     * The voting power of a given delegate, as computed from its current stake.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhCurrentVotingPower(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhCurrentVotingPower($pkh), $fetch);
     }
 
     /**
@@ -530,11 +723,11 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextDelegatesByPkhDeactivated(string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDelegatesByPkhDeactivated($pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhDeactivated($pkh), $fetch);
     }
 
     /**
-     * Returns the sum (in mutez) of all balances of all the contracts that delegate to a given delegate. This excludes the delegate's own balance, its frozen deposits and its frozen bonds.
+     * DEPRECATED; to get this value, you can call RPCs external_staked and external_delegated, and add their outputs together.
      *
      * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -543,11 +736,11 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextDelegatesByPkhDelegatedBalance(string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDelegatesByPkhDelegatedBalance($pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhDelegatedBalance($pkh), $fetch);
     }
 
     /**
-     * Returns the list of contracts that delegate to a given delegate.
+     * DEPRECATED; use delegators instead.
      *
      * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -556,11 +749,76 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextDelegatesByPkhDelegatedContracts(string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDelegatesByPkhDelegatedContracts($pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhDelegatedContracts($pkh), $fetch);
     }
 
     /**
-     * Returns the initial amount (that is, at the beginning of a cycle) of the frozen deposits (in mutez). This amount is the same as the current amount of the frozen deposits, unless the delegate has been punished.
+     * The list of all contracts that are currently delegating to the delegate. Includes both user accounts and smart contracts. Includes the delegate itself.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhDelegators(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhDelegators($pkh), $fetch);
+    }
+
+    /**
+     * Returns the pending denunciations for the given delegate.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ContextDelegatesPkhDenunciationsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhDenunciations(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhDenunciations($pkh), $fetch);
+    }
+
+    /**
+     * Returns the estimated shared pending slashed amount (in mutez) of a given delegate.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhEstimatedSharedPendingSlashedAmount(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhEstimatedSharedPendingSlashedAmount($pkh), $fetch);
+    }
+
+    /**
+     * The sum (in mutez) of non-staked tokens that currently count as delegated to the baker, excluding those owned by the baker iself. Does not take limits such as overstaking or overdelegation into account. This includes the spendable balances and frozen bonds of all the baker's external delegators. It also includes unstake requests of contracts other than the baker, on the condition that the contract was delegating to the baker at the time of the unstake operation. So this includes most but not all unstake requests from current delegators, and might include some unstake requests from old delegators. Limits such as overstaking and overdelegation have not been applied yet.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhExternalDelegated(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhExternalDelegated($pkh), $fetch);
+    }
+
+    /**
+     * The sum (in mutez) of all tokens currently staked by the baker's external delegators. This excludes the baker's own staked tokens.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhExternalStaked(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhExternalStaked($pkh), $fetch);
+    }
+
+    /**
+     * DEPRECATED; call RPC total_staked on the last block of (current_cycle - 3) instead. Returns the total amount (in mutez) that was staked for the baker by all stakers (including the baker itself) at the time the staking rights for the current cycle were computed.
      *
      * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -569,11 +827,11 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextDelegatesByPkhFrozenDeposit(string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDelegatesByPkhFrozenDeposit($pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhFrozenDeposit($pkh), $fetch);
     }
 
     /**
-     * Returns the frozen deposits limit for the given delegate or none if no limit is set.
+     * DEPRECATED; the frozen deposits limit has no effects since the activation of Adaptive Issuance and Staking during the Paris protocol.
      *
      * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -582,11 +840,11 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextDelegatesByPkhFrozenDepositsLimit(string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDelegatesByPkhFrozenDepositsLimit($pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhFrozenDepositsLimit($pkh), $fetch);
     }
 
     /**
-     * Returns the full balance (in mutez) of a given delegate, including the frozen deposits and the frozen bonds. It does not include its delegated balance.
+     * DEPRECATED; use own_full_balance instead.
      *
      * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -595,7 +853,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextDelegatesByPkhFullBalance(string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDelegatesByPkhFullBalance($pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhFullBalance($pkh), $fetch);
     }
 
     /**
@@ -608,24 +866,115 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextDelegatesByPkhGracePeriod(string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDelegatesByPkhGracePeriod($pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhGracePeriod($pkh), $fetch);
     }
 
     /**
-     * Returns cycle and level participation information. In particular this indicates, in the field 'expected_cycle_activity', the number of slots the delegate is expected to have in the cycle based on its active stake. The field 'minimal_cycle_activity' indicates the minimal endorsing slots in the cycle required to get endorsing rewards. It is computed based on 'expected_cycle_activity. The fields 'missed_slots' and 'missed_levels' indicate the number of missed endorsing slots and missed levels (for endorsing) in the cycle so far. 'missed_slots' indicates the number of missed endorsing slots in the cycle so far. The field 'remaining_allowed_missed_slots' indicates the remaining amount of endorsing slots that can be missed in the cycle before forfeiting the rewards. Finally, 'expected_endorsing_rewards' indicates the endorsing rewards that will be distributed at the end of the cycle if activity at that point will be greater than the minimal required; if the activity is already known to be below the required minimum, then the rewards are zero.
+     * Returns true if the delegate is forbidden to participate in consensus.
      *
      * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextDelegatesPkhParticipationGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextDelegatesByPkhParticipation(string $pkh, string $fetch = self::FETCH_OBJECT)
+    public function getContextDelegatesByPkhIsForbidden(string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDelegatesByPkhParticipation($pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhIsForbidden($pkh), $fetch);
     }
 
     /**
-     * Returns the total amount of tokens (in mutez) delegated to a given delegate. This includes the balances of all the contracts that delegate to it, but also the balance of the delegate itself, its frozen deposits, and its frozen bonds.
+     * Returns the minimum of delegated tez (in mutez) during the current cycle and the block level at the end of which the minimum was reached. This only takes into account the value of `total_delegated` at the end of each block, not in the middle of applying operations. This is the delegated amount that would be used to compute the delegate's future baking rights if the cycle ended at the current block. If the minimum was reached multiple times, the returned level is the earliest level of the current cycle that reached this minimum. For instance, if `total_delegated` hasn't changed at all since the beginning of the current cycle, returns the first level of the current cycle. (If the contract is not registered as a delegate, returns 0 mutez and omits the level.).
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ContextDelegatesPkhMinDelegatedInCurrentCycleGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhMinDelegatedInCurrentCycle(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhMinDelegatedInCurrentCycle($pkh), $fetch);
+    }
+
+    /**
+     * The amount (in mutez) currently owned by the baker itself and counting as delegated for the purpose of baking rights. This corresponds to all non-staked tokens owned by the baker: spendable balance, frozen bonds, and unstake requests. (Note: There is one exception: if the baker still has unstake requests created at a time when it was delegating to a different delegate, then these unstake requests still count as delegated to the former delegate. Any such unstake requests are excluded from the amount returned by the present RPC, despite being non-staked tokens owned by the baker.).
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhOwnDelegated(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhOwnDelegated($pkh), $fetch);
+    }
+
+    /**
+     * The full balance (in mutez) of tokens owned by the delegate itself. Includes its spendable balance, staked tez, unstake requests, and frozen bonds. Does not include any tokens owned by external delegators. This RPC fails when the pkh is not a delegate. When it is a delegate, this RPC outputs the same amount as ../<block_id>/context/contracts/<delegate_contract_id>/full_balance.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhOwnFullBalance(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhOwnFullBalance($pkh), $fetch);
+    }
+
+    /**
+     * The amount (in mutez) currently owned and staked by the baker itself. Returns the same value as ../<block_id>/context/contracts/<delegate_contract_id>/staked_balance (except for the fact that the present RPC fails if the public_key_hash in the path is not a delegate).
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhOwnStaked(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhOwnStaked($pkh), $fetch);
+    }
+
+    /**
+     * Returns cycle and level participation information. In particular this indicates, in the field 'expected_cycle_activity', the number of slots the delegate is expected to have in the cycle based on its active stake. The field 'minimal_cycle_activity' indicates the minimal attesting slots in the cycle required to get attesting rewards. It is computed based on 'expected_cycle_activity. The fields 'missed_slots' and 'missed_levels' indicate the number of missed attesting slots and missed levels (for attesting) in the cycle so far. 'missed_slots' indicates the number of missed attesting slots in the cycle so far. The field 'remaining_allowed_missed_slots' indicates the remaining amount of attesting slots that can be missed in the cycle before forfeiting the rewards. Finally, 'expected_attesting_rewards' indicates the attesting rewards that will be distributed at the end of the cycle if activity at that point will be greater than the minimal required; if the activity is already known to be below the required minimum, then the rewards are zero.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ContextDelegatesPkhParticipationGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhParticipation(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhParticipation($pkh), $fetch);
+    }
+
+    /**
+     * Returns the pending values for the given delegate's staking parameters.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ContextDelegatesPkhPendingStakingParametersGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhPendingStakingParameters(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhPendingStakingParameters($pkh), $fetch);
+    }
+
+    /**
+     * Returns the list of accounts that stake to a given delegate together with their share of the frozen deposits.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ContextDelegatesPkhStakersGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhStakers(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhStakers($pkh), $fetch);
+    }
+
+    /**
+     * DEPRECATED; to get this value, you can call RPCs total_staked and total_delegated, and add their outputs together.
      *
      * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -634,7 +983,85 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextDelegatesByPkhStakingBalance(string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDelegatesByPkhStakingBalance($pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhStakingBalance($pkh), $fetch);
+    }
+
+    /**
+     * Returns an abstract representation of the total delegated stake.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhStakingDenominator(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhStakingDenominator($pkh), $fetch);
+    }
+
+    /**
+     * All tokens (in mutez) that currently count as delegated for the purpose of computing the baker's rights; they weigh half as much as staked tez in the rights. Limits such as overstaking and overdelegation have not been applied yet. This corresponds to all non-staked tez owned by the baker's delegators (including the baker itself): spendable balances, frozen bonds, and unstaked requests, except for any unstake requests that have been created before the delegator changed its delegate to the current baker (because they still count as delegated for the old delegate instead).
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhTotalDelegated(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhTotalDelegated($pkh), $fetch);
+    }
+
+    /**
+     * DEPRECATED; use external_staked instead.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhTotalDelegatedStake(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhTotalDelegatedStake($pkh), $fetch);
+    }
+
+    /**
+     * The total amount (in mutez) currently staked for the baker, both by the baker itself and by external stakers. This is the staked amount before applying the baker's 'limit_of_staking_over_baking'; in other words, it includes overstaked tez if there are any.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhTotalStaked(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhTotalStaked($pkh), $fetch);
+    }
+
+    /**
+     * For each cycle, returns the total amount (in mutez) contained in all unstake requests created during this cycle by all delegators, including the baker itself. Note that these tokens count as delegated to the baker for the purpose of computing baking rights, and are included in the amount returned by the total_delegated RPC.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ContextDelegatesPkhTotalUnstakedPerCycleGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhTotalUnstakedPerCycle(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhTotalUnstakedPerCycle($pkh), $fetch);
+    }
+
+    /**
+     * DEPRECATED; use total_unstaked_per_cycle instead.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ContextDelegatesPkhUnstakedFrozenDepositsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDelegatesByPkhUnstakedFrozenDeposits(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhUnstakedFrozenDeposits($pkh), $fetch);
     }
 
     /**
@@ -643,11 +1070,11 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextDelegatesPkhVotingInfoGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextDelegatesPkhVotingInfoGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getContextDelegatesByPkhVotingInfo(string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDelegatesByPkhVotingInfo($pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhVotingInfo($pkh), $fetch);
     }
 
     /**
@@ -660,7 +1087,67 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextDelegatesByPkhVotingPower(string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextDelegatesByPkhVotingPower($pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextDelegatesByPkhVotingPower($pkh), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ContextDenunciationsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextDenunciations(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextDenunciations(), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextIssuanceCurrentYearlyRate(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextIssuanceCurrentYearlyRate(), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ContextIssuanceCurrentYearlyRateDetailsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextIssuanceCurrentYearlyRateDetail(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextIssuanceCurrentYearlyRateDetail(), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ContextIssuanceCurrentYearlyRateExactGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextIssuanceCurrentYearlyRateExact(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextIssuanceCurrentYearlyRateExact(), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\ContextIssuanceExpectedIssuanceGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextIssuanceExpectedIssuance(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextIssuanceExpectedIssuance(), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextIssuanceIssuancePerMinute(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextIssuanceIssuancePerMinute(), $fetch);
     }
 
     /**
@@ -670,7 +1157,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextLiquidityBakingCpmmAddress(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextLiquidityBakingCpmmAddress(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextLiquidityBakingCpmmAddress(), $fetch);
     }
 
     /**
@@ -678,8 +1165,8 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var string $holey Send only hashes, omit data of key
-     * }
+     * @var string $holey Send only hashes, omit data of key
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -687,7 +1174,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextMerkleTree(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextMerkleTree($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextMerkleTree($queryParameters), $fetch);
     }
 
     /**
@@ -695,8 +1182,8 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var string $holey Send only hashes, omit data of key
-     * }
+     * @var string $holey Send only hashes, omit data of key
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -704,7 +1191,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextMerkleTreeV2(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextMerkleTreeV2($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextMerkleTreeV2($queryParameters), $fetch);
     }
 
     /**
@@ -717,7 +1204,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextNonceByBlockLevel(string $blockLevel, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextNonceByBlockLevel($blockLevel), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextNonceByBlockLevel($blockLevel), $fetch);
     }
 
     /**
@@ -725,8 +1212,8 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var string $depth
-     * }
+     * @var string $depth
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -734,7 +1221,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextRawByte(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextRawByte($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextRawByte($queryParameters), $fetch);
     }
 
     /**
@@ -743,30 +1230,29 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      * @param string $saplingStateId  A sapling state identifier
      * @param array  $queryParameters {
      *
-     *     @var string $offset_commitment commitments and ciphertexts are returned from the specified offset up to the most recent
-     *     @var string $offset_nullifier Nullifiers are returned from the specified offset up to the most recent.
-     * }
+     * @var string $offset_commitment commitments and ciphertexts are returned from the specified offset up to the most recent
+     * @var string $offset_nullifier Nullifiers are returned from the specified offset up to the most recent.
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextSaplingSaplingStateIdGetDiffGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextSaplingSaplingStateIdGetDiffGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getContextSaplingBySaplingStateIdGetDiff(string $saplingStateId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSaplingBySaplingStateIdGetDiff($saplingStateId, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSaplingBySaplingStateIdGetDiff($saplingStateId, $queryParameters), $fetch);
     }
 
     /**
      * Seed of the cycle to which the block belongs.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\ContextSeedPostBody|null $requestBody
-     * @param string                                                      $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postContextSeed(Model\ContextSeedPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postContextSeed(?Model\ContextSeedPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostContextSeed($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostContextSeed($requestBody), $fetch);
     }
 
     /**
@@ -776,24 +1262,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextSeedComputation(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSeedComputation(), $fetch);
-    }
-
-    /**
-     * Returns the index of the selected snapshot for the current cycle or for the specific `cycle` passed as argument, if any.
-     *
-     * @param array $queryParameters {
-     *
-     *     @var string $cycle A cycle integer
-     * }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \Psr\Http\Message\ResponseInterface|null
-     */
-    public function getContextSelectedSnapshot(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSelectedSnapshot($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSeedComputation(), $fetch);
     }
 
     /**
@@ -803,304 +1272,294 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getContextSmartRollupsAll(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsAll(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsAll(), $fetch);
     }
 
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextSmartRollupsAllInboxGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextSmartRollupsAllInboxGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getContextSmartRollupsAllInbox(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsAllInbox(), $fetch);
-    }
-
-    /**
-     * Proof for a smart rollup origination.
-     *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\ContextSmartRollupsAllOriginationProofPostBody|null $requestBody
-     * @param string                                                                                 $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \Psr\Http\Message\ResponseInterface|null
-     */
-    public function postContextSmartRollupsAllOriginationProof(Model\ContextSmartRollupsAllOriginationProofPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostContextSmartRollupsAllOriginationProof($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsAllInbox(), $fetch);
     }
 
     /**
      * Commitment for a smart rollup from its hash.
      *
-     * @param string $smartRollupHash           Smart_rollup_hash (Base58Check-encoded)
-     * @param string $smartRollupCommitmentHash Smart_rollup_commitment_hash (Base58Check-encoded)
+     * @param string $smartRollupAddress        smart_rollup_address (Base58Check-encoded)
+     * @param string $smartRollupCommitmentHash smart_rollup_commitment_hash (Base58Check-encoded)
      * @param string $fetch                     Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextSmartRollupsSmartRollupSmartRollupHashCommitmentSmartRollupCommitmentHashGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextSmartRollupsSmartRollupSmartRollupAddressCommitmentSmartRollupCommitmentHashGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextSmartRollupsSmartRollupBySmartRollupHashCommitmentBySmartRollupCommitmentHash(string $smartRollupHash, string $smartRollupCommitmentHash, string $fetch = self::FETCH_OBJECT)
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressCommitmentBySmartRollupCommitmentHash(string $smartRollupAddress, string $smartRollupCommitmentHash, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupHashCommitmentBySmartRollupCommitmentHash($smartRollupHash, $smartRollupCommitmentHash), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressCommitmentBySmartRollupCommitmentHash($smartRollupAddress, $smartRollupCommitmentHash), $fetch);
     }
 
     /**
      * Returns true if and only if the provided commitment can be cemented.
      *
-     * @param string $smartRollupHash           Smart_rollup_hash (Base58Check-encoded)
-     * @param string $smartRollupCommitmentHash Smart_rollup_commitment_hash (Base58Check-encoded)
+     * @param string $smartRollupAddress        smart_rollup_address (Base58Check-encoded)
+     * @param string $smartRollupCommitmentHash smart_rollup_commitment_hash (Base58Check-encoded)
      * @param string $fetch                     Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextSmartRollupsSmartRollupBySmartRollupHashCommitmentBySmartRollupCommitmentHashCanBeCemented(string $smartRollupHash, string $smartRollupCommitmentHash, string $fetch = self::FETCH_OBJECT)
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressCommitmentBySmartRollupCommitmentHashCanBeCemented(string $smartRollupAddress, string $smartRollupCommitmentHash, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupHashCommitmentBySmartRollupCommitmentHashCanBeCemented($smartRollupHash, $smartRollupCommitmentHash), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressCommitmentBySmartRollupCommitmentHashCanBeCemented($smartRollupAddress, $smartRollupCommitmentHash), $fetch);
     }
 
     /**
      * List of stakers indexes staking on a given commitment.
      *
-     * @param string $smartRollupHash           Smart_rollup_hash (Base58Check-encoded)
-     * @param string $smartRollupCommitmentHash Smart_rollup_commitment_hash (Base58Check-encoded)
+     * @param string $smartRollupAddress        smart_rollup_address (Base58Check-encoded)
+     * @param string $smartRollupCommitmentHash smart_rollup_commitment_hash (Base58Check-encoded)
      * @param string $fetch                     Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextSmartRollupsSmartRollupBySmartRollupHashCommitmentBySmartRollupCommitmentHashStakersIndexes(string $smartRollupHash, string $smartRollupCommitmentHash, string $fetch = self::FETCH_OBJECT)
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressCommitmentBySmartRollupCommitmentHashStakersIndexes(string $smartRollupAddress, string $smartRollupCommitmentHash, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupHashCommitmentBySmartRollupCommitmentHashStakersIndexes($smartRollupHash, $smartRollupCommitmentHash), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressCommitmentBySmartRollupCommitmentHashStakersIndexes($smartRollupAddress, $smartRollupCommitmentHash), $fetch);
+    }
+
+    /**
+     * Return the known consumed outputs of a smart rollup.
+     *
+     * @param string $smartRollupAddress smart_rollup_address (Base58Check-encoded)
+     * @param string $blockLevel         A level integer
+     * @param string $fetch              Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressConsumedOutputsByBlockLevel(string $smartRollupAddress, string $blockLevel, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressConsumedOutputsByBlockLevel($smartRollupAddress, $blockLevel), $fetch);
     }
 
     /**
      * Genesis information (level and commitment hash) for a smart rollup.
      *
-     * @param string $smartRollupHash Smart_rollup_hash (Base58Check-encoded)
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $smartRollupAddress smart_rollup_address (Base58Check-encoded)
+     * @param string $fetch              Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextSmartRollupsSmartRollupSmartRollupHashGenesisInfoGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextSmartRollupsSmartRollupSmartRollupAddressGenesisInfoGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextSmartRollupsSmartRollupBySmartRollupHashGenesisInfo(string $smartRollupHash, string $fetch = self::FETCH_OBJECT)
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressGenesisInfo(string $smartRollupAddress, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupHashGenesisInfo($smartRollupHash), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressGenesisInfo($smartRollupAddress), $fetch);
     }
 
     /**
      * List of commitments associated to a rollup for a given inbox level.
      *
-     * @param string $smartRollupHash Smart_rollup_hash (Base58Check-encoded)
-     * @param string $blockLevel      A level integer
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $smartRollupAddress smart_rollup_address (Base58Check-encoded)
+     * @param string $blockLevel         A level integer
+     * @param string $fetch              Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextSmartRollupsSmartRollupBySmartRollupHashInboxLevelByBlockLevelCommitment(string $smartRollupHash, string $blockLevel, string $fetch = self::FETCH_OBJECT)
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressInboxLevelByBlockLevelCommitment(string $smartRollupAddress, string $blockLevel, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupHashInboxLevelByBlockLevelCommitment($smartRollupHash, $blockLevel), $fetch);
-    }
-
-    /**
-     * Initial PVM state hash of smart rollup.
-     *
-     * @param string $smartRollupHash Smart_rollup_hash (Base58Check-encoded)
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \Psr\Http\Message\ResponseInterface|null
-     */
-    public function getContextSmartRollupsSmartRollupBySmartRollupHashInitialPvmStateHash(string $smartRollupHash, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupHashInitialPvmStateHash($smartRollupHash), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressInboxLevelByBlockLevelCommitment($smartRollupAddress, $blockLevel), $fetch);
     }
 
     /**
      * Kind of smart rollup.
      *
-     * @param string $smartRollupHash Smart_rollup_hash (Base58Check-encoded)
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $smartRollupAddress smart_rollup_address (Base58Check-encoded)
+     * @param string $fetch              Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextSmartRollupsSmartRollupBySmartRollupHashKind(string $smartRollupHash, string $fetch = self::FETCH_OBJECT)
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressKind(string $smartRollupAddress, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupHashKind($smartRollupHash), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressKind($smartRollupAddress), $fetch);
     }
 
     /**
      * Level and hash of the last cemented commitment for a smart rollup.
      *
-     * @param string $smartRollupHash Smart_rollup_hash (Base58Check-encoded)
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $smartRollupAddress smart_rollup_address (Base58Check-encoded)
+     * @param string $fetch              Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextSmartRollupsSmartRollupSmartRollupHashLastCementedCommitmentHashWithLevelGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextSmartRollupsSmartRollupSmartRollupAddressLastCementedCommitmentHashWithLevelGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextSmartRollupsSmartRollupBySmartRollupHashLastCementedCommitmentHashWithLevel(string $smartRollupHash, string $fetch = self::FETCH_OBJECT)
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressLastCementedCommitmentHashWithLevel(string $smartRollupAddress, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupHashLastCementedCommitmentHashWithLevel($smartRollupHash), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressLastCementedCommitmentHashWithLevel($smartRollupAddress), $fetch);
+    }
+
+    /**
+     * Last whitelist update for private smart rollups. If the output is None then the rollup is public.
+     *
+     * @param string $smartRollupAddress smart_rollup_address (Base58Check-encoded)
+     * @param string $fetch              Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressLastWhitelistUpdate(string $smartRollupAddress, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressLastWhitelistUpdate($smartRollupAddress), $fetch);
     }
 
     /**
      * List of stakers in conflict with the given staker.
      *
-     * @param string $smartRollupHash Smart_rollup_hash (Base58Check-encoded)
-     * @param string $pkh             A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $smartRollupAddress smart_rollup_address (Base58Check-encoded)
+     * @param string $pkh                A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch              Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextSmartRollupsSmartRollupSmartRollupHashStakerPkhConflictsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextSmartRollupsSmartRollupSmartRollupAddressStakerPkhConflictsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextSmartRollupsSmartRollupBySmartRollupHashStakerByPkhConflicts(string $smartRollupHash, string $pkh, string $fetch = self::FETCH_OBJECT)
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressStakerByPkhConflicts(string $smartRollupAddress, string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupHashStakerByPkhConflicts($smartRollupHash, $pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressStakerByPkhConflicts($smartRollupAddress, $pkh), $fetch);
     }
 
     /**
      * Ongoing refutation games for a given staker.
      *
-     * @param string $smartRollupHash Smart_rollup_hash (Base58Check-encoded)
-     * @param string $pkh             A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $smartRollupAddress smart_rollup_address (Base58Check-encoded)
+     * @param string $pkh                A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch              Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextSmartRollupsSmartRollupSmartRollupHashStakerPkhGamesGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ContextSmartRollupsSmartRollupSmartRollupAddressStakerPkhGamesGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextSmartRollupsSmartRollupBySmartRollupHashStakerByPkhGames(string $smartRollupHash, string $pkh, string $fetch = self::FETCH_OBJECT)
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressStakerByPkhGames(string $smartRollupAddress, string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupHashStakerByPkhGames($smartRollupHash, $pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressStakerByPkhGames($smartRollupAddress, $pkh), $fetch);
     }
 
     /**
      * Staker index associated to a public key hash for a given rollup.
      *
-     * @param string $smartRollupHash Smart_rollup_hash (Base58Check-encoded)
-     * @param string $pkh             A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $smartRollupAddress smart_rollup_address (Base58Check-encoded)
+     * @param string $pkh                A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch              Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextSmartRollupsSmartRollupBySmartRollupHashStakerByPkhIndex(string $smartRollupHash, string $pkh, string $fetch = self::FETCH_OBJECT)
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressStakerByPkhIndex(string $smartRollupAddress, string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupHashStakerByPkhIndex($smartRollupHash, $pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressStakerByPkhIndex($smartRollupAddress, $pkh), $fetch);
     }
 
     /**
      * The newest commitment on which the operator has staked on for a smart rollup. Note that is can return a commitment that is before the last cemented one.
      *
-     * @param string $smartRollupHash Smart_rollup_hash (Base58Check-encoded)
-     * @param string $pkh             A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $smartRollupAddress smart_rollup_address (Base58Check-encoded)
+     * @param string $pkh                A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch              Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextSmartRollupsSmartRollupBySmartRollupHashStakerByPkhStakedOnCommitment(string $smartRollupHash, string $pkh, string $fetch = self::FETCH_OBJECT)
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressStakerByPkhStakedOnCommitment(string $smartRollupAddress, string $pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupHashStakerByPkhStakedOnCommitment($smartRollupHash, $pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressStakerByPkhStakedOnCommitment($smartRollupAddress, $pkh), $fetch);
     }
 
     /**
      * Returns the timeout of players.
      *
-     * @param string $smartRollupHash Smart_rollup_hash (Base58Check-encoded)
-     * @param string $pkh             A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $smartRollupAddress smart_rollup_address (Base58Check-encoded)
+     * @param string $staker1Pkh         A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $staker2Pkh         A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch              Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextSmartRollupsSmartRollupBySmartRollupHashStaker1ByPkhStaker2ByPkhTimeout(string $smartRollupHash, string $pkh, string $fetch = self::FETCH_OBJECT)
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressStaker1ByStaker1PkhStaker2ByStaker2PkhTimeout(string $smartRollupAddress, string $staker1Pkh, string $staker2Pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupHashStaker1ByPkhStaker2ByPkhTimeout($smartRollupHash, $pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressStaker1ByStaker1PkhStaker2ByStaker2PkhTimeout($smartRollupAddress, $staker1Pkh, $staker2Pkh), $fetch);
     }
 
     /**
      * Returns whether the timeout creates a result for the game.
      *
-     * @param string $smartRollupHash Smart_rollup_hash (Base58Check-encoded)
-     * @param string $pkh             A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $smartRollupAddress smart_rollup_address (Base58Check-encoded)
+     * @param string $staker1Pkh         A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $staker2Pkh         A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch              Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextSmartRollupsSmartRollupBySmartRollupHashStaker1ByPkhStaker2ByPkhTimeoutReached(string $smartRollupHash, string $pkh, string $fetch = self::FETCH_OBJECT)
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressStaker1ByStaker1PkhStaker2ByStaker2PkhTimeoutReached(string $smartRollupAddress, string $staker1Pkh, string $staker2Pkh, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupHashStaker1ByPkhStaker2ByPkhTimeoutReached($smartRollupHash, $pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressStaker1ByStaker1PkhStaker2ByStaker2PkhTimeoutReached($smartRollupAddress, $staker1Pkh, $staker2Pkh), $fetch);
     }
 
     /**
      * List of active stakers' public key hashes of a rollup.
      *
-     * @param string $smartRollupHash Smart_rollup_hash (Base58Check-encoded)
-     * @param string $fetch           Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $smartRollupAddress smart_rollup_address (Base58Check-encoded)
+     * @param string $fetch              Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextSmartRollupsSmartRollupBySmartRollupHashStakers(string $smartRollupHash, string $fetch = self::FETCH_OBJECT)
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressStakers(string $smartRollupAddress, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupHashStakers($smartRollupHash), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressStakers($smartRollupAddress), $fetch);
     }
 
     /**
-     * Return the commitment for a level, if any.
+     * Access the smart rollup's balance of ticket with specified ticketer, content type, and content.
      *
-     * @param string $txRollupId a tx rollup identifier encoded in b58check
-     * @param string $blockLevel A level integer
-     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $smartRollupAddress smart_rollup_address (Base58Check-encoded)
+     * @param string $fetch              Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextTxRollupByTxRollupIdCommitmentByBlockLevel(string $txRollupId, string $blockLevel, string $fetch = self::FETCH_OBJECT)
+    public function postContextSmartRollupsSmartRollupBySmartRollupAddressTicketBalance(string $smartRollupAddress, ?Model\ContextSmartRollupsSmartRollupSmartRollupAddressTicketBalancePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextTxRollupByTxRollupIdCommitmentByBlockLevel($txRollupId, $blockLevel), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostContextSmartRollupsSmartRollupBySmartRollupAddressTicketBalance($smartRollupAddress, $requestBody), $fetch);
     }
 
     /**
-     * Returns true if the public key hash already deposited a bond  for the given rollup.
+     * Whitelist for private smart rollups. If the output is None then the rollup is public.
      *
-     * @param string $txRollupId a tx rollup identifier encoded in b58check
-     * @param string $pkh        A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $smartRollupAddress smart_rollup_address (Base58Check-encoded)
+     * @param string $fetch              Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextTxRollupByTxRollupIdHasBondByPkh(string $txRollupId, string $pkh, string $fetch = self::FETCH_OBJECT)
+    public function getContextSmartRollupsSmartRollupBySmartRollupAddressWhitelist(string $smartRollupAddress, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextTxRollupByTxRollupIdHasBondByPkh($txRollupId, $pkh), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextSmartRollupsSmartRollupBySmartRollupAddressWhitelist($smartRollupAddress), $fetch);
     }
 
     /**
-     * Get the inbox of a transaction rollup.
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @param string $txRollupId a tx rollup identifier encoded in b58check
-     * @param string $blockLevel A level integer
-     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     * @return Model\ContextTotalCurrentlyStakedGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getContextTotalCurrentlyStaked(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetContextTotalCurrentlyStaked(), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextTxRollupByTxRollupIdInboxByBlockLevel(string $txRollupId, string $blockLevel, string $fetch = self::FETCH_OBJECT)
+    public function getContextTotalFrozenStake(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextTxRollupByTxRollupIdInboxByBlockLevel($txRollupId, $blockLevel), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextTotalFrozenStake(), $fetch);
     }
 
     /**
-     * Get the number of pending bonded commitments for a pkh on a rollup.
-     *
-     * @param string $txRollupId a tx rollup identifier encoded in b58check
-     * @param string $pkh        A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function getContextTxRollupByTxRollupIdPendingBondedCommitmentByPkh(string $txRollupId, string $pkh, string $fetch = self::FETCH_OBJECT)
+    public function getContextTotalSupply(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextTxRollupByTxRollupIdPendingBondedCommitmentByPkh($txRollupId, $pkh), $fetch);
-    }
-
-    /**
-     * Access the state of a rollup.
-     *
-     * @param string $txRollupId a tx rollup identifier encoded in b58check
-     * @param string $fetch      Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextTxRollupTxRollupIdStateGetResponse200|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function getContextTxRollupByTxRollupIdState(string $txRollupId, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetContextTxRollupByTxRollupIdState($txRollupId), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetContextTotalSupply(), $fetch);
     }
 
     /**
@@ -1110,27 +1569,27 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getHash(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetHash(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetHash(), $fetch);
     }
 
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HeaderGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HeaderGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getHeader(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetHeader(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetHeader(), $fetch);
     }
 
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HeaderProtocolDataGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HeaderProtocolDataGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getHeaderProtocolDatum(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetHeaderProtocolDatum(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetHeaderProtocolDatum(), $fetch);
     }
 
     /**
@@ -1140,7 +1599,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getHeaderProtocolDataRaw(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetHeaderProtocolDataRaw(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetHeaderProtocolDataRaw(), $fetch);
     }
 
     /**
@@ -1150,17 +1609,41 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getHeaderRaw(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetHeaderRaw(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetHeaderRaw(), $fetch);
     }
 
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HeaderShellGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HeaderShellGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getHeaderShell(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetHeaderShell(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetHeaderShell(), $fetch);
+    }
+
+    /**
+     * Retrieves the delegates allowed to attest a block.
+     * By default, it gives the attestation power for delegates that have at least one attestation slot for the next block.
+     * Parameters `level` and `cycle` can be used to specify the (valid) level(s) in the past or future at which the attestation rights have to be returned. Parameter `delegate` can be used to restrict the results to the given delegates.
+     * Parameter `consensus_key` can be used to restrict the results to the given consensus_keys.
+     * Returns the smallest attestation slots and the attestation power. Also returns the minimal timestamp that corresponds to attestation at the given level. The timestamps are omitted for levels in the past, and are only estimates for levels higher that the next block's, based on the hypothesis that all predecessor blocks were baked at the first round.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $level A level integer
+     * @var string $cycle A cycle integer
+     * @var string $delegate A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @var string $consensus_key A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\HelpersAttestationRightsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function getHelpersAttestationRights(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetHelpersAttestationRights($queryParameters), $fetch);
     }
 
     /**
@@ -1172,21 +1655,21 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var string $level A level integer
-     *     @var string $cycle A cycle integer
-     *     @var string $delegate A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     *     @var string $consensus_key A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     *     @var string $max_round
-     *     @var string $all
-     * }
+     * @var string $level A level integer
+     * @var string $cycle A cycle integer
+     * @var string $delegate A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @var string $consensus_key A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @var string $max_round
+     * @var string $all
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersBakingRightsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersBakingRightsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function getHelpersBakingRights(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetHelpersBakingRights($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetHelpersBakingRights($queryParameters), $fetch);
     }
 
     /**
@@ -1198,7 +1681,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getHelpersCompleteByPrefix(string $prefix, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetHelpersCompleteByPrefix($prefix), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetHelpersCompleteByPrefix($prefix), $fetch);
     }
 
     /**
@@ -1206,170 +1689,52 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var string $offset
-     * }
+     * @var string $offset
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersCurrentLevelGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersCurrentLevelGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getHelpersCurrentLevel(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetHelpersCurrentLevel($queryParameters), $fetch);
-    }
-
-    /**
-     * Retrieves the delegates allowed to endorse a block.
-     * By default, it gives the endorsing power for delegates that have at least one endorsing slot for the next block.
-     * Parameters `level` and `cycle` can be used to specify the (valid) level(s) in the past or future at which the endorsing rights have to be returned. Parameter `delegate` can be used to restrict the results to the given delegates.
-     * Parameter `consensus_key` can be used to restrict the results to the given consensus_keys.
-     * Returns the smallest endorsing slots and the endorsing power. Also returns the minimal timestamp that corresponds to endorsing at the given level. The timestamps are omitted for levels in the past, and are only estimates for levels higher that the next block's, based on the hypothesis that all predecessor blocks were baked at the first round.
-     *
-     * @param array $queryParameters {
-     *
-     *     @var string $level A level integer
-     *     @var string $cycle A cycle integer
-     *     @var string $delegate A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     *     @var string $consensus_key A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     * }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersEndorsingRightsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function getHelpersEndorsingRights(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetHelpersEndorsingRights($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetHelpersCurrentLevel($queryParameters), $fetch);
     }
 
     /**
      * Forge an operation.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeOperationsPostBody|null $requestBody
-     * @param string                                                                 $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersForgeOperation(Model\HelpersForgeOperationsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersForgeOperation(?Model\HelpersForgeOperationsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersForgeOperation($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersForgeOperation($requestBody), $fetch);
     }
 
     /**
      * Forge the protocol-specific part of a block header.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeProtocolDataPostBody|null $requestBody
-     * @param string                                                                   $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeProtocolDataPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersForgeProtocolDataPostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersForgeProtocolDatum(Model\HelpersForgeProtocolDataPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersForgeProtocolDatum(?Model\HelpersForgeProtocolDataPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersForgeProtocolDatum($requestBody), $fetch);
-    }
-
-    /**
-     * Compute the merkle tree hash of a commitment.
-     *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeTxRollupCommitmentMerkleTreeHashPostBody|null $requestBody
-     * @param string                                                                                       $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeTxRollupCommitmentMerkleTreeHashPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function postHelpersForgeTxRollupCommitmentMerkleTreeHash(Model\HelpersForgeTxRollupCommitmentMerkleTreeHashPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersForgeTxRollupCommitmentMerkleTreeHash($requestBody), $fetch);
-    }
-
-    /**
-     * Compute a path of a message result hash in the commitment merkle tree.
-     *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeTxRollupCommitmentMerkleTreePathPostBody|null $requestBody
-     * @param string                                                                                       $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeTxRollupCommitmentMerkleTreePathPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function postHelpersForgeTxRollupCommitmentMerkleTreePath(Model\HelpersForgeTxRollupCommitmentMerkleTreePathPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersForgeTxRollupCommitmentMerkleTreePath($requestBody), $fetch);
-    }
-
-    /**
-     * Compute the message result hash.
-     *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeTxRollupCommitmentMessageResultHashPostBody|null $requestBody
-     * @param string                                                                                          $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeTxRollupCommitmentMessageResultHashPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function postHelpersForgeTxRollupCommitmentMessageResultHash(Model\HelpersForgeTxRollupCommitmentMessageResultHashPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersForgeTxRollupCommitmentMessageResultHash($requestBody), $fetch);
-    }
-
-    /**
-     * Compute the merkle tree hash of an inbox.
-     *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeTxRollupInboxMerkleTreeHashPostBody|null $requestBody
-     * @param string                                                                                  $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeTxRollupInboxMerkleTreeHashPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function postHelpersForgeTxRollupInboxMerkleTreeHash(Model\HelpersForgeTxRollupInboxMerkleTreeHashPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersForgeTxRollupInboxMerkleTreeHash($requestBody), $fetch);
-    }
-
-    /**
-     * Compute a path of an inbox message in a merkle tree.
-     *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeTxRollupInboxMerkleTreePathPostBody|null $requestBody
-     * @param string                                                                                  $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeTxRollupInboxMerkleTreePathPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function postHelpersForgeTxRollupInboxMerkleTreePath(Model\HelpersForgeTxRollupInboxMerkleTreePathPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersForgeTxRollupInboxMerkleTreePath($requestBody), $fetch);
-    }
-
-    /**
-     * Compute the hash of a message.
-     *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeTxRollupInboxMessageHashPostBody|null $requestBody
-     * @param string                                                                               $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeTxRollupInboxMessageHashPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function postHelpersForgeTxRollupInboxMessageHash(Model\HelpersForgeTxRollupInboxMessageHashPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersForgeTxRollupInboxMessageHash($requestBody), $fetch);
-    }
-
-    /**
-     * Compute the hash of a withdraw list.
-     *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeTxRollupWithdrawWithdrawListHashPostBody|null $requestBody
-     * @param string                                                                                       $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeTxRollupWithdrawWithdrawListHashPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function postHelpersForgeTxRollupWithdrawWithdrawListHash(Model\HelpersForgeTxRollupWithdrawWithdrawListHashPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersForgeTxRollupWithdrawWithdrawListHash($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersForgeProtocolDatum($requestBody), $fetch);
     }
 
     /**
      * Forge a block header.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeBlockHeaderPostBody|null $requestBody
-     * @param string                                                                  $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersForgeBlockHeaderPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersForgeBlockHeaderPostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersForgeBlockHeader(Model\HelpersForgeBlockHeaderPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersForgeBlockHeader(?Model\HelpersForgeBlockHeaderPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersForgeBlockHeader($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersForgeBlockHeader($requestBody), $fetch);
     }
 
     /**
@@ -1377,74 +1742,81 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var string $offset
-     * }
+     * @var string $offset
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersLevelsInCurrentCycleGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersLevelsInCurrentCycleGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getHelpersLevelsInCurrentCycle(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetHelpersLevelsInCurrentCycle($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetHelpersLevelsInCurrentCycle($queryParameters), $fetch);
     }
 
     /**
      * Parse a block.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersParseBlockPostBody|null $requestBody
-     * @param string                                                            $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersParseBlockPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersParseBlockPostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersParseBlock(Model\HelpersParseBlockPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersParseBlock(?Model\HelpersParseBlockPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersParseBlock($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersParseBlock($requestBody), $fetch);
     }
 
     /**
      * Parse operations.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersParseOperationsPostBody|null $requestBody
-     * @param string                                                                 $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersParseOperationsPostResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     * @var string $version Supported RPC version is version '1'
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\HelpersParseOperationsPostResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersParseOperations(Model\HelpersParseOperationsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersParseOperations(?Model\HelpersParseOperationsPostBody $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersParseOperations($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersParseOperations($requestBody, $queryParameters), $fetch);
     }
 
     /**
      * Simulate the validation of a block that would contain the given operations and return the resulting fitness and context hash.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBody|null $requestBody
-     * @param array                                                                $queryParameters {
+     * @param array $queryParameters {
      *
-     *     @var string $sort
-     *     @var string $timestamp A date in seconds from epoch
-     * }
+     * @var string $sort
+     * @var string $timestamp A date in seconds from epoch
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersPreapplyBlockPostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersPreapplyBlock(Model\HelpersPreapplyBlockPostBody $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function postHelpersPreapplyBlock(?Model\HelpersPreapplyBlockPostBody $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersPreapplyBlock($requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersPreapplyBlock($requestBody, $queryParameters), $fetch);
     }
 
     /**
      * Simulate the application of the operations with the context of the given block and return the result of each operation application.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\NextOperation[]|null $requestBody
-     * @param string                                                  $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param Model\NextOperation[]|null $requestBody
+     * @param array                      $queryParameters {
+     *
+     * @var string $version Supported RPC versions are version "1" (default)
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersPreapplyOperations(array $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersPreapplyOperations(?array $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersPreapplyOperations($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersPreapplyOperations($requestBody, $queryParameters), $fetch);
     }
 
     /**
@@ -1454,215 +1826,243 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getHelpersRound(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetHelpersRound(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetHelpersRound(), $fetch);
+    }
+
+    /**
+     * Return the type of the given entrypoint.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\HelpersScriptsEntrypointPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function postHelpersScriptsEntrypoint(?Model\HelpersScriptsEntrypointPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsEntrypoint($requestBody), $fetch);
     }
 
     /**
      * Return the list of entrypoints of the given script.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsEntrypointsPostBody|null $requestBody
-     * @param string                                                                    $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsEntrypointsPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersScriptsEntrypointsPostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersScriptsEntrypoint(Model\HelpersScriptsEntrypointsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersScriptsEntrypoint(?Model\HelpersScriptsEntrypointsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsEntrypoint($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsEntrypoint($requestBody), $fetch);
     }
 
     /**
      * Normalizes some data expression using the requested unparsing mode.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsNormalizeDataPostBody|null $requestBody
-     * @param string                                                                      $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsNormalizeDataPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersScriptsNormalizeDataPostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersScriptsNormalizeDatum(Model\HelpersScriptsNormalizeDataPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersScriptsNormalizeDatum(?Model\HelpersScriptsNormalizeDataPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsNormalizeDatum($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsNormalizeDatum($requestBody), $fetch);
     }
 
     /**
      * Normalizes a Michelson script using the requested unparsing mode.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsNormalizeScriptPostBody|null $requestBody
-     * @param string                                                                        $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsNormalizeScriptPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersScriptsNormalizeScriptPostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersScriptsNormalizeScript(Model\HelpersScriptsNormalizeScriptPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersScriptsNormalizeScript(?Model\HelpersScriptsNormalizeScriptPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsNormalizeScript($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsNormalizeScript($requestBody), $fetch);
+    }
+
+    /**
+     * Normalize a Michelson stack using the requested unparsing mode.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\HelpersScriptsNormalizeStackPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function postHelpersScriptsNormalizeStack(?Model\HelpersScriptsNormalizeStackPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsNormalizeStack($requestBody), $fetch);
     }
 
     /**
      * Normalizes some Michelson type by expanding `pair a b c` as `pair a (pair b c).
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsNormalizeTypePostBody|null $requestBody
-     * @param string                                                                      $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsNormalizeTypePostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersScriptsNormalizeTypePostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersScriptsNormalizeType(Model\HelpersScriptsNormalizeTypePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersScriptsNormalizeType(?Model\HelpersScriptsNormalizeTypePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsNormalizeType($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsNormalizeType($requestBody), $fetch);
     }
 
     /**
      * Computes the serialized version of some data expression using the same algorithm as script instruction PACK.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsPackDataPostBody|null $requestBody
-     * @param string                                                                 $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsPackDataPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersScriptsPackDataPostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersScriptsPackDatum(Model\HelpersScriptsPackDataPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersScriptsPackDatum(?Model\HelpersScriptsPackDataPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsPackDatum($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsPackDatum($requestBody), $fetch);
     }
 
     /**
-     * Run a piece of code in the current context.
+     * Run a Michelson script in the current context.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsRunCodePostBody|null $requestBody
-     * @param string                                                                $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsRunCodePostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersScriptsRunCodePostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersScriptsRunCode(Model\HelpersScriptsRunCodePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersScriptsRunCode(?Model\HelpersScriptsRunCodePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsRunCode($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsRunCode($requestBody), $fetch);
+    }
+
+    /**
+     * Run a single Michelson instruction.
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\HelpersScriptsRunInstructionPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function postHelpersScriptsRunInstruction(?Model\HelpersScriptsRunInstructionPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsRunInstruction($requestBody), $fetch);
     }
 
     /**
      * Run an operation with the context of the given block and without signature checks. Return the operation application result, including the consumed gas. This RPC does not support consensus operations.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsRunOperationPostBody|null $requestBody
-     * @param string                                                                     $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $queryParameters {
+     *
+     * @var string $version Supported RPC version is version '1'
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersScriptsRunOperation(Model\HelpersScriptsRunOperationPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersScriptsRunOperation(?Model\HelpersScriptsRunOperationPostBody $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsRunOperation($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsRunOperation($requestBody, $queryParameters), $fetch);
     }
 
     /**
      * Simulate a call to a michelson view.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsRunScriptViewPostBody|null $requestBody
-     * @param string                                                                      $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsRunScriptViewPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersScriptsRunScriptViewPostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersScriptsRunScriptView(Model\HelpersScriptsRunScriptViewPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersScriptsRunScriptView(?Model\HelpersScriptsRunScriptViewPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsRunScriptView($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsRunScriptView($requestBody), $fetch);
     }
 
     /**
      * Simulate a call to a view following the TZIP-4 standard. See https://gitlab.com/tezos/tzip/-/blob/master/proposals/tzip-4/tzip-4.md#view-entrypoints.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsRunViewPostBody|null $requestBody
-     * @param string                                                                $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsRunViewPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersScriptsRunViewPostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersScriptsRunView(Model\HelpersScriptsRunViewPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersScriptsRunView(?Model\HelpersScriptsRunViewPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsRunView($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsRunView($requestBody), $fetch);
     }
 
     /**
      * Compute the size of a script in the current context.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsScriptSizePostBody|null $requestBody
-     * @param string                                                                   $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsScriptSizePostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersScriptsScriptSizePostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersScriptsScriptSize(Model\HelpersScriptsScriptSizePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersScriptsScriptSize(?Model\HelpersScriptsScriptSizePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsScriptSize($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsScriptSize($requestBody), $fetch);
     }
 
     /**
      * Simulate running an operation at some future moment (based on the number of blocks given in the `latency` argument), and return the operation application result. The result is the same as run_operation except for the consumed gas, which depends on the contents of the cache at that future moment. This RPC estimates future gas consumption by trying to predict the state of the cache using some heuristics.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsSimulateOperationPostBody|null $requestBody
-     * @param array                                                                           $queryParameters {
+     * @param array $queryParameters {
      *
-     *     @var string $successor_level If true, the simulation is done on the successor level of the current context.
-     * }
+     * @var string $version Supported RPC version is version '1'
+     * @var string $successor_level If true, the simulation is done on the successor level of the current context.
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersScriptsSimulateOperation(Model\HelpersScriptsSimulateOperationPostBody $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function postHelpersScriptsSimulateOperation(?Model\HelpersScriptsSimulateOperationPostBody $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsSimulateOperation($requestBody, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsSimulateOperation($requestBody, $queryParameters), $fetch);
     }
 
     /**
-     * Run a piece of code in the current context, keeping a trace.
+     * Run a Michelson script in the current context, keeping a trace.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsTraceCodePostBody|null $requestBody
-     * @param string                                                                  $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsTraceCodePostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersScriptsTraceCodePostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersScriptsTraceCode(Model\HelpersScriptsTraceCodePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersScriptsTraceCode(?Model\HelpersScriptsTraceCodePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsTraceCode($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsTraceCode($requestBody), $fetch);
     }
 
     /**
      * Typecheck a piece of code in the current context.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsTypecheckCodePostBody|null $requestBody
-     * @param string                                                                      $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsTypecheckCodePostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersScriptsTypecheckCodePostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersScriptsTypecheckCode(Model\HelpersScriptsTypecheckCodePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersScriptsTypecheckCode(?Model\HelpersScriptsTypecheckCodePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsTypecheckCode($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsTypecheckCode($requestBody), $fetch);
     }
 
     /**
      * Check that some data expression is well formed and of a given type in the current context.
      *
-     * @param \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsTypecheckDataPostBody|null $requestBody
-     * @param string                                                                      $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsTypecheckDataPostResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersScriptsTypecheckDataPostResponse200|\Psr\Http\Message\ResponseInterface|null
      */
-    public function postHelpersScriptsTypecheckDatum(Model\HelpersScriptsTypecheckDataPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postHelpersScriptsTypecheckDatum(?Model\HelpersScriptsTypecheckDataPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\PostHelpersScriptsTypecheckDatum($requestBody), $fetch);
+        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsTypecheckDatum($requestBody), $fetch);
     }
 
     /**
-     * Retrieves the level, the endorsement slots and the public key hash of each delegate allowed to endorse a block.
+     * Retrieves the level, the attestation slots and the public key hash of each delegate allowed to attest a block.
      * By default, it provides this information for the next level.
-     * Parameter `level` can be used to specify the (valid) level(s) in the past or future at which the endorsement rights have to be returned. Parameter `delegate` can be used to restrict the results results to the given delegates. Parameter `consensus_key` can be used to restrict the results to the given consensus_keys.
+     * Parameter `level` can be used to specify the (valid) level(s) in the past or future at which the attestation rights have to be returned. Parameter `delegate` can be used to restrict the results results to the given delegates. Parameter `consensus_key` can be used to restrict the results to the given consensus_keys.
      *
      * @param array $queryParameters {
      *
-     *     @var string $level A level integer
-     *     @var string $delegate A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     *     @var string $consensus_key A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
-     * }
+     * @var string $level A level integer
+     * @var string $delegate A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @var string $consensus_key A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersValidatorsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\HelpersValidatorsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function getHelpersValidators(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetHelpersValidators($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetHelpersValidators($queryParameters), $fetch);
     }
 
     /**
@@ -1672,17 +2072,24 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getLiveBlocks(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetLiveBlocks(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetLiveBlocks(), $fetch);
     }
 
     /**
+     * All the metadata associated to the block.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $version Supported RPC versions are version "1" (default)
+     *             }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\MetadataGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\BlockHeaderMetadata|\Psr\Http\Message\ResponseInterface|null
      */
-    public function getMetadata(string $fetch = self::FETCH_OBJECT)
+    public function getMetadata(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetMetadata(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetMetadata($queryParameters), $fetch);
     }
 
     /**
@@ -1692,7 +2099,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getMetadataHash(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetMetadataHash(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetMetadataHash(), $fetch);
     }
 
     /**
@@ -1702,7 +2109,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getOperationHashes(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetOperationHashes(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetOperationHashes(), $fetch);
     }
 
     /**
@@ -1715,7 +2122,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getOperationHashesByListOffset(string $listOffset, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetOperationHashesByListOffset($listOffset), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetOperationHashesByListOffset($listOffset), $fetch);
     }
 
     /**
@@ -1729,7 +2136,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getOperationHashByListOffsetByOperationOffset(string $listOffset, string $operationOffset, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetOperationHashByListOffsetByOperationOffset($listOffset, $operationOffset), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetOperationHashByListOffsetByOperationOffset($listOffset, $operationOffset), $fetch);
     }
 
     /**
@@ -1739,7 +2146,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getOperationMetadataHashes(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetOperationMetadataHashes(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetOperationMetadataHashes(), $fetch);
     }
 
     /**
@@ -1752,7 +2159,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getOperationMetadataHashesByListOffset(string $listOffset, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetOperationMetadataHashesByListOffset($listOffset), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetOperationMetadataHashesByListOffset($listOffset), $fetch);
     }
 
     /**
@@ -1766,7 +2173,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getOperationMetadataHashByListOffsetByOperationOffset(string $listOffset, string $operationOffset, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetOperationMetadataHashByListOffsetByOperationOffset($listOffset, $operationOffset), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetOperationMetadataHashByListOffsetByOperationOffset($listOffset, $operationOffset), $fetch);
     }
 
     /**
@@ -1774,9 +2181,10 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     *     @var string $force_metadata DEPRECATED: Forces to recompute the operations metadata if it was considered as too large
-     *     @var string $metadata defines the way metadata are queried Specifies whether or not if the operations metadata should be returned. To get the metadata, even if it is needed to recompute them, use "always". To avoid getting the metadata, use "never". By default, the metadata will be returned depending on the node's metadata size limit policy.
-     * }
+     * @var string $version Supported RPC versions are version "1" (default)
+     * @var string $force_metadata DEPRECATED: Forces to recompute the operations metadata if it was considered as too large
+     * @var string $metadata defines the way metadata are queried Specifies whether or not if the operations metadata should be returned. To get the metadata, even if it is needed to recompute them, use "always". To avoid getting the metadata, use "never". By default, the metadata will be returned depending on the node's metadata size limit policy.
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1784,7 +2192,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getOperations(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetOperations($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetOperations($queryParameters), $fetch);
     }
 
     /**
@@ -1793,9 +2201,10 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      * @param string $listOffset      index `n` of the requested validation pass
      * @param array  $queryParameters {
      *
-     *     @var string $force_metadata DEPRECATED: Forces to recompute the operations metadata if it was considered as too large
-     *     @var string $metadata defines the way metadata are queried Specifies whether or not if the operations metadata should be returned. To get the metadata, even if it is needed to recompute them, use "always". To avoid getting the metadata, use "never". By default, the metadata will be returned depending on the node's metadata size limit policy.
-     * }
+     * @var string $version Supported RPC versions are version "1" (default)
+     * @var string $force_metadata DEPRECATED: Forces to recompute the operations metadata if it was considered as too large
+     * @var string $metadata defines the way metadata are queried Specifies whether or not if the operations metadata should be returned. To get the metadata, even if it is needed to recompute them, use "always". To avoid getting the metadata, use "never". By default, the metadata will be returned depending on the node's metadata size limit policy.
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1803,7 +2212,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getOperationsByListOffset(string $listOffset, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetOperationsByListOffset($listOffset, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetOperationsByListOffset($listOffset, $queryParameters), $fetch);
     }
 
     /**
@@ -1813,9 +2222,10 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      * @param string $operationOffset index `m` of the requested operation in its validation pass
      * @param array  $queryParameters {
      *
-     *     @var string $force_metadata DEPRECATED: Forces to recompute the operations metadata if it was considered as too large
-     *     @var string $metadata defines the way metadata are queried Specifies whether or not if the operations metadata should be returned. To get the metadata, even if it is needed to recompute them, use "always". To avoid getting the metadata, use "never". By default, the metadata will be returned depending on the node's metadata size limit policy.
-     * }
+     * @var string $version Supported RPC versions are version "1" (default)
+     * @var string $force_metadata DEPRECATED: Forces to recompute the operations metadata if it was considered as too large
+     * @var string $metadata defines the way metadata are queried Specifies whether or not if the operations metadata should be returned. To get the metadata, even if it is needed to recompute them, use "always". To avoid getting the metadata, use "never". By default, the metadata will be returned depending on the node's metadata size limit policy.
+     *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -1823,7 +2233,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getOperationByListOffsetByOperationOffset(string $listOffset, string $operationOffset, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetOperationByListOffsetByOperationOffset($listOffset, $operationOffset, $queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetOperationByListOffsetByOperationOffset($listOffset, $operationOffset, $queryParameters), $fetch);
     }
 
     /**
@@ -1833,17 +2243,17 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getOperationsMetadataHash(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetOperationsMetadataHash(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetOperationsMetadataHash(), $fetch);
     }
 
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ProtocolsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\ProtocolsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getProtocol(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetProtocol(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetProtocol(), $fetch);
     }
 
     /**
@@ -1853,37 +2263,37 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getResultingContextHash(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetResultingContextHash(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetResultingContextHash(), $fetch);
     }
 
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\VotesBallotListGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VotesBallotListGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function getVotesBallotList(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetVotesBallotList(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetVotesBallotList(), $fetch);
     }
 
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\VotesBallotsGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VotesBallotsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getVotesBallot(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetVotesBallot(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetVotesBallot(), $fetch);
     }
 
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\VotesCurrentPeriodGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VotesCurrentPeriodGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getVotesCurrentPeriod(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetVotesCurrentPeriod(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetVotesCurrentPeriod(), $fetch);
     }
 
     /**
@@ -1893,7 +2303,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getVotesCurrentProposal(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetVotesCurrentProposal(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetVotesCurrentProposal(), $fetch);
     }
 
     /**
@@ -1903,17 +2313,30 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getVotesCurrentQuorum(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetVotesCurrentQuorum(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetVotesCurrentQuorum(), $fetch);
     }
 
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\VotesListingsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VotesListingsGetResponse200Item[]|\Psr\Http\Message\ResponseInterface|null
      */
     public function getVotesListings(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetVotesListings(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetVotesListings(), $fetch);
+    }
+
+    /**
+     * Number of votes casted during the current period.
+     *
+     * @param string $pkh   A Secp256k1 of a Ed25519 public key hash (Base58Check-encoded)
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function getVotesProposalCountByPkh(string $pkh, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\GetVotesProposalCountByPkh($pkh), $fetch);
     }
 
     /**
@@ -1923,17 +2346,17 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getVotesProposals(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetVotesProposals(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetVotesProposals(), $fetch);
     }
 
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\VotesSuccessorPeriodGetResponse200|\Psr\Http\Message\ResponseInterface|null
+     * @return Model\VotesSuccessorPeriodGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function getVotesSuccessorPeriod(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetVotesSuccessorPeriod(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetVotesSuccessorPeriod(), $fetch);
     }
 
     /**
@@ -1943,7 +2366,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
      */
     public function getVotesTotalVotingPower(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Bzzhh\Pezos\Generated\Proto\Endpoint\GetVotesTotalVotingPower(), $fetch);
+        return $this->executeEndpoint(new Endpoint\GetVotesTotalVotingPower(), $fetch);
     }
 
     public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
@@ -1958,7 +2381,7 @@ class Client extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Client
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Bzzhh\Pezos\Generated\Proto\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }

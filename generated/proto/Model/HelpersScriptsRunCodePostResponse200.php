@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersScriptsRunCodePostResponse200 extends \ArrayObject
 {
@@ -21,14 +21,13 @@ class HelpersScriptsRunCodePostResponse200 extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-
     protected $storage;
     /**
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $operations;
     /**
-     * @var mixed[]
+     * @var list<mixed>
      */
     protected $lazyStorageDiff;
 
@@ -46,7 +45,7 @@ class HelpersScriptsRunCodePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getOperations(): array
     {
@@ -54,7 +53,7 @@ class HelpersScriptsRunCodePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $operations
+     * @param list<mixed> $operations
      */
     public function setOperations(array $operations): self
     {
@@ -65,7 +64,7 @@ class HelpersScriptsRunCodePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed>
      */
     public function getLazyStorageDiff(): array
     {
@@ -73,7 +72,7 @@ class HelpersScriptsRunCodePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $lazyStorageDiff
+     * @param list<mixed> $lazyStorageDiff
      */
     public function setLazyStorageDiff(array $lazyStorageDiff): self
     {

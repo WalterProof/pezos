@@ -8,11 +8,11 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class GetContextSaplingBySaplingStateIdGetDiff extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetContextSaplingBySaplingStateIdGetDiff extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     protected $sapling_state_id;
 
     /**
@@ -21,9 +21,9 @@ class GetContextSaplingBySaplingStateIdGetDiff extends \Bzzhh\Pezos\Generated\Pr
      * @param string $saplingStateId  A sapling state identifier
      * @param array  $queryParameters {
      *
-     *     @var string $offset_commitment commitments and ciphertexts are returned from the specified offset up to the most recent
-     *     @var string $offset_nullifier Nullifiers are returned from the specified offset up to the most recent.
-     * }
+     * @var string $offset_commitment commitments and ciphertexts are returned from the specified offset up to the most recent
+     * @var string $offset_nullifier Nullifiers are returned from the specified offset up to the most recent.
+     *             }
      */
     public function __construct(string $saplingStateId, array $queryParameters = [])
     {
@@ -64,14 +64,14 @@ class GetContextSaplingBySaplingStateIdGetDiff extends \Bzzhh\Pezos\Generated\Pr
     }
 
     /**
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\ContextSaplingSaplingStateIdGetDiffGetResponse200|null
+     * @return \Pezos\Generated\Proto\Model\ContextSaplingSaplingStateIdGetDiffGetResponse200|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextSaplingSaplingStateIdGetDiffGetResponse200', 'json');
+            return $serializer->deserialize($body, 'Pezos\\Generated\\Proto\\Model\\ContextSaplingSaplingStateIdGetDiffGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

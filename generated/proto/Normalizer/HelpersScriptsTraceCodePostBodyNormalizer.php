@@ -8,11 +8,12 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
+namespace Pezos\Generated\Proto\Normalizer;
 
-use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,144 +21,355 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class HelpersScriptsTraceCodePostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class HelpersScriptsTraceCodePostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsTraceCodePostBody';
-    }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsTraceCodePostBody';
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === \Pezos\Generated\Proto\Model\HelpersScriptsTraceCodePostBody::class;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === \Pezos\Generated\Proto\Model\HelpersScriptsTraceCodePostBody::class;
         }
-        $object = new \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsTraceCodePostBody();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Pezos\Generated\Proto\Model\HelpersScriptsTraceCodePostBody();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('script', $data)) {
+                $object->setScript($data['script']);
+                unset($data['script']);
+            }
+            if (\array_key_exists('storage', $data)) {
+                $object->setStorage($data['storage']);
+                unset($data['storage']);
+            }
+            if (\array_key_exists('input', $data)) {
+                $object->setInput($data['input']);
+                unset($data['input']);
+            }
+            if (\array_key_exists('amount', $data)) {
+                $object->setAmount($data['amount']);
+                unset($data['amount']);
+            }
+            if (\array_key_exists('balance', $data)) {
+                $object->setBalance($data['balance']);
+                unset($data['balance']);
+            }
+            if (\array_key_exists('chain_id', $data)) {
+                $object->setChainId($data['chain_id']);
+                unset($data['chain_id']);
+            }
+            if (\array_key_exists('source', $data)) {
+                $object->setSource($data['source']);
+                unset($data['source']);
+            }
+            if (\array_key_exists('payer', $data)) {
+                $object->setPayer($data['payer']);
+                unset($data['payer']);
+            }
+            if (\array_key_exists('self', $data)) {
+                $object->setSelf($data['self']);
+                unset($data['self']);
+            }
+            if (\array_key_exists('entrypoint', $data)) {
+                $object->setEntrypoint($data['entrypoint']);
+                unset($data['entrypoint']);
+            }
+            if (\array_key_exists('unparsing_mode', $data)) {
+                $object->setUnparsingMode($data['unparsing_mode']);
+                unset($data['unparsing_mode']);
+            }
+            if (\array_key_exists('gas', $data)) {
+                $object->setGas($data['gas']);
+                unset($data['gas']);
+            }
+            if (\array_key_exists('now', $data)) {
+                $object->setNow($data['now']);
+                unset($data['now']);
+            }
+            if (\array_key_exists('level', $data)) {
+                $object->setLevel($data['level']);
+                unset($data['level']);
+            }
+            if (\array_key_exists('other_contracts', $data)) {
+                $values = [];
+                foreach ($data['other_contracts'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, \Pezos\Generated\Proto\Model\HelpersScriptsTraceCodePostBodyOtherContractsItem::class, 'json', $context);
+                }
+                $object->setOtherContracts($values);
+                unset($data['other_contracts']);
+            }
+            if (\array_key_exists('extra_big_maps', $data)) {
+                $values_1 = [];
+                foreach ($data['extra_big_maps'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, \Pezos\Generated\Proto\Model\HelpersScriptsTraceCodePostBodyExtraBigMapsItem::class, 'json', $context);
+                }
+                $object->setExtraBigMaps($values_1);
+                unset($data['extra_big_maps']);
+            }
+            foreach ($data as $key => $value_2) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_2;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('script', $data)) {
-            $object->setScript($data['script']);
-            unset($data['script']);
-        }
-        if (\array_key_exists('storage', $data)) {
-            $object->setStorage($data['storage']);
-            unset($data['storage']);
-        }
-        if (\array_key_exists('input', $data)) {
-            $object->setInput($data['input']);
-            unset($data['input']);
-        }
-        if (\array_key_exists('amount', $data)) {
-            $object->setAmount($data['amount']);
-            unset($data['amount']);
-        }
-        if (\array_key_exists('balance', $data)) {
-            $object->setBalance($data['balance']);
-            unset($data['balance']);
-        }
-        if (\array_key_exists('chain_id', $data)) {
-            $object->setChainId($data['chain_id']);
-            unset($data['chain_id']);
-        }
-        if (\array_key_exists('source', $data)) {
-            $object->setSource($data['source']);
-            unset($data['source']);
-        }
-        if (\array_key_exists('payer', $data)) {
-            $object->setPayer($data['payer']);
-            unset($data['payer']);
-        }
-        if (\array_key_exists('self', $data)) {
-            $object->setSelf($data['self']);
-            unset($data['self']);
-        }
-        if (\array_key_exists('entrypoint', $data)) {
-            $object->setEntrypoint($data['entrypoint']);
-            unset($data['entrypoint']);
-        }
-        if (\array_key_exists('unparsing_mode', $data)) {
-            $object->setUnparsingMode($data['unparsing_mode']);
-            unset($data['unparsing_mode']);
-        }
-        if (\array_key_exists('gas', $data)) {
-            $object->setGas($data['gas']);
-            unset($data['gas']);
-        }
-        if (\array_key_exists('now', $data)) {
-            $object->setNow($data['now']);
-            unset($data['now']);
-        }
-        if (\array_key_exists('level', $data)) {
-            $object->setLevel($data['level']);
-            unset($data['level']);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['script'] = $object->getScript();
+            $data['storage'] = $object->getStorage();
+            $data['input'] = $object->getInput();
+            $data['amount'] = $object->getAmount();
+            if ($object->isInitialized('balance') && null !== $object->getBalance()) {
+                $data['balance'] = $object->getBalance();
             }
+            $data['chain_id'] = $object->getChainId();
+            if ($object->isInitialized('source') && null !== $object->getSource()) {
+                $data['source'] = $object->getSource();
+            }
+            if ($object->isInitialized('payer') && null !== $object->getPayer()) {
+                $data['payer'] = $object->getPayer();
+            }
+            if ($object->isInitialized('self') && null !== $object->getSelf()) {
+                $data['self'] = $object->getSelf();
+            }
+            if ($object->isInitialized('entrypoint') && null !== $object->getEntrypoint()) {
+                $data['entrypoint'] = $object->getEntrypoint();
+            }
+            if ($object->isInitialized('unparsingMode') && null !== $object->getUnparsingMode()) {
+                $data['unparsing_mode'] = $object->getUnparsingMode();
+            }
+            if ($object->isInitialized('gas') && null !== $object->getGas()) {
+                $data['gas'] = $object->getGas();
+            }
+            if ($object->isInitialized('now') && null !== $object->getNow()) {
+                $data['now'] = $object->getNow();
+            }
+            if ($object->isInitialized('level') && null !== $object->getLevel()) {
+                $data['level'] = $object->getLevel();
+            }
+            if ($object->isInitialized('otherContracts') && null !== $object->getOtherContracts()) {
+                $values = [];
+                foreach ($object->getOtherContracts() as $value) {
+                    $values[] = $this->normalizer->normalize($value, 'json', $context);
+                }
+                $data['other_contracts'] = $values;
+            }
+            if ($object->isInitialized('extraBigMaps') && null !== $object->getExtraBigMaps()) {
+                $values_1 = [];
+                foreach ($object->getExtraBigMaps() as $value_1) {
+                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                }
+                $data['extra_big_maps'] = $values_1;
+            }
+            foreach ($object as $key => $value_2) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_2;
+                }
+            }
+
+            return $data;
         }
 
-        return $object;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\Pezos\Generated\Proto\Model\HelpersScriptsTraceCodePostBody::class => false];
+        }
     }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
+} else {
+    class HelpersScriptsTraceCodePostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = [];
-        $data['script'] = $object->getScript();
-        $data['storage'] = $object->getStorage();
-        $data['input'] = $object->getInput();
-        $data['amount'] = $object->getAmount();
-        if ($object->isInitialized('balance') && null !== $object->getBalance()) {
-            $data['balance'] = $object->getBalance();
-        }
-        $data['chain_id'] = $object->getChainId();
-        if ($object->isInitialized('source') && null !== $object->getSource()) {
-            $data['source'] = $object->getSource();
-        }
-        if ($object->isInitialized('payer') && null !== $object->getPayer()) {
-            $data['payer'] = $object->getPayer();
-        }
-        if ($object->isInitialized('self') && null !== $object->getSelf()) {
-            $data['self'] = $object->getSelf();
-        }
-        if ($object->isInitialized('entrypoint') && null !== $object->getEntrypoint()) {
-            $data['entrypoint'] = $object->getEntrypoint();
-        }
-        if ($object->isInitialized('unparsingMode') && null !== $object->getUnparsingMode()) {
-            $data['unparsing_mode'] = $object->getUnparsingMode();
-        }
-        if ($object->isInitialized('gas') && null !== $object->getGas()) {
-            $data['gas'] = $object->getGas();
-        }
-        if ($object->isInitialized('now') && null !== $object->getNow()) {
-            $data['now'] = $object->getNow();
-        }
-        if ($object->isInitialized('level') && null !== $object->getLevel()) {
-            $data['level'] = $object->getLevel();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
-            }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === \Pezos\Generated\Proto\Model\HelpersScriptsTraceCodePostBody::class;
         }
 
-        return $data;
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === \Pezos\Generated\Proto\Model\HelpersScriptsTraceCodePostBody::class;
+        }
+
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Pezos\Generated\Proto\Model\HelpersScriptsTraceCodePostBody();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('script', $data)) {
+                $object->setScript($data['script']);
+                unset($data['script']);
+            }
+            if (\array_key_exists('storage', $data)) {
+                $object->setStorage($data['storage']);
+                unset($data['storage']);
+            }
+            if (\array_key_exists('input', $data)) {
+                $object->setInput($data['input']);
+                unset($data['input']);
+            }
+            if (\array_key_exists('amount', $data)) {
+                $object->setAmount($data['amount']);
+                unset($data['amount']);
+            }
+            if (\array_key_exists('balance', $data)) {
+                $object->setBalance($data['balance']);
+                unset($data['balance']);
+            }
+            if (\array_key_exists('chain_id', $data)) {
+                $object->setChainId($data['chain_id']);
+                unset($data['chain_id']);
+            }
+            if (\array_key_exists('source', $data)) {
+                $object->setSource($data['source']);
+                unset($data['source']);
+            }
+            if (\array_key_exists('payer', $data)) {
+                $object->setPayer($data['payer']);
+                unset($data['payer']);
+            }
+            if (\array_key_exists('self', $data)) {
+                $object->setSelf($data['self']);
+                unset($data['self']);
+            }
+            if (\array_key_exists('entrypoint', $data)) {
+                $object->setEntrypoint($data['entrypoint']);
+                unset($data['entrypoint']);
+            }
+            if (\array_key_exists('unparsing_mode', $data)) {
+                $object->setUnparsingMode($data['unparsing_mode']);
+                unset($data['unparsing_mode']);
+            }
+            if (\array_key_exists('gas', $data)) {
+                $object->setGas($data['gas']);
+                unset($data['gas']);
+            }
+            if (\array_key_exists('now', $data)) {
+                $object->setNow($data['now']);
+                unset($data['now']);
+            }
+            if (\array_key_exists('level', $data)) {
+                $object->setLevel($data['level']);
+                unset($data['level']);
+            }
+            if (\array_key_exists('other_contracts', $data)) {
+                $values = [];
+                foreach ($data['other_contracts'] as $value) {
+                    $values[] = $this->denormalizer->denormalize($value, \Pezos\Generated\Proto\Model\HelpersScriptsTraceCodePostBodyOtherContractsItem::class, 'json', $context);
+                }
+                $object->setOtherContracts($values);
+                unset($data['other_contracts']);
+            }
+            if (\array_key_exists('extra_big_maps', $data)) {
+                $values_1 = [];
+                foreach ($data['extra_big_maps'] as $value_1) {
+                    $values_1[] = $this->denormalizer->denormalize($value_1, \Pezos\Generated\Proto\Model\HelpersScriptsTraceCodePostBodyExtraBigMapsItem::class, 'json', $context);
+                }
+                $object->setExtraBigMaps($values_1);
+                unset($data['extra_big_maps']);
+            }
+            foreach ($data as $key => $value_2) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_2;
+                }
+            }
+
+            return $object;
+        }
+
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['script'] = $object->getScript();
+            $data['storage'] = $object->getStorage();
+            $data['input'] = $object->getInput();
+            $data['amount'] = $object->getAmount();
+            if ($object->isInitialized('balance') && null !== $object->getBalance()) {
+                $data['balance'] = $object->getBalance();
+            }
+            $data['chain_id'] = $object->getChainId();
+            if ($object->isInitialized('source') && null !== $object->getSource()) {
+                $data['source'] = $object->getSource();
+            }
+            if ($object->isInitialized('payer') && null !== $object->getPayer()) {
+                $data['payer'] = $object->getPayer();
+            }
+            if ($object->isInitialized('self') && null !== $object->getSelf()) {
+                $data['self'] = $object->getSelf();
+            }
+            if ($object->isInitialized('entrypoint') && null !== $object->getEntrypoint()) {
+                $data['entrypoint'] = $object->getEntrypoint();
+            }
+            if ($object->isInitialized('unparsingMode') && null !== $object->getUnparsingMode()) {
+                $data['unparsing_mode'] = $object->getUnparsingMode();
+            }
+            if ($object->isInitialized('gas') && null !== $object->getGas()) {
+                $data['gas'] = $object->getGas();
+            }
+            if ($object->isInitialized('now') && null !== $object->getNow()) {
+                $data['now'] = $object->getNow();
+            }
+            if ($object->isInitialized('level') && null !== $object->getLevel()) {
+                $data['level'] = $object->getLevel();
+            }
+            if ($object->isInitialized('otherContracts') && null !== $object->getOtherContracts()) {
+                $values = [];
+                foreach ($object->getOtherContracts() as $value) {
+                    $values[] = $this->normalizer->normalize($value, 'json', $context);
+                }
+                $data['other_contracts'] = $values;
+            }
+            if ($object->isInitialized('extraBigMaps') && null !== $object->getExtraBigMaps()) {
+                $values_1 = [];
+                foreach ($object->getExtraBigMaps() as $value_1) {
+                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                }
+                $data['extra_big_maps'] = $values_1;
+            }
+            foreach ($object as $key => $value_2) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_2;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\Pezos\Generated\Proto\Model\HelpersScriptsTraceCodePostBody::class => false];
+        }
     }
 }

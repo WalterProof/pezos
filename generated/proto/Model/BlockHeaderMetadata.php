@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class BlockHeaderMetadata extends \ArrayObject
 {
@@ -46,7 +46,7 @@ class BlockHeaderMetadata extends \ArrayObject
      */
     protected $maxBlockHeaderLength;
     /**
-     * @var BlockHeaderMetadataMaxOperationListLengthItem[]
+     * @var list<BlockHeaderMetadataMaxOperationListLengthItem>
      */
     protected $maxOperationListLength;
 
@@ -135,7 +135,7 @@ class BlockHeaderMetadata extends \ArrayObject
     }
 
     /**
-     * @return BlockHeaderMetadataMaxOperationListLengthItem[]
+     * @return list<BlockHeaderMetadataMaxOperationListLengthItem>
      */
     public function getMaxOperationListLength(): array
     {
@@ -143,7 +143,7 @@ class BlockHeaderMetadata extends \ArrayObject
     }
 
     /**
-     * @param BlockHeaderMetadataMaxOperationListLengthItem[] $maxOperationListLength
+     * @param list<BlockHeaderMetadataMaxOperationListLengthItem> $maxOperationListLength
      */
     public function setMaxOperationListLength(array $maxOperationListLength): self
     {

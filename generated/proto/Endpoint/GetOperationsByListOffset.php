@@ -8,11 +8,11 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class GetOperationsByListOffset extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetOperationsByListOffset extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     protected $list_offset;
 
     /**
@@ -21,9 +21,10 @@ class GetOperationsByListOffset extends \Bzzhh\Pezos\Generated\Proto\Runtime\Cli
      * @param string $listOffset      index `n` of the requested validation pass
      * @param array  $queryParameters {
      *
-     *     @var string $force_metadata DEPRECATED: Forces to recompute the operations metadata if it was considered as too large
-     *     @var string $metadata defines the way metadata are queried Specifies whether or not if the operations metadata should be returned. To get the metadata, even if it is needed to recompute them, use "always". To avoid getting the metadata, use "never". By default, the metadata will be returned depending on the node's metadata size limit policy.
-     * }
+     * @var string $version Supported RPC versions are version "1" (default)
+     * @var string $force_metadata DEPRECATED: Forces to recompute the operations metadata if it was considered as too large
+     * @var string $metadata defines the way metadata are queried Specifies whether or not if the operations metadata should be returned. To get the metadata, even if it is needed to recompute them, use "always". To avoid getting the metadata, use "never". By default, the metadata will be returned depending on the node's metadata size limit policy.
+     *             }
      */
     public function __construct(string $listOffset, array $queryParameters = [])
     {
@@ -54,9 +55,10 @@ class GetOperationsByListOffset extends \Bzzhh\Pezos\Generated\Proto\Runtime\Cli
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['force_metadata', 'metadata']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefined(['version', 'force_metadata', 'metadata']);
+        $optionsResolver->setRequired(['version']);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('version', ['string']);
         $optionsResolver->addAllowedTypes('force_metadata', ['string']);
         $optionsResolver->addAllowedTypes('metadata', ['string']);
 
@@ -66,7 +68,7 @@ class GetOperationsByListOffset extends \Bzzhh\Pezos\Generated\Proto\Runtime\Cli
     /**
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

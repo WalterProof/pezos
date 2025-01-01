@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersScriptsEntrypointsPostBody extends \ArrayObject
 {
@@ -21,7 +21,6 @@ class HelpersScriptsEntrypointsPostBody extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-
     protected $script;
 
     public function getScript()

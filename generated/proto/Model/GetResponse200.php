@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class GetResponse200 extends \ArrayObject
 {
@@ -25,9 +25,7 @@ class GetResponse200 extends \ArrayObject
      * @var string
      */
     protected $protocol;
-
     protected $chainId;
-
     protected $hash;
     /**
      * Block header's shell-related content. It contains information such as the block level, its predecessor and timestamp.
@@ -40,7 +38,7 @@ class GetResponse200 extends \ArrayObject
      */
     protected $metadata;
     /**
-     * @var mixed[][]
+     * @var list<list<mixed>>
      */
     protected $operations;
 
@@ -116,7 +114,7 @@ class GetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed[][]
+     * @return list<list<mixed>>
      */
     public function getOperations(): array
     {
@@ -124,7 +122,7 @@ class GetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[][] $operations
+     * @param list<list<mixed>> $operations
      */
     public function setOperations(array $operations): self
     {

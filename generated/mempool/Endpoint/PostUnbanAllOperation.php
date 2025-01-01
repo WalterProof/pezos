@@ -8,16 +8,16 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Mempool\Endpoint;
+namespace Pezos\Generated\Mempool\Endpoint;
 
-class PostUnbanAllOperation extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Endpoint
+class PostUnbanAllOperation extends \Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Mempool\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
 
     /**
      * Clear the set of banned operations.
      */
-    public function __construct(\Bzzhh\Pezos\Generated\Mempool\Model\UnbanAllOperationsPostBody $requestBody = null)
+    public function __construct(?\Pezos\Generated\Mempool\Model\UnbanAllOperationsPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -34,7 +34,7 @@ class PostUnbanAllOperation extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Clien
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Bzzhh\Pezos\Generated\Mempool\Model\UnbanAllOperationsPostBody) {
+        if ($this->body instanceof \Pezos\Generated\Mempool\Model\UnbanAllOperationsPostBody) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
 
@@ -49,7 +49,7 @@ class PostUnbanAllOperation extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Clien
     /**
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

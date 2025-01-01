@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class ContextContractsContractIdEntrypointsGetResponse200UnreachableItem extends \ArrayObject
 {
@@ -22,12 +22,12 @@ class ContextContractsContractIdEntrypointsGetResponse200UnreachableItem extends
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string[]
+     * @var list<string>
      */
     protected $path;
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getPath(): array
     {
@@ -35,7 +35,7 @@ class ContextContractsContractIdEntrypointsGetResponse200UnreachableItem extends
     }
 
     /**
-     * @param string[] $path
+     * @param list<string> $path
      */
     public function setPath(array $path): self
     {

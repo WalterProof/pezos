@@ -8,11 +8,12 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
+namespace Pezos\Generated\Proto\Normalizer;
 
-use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,86 +21,179 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ContextDelegatesPkhParticipationGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class ContextDelegatesPkhParticipationGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextDelegatesPkhParticipationGetResponse200';
-    }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\ContextDelegatesPkhParticipationGetResponse200';
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === \Pezos\Generated\Proto\Model\ContextDelegatesPkhParticipationGetResponse200::class;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === \Pezos\Generated\Proto\Model\ContextDelegatesPkhParticipationGetResponse200::class;
         }
-        $object = new \Bzzhh\Pezos\Generated\Proto\Model\ContextDelegatesPkhParticipationGetResponse200();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Pezos\Generated\Proto\Model\ContextDelegatesPkhParticipationGetResponse200();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('expected_cycle_activity', $data)) {
+                $object->setExpectedCycleActivity($data['expected_cycle_activity']);
+                unset($data['expected_cycle_activity']);
+            }
+            if (\array_key_exists('minimal_cycle_activity', $data)) {
+                $object->setMinimalCycleActivity($data['minimal_cycle_activity']);
+                unset($data['minimal_cycle_activity']);
+            }
+            if (\array_key_exists('missed_slots', $data)) {
+                $object->setMissedSlots($data['missed_slots']);
+                unset($data['missed_slots']);
+            }
+            if (\array_key_exists('missed_levels', $data)) {
+                $object->setMissedLevels($data['missed_levels']);
+                unset($data['missed_levels']);
+            }
+            if (\array_key_exists('remaining_allowed_missed_slots', $data)) {
+                $object->setRemainingAllowedMissedSlots($data['remaining_allowed_missed_slots']);
+                unset($data['remaining_allowed_missed_slots']);
+            }
+            if (\array_key_exists('expected_attesting_rewards', $data)) {
+                $object->setExpectedAttestingRewards($data['expected_attesting_rewards']);
+                unset($data['expected_attesting_rewards']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('expected_cycle_activity', $data)) {
-            $object->setExpectedCycleActivity($data['expected_cycle_activity']);
-            unset($data['expected_cycle_activity']);
-        }
-        if (\array_key_exists('minimal_cycle_activity', $data)) {
-            $object->setMinimalCycleActivity($data['minimal_cycle_activity']);
-            unset($data['minimal_cycle_activity']);
-        }
-        if (\array_key_exists('missed_slots', $data)) {
-            $object->setMissedSlots($data['missed_slots']);
-            unset($data['missed_slots']);
-        }
-        if (\array_key_exists('missed_levels', $data)) {
-            $object->setMissedLevels($data['missed_levels']);
-            unset($data['missed_levels']);
-        }
-        if (\array_key_exists('remaining_allowed_missed_slots', $data)) {
-            $object->setRemainingAllowedMissedSlots($data['remaining_allowed_missed_slots']);
-            unset($data['remaining_allowed_missed_slots']);
-        }
-        if (\array_key_exists('expected_endorsing_rewards', $data)) {
-            $object->setExpectedEndorsingRewards($data['expected_endorsing_rewards']);
-            unset($data['expected_endorsing_rewards']);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['expected_cycle_activity'] = $object->getExpectedCycleActivity();
+            $data['minimal_cycle_activity'] = $object->getMinimalCycleActivity();
+            $data['missed_slots'] = $object->getMissedSlots();
+            $data['missed_levels'] = $object->getMissedLevels();
+            $data['remaining_allowed_missed_slots'] = $object->getRemainingAllowedMissedSlots();
+            $data['expected_attesting_rewards'] = $object->getExpectedAttestingRewards();
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
             }
+
+            return $data;
         }
 
-        return $object;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\Pezos\Generated\Proto\Model\ContextDelegatesPkhParticipationGetResponse200::class => false];
+        }
     }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
+} else {
+    class ContextDelegatesPkhParticipationGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = [];
-        $data['expected_cycle_activity'] = $object->getExpectedCycleActivity();
-        $data['minimal_cycle_activity'] = $object->getMinimalCycleActivity();
-        $data['missed_slots'] = $object->getMissedSlots();
-        $data['missed_levels'] = $object->getMissedLevels();
-        $data['remaining_allowed_missed_slots'] = $object->getRemainingAllowedMissedSlots();
-        $data['expected_endorsing_rewards'] = $object->getExpectedEndorsingRewards();
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
-            }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === \Pezos\Generated\Proto\Model\ContextDelegatesPkhParticipationGetResponse200::class;
         }
 
-        return $data;
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === \Pezos\Generated\Proto\Model\ContextDelegatesPkhParticipationGetResponse200::class;
+        }
+
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Pezos\Generated\Proto\Model\ContextDelegatesPkhParticipationGetResponse200();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('expected_cycle_activity', $data)) {
+                $object->setExpectedCycleActivity($data['expected_cycle_activity']);
+                unset($data['expected_cycle_activity']);
+            }
+            if (\array_key_exists('minimal_cycle_activity', $data)) {
+                $object->setMinimalCycleActivity($data['minimal_cycle_activity']);
+                unset($data['minimal_cycle_activity']);
+            }
+            if (\array_key_exists('missed_slots', $data)) {
+                $object->setMissedSlots($data['missed_slots']);
+                unset($data['missed_slots']);
+            }
+            if (\array_key_exists('missed_levels', $data)) {
+                $object->setMissedLevels($data['missed_levels']);
+                unset($data['missed_levels']);
+            }
+            if (\array_key_exists('remaining_allowed_missed_slots', $data)) {
+                $object->setRemainingAllowedMissedSlots($data['remaining_allowed_missed_slots']);
+                unset($data['remaining_allowed_missed_slots']);
+            }
+            if (\array_key_exists('expected_attesting_rewards', $data)) {
+                $object->setExpectedAttestingRewards($data['expected_attesting_rewards']);
+                unset($data['expected_attesting_rewards']);
+            }
+            foreach ($data as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value;
+                }
+            }
+
+            return $object;
+        }
+
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['expected_cycle_activity'] = $object->getExpectedCycleActivity();
+            $data['minimal_cycle_activity'] = $object->getMinimalCycleActivity();
+            $data['missed_slots'] = $object->getMissedSlots();
+            $data['missed_levels'] = $object->getMissedLevels();
+            $data['remaining_allowed_missed_slots'] = $object->getRemainingAllowedMissedSlots();
+            $data['expected_attesting_rewards'] = $object->getExpectedAttestingRewards();
+            foreach ($object as $key => $value) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\Pezos\Generated\Proto\Model\ContextDelegatesPkhParticipationGetResponse200::class => false];
+        }
     }
 }

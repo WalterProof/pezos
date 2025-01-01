@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersScriptsPackDataPostResponse200 extends \ArrayObject
 {
@@ -25,7 +25,6 @@ class HelpersScriptsPackDataPostResponse200 extends \ArrayObject
      * @var string
      */
     protected $packed;
-
     protected $gas;
 
     public function getPacked(): string

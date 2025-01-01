@@ -8,21 +8,21 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Mempool\Endpoint;
+namespace Pezos\Generated\Mempool\Endpoint;
 
-class PostRequestOperation extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\Endpoint
+class PostRequestOperation extends \Pezos\Generated\Mempool\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Mempool\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Mempool\Runtime\Client\EndpointTrait;
 
     /**
      * Request the operations of our peers or a specific peer if specified via a query parameter.
      *
      * @param array $queryParameters {
      *
-     *     @var string $peer_id A cryptographic node identity (Base58Check-encoded)
-     * }
+     * @var string $peer_id A cryptographic node identity (Base58Check-encoded)
+     *             }
      */
-    public function __construct(\Bzzhh\Pezos\Generated\Mempool\Model\RequestOperationsPostBody $requestBody = null, array $queryParameters = [])
+    public function __construct(?\Pezos\Generated\Mempool\Model\RequestOperationsPostBody $requestBody = null, array $queryParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
@@ -40,7 +40,7 @@ class PostRequestOperation extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Bzzhh\Pezos\Generated\Mempool\Model\RequestOperationsPostBody) {
+        if ($this->body instanceof \Pezos\Generated\Mempool\Model\RequestOperationsPostBody) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
 
@@ -64,14 +64,14 @@ class PostRequestOperation extends \Bzzhh\Pezos\Generated\Mempool\Runtime\Client
     }
 
     /**
-     * @return \Bzzhh\Pezos\Generated\Mempool\Model\RequestOperationsPostResponse200|null
+     * @return \Pezos\Generated\Mempool\Model\RequestOperationsPostResponse200|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Mempool\\Model\\RequestOperationsPostResponse200', 'json');
+            return $serializer->deserialize($body, 'Pezos\\Generated\\Mempool\\Model\\RequestOperationsPostResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

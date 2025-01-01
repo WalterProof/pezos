@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HeaderProtocolDataGetResponse200 extends \ArrayObject
 {
@@ -25,9 +25,7 @@ class HeaderProtocolDataGetResponse200 extends \ArrayObject
      * @var string
      */
     protected $protocol;
-
     protected $content;
-
     protected $signature;
 
     public function getProtocol(): string

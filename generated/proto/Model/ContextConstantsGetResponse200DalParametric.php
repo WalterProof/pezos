@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class ContextConstantsGetResponse200DalParametric extends \ArrayObject
 {
@@ -26,6 +26,10 @@ class ContextConstantsGetResponse200DalParametric extends \ArrayObject
      */
     protected $featureEnable;
     /**
+     * @var bool
+     */
+    protected $incentivesEnable;
+    /**
      * @var int
      */
     protected $numberOfSlots;
@@ -36,7 +40,7 @@ class ContextConstantsGetResponse200DalParametric extends \ArrayObject
     /**
      * @var int
      */
-    protected $availabilityThreshold;
+    protected $attestationThreshold;
     /**
      * @var int
      */
@@ -67,6 +71,19 @@ class ContextConstantsGetResponse200DalParametric extends \ArrayObject
         return $this;
     }
 
+    public function getIncentivesEnable(): bool
+    {
+        return $this->incentivesEnable;
+    }
+
+    public function setIncentivesEnable(bool $incentivesEnable): self
+    {
+        $this->initialized['incentivesEnable'] = true;
+        $this->incentivesEnable = $incentivesEnable;
+
+        return $this;
+    }
+
     public function getNumberOfSlots(): int
     {
         return $this->numberOfSlots;
@@ -93,15 +110,15 @@ class ContextConstantsGetResponse200DalParametric extends \ArrayObject
         return $this;
     }
 
-    public function getAvailabilityThreshold(): int
+    public function getAttestationThreshold(): int
     {
-        return $this->availabilityThreshold;
+        return $this->attestationThreshold;
     }
 
-    public function setAvailabilityThreshold(int $availabilityThreshold): self
+    public function setAttestationThreshold(int $attestationThreshold): self
     {
-        $this->initialized['availabilityThreshold'] = true;
-        $this->availabilityThreshold = $availabilityThreshold;
+        $this->initialized['attestationThreshold'] = true;
+        $this->attestationThreshold = $attestationThreshold;
 
         return $this;
     }

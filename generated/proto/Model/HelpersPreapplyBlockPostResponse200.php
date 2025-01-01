@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersPreapplyBlockPostResponse200 extends \ArrayObject
 {
@@ -28,7 +28,7 @@ class HelpersPreapplyBlockPostResponse200 extends \ArrayObject
      */
     protected $shellHeader;
     /**
-     * @var HelpersPreapplyBlockPostResponse200OperationsItem[]
+     * @var list<HelpersPreapplyBlockPostResponse200OperationsItem>
      */
     protected $operations;
 
@@ -52,7 +52,7 @@ class HelpersPreapplyBlockPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return HelpersPreapplyBlockPostResponse200OperationsItem[]
+     * @return list<HelpersPreapplyBlockPostResponse200OperationsItem>
      */
     public function getOperations(): array
     {
@@ -60,7 +60,7 @@ class HelpersPreapplyBlockPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param HelpersPreapplyBlockPostResponse200OperationsItem[] $operations
+     * @param list<HelpersPreapplyBlockPostResponse200OperationsItem> $operations
      */
     public function setOperations(array $operations): self
     {

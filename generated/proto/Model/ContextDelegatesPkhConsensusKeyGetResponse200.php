@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class ContextDelegatesPkhConsensusKeyGetResponse200 extends \ArrayObject
 {
@@ -21,19 +21,21 @@ class ContextDelegatesPkhConsensusKeyGetResponse200 extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-
+    /**
+     * @var ContextDelegatesPkhConsensusKeyGetResponse200Active
+     */
     protected $active;
     /**
-     * @var ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem[]
+     * @var list<ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem>
      */
     protected $pendings;
 
-    public function getActive()
+    public function getActive(): ContextDelegatesPkhConsensusKeyGetResponse200Active
     {
         return $this->active;
     }
 
-    public function setActive($active): self
+    public function setActive(ContextDelegatesPkhConsensusKeyGetResponse200Active $active): self
     {
         $this->initialized['active'] = true;
         $this->active = $active;
@@ -42,7 +44,7 @@ class ContextDelegatesPkhConsensusKeyGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem[]
+     * @return list<ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem>
      */
     public function getPendings(): array
     {
@@ -50,7 +52,7 @@ class ContextDelegatesPkhConsensusKeyGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem[] $pendings
+     * @param list<ContextDelegatesPkhConsensusKeyGetResponse200PendingsItem> $pendings
      */
     public function setPendings(array $pendings): self
     {

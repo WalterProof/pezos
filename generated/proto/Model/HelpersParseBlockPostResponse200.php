@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersParseBlockPostResponse200 extends \ArrayObject
 {
@@ -21,7 +21,6 @@ class HelpersParseBlockPostResponse200 extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-
     protected $payloadHash;
     /**
      * @var int
@@ -31,13 +30,9 @@ class HelpersParseBlockPostResponse200 extends \ArrayObject
      * @var string
      */
     protected $proofOfWorkNonce;
-
     protected $seedNonceHash;
-    /**
-     * @var string
-     */
     protected $liquidityBakingToggleVote;
-
+    protected $adaptiveIssuanceVote;
     protected $signature;
 
     public function getPayloadHash()
@@ -92,15 +87,28 @@ class HelpersParseBlockPostResponse200 extends \ArrayObject
         return $this;
     }
 
-    public function getLiquidityBakingToggleVote(): string
+    public function getLiquidityBakingToggleVote()
     {
         return $this->liquidityBakingToggleVote;
     }
 
-    public function setLiquidityBakingToggleVote(string $liquidityBakingToggleVote): self
+    public function setLiquidityBakingToggleVote($liquidityBakingToggleVote): self
     {
         $this->initialized['liquidityBakingToggleVote'] = true;
         $this->liquidityBakingToggleVote = $liquidityBakingToggleVote;
+
+        return $this;
+    }
+
+    public function getAdaptiveIssuanceVote()
+    {
+        return $this->adaptiveIssuanceVote;
+    }
+
+    public function setAdaptiveIssuanceVote($adaptiveIssuanceVote): self
+    {
+        $this->initialized['adaptiveIssuanceVote'] = true;
+        $this->adaptiveIssuanceVote = $adaptiveIssuanceVote;
 
         return $this;
     }

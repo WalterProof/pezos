@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class HelpersScriptsNormalizeScriptPostBody extends \ArrayObject
 {
@@ -21,9 +21,7 @@ class HelpersScriptsNormalizeScriptPostBody extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-
     protected $script;
-
     protected $unparsingMode;
 
     public function getScript()

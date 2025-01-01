@@ -8,11 +8,11 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class GetContextBigMapsByBigMapId extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class GetContextBigMapsByBigMapId extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
     protected $big_map_id;
 
     /**
@@ -21,9 +21,9 @@ class GetContextBigMapsByBigMapId extends \Bzzhh\Pezos\Generated\Proto\Runtime\C
      * @param string $bigMapId        A big map identifier
      * @param array  $queryParameters {
      *
-     *     @var string $offset A non-negative integer (greater than or equal to 0). Skip the first [offset] values. Useful in combination with [length] for pagination.
-     *     @var string $length A non-negative integer (greater than or equal to 0). Only retrieve [length] values. Useful in combination with [offset] for pagination.
-     * }
+     * @var string $offset A non-negative integer (greater than or equal to 0). Skip the first [offset] values. Useful in combination with [length] for pagination.
+     * @var string $length A non-negative integer (greater than or equal to 0). Only retrieve [length] values. Useful in combination with [offset] for pagination.
+     *             }
      */
     public function __construct(string $bigMapId, array $queryParameters = [])
     {
@@ -66,7 +66,7 @@ class GetContextBigMapsByBigMapId extends \Bzzhh\Pezos\Generated\Proto\Runtime\C
     /**
      * @return null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();

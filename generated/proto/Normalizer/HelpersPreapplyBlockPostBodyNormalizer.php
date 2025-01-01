@@ -8,11 +8,12 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Normalizer;
+namespace Pezos\Generated\Proto\Normalizer;
 
-use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
-use Bzzhh\Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Pezos\Generated\Proto\Runtime\Normalizer\CheckArray;
+use Pezos\Generated\Proto\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -20,82 +21,171 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class HelpersPreapplyBlockPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use CheckArray;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
+    class HelpersPreapplyBlockPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return $type === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostBody';
-    }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return is_object($data) && get_class($data) === 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostBody';
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBody::class;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBody::class;
         }
-        $object = new \Bzzhh\Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBody();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBody();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('protocol_data', $data)) {
+                $object->setProtocolData($this->denormalizer->denormalize($data['protocol_data'], \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBodyProtocolData::class, 'json', $context));
+                unset($data['protocol_data']);
+            }
+            if (\array_key_exists('operations', $data)) {
+                $values = [];
+                foreach ($data['operations'] as $value) {
+                    $values_1 = [];
+                    foreach ($value as $value_1) {
+                        $values_1[] = $this->denormalizer->denormalize($value_1, \Pezos\Generated\Proto\Model\NextOperation::class, 'json', $context);
+                    }
+                    $values[] = $values_1;
+                }
+                $object->setOperations($values);
+                unset($data['operations']);
+            }
+            foreach ($data as $key => $value_2) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_2;
+                }
+            }
+
             return $object;
         }
-        if (\array_key_exists('protocol_data', $data)) {
-            $object->setProtocolData($this->denormalizer->denormalize($data['protocol_data'], 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersPreapplyBlockPostBodyProtocolData', 'json', $context));
-            unset($data['protocol_data']);
-        }
-        if (\array_key_exists('operations', $data)) {
+
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+        {
+            $data = [];
+            $data['protocol_data'] = $this->normalizer->normalize($object->getProtocolData(), 'json', $context);
             $values = [];
-            foreach ($data['operations'] as $value) {
+            foreach ($object->getOperations() as $value) {
                 $values_1 = [];
                 foreach ($value as $value_1) {
-                    $values_1[] = $this->denormalizer->denormalize($value_1, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\NextOperation', 'json', $context);
+                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
                 }
                 $values[] = $values_1;
             }
-            $object->setOperations($values);
-            unset($data['operations']);
-        }
-        foreach ($data as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+            $data['operations'] = $values;
+            foreach ($object as $key => $value_2) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_2;
+                }
             }
+
+            return $data;
         }
 
-        return $object;
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBody::class => false];
+        }
     }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
+} else {
+    class HelpersPreapplyBlockPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = [];
-        $data['protocol_data'] = $this->normalizer->normalize($object->getProtocolData(), 'json', $context);
-        $values = [];
-        foreach ($object->getOperations() as $value) {
-            $values_1 = [];
-            foreach ($value as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
-            }
-            $values[] = $values_1;
-        }
-        $data['operations'] = $values;
-        foreach ($object as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_2;
-            }
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use CheckArray;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
+        {
+            return $type === \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBody::class;
         }
 
-        return $data;
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+        {
+            return is_object($data) && get_class($data) === \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBody::class;
+        }
+
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBody();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('protocol_data', $data)) {
+                $object->setProtocolData($this->denormalizer->denormalize($data['protocol_data'], \Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBodyProtocolData::class, 'json', $context));
+                unset($data['protocol_data']);
+            }
+            if (\array_key_exists('operations', $data)) {
+                $values = [];
+                foreach ($data['operations'] as $value) {
+                    $values_1 = [];
+                    foreach ($value as $value_1) {
+                        $values_1[] = $this->denormalizer->denormalize($value_1, \Pezos\Generated\Proto\Model\NextOperation::class, 'json', $context);
+                    }
+                    $values[] = $values_1;
+                }
+                $object->setOperations($values);
+                unset($data['operations']);
+            }
+            foreach ($data as $key => $value_2) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $object[$key] = $value_2;
+                }
+            }
+
+            return $object;
+        }
+
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['protocol_data'] = $this->normalizer->normalize($object->getProtocolData(), 'json', $context);
+            $values = [];
+            foreach ($object->getOperations() as $value) {
+                $values_1 = [];
+                foreach ($value as $value_1) {
+                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                }
+                $values[] = $values_1;
+            }
+            $data['operations'] = $values;
+            foreach ($object as $key => $value_2) {
+                if (preg_match('/.*/', (string) $key)) {
+                    $data[$key] = $value_2;
+                }
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(?string $format = null): array
+        {
+            return [\Pezos\Generated\Proto\Model\HelpersPreapplyBlockPostBody::class => false];
+        }
     }
 }

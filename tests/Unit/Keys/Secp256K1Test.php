@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Bzzhh\Pezos\Tests\Unit\Pezos\Keys;
+namespace Pezos\Tests\Unit\Pezos\Keys;
 
-use Bzzhh\Pezos\Keys\Secp256K1;
-use Bzzhh\Pezos\Tests\Unit\DataProvider\Models\Account;
-use Bzzhh\Pezos\Tests\Unit\DataProvider\Secp256K1 as DataProviderSecp256K1;
+use Pezos\Keys\Secp256K1;
+use Pezos\Tests\Unit\DataProvider\Models\Account;
+use Pezos\Tests\Unit\DataProvider\Secp256K1 as DataProviderSecp256K1;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 

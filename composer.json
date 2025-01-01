@@ -1,5 +1,5 @@
 {
-    "name": "bzzhh/pezos",
+    "name": "ziwot/pezos",
     "description": "Tezos library",
     "type": "library",
     "license": "MIT",
@@ -8,10 +8,10 @@
     ],
     "autoload": {
         "psr-4": {
-            "Bzzhh\\Pezos\\": "src/",
-            "Bzzhh\\Pezos\\Generated\\Shell\\": "generated/shell",
-            "Bzzhh\\Pezos\\Generated\\Proto\\": "generated/proto",
-            "Bzzhh\\Pezos\\Generated\\Mempool\\": "generated/mempool"
+            "Pezos\\": "src/",
+            "Pezos\\Generated\\Shell\\": "generated/shell",
+            "Pezos\\Generated\\Proto\\": "generated/proto",
+            "Pezos\\Generated\\Mempool\\": "generated/mempool"
         },
         "files": [
             "src/_bootstrap.php"
@@ -19,15 +19,14 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Bzzhh\\Pezos\\Tests\\": "tests/"
+            "Pezos\\Tests\\": "tests/"
         }
     },
     "require": {
         "php": "^8.1",
         "ext-sodium": "*",
         "tuupola/base58": "^2.1",
-        "simplito/elliptic-php": "^1.0",
-        "jane-php/open-api-runtime": "^7.5"
+        "simplito/elliptic-php": "^1.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
@@ -39,7 +38,8 @@
         "php-http/discovery": "^1.13",
         "nyholm/psr7": "^1.4",
         "php-http/curl-client": "^2.2",
-        "jane-php/open-api-3": "^7.5"
+        "jane-php/open-api-3": "^7.5",
+        "jane-php/open-api-runtime": "^7.8"
     },
     "archive": {
         "exclude": [

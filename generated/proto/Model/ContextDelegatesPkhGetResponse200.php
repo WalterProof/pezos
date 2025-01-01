@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class ContextDelegatesPkhGetResponse200 extends \ArrayObject
 {
@@ -22,53 +22,107 @@ class ContextDelegatesPkhGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * Decimal representation of a positive big number.
-     *
-     * @var string
-     */
-    protected $fullBalance;
-    /**
-     * Decimal representation of a positive big number.
-     *
-     * @var string
-     */
-    protected $currentFrozenDeposits;
-    /**
-     * Decimal representation of a positive big number.
-     *
-     * @var string
-     */
-    protected $frozenDeposits;
-    /**
-     * Decimal representation of a positive big number.
-     *
-     * @var string
-     */
-    protected $stakingBalance;
-    /**
-     * Decimal representation of a positive big number.
-     *
-     * @var string
-     */
-    protected $frozenDepositsLimit;
-    /**
-     * @var mixed[]
-     */
-    protected $delegatedContracts;
-    /**
-     * Decimal representation of a positive big number.
-     *
-     * @var string
-     */
-    protected $delegatedBalance;
-    /**
      * @var bool
      */
     protected $deactivated;
     /**
+     * @var bool
+     */
+    protected $isForbidden;
+    /**
+     * @var ContextDelegatesPkhGetResponse200Participation
+     */
+    protected $participation;
+    /**
      * @var int
      */
     protected $gracePeriod;
+    /**
+     * @var ContextDelegatesPkhGetResponse200ActiveStakingParameters
+     */
+    protected $activeStakingParameters;
+    /**
+     * @var list<ContextDelegatesPkhGetResponse200PendingStakingParametersItem>
+     */
+    protected $pendingStakingParameters;
+    /**
+     * Decimal representation of 64 bit integers.
+     *
+     * @var string
+     */
+    protected $bakingPower;
+    /**
+     * Decimal representation of a positive big number.
+     *
+     * @var string
+     */
+    protected $totalStaked;
+    /**
+     * Decimal representation of a positive big number.
+     *
+     * @var string
+     */
+    protected $totalDelegated;
+    /**
+     * @var ContextDelegatesPkhGetResponse200MinDelegatedInCurrentCycle
+     */
+    protected $minDelegatedInCurrentCycle;
+    /**
+     * Decimal representation of a positive big number.
+     *
+     * @var string
+     */
+    protected $ownFullBalance;
+    /**
+     * Decimal representation of a positive big number.
+     *
+     * @var string
+     */
+    protected $ownStaked;
+    /**
+     * Decimal representation of a positive big number.
+     *
+     * @var string
+     */
+    protected $ownDelegated;
+    /**
+     * Decimal representation of a positive big number.
+     *
+     * @var string
+     */
+    protected $externalStaked;
+    /**
+     * Decimal representation of a positive big number.
+     *
+     * @var string
+     */
+    protected $externalDelegated;
+    /**
+     * @var list<ContextDelegatesPkhGetResponse200TotalUnstakedPerCycleItem>
+     */
+    protected $totalUnstakedPerCycle;
+    /**
+     * @var list<ContextDelegatesPkhGetResponse200DenunciationsItem>
+     */
+    protected $denunciations;
+    /**
+     * Decimal representation of a positive big number.
+     *
+     * @var string
+     */
+    protected $estimatedSharedPendingSlashedAmount;
+    /**
+     * Decimal representation of a positive big number.
+     *
+     * @var string
+     */
+    protected $stakingDenominator;
+    /**
+     * Decimal representation of 64 bit integers.
+     *
+     * @var string
+     */
+    protected $currentVotingPower;
     /**
      * Decimal representation of 64 bit integers.
      *
@@ -76,156 +130,21 @@ class ContextDelegatesPkhGetResponse200 extends \ArrayObject
      */
     protected $votingPower;
     /**
-     * @var string
+     * @var ContextDelegatesPkhGetResponse200VotingInfo
      */
-    protected $currentBallot;
+    protected $votingInfo;
     /**
-     * @var mixed[]
+     * @var ContextDelegatesPkhGetResponse200ConsensusKey
      */
-    protected $currentProposals;
+    protected $consensusKey;
     /**
-     * @var int
+     * @var list<ContextDelegatesPkhGetResponse200StakersItem>
      */
-    protected $remainingProposals;
-
-    protected $activeConsensusKey;
+    protected $stakers;
     /**
-     * @var ContextDelegatesPkhGetResponse200PendingConsensusKeysItem[]
+     * @var list<mixed>
      */
-    protected $pendingConsensusKeys;
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function getFullBalance(): string
-    {
-        return $this->fullBalance;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function setFullBalance(string $fullBalance): self
-    {
-        $this->initialized['fullBalance'] = true;
-        $this->fullBalance = $fullBalance;
-
-        return $this;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function getCurrentFrozenDeposits(): string
-    {
-        return $this->currentFrozenDeposits;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function setCurrentFrozenDeposits(string $currentFrozenDeposits): self
-    {
-        $this->initialized['currentFrozenDeposits'] = true;
-        $this->currentFrozenDeposits = $currentFrozenDeposits;
-
-        return $this;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function getFrozenDeposits(): string
-    {
-        return $this->frozenDeposits;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function setFrozenDeposits(string $frozenDeposits): self
-    {
-        $this->initialized['frozenDeposits'] = true;
-        $this->frozenDeposits = $frozenDeposits;
-
-        return $this;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function getStakingBalance(): string
-    {
-        return $this->stakingBalance;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function setStakingBalance(string $stakingBalance): self
-    {
-        $this->initialized['stakingBalance'] = true;
-        $this->stakingBalance = $stakingBalance;
-
-        return $this;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function getFrozenDepositsLimit(): string
-    {
-        return $this->frozenDepositsLimit;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function setFrozenDepositsLimit(string $frozenDepositsLimit): self
-    {
-        $this->initialized['frozenDepositsLimit'] = true;
-        $this->frozenDepositsLimit = $frozenDepositsLimit;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed[]
-     */
-    public function getDelegatedContracts(): array
-    {
-        return $this->delegatedContracts;
-    }
-
-    /**
-     * @param mixed[] $delegatedContracts
-     */
-    public function setDelegatedContracts(array $delegatedContracts): self
-    {
-        $this->initialized['delegatedContracts'] = true;
-        $this->delegatedContracts = $delegatedContracts;
-
-        return $this;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function getDelegatedBalance(): string
-    {
-        return $this->delegatedBalance;
-    }
-
-    /**
-     * Decimal representation of a positive big number.
-     */
-    public function setDelegatedBalance(string $delegatedBalance): self
-    {
-        $this->initialized['delegatedBalance'] = true;
-        $this->delegatedBalance = $delegatedBalance;
-
-        return $this;
-    }
+    protected $delegators;
 
     public function getDeactivated(): bool
     {
@@ -240,6 +159,32 @@ class ContextDelegatesPkhGetResponse200 extends \ArrayObject
         return $this;
     }
 
+    public function getIsForbidden(): bool
+    {
+        return $this->isForbidden;
+    }
+
+    public function setIsForbidden(bool $isForbidden): self
+    {
+        $this->initialized['isForbidden'] = true;
+        $this->isForbidden = $isForbidden;
+
+        return $this;
+    }
+
+    public function getParticipation(): ContextDelegatesPkhGetResponse200Participation
+    {
+        return $this->participation;
+    }
+
+    public function setParticipation(ContextDelegatesPkhGetResponse200Participation $participation): self
+    {
+        $this->initialized['participation'] = true;
+        $this->participation = $participation;
+
+        return $this;
+    }
+
     public function getGracePeriod(): int
     {
         return $this->gracePeriod;
@@ -249,6 +194,298 @@ class ContextDelegatesPkhGetResponse200 extends \ArrayObject
     {
         $this->initialized['gracePeriod'] = true;
         $this->gracePeriod = $gracePeriod;
+
+        return $this;
+    }
+
+    public function getActiveStakingParameters(): ContextDelegatesPkhGetResponse200ActiveStakingParameters
+    {
+        return $this->activeStakingParameters;
+    }
+
+    public function setActiveStakingParameters(ContextDelegatesPkhGetResponse200ActiveStakingParameters $activeStakingParameters): self
+    {
+        $this->initialized['activeStakingParameters'] = true;
+        $this->activeStakingParameters = $activeStakingParameters;
+
+        return $this;
+    }
+
+    /**
+     * @return list<ContextDelegatesPkhGetResponse200PendingStakingParametersItem>
+     */
+    public function getPendingStakingParameters(): array
+    {
+        return $this->pendingStakingParameters;
+    }
+
+    /**
+     * @param list<ContextDelegatesPkhGetResponse200PendingStakingParametersItem> $pendingStakingParameters
+     */
+    public function setPendingStakingParameters(array $pendingStakingParameters): self
+    {
+        $this->initialized['pendingStakingParameters'] = true;
+        $this->pendingStakingParameters = $pendingStakingParameters;
+
+        return $this;
+    }
+
+    /**
+     * Decimal representation of 64 bit integers.
+     */
+    public function getBakingPower(): string
+    {
+        return $this->bakingPower;
+    }
+
+    /**
+     * Decimal representation of 64 bit integers.
+     */
+    public function setBakingPower(string $bakingPower): self
+    {
+        $this->initialized['bakingPower'] = true;
+        $this->bakingPower = $bakingPower;
+
+        return $this;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function getTotalStaked(): string
+    {
+        return $this->totalStaked;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function setTotalStaked(string $totalStaked): self
+    {
+        $this->initialized['totalStaked'] = true;
+        $this->totalStaked = $totalStaked;
+
+        return $this;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function getTotalDelegated(): string
+    {
+        return $this->totalDelegated;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function setTotalDelegated(string $totalDelegated): self
+    {
+        $this->initialized['totalDelegated'] = true;
+        $this->totalDelegated = $totalDelegated;
+
+        return $this;
+    }
+
+    public function getMinDelegatedInCurrentCycle(): ContextDelegatesPkhGetResponse200MinDelegatedInCurrentCycle
+    {
+        return $this->minDelegatedInCurrentCycle;
+    }
+
+    public function setMinDelegatedInCurrentCycle(ContextDelegatesPkhGetResponse200MinDelegatedInCurrentCycle $minDelegatedInCurrentCycle): self
+    {
+        $this->initialized['minDelegatedInCurrentCycle'] = true;
+        $this->minDelegatedInCurrentCycle = $minDelegatedInCurrentCycle;
+
+        return $this;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function getOwnFullBalance(): string
+    {
+        return $this->ownFullBalance;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function setOwnFullBalance(string $ownFullBalance): self
+    {
+        $this->initialized['ownFullBalance'] = true;
+        $this->ownFullBalance = $ownFullBalance;
+
+        return $this;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function getOwnStaked(): string
+    {
+        return $this->ownStaked;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function setOwnStaked(string $ownStaked): self
+    {
+        $this->initialized['ownStaked'] = true;
+        $this->ownStaked = $ownStaked;
+
+        return $this;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function getOwnDelegated(): string
+    {
+        return $this->ownDelegated;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function setOwnDelegated(string $ownDelegated): self
+    {
+        $this->initialized['ownDelegated'] = true;
+        $this->ownDelegated = $ownDelegated;
+
+        return $this;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function getExternalStaked(): string
+    {
+        return $this->externalStaked;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function setExternalStaked(string $externalStaked): self
+    {
+        $this->initialized['externalStaked'] = true;
+        $this->externalStaked = $externalStaked;
+
+        return $this;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function getExternalDelegated(): string
+    {
+        return $this->externalDelegated;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function setExternalDelegated(string $externalDelegated): self
+    {
+        $this->initialized['externalDelegated'] = true;
+        $this->externalDelegated = $externalDelegated;
+
+        return $this;
+    }
+
+    /**
+     * @return list<ContextDelegatesPkhGetResponse200TotalUnstakedPerCycleItem>
+     */
+    public function getTotalUnstakedPerCycle(): array
+    {
+        return $this->totalUnstakedPerCycle;
+    }
+
+    /**
+     * @param list<ContextDelegatesPkhGetResponse200TotalUnstakedPerCycleItem> $totalUnstakedPerCycle
+     */
+    public function setTotalUnstakedPerCycle(array $totalUnstakedPerCycle): self
+    {
+        $this->initialized['totalUnstakedPerCycle'] = true;
+        $this->totalUnstakedPerCycle = $totalUnstakedPerCycle;
+
+        return $this;
+    }
+
+    /**
+     * @return list<ContextDelegatesPkhGetResponse200DenunciationsItem>
+     */
+    public function getDenunciations(): array
+    {
+        return $this->denunciations;
+    }
+
+    /**
+     * @param list<ContextDelegatesPkhGetResponse200DenunciationsItem> $denunciations
+     */
+    public function setDenunciations(array $denunciations): self
+    {
+        $this->initialized['denunciations'] = true;
+        $this->denunciations = $denunciations;
+
+        return $this;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function getEstimatedSharedPendingSlashedAmount(): string
+    {
+        return $this->estimatedSharedPendingSlashedAmount;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function setEstimatedSharedPendingSlashedAmount(string $estimatedSharedPendingSlashedAmount): self
+    {
+        $this->initialized['estimatedSharedPendingSlashedAmount'] = true;
+        $this->estimatedSharedPendingSlashedAmount = $estimatedSharedPendingSlashedAmount;
+
+        return $this;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function getStakingDenominator(): string
+    {
+        return $this->stakingDenominator;
+    }
+
+    /**
+     * Decimal representation of a positive big number.
+     */
+    public function setStakingDenominator(string $stakingDenominator): self
+    {
+        $this->initialized['stakingDenominator'] = true;
+        $this->stakingDenominator = $stakingDenominator;
+
+        return $this;
+    }
+
+    /**
+     * Decimal representation of 64 bit integers.
+     */
+    public function getCurrentVotingPower(): string
+    {
+        return $this->currentVotingPower;
+    }
+
+    /**
+     * Decimal representation of 64 bit integers.
+     */
+    public function setCurrentVotingPower(string $currentVotingPower): self
+    {
+        $this->initialized['currentVotingPower'] = true;
+        $this->currentVotingPower = $currentVotingPower;
 
         return $this;
     }
@@ -272,79 +509,66 @@ class ContextDelegatesPkhGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    public function getCurrentBallot(): string
+    public function getVotingInfo(): ContextDelegatesPkhGetResponse200VotingInfo
     {
-        return $this->currentBallot;
+        return $this->votingInfo;
     }
 
-    public function setCurrentBallot(string $currentBallot): self
+    public function setVotingInfo(ContextDelegatesPkhGetResponse200VotingInfo $votingInfo): self
     {
-        $this->initialized['currentBallot'] = true;
-        $this->currentBallot = $currentBallot;
+        $this->initialized['votingInfo'] = true;
+        $this->votingInfo = $votingInfo;
+
+        return $this;
+    }
+
+    public function getConsensusKey(): ContextDelegatesPkhGetResponse200ConsensusKey
+    {
+        return $this->consensusKey;
+    }
+
+    public function setConsensusKey(ContextDelegatesPkhGetResponse200ConsensusKey $consensusKey): self
+    {
+        $this->initialized['consensusKey'] = true;
+        $this->consensusKey = $consensusKey;
 
         return $this;
     }
 
     /**
-     * @return mixed[]
+     * @return list<ContextDelegatesPkhGetResponse200StakersItem>
      */
-    public function getCurrentProposals(): array
+    public function getStakers(): array
     {
-        return $this->currentProposals;
+        return $this->stakers;
     }
 
     /**
-     * @param mixed[] $currentProposals
+     * @param list<ContextDelegatesPkhGetResponse200StakersItem> $stakers
      */
-    public function setCurrentProposals(array $currentProposals): self
+    public function setStakers(array $stakers): self
     {
-        $this->initialized['currentProposals'] = true;
-        $this->currentProposals = $currentProposals;
-
-        return $this;
-    }
-
-    public function getRemainingProposals(): int
-    {
-        return $this->remainingProposals;
-    }
-
-    public function setRemainingProposals(int $remainingProposals): self
-    {
-        $this->initialized['remainingProposals'] = true;
-        $this->remainingProposals = $remainingProposals;
-
-        return $this;
-    }
-
-    public function getActiveConsensusKey()
-    {
-        return $this->activeConsensusKey;
-    }
-
-    public function setActiveConsensusKey($activeConsensusKey): self
-    {
-        $this->initialized['activeConsensusKey'] = true;
-        $this->activeConsensusKey = $activeConsensusKey;
+        $this->initialized['stakers'] = true;
+        $this->stakers = $stakers;
 
         return $this;
     }
 
     /**
-     * @return ContextDelegatesPkhGetResponse200PendingConsensusKeysItem[]
+     * @return list<mixed>
      */
-    public function getPendingConsensusKeys(): array
+    public function getDelegators(): array
     {
-        return $this->pendingConsensusKeys;
+        return $this->delegators;
     }
 
     /**
-     * @param ContextDelegatesPkhGetResponse200PendingConsensusKeysItem[] $pendingConsensusKeys
+     * @param list<mixed> $delegators
      */
-    public function setPendingConsensusKeys(array $pendingConsensusKeys): self
+    public function setDelegators(array $delegators): self
     {
-        $this->initialized['pendingConsensusKeys'] = true;
-        $this->pendingConsensusKeys = $pendingConsensusKeys;
+        $this->initialized['delegators'] = true;
+        $this->delegators = $delegators;
 
         return $this;
     }

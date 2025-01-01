@@ -8,16 +8,16 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Endpoint;
+namespace Pezos\Generated\Proto\Endpoint;
 
-class PostHelpersScriptsEntrypoint extends \Bzzhh\Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Bzzhh\Pezos\Generated\Proto\Runtime\Client\Endpoint
+class PostHelpersScriptsEntrypoint extends \Pezos\Generated\Proto\Runtime\Client\BaseEndpoint implements \Pezos\Generated\Proto\Runtime\Client\Endpoint
 {
-    use \Bzzhh\Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
+    use \Pezos\Generated\Proto\Runtime\Client\EndpointTrait;
 
     /**
      * Return the list of entrypoints of the given script.
      */
-    public function __construct(\Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsEntrypointsPostBody $requestBody = null)
+    public function __construct(?\Pezos\Generated\Proto\Model\HelpersScriptsEntrypointsPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
@@ -34,7 +34,7 @@ class PostHelpersScriptsEntrypoint extends \Bzzhh\Pezos\Generated\Proto\Runtime\
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsEntrypointsPostBody) {
+        if ($this->body instanceof \Pezos\Generated\Proto\Model\HelpersScriptsEntrypointsPostBody) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
 
@@ -47,14 +47,14 @@ class PostHelpersScriptsEntrypoint extends \Bzzhh\Pezos\Generated\Proto\Runtime\
     }
 
     /**
-     * @return \Bzzhh\Pezos\Generated\Proto\Model\HelpersScriptsEntrypointsPostResponse200|null
+     * @return \Pezos\Generated\Proto\Model\HelpersScriptsEntrypointsPostResponse200|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Bzzhh\\Pezos\\Generated\\Proto\\Model\\HelpersScriptsEntrypointsPostResponse200', 'json');
+            return $serializer->deserialize($body, 'Pezos\\Generated\\Proto\\Model\\HelpersScriptsEntrypointsPostResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);

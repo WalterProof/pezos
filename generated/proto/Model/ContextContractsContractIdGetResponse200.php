@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Model;
+namespace Pezos\Generated\Proto\Model;
 
 class ContextContractsContractIdGetResponse200 extends \ArrayObject
 {
@@ -27,10 +27,9 @@ class ContextContractsContractIdGetResponse200 extends \ArrayObject
      * @var string
      */
     protected $balance;
-
     protected $delegate;
     /**
-     * @var _016PtMumbaiScriptedContracts
+     * @var _021PsQuebecScriptedContracts
      */
     protected $script;
     /**
@@ -72,12 +71,12 @@ class ContextContractsContractIdGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    public function getScript(): _016PtMumbaiScriptedContracts
+    public function getScript(): _021PsQuebecScriptedContracts
     {
         return $this->script;
     }
 
-    public function setScript(_016PtMumbaiScriptedContracts $script): self
+    public function setScript(_021PsQuebecScriptedContracts $script): self
     {
         $this->initialized['script'] = true;
         $this->script = $script;

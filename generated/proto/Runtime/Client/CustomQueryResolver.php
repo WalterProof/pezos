@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Do no edit it directly.
  */
 
-namespace Bzzhh\Pezos\Generated\Proto\Runtime\Client;
+namespace Pezos\Generated\Proto\Runtime\Client;
 
 use Symfony\Component\OptionsResolver\Options;
 

@@ -1,10 +1,15 @@
 # Pezos 🌮
 
-![tests](https://github.com/WalterProof/pezos/workflows/tests/badge.svg) [![Latest Stable Version](http://poser.pugx.org/bzzhh/pezos/v)](https://packagist.org/packages/bzzhh/pezos) [![Total Downloads](http://poser.pugx.org/bzzhh/pezos/downloads)](https://packagist.org/packages/bzzhh/pezos) [![Latest Unstable Version](http://poser.pugx.org/bzzhh/pezos/v/unstable)](https://packagist.org/packages/bzzhh/pezos) [![License](http://poser.pugx.org/bzzhh/pezos/license)](https://packagist.org/packages/bzzhh/pezos) [![PHP Version Require](http://poser.pugx.org/bzzhh/pezos/require/php)](https://packagist.org/packages/bzzhh/pezos)
+![tests](https://github.com/ziwot/pezos/workflows/tests/badge.svg)
+![Latest Stable Version](http://poser.pugx.org/ziwot/pezos/v)
+![Total Downloads](http://poser.pugx.org/ziwot/pezos/downloads)
+![Latest Unstable Version](http://poser.pugx.org/ziwot/pezos/v/unstable)
+![License](http://poser.pugx.org/ziwot/pezos/license)
+![PHP Version Require](http://poser.pugx.org/ziwot/pezos/require/php)
 
 PHP lib for Tezos
 
-`composer require bzzhh/pezos`
+`composer require ziwot/pezos`
 
 ## Features
 
