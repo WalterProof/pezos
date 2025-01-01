@@ -69,5 +69,8 @@ cs-fix: ##@QA run fixer
 test: ##@QA run tests
 	vendor/bin/phpunit --testdox
 
+test-i: ##@QA run integration tests
+	vendor/bin/phpunit --testdox --testsuite integration
+
 test-u: ##@QA run unit tests
 	vendor/bin/phpunit --testdox --testsuite unit

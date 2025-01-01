@@ -9,9 +9,10 @@
     "autoload": {
         "psr-4": {
             "Pezos\\": "src/",
-            "Pezos\\Generated\\Shell\\": "generated/shell",
+            "Pezos\\Generated\\Mempool\\": "generated/mempool",
             "Pezos\\Generated\\Proto\\": "generated/proto",
-            "Pezos\\Generated\\Mempool\\": "generated/mempool"
+            "Pezos\\Generated\\Shell\\": "generated/shell",
+            "Pezos\\Generated\\Rollup\\": "generated/smart-rollup-node"
         },
         "files": [
             "src/_bootstrap.php"
@@ -26,7 +27,8 @@
         "php": "^8.1",
         "ext-sodium": "*",
         "tuupola/base58": "^2.1",
-        "simplito/elliptic-php": "^1.0"
+        "simplito/elliptic-php": "^1.0",
+        "jane-php/open-api-runtime": "^7.8"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
@@ -38,8 +40,7 @@
         "php-http/discovery": "^1.13",
         "nyholm/psr7": "^1.4",
         "php-http/curl-client": "^2.2",
-        "jane-php/open-api-3": "^7.5",
-        "jane-php/open-api-runtime": "^7.8"
+        "jane-php/open-api-3": "^7.5"
     },
     "archive": {
         "exclude": [

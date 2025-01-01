@@ -1842,18 +1842,6 @@ class Client extends Runtime\Client\Client
     }
 
     /**
-     * Return the list of entrypoints of the given script.
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return Model\HelpersScriptsEntrypointsPostResponse200|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function postHelpersScriptsEntrypoint(?Model\HelpersScriptsEntrypointsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new Endpoint\PostHelpersScriptsEntrypoint($requestBody), $fetch);
-    }
-
-    /**
      * Normalizes some data expression using the requested unparsing mode.
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
